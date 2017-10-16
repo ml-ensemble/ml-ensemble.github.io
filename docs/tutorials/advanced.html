@@ -1,0 +1,1072 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Advanced features tutorial &mdash; mlens 0.2.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../index.html"/>
+        <link rel="next" title="Ready-made ensemble classes" href="../start/ensembles.html"/>
+        <link rel="prev" title="Getting started" href="start.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Advanced features tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/advanced.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="advanced-features-tutorial">
+<span id="ensemble-tutorial"></span><span id="sphx-glr-tutorials-advanced-py"></span><h1>Advanced features tutorial<a class="headerlink" href="#advanced-features-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>The following tutorials highlight advanced functionality and provide in-depth
+material on ensemble APIs.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tutorial</th>
+<th class="head">Content</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="#propa-tutorial"><span class="std std-ref">Propagating input features</span></a></td>
+<td>Propagate feature input features through layers</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>to allow several layers to see the same input.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#proba-tutorial"><span class="std std-ref">Probabilistic ensemble learning</span></a></td>
+<td>Build layers that output class probabilities from each base</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>learner so that the next layer or meta estimator learns</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>from probability distributions.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#subsemble-tutorial"><span class="std std-ref">Advanced Subsemble techniques</span></a></td>
+<td>Learn homogenous partitions of feature space</td>
+</tr>
+<tr class="row-even"><td></td>
+<td>that maximize base learner’s performance on each partition.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sequential-tutorial"><span class="std std-ref">General multi-layer ensemble learning</span></a></td>
+<td>How to build ensembles with different layer classes</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#memory-tutorial"><span class="std std-ref">Passing file paths as data input</span></a></td>
+<td>Avoid loading data into the parent process by specifying a</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>file path to a memmaped array or a csv file.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#model-selection-tutorial"><span class="std std-ref">Ensemble model selection</span></a></td>
+<td>Build transformers that replicate layers in ensembles for</td>
+</tr>
+<tr class="row-odd"><td></td>
+<td>model selection of higher-order layers and / or meta learners.</td>
+</tr>
+</tbody>
+</table>
+<p>We use the same preliminary settings as in the
+<a class="reference internal" href="start.html#getting-started"><span class="std std-ref">getting started</span></a> section.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">2017</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="propagating-input-features">
+<span id="propa-tutorial"></span><h2>Propagating input features<a class="headerlink" href="#propagating-input-features" title="Permalink to this headline">¶</a></h2>
+<p>When stacking several layers of base learners, the variance of the input
+will typically get smaller as learners get better and better at predicting
+the output and the remaining errors become increasingly difficult to correct
+for. This multicolinearity can significantly limit the ability of the
+ensemble to improve upon the best score of the subsequent layer as there is too
+little variation in predictions for the ensemble to learn useful combinations.
+One way to increase this variation is to propagate features from the original
+input and / or earlier layers. To achieve this in ML-Ensemble, we use the
+<code class="docutils literal"><span class="pre">propagate_features</span></code> attribute. To see how this works, let’s compare
+a three-layer ensemble with and without feature propagation.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">SuperLearner</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+
+<span class="k">def</span> <span class="nf">build_ensemble</span><span class="p">(</span><span class="n">incl_meta</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return an ensemble.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">propagate_features</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">propagate_features</span><span class="p">)</span>
+        <span class="n">propagate_features_1</span> <span class="o">=</span> <span class="n">propagate_features</span>
+        <span class="n">propagate_features_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">propagate_features_1</span> <span class="o">=</span> <span class="n">propagate_features_2</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span> <span class="n">SVC</span><span class="p">()]</span>
+
+    <span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span>
+    <span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="n">propagate_features_1</span><span class="p">)</span>
+    <span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="n">propagate_features_2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">incl_meta</span><span class="p">:</span>
+        <span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">ensemble</span>
+</pre></div>
+</div>
+<p>Without feature propagation, the meta learner will learn from the predictions
+of the penultimate layers:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">build_ensemble</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">base</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Input to meta learner :</span><span class="se">\n</span><span class="s2"> </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Input</span> <span class="n">to</span> <span class="n">meta</span> <span class="n">learner</span> <span class="p">:</span>
+ <span class="n">array</span><span class="p">([[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When we propagate features, some (or all) of the input seen by one layer is
+passed along to the next layer. For instance, we can propagate some or all of
+the input array through our two intermediate layers to the meta learner input
+of the meta learner:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="n">build_ensemble</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">base</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Input to meta learner :</span><span class="se">\n</span><span class="s2"> </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Input</span> <span class="n">to</span> <span class="n">meta</span> <span class="n">learner</span> <span class="p">:</span>
+ <span class="n">array</span><span class="p">([[</span> <span class="mf">3.20000005</span><span class="p">,</span>  <span class="mf">2.29999995</span><span class="p">,</span>  <span class="mf">2.</span>        <span class="p">,</span>  <span class="mf">2.</span>        <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">3.20000005</span><span class="p">,</span>  <span class="mf">2.29999995</span><span class="p">,</span>  <span class="mf">2.</span>        <span class="p">,</span>  <span class="mf">2.</span>        <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">3.</span>        <span class="p">,</span>  <span class="mf">2.0999999</span> <span class="p">,</span>  <span class="mf">2.</span>        <span class="p">,</span>  <span class="mf">2.</span>        <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">3.20000005</span><span class="p">,</span>  <span class="mf">1.5</span>       <span class="p">,</span>  <span class="mf">1.</span>        <span class="p">,</span>  <span class="mf">1.</span>        <span class="p">],</span>
+       <span class="p">[</span> <span class="mf">2.79999995</span><span class="p">,</span>  <span class="mf">1.39999998</span><span class="p">,</span>  <span class="mf">1.</span>        <span class="p">,</span>  <span class="mf">1.</span>        <span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this scenario, the meta learner will see noth the predictions made by the
+penultimate layer, as well as the second and fourth feature of the original
+input. By propagating
+features, the issue of multicolinearity in deep ensembles can be mitigated.
+In particular, it can give the meta learner greater opportunity to identify
+neighborhoods in the original feature space where base learners struggle. We
+can get an idea of how feature propagation works with our toy example. First,
+we need a simple ensemble evaluation routine. In our case, propagating the
+original features through two layers of the same
+library of base learners gives a dramatic increase in performance on the test
+set:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_ensemble</span><span class="p">(</span><span class="n">propagate_features</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapper for ensemble evaluation.&quot;&quot;&quot;</span>
+    <span class="n">ens</span> <span class="o">=</span> <span class="n">build_ensemble</span><span class="p">(</span><span class="bp">True</span><span class="p">,</span> <span class="n">propagate_features</span><span class="p">)</span>
+    <span class="n">ens</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">75</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">75</span><span class="p">])</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">ens</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
+
+
+<span class="n">score_no_prep</span> <span class="o">=</span> <span class="n">evaluate_ensemble</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">score_prep</span> <span class="o">=</span> <span class="n">evaluate_ensemble</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test set score no feature propagation  : </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">score_no_prep</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Test set score with feature propagation: </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">score_prep</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="nb">set</span> <span class="n">score</span> <span class="n">no</span> <span class="n">feature</span> <span class="n">propagation</span>  <span class="p">:</span> <span class="mf">0.667</span>
+<span class="n">Test</span> <span class="nb">set</span> <span class="n">score</span> <span class="k">with</span> <span class="n">feature</span> <span class="n">propagation</span><span class="p">:</span> <span class="mf">0.987</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># .. py:currentmodule:: mlens.preprocessing</span>
+<span class="c1">#</span>
+<span class="c1"># By combining feature propagation with the :class:`Subset` transformer, you can</span>
+<span class="c1"># propagate the feature through several layers without any of the base estimators</span>
+<span class="c1"># in those layers seeing the propagated features. This can be desirable if you</span>
+<span class="c1"># want to propagate the input features to the meta learner without intermediate</span>
+<span class="c1"># base learners always having access to the original input data. In this case,</span>
+<span class="c1"># we specify propagation as above, but add a preprocessing pipeline to</span>
+<span class="c1"># intermediate layers:</span>
+
+<span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span> <span class="n">SVC</span><span class="p">()]</span>
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span>
+
+<span class="c1"># Initial layer, propagate as before</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Intermediate layer, keep propagating, but add a preprocessing</span>
+<span class="c1"># pipeline that selects a subset of the input</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span>
+             <span class="n">preprocessing</span><span class="o">=</span><span class="p">[</span><span class="n">Subset</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])],</span>
+             <span class="n">propagate_features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In the above example, the two first features of the original input data
+will be propagated through both layers, but the second layer will not be
+trained on it. Instead, it will only see the predictions made by the base
+learners in the first layer.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">feature_importances_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+     <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">layer_2</span><span class="o">.</span><span class="n">learners</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">learner_</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Num features seen by estimators in intermediate layer: </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Num features in the output array of the intermediate layer: </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Num</span> <span class="n">features</span> <span class="n">seen</span> <span class="n">by</span> <span class="n">estimators</span> <span class="ow">in</span> <span class="n">intermediate</span> <span class="n">layer</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">Num</span> <span class="n">features</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">output</span> <span class="n">array</span> <span class="n">of</span> <span class="n">the</span> <span class="n">intermediate</span> <span class="n">layer</span><span class="p">:</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="probabilistic-ensemble-learning">
+<span id="proba-tutorial"></span><h2>Probabilistic ensemble learning<a class="headerlink" href="#probabilistic-ensemble-learning" title="Permalink to this headline">¶</a></h2>
+<p>When the target to predict is a class label, it can often be beneficial to
+let higher-order layers or the meta learner learn from <em>class probabilities</em>,
+as opposed to the predicted class. Scikit-learn classifiers can return a
+matrix that, for each observation in the test set, gives the probability that
+the observation belongs to the a given class. While we are ultimately
+interested in class membership, this information is much richer that just
+feeding the predicted class to the meta learner. In essence, using class
+probabilities allow the meta learner to weigh in not just the predicted
+class label (the highest probability), but also with what confidence each
+estimator makes the prediction, and how estimators consider the alternative.
+First, let us set a benchmark ensemble performance when learning is by
+predicted class membership.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">BlendEnsemble</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="k">def</span> <span class="nf">build_ensemble</span><span class="p">(</span><span class="n">proba</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return an ensemble.&quot;&quot;&quot;</span>
+    <span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span>
+                  <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="n">proba</span><span class="p">)]</span>
+
+    <span class="n">ensemble</span> <span class="o">=</span> <span class="n">BlendEnsemble</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="n">proba</span><span class="p">)</span>   <span class="c1"># Specify &#39;proba&#39; here</span>
+    <span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">ensemble</span>
+</pre></div>
+</div>
+<p>As in the <a class="reference internal" href="start.html#ensemble-guide"><span class="std std-ref">ensemble guide</span></a>, we fit on the first half,
+and test on the remainder.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">build_ensemble</span><span class="p">(</span><span class="n">proba</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">75</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">75</span><span class="p">])</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:]))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Accuracy</span><span class="p">:</span>
+<span class="mf">0.66666666666666663</span>
+</pre></div>
+</div>
+<p>Now, to enable probabilistic learning, we set <code class="docutils literal"><span class="pre">proba=True</span></code> in the <code class="docutils literal"><span class="pre">add</span></code>
+method for all layers except the final meta learner layer.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">build_ensemble</span><span class="p">(</span><span class="n">proba</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">75</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">75</span><span class="p">])</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Accuracy:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:]))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Accuracy</span><span class="p">:</span>
+<span class="mf">0.95999999999999996</span>
+</pre></div>
+</div>
+<p>In this case, using probabilities has a drastic effect on predictive
+performance, increasing some 40 percentage points. For an applied example
+see the ensemble used to beat the Scikit-learn <a class="reference internal" href="../benchmarks/benchmarks.html#mnist"><span class="std std-ref">MNIST</span></a> benchmark.</p>
+</div>
+<div class="section" id="advanced-subsemble-techniques">
+<span id="subsemble-tutorial"></span><h2>Advanced Subsemble techniques<a class="headerlink" href="#advanced-subsemble-techniques" title="Permalink to this headline">¶</a></h2>
+<p>Subsembles leverages the idea that neighborhoods of feature space have a
+specific local structure. When we fit an estimator across all feature space,
+it is very hard to capture several such local properties. Subsembles partition
+the feature space and fits each base learner to each partitions, thereby
+allow base learners to optimize locally. Instead, the task of generalizing
+across neighborhoods is left to the meta learner. This strategy can be very
+powerful when the local structure first needs to be extracted, before an
+estimator can learn to generalize. Suppose you want to learn the probability
+distribution of some variable <span class="math">\(y\)</span>. Often, the true distribution is
+multi-modal, which is an extremely hard problem. In fact, most
+machine learning algorithms, especially with convex optimization objectives, are
+ill equipped to solve this problem. Subsembles can overcome this issue allowing
+base estimators to fit one mode of the distribution at a time, which yields a
+better representation of the distribution and greatly facilitates the learning
+problem of the meta learner.</p>
+<p>By default, the <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.Subsemble" title="mlens.ensemble.Subsemble"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a> class partitioning the dataset randomly.
+Note however that partitions are created on the data “as is”, so if the ordering
+of observations is not random, neither will the partitioning be. For this
+reason, it is recommended to shuffle the data (e.g. via the <code class="docutils literal"><span class="pre">shuffle</span></code>
+option at initialization). To build a subsemble with random partitions, the
+only parameter needed is the number of <code class="docutils literal"><span class="pre">partitions</span></code> when instantiating
+the <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.Subsemble" title="mlens.ensemble.Subsemble"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">Subsemble</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="k">def</span> <span class="nf">build_subsemble</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Build a subsemble with random partitions&quot;&quot;&quot;</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sub</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">sub</span>
+
+<span class="n">sub</span><span class="o">=</span> <span class="n">build_subsemble</span><span class="p">()</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">sub</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;No. prediction features: </span><span class="si">%i</span><span class="s2"> &quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">No</span><span class="o">.</span> <span class="n">prediction</span> <span class="n">features</span><span class="p">:</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>During training, the base learners are copied to each partition,
+so the output of each layer gets multiplied by the number of partitions. In this
+case, we have 2 base learners for 3 partitions, giving 6 prediction features.</p>
+<p>By creating partitions, subsembles <a class="reference internal" href="../benchmarks/scaling.html#bench"><span class="std std-ref">scale significantly better</span></a>
+than the
+<a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SuperLearner" title="mlens.ensemble.SuperLearner"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a>, but in contrast to <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.BlendEnsemble" title="mlens.ensemble.BlendEnsemble"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a>,
+the full training data is leveraged during training. But randomly partitioning
+the data does however not exploit the full advantage of locality, since it is
+only by luck that we happen to create such partitions. A better way is to
+<em>learn</em> how to best partition the data. We can either use
+unsupervised algorithms to generate clusters, or supervised estimators and
+create partitions based on their predictions. In ML-Ensemble, this is
+achieved by passing an estimator as <code class="docutils literal"><span class="pre">partition_estimator</span></code>. This estimator
+can differ between layers.</p>
+<p>Very few limitation are imposed on the estimator: you can specify whether
+you want to fit it before generating partitions, whether to use
+labels in the partitioning, and what method to call to generate the
+partitions. See <a class="reference internal" href="../module/mlens.index.html#mlens.index.ClusteredSubsetIndex" title="mlens.index.ClusteredSubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">ClusteredSubsetIndex</span></code></a> for the full documentation.
+This level of generality does impose some
+responsibility on the user. In particular, it is up to the user to ensure that
+sensible partitions are created. Problems to watch out for is too small
+partitions (too many clusters, too uneven cluster sizes) and clusters with too
+little variation: for instance with only a single class label in the entire
+partition, base learners have nothing to learn. Let’s see how to do this in
+practice. For instance, we can use an unsupervised K-Means
+clustering estimator to partition the data, like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+
+<span class="k">def</span> <span class="nf">build_clustered_subsemble</span><span class="p">(</span><span class="n">estimator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Build a subsemble with random partitions&quot;&quot;&quot;</span>
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">partition_estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+                    <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">sub</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">()])</span>
+    <span class="n">sub</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">SVC</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">sub</span>
+
+<span class="n">sub</span> <span class="o">=</span> <span class="n">build_clustered_subsemble</span><span class="p">(</span><span class="n">KMeans</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fitting</span> <span class="mi">2</span> <span class="n">layers</span>
+<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">1</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">2</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Fit</span> <span class="n">complete</span>                        <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>The Iris dataset can actually separate the classes perfectly with a KMeans
+estimator which leads to zero label variation in each partition. For that
+reason the above code fits the KMeans estimator on only the first two
+columns. But this approach is nota very good way of doing it since we loose
+the rest of the data when fitting the estimators too. Instead, we could
+customize the
+partitioning estimator to make the subset selection itself. For instance,
+we can use Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.19.0)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.pipeline.Pipeline</span></code></a>
+class to put a dimensionality reduction transformer before the partitioning
+estimator, such as a <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v0.19.0)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.decomposition.PCA</span></code></a>, or the
+<a class="reference internal" href="../module/mlens.preprocessing.html#mlens.preprocessing.Subset" title="mlens.preprocessing.Subset"><code class="xref py py-class docutils literal"><span class="pre">mlens.preprocessing.Subset</span></code></a> transformer to drop some features before
+estimation. We then use this pipeline as a our partition estimator and fit
+the subsemble on all features.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="c1"># This partition estimator is equivalent to the one used above</span>
+<span class="n">pe</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">Subset</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">KMeans</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">build_clustered_subsemble</span><span class="p">(</span><span class="n">pe</span><span class="p">)</span>
+
+<span class="n">sub</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fitting</span> <span class="mi">2</span> <span class="n">layers</span>
+<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">1</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">2</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Fit</span> <span class="n">complete</span>                        <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>In general, you may need to wrap an estimator around a custom class to modify
+it’s output to generate good partitions. For instance, in regression problems,
+the output of a supervised estimator needs to be binarized to give a discrete
+number of partitions. Here’s minimalist way of wrapping a Scikit-learn
+estimator:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit estimator.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate partition&quot;&quot;&quot;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyClass</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Finally, to summarize the functionality in one example,
+let’s implement a simple (but rather useless) partition estimator that splits
+the data in half based on the sum of the features.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimplePartitioner</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">our_custom_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Split the data in half based on the sum of features&quot;&quot;&quot;</span>
+        <span class="c1"># Labels should be numerical</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># Note that the number of partitions the estimator creates *must* match the</span>
+<span class="c1"># ``partitions`` argument passed to the Subsemble.</span>
+<span class="c1"># The ``folds`` option is completely independent.</span>
+
+<span class="n">sub</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">()],</span>
+        <span class="n">partition_estimator</span><span class="o">=</span><span class="n">SimplePartitioner</span><span class="p">(),</span>
+        <span class="n">fit_estimator</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">attr</span><span class="o">=</span><span class="s2">&quot;our_custom_function&quot;</span><span class="p">)</span>
+
+<span class="n">sub</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fitting</span> <span class="mi">1</span> <span class="n">layers</span>
+<span class="n">Fit</span> <span class="n">complete</span>                        <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>A final word of caution. When implementing custom estimators from scratch, some
+care needs to be taken if you plan on copying the Subsemble. It is advised that
+the estimator inherits the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v0.19.0)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.base.BaseEstimator</span></code></a> class to
+provide a Scikit-learn compatible interface. For further information,
+see the <a class="reference internal" href="../deep/api.html#api"><span class="std std-ref">API</span></a> documentation of the <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code>
+and <code class="xref py py-class docutils literal"><span class="pre">mlens.base.indexer.ClusteredSubsetIndex</span></code>.</p>
+<p>For an example of using clustered subsemble, see the subsemble
+used to beat the Scikit-learn <a class="reference internal" href="../benchmarks/benchmarks.html#mnist"><span class="std std-ref">MNIST</span></a> benchmark.</p>
+</div>
+<div class="section" id="general-multi-layer-ensemble-learning">
+<span id="sequential-tutorial"></span><h2>General multi-layer ensemble learning<a class="headerlink" href="#general-multi-layer-ensemble-learning" title="Permalink to this headline">¶</a></h2>
+<p>The modular <code class="docutils literal"><span class="pre">add</span></code> API of ML-Ensembles allow users to build arbitrarily
+deep ensembles. If you would like to alternate between the <em>type</em> of each layer
+the <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SequentialEnsemble" title="mlens.ensemble.SequentialEnsemble"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> class can be used to specify what type of
+layer (i.e. stacked, blended, subsamle-style) to add. This can be particularly
+powerful if facing a large dataset, as the first layer can use a fast approach
+such as blending, while subsequent layers fitted on the remaining data can
+use more computationally intensive approaches. The type of layer, along with
+any parameter settings pertaining to that layer, are specified in the
+<code class="docutils literal"><span class="pre">add</span></code> method.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">SequentialEnsemble</span>
+
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">SequentialEnsemble</span><span class="p">()</span>
+
+<span class="c1"># The initial layer is a blended layer, same as a layer in the BlendEnsemble</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;blend&#39;</span><span class="p">,</span>
+             <span class="p">[</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)])</span>
+
+<span class="c1"># The second layer is a stacked layer, same as a layer of the SuperLearner</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)])</span>
+
+<span class="c1"># The third layer is a subsembled layer, same as a layer of the Subsemble</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;subsemble&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)])</span>
+
+<span class="c1"># The meta estimator is added as in any other ensemble</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">SVC</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The below table maps the types of layers available in the <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SequentialEnsemble" title="mlens.ensemble.SequentialEnsemble"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> with the corresponding ensemble.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">front-end parameter</th>
+<th class="head">SequentialEnsemble parameter</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>‘SuperLearner’</td>
+<td>‘stack’</td>
+</tr>
+<tr class="row-odd"><td>‘BlendEnsemble’</td>
+<td>‘blend’</td>
+</tr>
+<tr class="row-even"><td>‘Subsemble’</td>
+<td>‘subsemble’</td>
+</tr>
+</tbody>
+</table>
+<p>Once instantiated, the <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble`</span></code> behaves as expect:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">preds</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">75</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">75</span><span class="p">])</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
+</pre></div>
+</div>
+<p>In this case, the multi-layer <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SequentialEnsemble" title="mlens.ensemble.SequentialEnsemble"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> with an initial
+blended layer and second stacked layer achieves similar performance as the
+<a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.BlendEnsemble" title="mlens.ensemble.BlendEnsemble"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> with probabilistic learning. Note that we could have
+made any of the layers probabilistic by setting <code class="docutils literal"><span class="pre">Proba=True</span></code>.</p>
+</div>
+<div class="section" id="passing-file-paths-as-data-input">
+<span id="memory-tutorial"></span><h2>Passing file paths as data input<a class="headerlink" href="#passing-file-paths-as-data-input" title="Permalink to this headline">¶</a></h2>
+<p>With large datasets, it can be expensive to load the full data into memory as
+a numpy array. Since ML-Ensemle uses a memmaped cache, the need to keep the
+full array in memory can be entirely circumvented by passing a file path as
+entry to <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code>. There are two important things to note when doing
+this.</p>
+<p>First, ML-Ensemble delpoys Scikit-learn’s array checks, and passing a
+string will cause an error. To avoid this, the ensemble must be initialized
+with <code class="docutils literal"><span class="pre">array_check=0</span></code>, in which case there will be no checks on the array.
+The user should make certain that the the data is approprate for esitmation,
+by converting missing values and infinites to numerical representation,
+ensuring that all features are numerical, and remove any headers,
+index columns and footers.</p>
+<p>Second, ML-Ensemble expects the file to be either a <code class="docutils literal"><span class="pre">csv</span></code>,
+an <code class="docutils literal"><span class="pre">npy</span></code> or <code class="docutils literal"><span class="pre">mmap</span></code> file and will treat these differently.</p>
+<blockquote>
+<div><ul class="simple">
+<li>If a path to a <code class="docutils literal"><span class="pre">csv</span></code> file is passed, the ensemble will first <strong>load</strong>
+the file into memory, then dump it into the cache, before discarding the
+file from memory by replacing it with a pointer to the memmaped file.
+The loading module used for the <code class="docutils literal"><span class="pre">csv</span></code>
+file is the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.13)"><code class="xref py py-func docutils literal"><span class="pre">numpy.loadtxt()</span></code></a> function.</li>
+<li>If a path to a <code class="docutils literal"><span class="pre">npy</span></code> file is passed, a memmaped pointer to it will be
+loaded.</li>
+<li>If a path to a <code class="docutils literal"><span class="pre">mmap</span></code> file is passed, it will be used as the memmaped
+input array for estimation.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+
+<span class="c1"># We create a temporary folder in the current working directory</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="c1"># Dump the X and y array in the temporary directory, here as csv files</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;X.csv&#39;</span><span class="p">)</span>
+<span class="n">fy</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;y.csv&#39;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">fy</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># We can now fit any ensemble simply by passing the file pointers ``fx`` and</span>
+<span class="c1"># ``fy``. Remember to set ``array_check=0``.</span>
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">build_ensemble</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">preds</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">1.</span>  <span class="mf">1.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span>  <span class="mf">2.</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If you are following the examples on your machine,
+don’t forget to remove the temporary directory.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">temp</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">temp</span>
+<span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+    <span class="c1"># This can fail on Windows</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ensemble-model-selection">
+<span id="model-selection-tutorial"></span><h2>Ensemble model selection<a class="headerlink" href="#ensemble-model-selection" title="Permalink to this headline">¶</a></h2>
+<p>Ensembles benefit from a diversity of base learners, but often it is not clear
+how to parametrize the base learners. In fact, combining base learners with
+lower predictive power can often yield a superior ensemble. This hinges on the
+errors made by the base learners being relatively uncorrelated, thus allowing
+a meta estimator to learn how to overcome each model’s weakness. But with
+highly correlated errors, there is little for the ensemble to learn from.</p>
+<p>To fully exploit the learning capacity in an ensemble, it is beneficial to
+conduct careful hyper parameter tuning, treating the base learner’s parameters
+as the parameters of the ensemble. By far the most critical part of the
+ensemble is the meta learner, but selecting an appropriate meta learner can be
+an ardous task if the entire ensemble has to be evaluated each time.</p>
+<p>You can either use the ensemble as-is as a preprocessing pipeline. But do note
+that the <code class="docutils literal"><span class="pre">transform</span></code> method on an ensemble used the prediction strategy from
+the <code class="docutils literal"><span class="pre">fit</span></code> call, so this will not be entirely consistent with the ensemble’s
+behavior on a test set.</p>
+<p>Alternatively, to get an exact emulator of how the ensemble would behave, use
+the dedicated <code class="xref py py-class docutils literal"><span class="pre">EnsembleTransformer</span></code> class, which faithfully replicated
+the ensemble’s behavior on both training and test folds.</p>
+<p>The transformer follows the same API as the <a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SequentialEnsemble" title="mlens.ensemble.SequentialEnsemble"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a>, but
+does not implement a meta estimator and the transform method will
+determine whether the passed input data is the same as during training,
+in which case it recovers the predictions from the <code class="docutils literal"><span class="pre">fit</span></code> call. In the following example,
+we run model selection on the meta learner of a blend ensemble, and try
+two configurations of the blend ensemble: learning from class predictions or
+from probability distributions over classes.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span><span class="p">,</span> <span class="n">EnsembleTransformer</span>
+
+<span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">uniform</span><span class="p">,</span> <span class="n">randint</span>
+
+<span class="c1"># Set up two competing ensemble bases as preprocessing transformers:</span>
+<span class="c1"># one stacked ensemble base with proba and one without</span>
+<span class="n">base_learners</span> <span class="o">=</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span>
+                 <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
+
+<span class="n">proba_transformer</span> <span class="o">=</span> <span class="n">EnsembleTransformer</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;blend&#39;</span><span class="p">,</span> <span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">class_transformer</span> <span class="o">=</span> <span class="n">EnsembleTransformer</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;blend&#39;</span><span class="p">,</span> <span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># Set up a preprocessing mapping</span>
+<span class="c1"># Each pipeline in this map is fitted once on each fold before</span>
+<span class="c1"># evaluating candidate meta learners.</span>
+<span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;proba&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;layer-1&#39;</span><span class="p">,</span> <span class="n">proba_transformer</span><span class="p">)],</span>
+                 <span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;layer-1&#39;</span><span class="p">,</span> <span class="n">class_transformer</span><span class="p">)]}</span>
+
+<span class="c1"># Set up candidate meta learners</span>
+<span class="c1"># We can specify a dictionary if we wish to try different candidates on</span>
+<span class="c1"># different cases, or a list if all estimators should be run on all</span>
+<span class="c1"># preprocessing pipelines (as in this example)</span>
+<span class="n">meta_learners</span> <span class="o">=</span> <span class="p">[</span><span class="n">SVC</span><span class="p">(),</span> <span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">))]</span>
+
+<span class="c1"># Set parameter mapping</span>
+<span class="c1"># Here, we differentiate distributions between cases for the random forest</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;svc&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)},</span>
+          <span class="s1">&#39;class__rf&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)},</span>
+          <span class="s1">&#39;proba__rf&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                            <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="n">uniform</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)}</span>
+          <span class="p">}</span>
+
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">)</span>
+<span class="n">evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="n">scorer</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">evaluator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">meta_learners</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="n">preprocessing</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can now compare the performance of the best fit for each candidate
+meta learner.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Results:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Results</span><span class="p">:</span>
+              <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>                                                 <span class="n">params</span>
+<span class="k">class</span>  <span class="nc">rf</span>            <span class="mf">0.947</span>         <span class="mf">0.013</span>          <span class="mf">0.946</span>          <span class="mf">0.000</span>       <span class="mf">0.522</span>       <span class="mf">0.115</span>        <span class="mf">0.047</span>        <span class="mf">0.000</span>                                       <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="k">class</span>  <span class="nc">svc</span>           <span class="mf">0.947</span>         <span class="mf">0.013</span>          <span class="mf">0.946</span>          <span class="mf">0.000</span>       <span class="mf">0.365</span>       <span class="mf">0.003</span>        <span class="mf">0.064</span>        <span class="mf">0.022</span>                             <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">0.20960225406117416</span><span class="p">}</span>
+<span class="n">proba</span>  <span class="n">rf</span>            <span class="mf">0.940</span>         <span class="mf">0.020</span>          <span class="mf">1.000</span>          <span class="mf">0.000</span>       <span class="mf">0.533</span>       <span class="mf">0.020</span>        <span class="mf">0.030</span>        <span class="mf">0.027</span>  <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mf">0.51048011270305871</span><span class="p">}</span>
+<span class="n">proba</span>  <span class="n">svc</span>           <span class="mf">0.960</span>         <span class="mf">0.000</span>          <span class="mf">0.973</span>          <span class="mf">0.000</span>       <span class="mf">0.417</span>       <span class="mf">0.062</span>        <span class="mf">0.104</span>        <span class="mf">0.061</span>                              <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">7.6707016468248774</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  13.122 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/advanced.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">advanced.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/advanced.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">advanced.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

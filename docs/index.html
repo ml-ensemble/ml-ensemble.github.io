@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Documentation &mdash; mlens 0.2.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="#"/>
+        <link rel="next" title="Install" href="start/install.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <!-- User defined GitHub URL -->
+              <a href="https://github.com/flennerhag/mlens" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<p>ML-Ensemble a Python library for memory efficient parallelized ensemble learning. In particular, ML-Ensemble is a <a class="reference external" href="http://scikit-learn.org/stable/">Scikit-learn</a> compatible library for building deep ensemble networks in just a few lines of code.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xtest</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="a-network-approach-to-multi-layered-ensembles">
+<h2>A network approach to multi-layered ensembles<a class="headerlink" href="#a-network-approach-to-multi-layered-ensembles" title="Permalink to this headline">¶</a></h2>
+<p>Ensembles are built by constructing a graph of <a class="reference internal" href="module/mlens.parallel.html#mlens.parallel.Learner" title="mlens.parallel.Learner"><code class="xref py py-class docutils literal"><span class="pre">Learner</span></code></a> nodes that handle computations associated with a specific estimator. Nodes are connected in a <a class="reference internal" href="module/mlens.parallel.html#mlens.parallel.Layer" title="mlens.parallel.Layer"><code class="xref py py-class docutils literal"><span class="pre">Layer</span></code></a> that optimized computation for maximum parallelization. Ready-made ensemble classes allow you to build computationally optimized ensembles of almost any shape and form in just a few lines of code. The low-level API gives you full control of the ensemble network and the computational procedure to build virtually any type of ensemble, including dynamic and recursive features.</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/network.png"><img alt="_images/network.png" src="_images/network.png" style="width: 1925.3999999999999px; height: 1417.8px;" /></a>
+<p class="caption"><span class="caption-text">A typical computational graph. An input <span class="math">\(X\)</span> is differentialy preprocessed
+via tranformers <span class="math">\(\textrm{Tr}^{(j)}\)</span> before base learners <span class="math">\(f^{(i)}\)</span> generate predictions <span class="math">\(p^{(i)}_j\)</span>.
+Predictions are concatenated along with any propagated features from the input (<span class="math">\(X_{:, s}\)</span>) to form the
+output matrix <span class="math">\(P\)</span>.</span></p>
+</div>
+</div>
+<div class="section" id="standard-estimator-api">
+<h2>Standard estimator API<a class="headerlink" href="#standard-estimator-api" title="Permalink to this headline">¶</a></h2>
+<p>Simply call the <code class="docutils literal"><span class="pre">add</span></code> method with a set of estimators to stack a layer on an ensemble.
+Ensembles are Scikit-learn compatible estimators. No matter how complex the
+ensemble, to train with the <code class="docutils literal"><span class="pre">fit</span></code> method:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">()</span>
+
+<span class="c1"># First layer</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">list_of_estimators</span><span class="p">)</span>
+
+<span class="c1"># Second layer</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">list_of_estimators</span><span class="p">)</span>
+
+<span class="c1"># Final meta estimator</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+
+<span class="c1"># Train ensemble</span>
+<span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="memory-efficient-parallelized-learning">
+<h2>Memory Efficient Parallelized Learning<a class="headerlink" href="#memory-efficient-parallelized-learning" title="Permalink to this headline">¶</a></h2>
+<p>ML-Ensemble is designed to
+maximize parallelization at minimum memory footprint and is designed to be thread-safe.
+It can fall back on multiprocessing seamlessly and use shared memory to completely avoid array
+copying and serialization. An ensemble will not require more memory when estimated in parallel
+than what it consumes with sequential processing. For more details, see the <a class="reference internal" href="benchmarks/memory.html#memory"><span class="std std-ref">memory benchmark</span></a>.</p>
+</div>
+<div class="section" id="differentiated-preprocessing-pipelines">
+<h2>Differentiated preprocessing pipelines<a class="headerlink" href="#differentiated-preprocessing-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>ML-Ensemble offers the possibility to specify a set
+of preprocessing pipelines that map to a specific group of estimators in a layer.
+Implementing differentiated preprocessing is straightforward and simply requires
+a dictionary mapping between preprocessing cases and estimators:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span>
+
+<span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pipeline-1&#39;</span><span class="p">:</span> <span class="n">list_of_transformers_1</span><span class="p">,</span>
+                 <span class="s1">&#39;pipeline-2&#39;</span><span class="p">:</span> <span class="n">list_of_transformers_2</span><span class="p">}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pipeline-1&#39;</span><span class="p">:</span> <span class="n">list_of_estimators_1</span><span class="p">,</span>
+              <span class="s1">&#39;pipeline-2&#39;</span><span class="p">:</span> <span class="n">list_of_estimators_2</span><span class="p">}</span>
+
+<span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dedicated-diagnostics">
+<h2>Dedicated Diagnostics<a class="headerlink" href="#dedicated-diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>ML-Ensemble is equipped with a model selection suite that lets you compare
+several models across any number of preprocessing pipelines in one go.
+In fact, you can use an ensemble as a preprocessing input to tune higher levels
+of an ensemble. Output is directly summarized in table format for easy
+comparison of performance.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">results</span>
+<span class="go">           test_score_mean  test_score_std  train_score_mean  train_score_std  fit_time_mean  fit_time_std                                             params</span>
+<span class="go">class rf          0.955357        0.060950          0.972535         0.008303       0.024585      0.014300                                   {&#39;max_depth&#39;: 5}</span>
+<span class="go">      svc         0.961607        0.070818          0.972535         0.008303       0.000800      0.000233                               {&#39;C&#39;: 7.67070164682}</span>
+<span class="go">proba rf          0.980357        0.046873          0.992254         0.007007       0.022789      0.003296   {&#39;max_depth&#39;: 3, &#39;max_features&#39;: 0.883535082341}</span>
+<span class="go">      svc         0.974107        0.051901          0.969718         0.008060       0.000994      0.000367                              {&#39;C&#39;: 0.209602254061}</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<hr class="docutils" />
+<p>ML Ensemble is licensed under <a class="reference internal" href="misc/license.html#license"><span class="std std-ref">MIT</span></a> and is hosted on <a class="reference external" href="https://github.com/flennerhag/mlens">Github</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

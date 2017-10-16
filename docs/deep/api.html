@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; mlens 0.2.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../index.html"/>
+        <link rel="next" title="Global configurations" href="mlens_configs.html"/>
+        <link rel="prev" title="Troubleshooting" href="troubleshooting.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/deep/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<span id="id1"></span><h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p>The Front-end API collects documentation on ensemble classes, preprocessing transformers, model selection modules and visualization features. The Low-level API presents the core estimation and ensemble management classes.</p>
+<div class="section" id="front-end-api">
+<h2>Front-end API<a class="headerlink" href="#front-end-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ensemble-estimators">
+<h3>Ensemble estimators<a class="headerlink" href="#ensemble-estimators" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SuperLearner" title="mlens.ensemble.SuperLearner"><code class="xref py py-obj docutils literal"><span class="pre">SuperLearner</span></code></a>([folds,&nbsp;shuffle,&nbsp;random_state,&nbsp;…])</td>
+<td>Super Learner class.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.Subsemble" title="mlens.ensemble.Subsemble"><code class="xref py py-obj docutils literal"><span class="pre">Subsemble</span></code></a>([partitions,&nbsp;partition_estimator,&nbsp;…])</td>
+<td>Subsemble class.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.BlendEnsemble" title="mlens.ensemble.BlendEnsemble"><code class="xref py py-obj docutils literal"><span class="pre">BlendEnsemble</span></code></a>([test_size,&nbsp;shuffle,&nbsp;…])</td>
+<td>Blend Ensemble class.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.SequentialEnsemble" title="mlens.ensemble.SequentialEnsemble"><code class="xref py py-obj docutils literal"><span class="pre">SequentialEnsemble</span></code></a>([shuffle,&nbsp;random_state,&nbsp;…])</td>
+<td>Sequential Ensemble class.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="model-selection">
+<h3>Model Selection<a class="headerlink" href="#model-selection" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.model_selection.html#mlens.model_selection.Evaluator" title="mlens.model_selection.Evaluator"><code class="xref py py-obj docutils literal"><span class="pre">Evaluator</span></code></a>(scorer[,&nbsp;cv,&nbsp;shuffle,&nbsp;…])</td>
+<td>Model selection across several estimators and preprocessing pipelines.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.model_selection.html#mlens.model_selection.EnsembleTransformer" title="mlens.model_selection.EnsembleTransformer"><code class="xref py py-obj docutils literal"><span class="pre">EnsembleTransformer</span></code></a>([shuffle,&nbsp;random_state,&nbsp;…])</td>
+<td>Ensemble Transformer class.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="preprocessing">
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.preprocessing.html#mlens.preprocessing.Shift" title="mlens.preprocessing.Shift"><code class="xref py py-obj docutils literal"><span class="pre">Shift</span></code></a>(s)</td>
+<td>Lag operator.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.preprocessing.html#mlens.preprocessing.Subset" title="mlens.preprocessing.Subset"><code class="xref py py-obj docutils literal"><span class="pre">Subset</span></code></a>([subset])</td>
+<td>Select a subset of features.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.visualization.html#mlens.visualization.corrmat" title="mlens.visualization.corrmat"><code class="xref py py-obj docutils literal"><span class="pre">corrmat</span></code></a>(corr[,&nbsp;figsize,&nbsp;annotate,&nbsp;inflate,&nbsp;…])</td>
+<td>Function for generating color-coded correlation triangle.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.visualization.html#mlens.visualization.clustered_corrmap" title="mlens.visualization.clustered_corrmap"><code class="xref py py-obj docutils literal"><span class="pre">clustered_corrmap</span></code></a>(corr,&nbsp;cls[,&nbsp;…])</td>
+<td>Function for plotting a clustered correlation heatmap.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.visualization.html#mlens.visualization.corr_X_y" title="mlens.visualization.corr_X_y"><code class="xref py py-obj docutils literal"><span class="pre">corr_X_y</span></code></a>(X,&nbsp;y[,&nbsp;top,&nbsp;figsize,&nbsp;fontsize,&nbsp;…])</td>
+<td>Function for plotting input feature correlations with output.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.visualization.html#mlens.visualization.pca_plot" title="mlens.visualization.pca_plot"><code class="xref py py-obj docutils literal"><span class="pre">pca_plot</span></code></a>(X,&nbsp;estimator[,&nbsp;y,&nbsp;cmap,&nbsp;figsize,&nbsp;…])</td>
+<td>Function to plot a PCA analysis of 1, 2, or 3 dims.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.visualization.html#mlens.visualization.pca_comp_plot" title="mlens.visualization.pca_comp_plot"><code class="xref py py-obj docutils literal"><span class="pre">pca_comp_plot</span></code></a>(X[,&nbsp;y,&nbsp;figsize,&nbsp;title,&nbsp;…])</td>
+<td>Function for comparing PCA analysis.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.visualization.html#mlens.visualization.exp_var_plot" title="mlens.visualization.exp_var_plot"><code class="xref py py-obj docutils literal"><span class="pre">exp_var_plot</span></code></a>(X,&nbsp;estimator[,&nbsp;figsize,&nbsp;…])</td>
+<td>Function to plot the explained variance using PCA.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="low-level-api">
+<span id="id2"></span><h2>Low-level API<a class="headerlink" href="#low-level-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parallel-estimation-api">
+<span id="estimation-api"></span><h3>Parallel estimation API<a class="headerlink" href="#parallel-estimation-api" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.parallel.html#mlens.parallel.Learner" title="mlens.parallel.Learner"><code class="xref py py-obj docutils literal"><span class="pre">Learner</span></code></a>(estimator,&nbsp;preprocess,&nbsp;indexer,&nbsp;name)</td>
+<td>Wrapper for base learners.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.parallel.html#mlens.parallel.Transformer" title="mlens.parallel.Transformer"><code class="xref py py-obj docutils literal"><span class="pre">Transformer</span></code></a>(estimator,&nbsp;indexer,&nbsp;name[,&nbsp;…])</td>
+<td>Preprocessing handler.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.parallel.html#mlens.parallel.ParallelProcessing" title="mlens.parallel.ParallelProcessing"><code class="xref py py-obj docutils literal"><span class="pre">ParallelProcessing</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>Parallel processing engine.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.parallel.html#mlens.parallel.Layer" title="mlens.parallel.Layer"><code class="xref py py-obj docutils literal"><span class="pre">Layer</span></code></a>(name[,&nbsp;propagate_features,&nbsp;shuffle,&nbsp;…])</td>
+<td>Layer of preprocessing pipes and estimators.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ensemble-base-classes">
+<h3>Ensemble Base classes<a class="headerlink" href="#ensemble-base-classes" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.Sequential" title="mlens.ensemble.Sequential"><code class="xref py py-obj docutils literal"><span class="pre">Sequential</span></code></a>([layers])</td>
+<td>Container class for layers.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.ensemble.html#mlens.ensemble.BaseEnsemble" title="mlens.ensemble.BaseEnsemble"><code class="xref py py-obj docutils literal"><span class="pre">BaseEnsemble</span></code></a>([shuffle,&nbsp;random_state,&nbsp;…])</td>
+<td>BaseEnsemble class.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="indexers">
+<span id="indexer-api"></span><h3>Indexers<a class="headerlink" href="#indexers" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.index.html#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-obj docutils literal"><span class="pre">BlendIndex</span></code></a>([test_size,&nbsp;train_size,&nbsp;X,&nbsp;…])</td>
+<td>Indexer that generates two non-overlapping subsets of <code class="docutils literal"><span class="pre">X</span></code>.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.index.html#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-obj docutils literal"><span class="pre">FoldIndex</span></code></a>([folds,&nbsp;X,&nbsp;raise_on_exception])</td>
+<td>Indexer that generates the full size of <code class="docutils literal"><span class="pre">X</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.index.html#mlens.index.FullIndex" title="mlens.index.FullIndex"><code class="xref py py-obj docutils literal"><span class="pre">FullIndex</span></code></a>([X])</td>
+<td>Vacuous indexer to be used with final layers.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../module/mlens.index.html#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-obj docutils literal"><span class="pre">SubsetIndex</span></code></a>([partitions,&nbsp;folds,&nbsp;X,&nbsp;…])</td>
+<td>Subsample index generator.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../module/mlens.index.html#mlens.index.ClusteredSubsetIndex" title="mlens.index.ClusteredSubsetIndex"><code class="xref py py-obj docutils literal"><span class="pre">ClusteredSubsetIndex</span></code></a>(partition_estimator[,&nbsp;…])</td>
+<td>Clustered Subsample index generator.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

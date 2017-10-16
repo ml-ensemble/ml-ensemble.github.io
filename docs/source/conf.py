@@ -104,7 +104,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'landing']
+exclude_patterns = ['build', 'Thumbs.db', '.DS_Store']
 exclude_patterns += sphinx_gallery_conf['examples_dirs']
 exclude_patterns += ['*/index.rst']
 
@@ -139,8 +139,8 @@ html_logo = '_static/img/logo.png'
 
 html_context = {'css_files':
                 ['https://fonts.googleapis.com/css?family=Lato',
-                 '_static/css/pygments.css',
                  '_static/css/mlens-theme.css',
+                 '_static/css/pygments.css',
                  '_static/css/sphinx-glr.css',
                 ]}
 
@@ -209,7 +209,9 @@ texinfo_documents = [
 
 def setup(app):
     # Custom CSS
-    app.add_stylesheet('css/pytorch_theme.css')
+    app.add_stylesheet('css/mlens-theme.css')
+    app.add_stylesheet('css/sphinx-glr.css')
+    app.add_stylesheet('css/pygments.css')
     app.add_stylesheet('https://fonts.googleapis.com/css?family=Lato')
     # Custom directives
     app.add_directive('includenodoc', IncludeDirective)

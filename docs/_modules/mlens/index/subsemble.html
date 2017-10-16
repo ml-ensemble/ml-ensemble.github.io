@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.index.subsemble &mdash; mlens 0.2.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.index.subsemble</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.index.subsemble</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-ENSEMBLE</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Partitioning estimators</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">._checks</span> <span class="k">import</span> <span class="n">check_subsample_index</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseIndex</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="n">make_tuple</span><span class="p">,</span> <span class="n">prune_train</span>
+
+
+<div class="viewcode-block" id="SubsetIndex"><a class="viewcode-back" href="../../../module/mlens.index.subsemble.html#mlens.index.SubsetIndex">[docs]</a><span class="k">class</span> <span class="nc">SubsetIndex</span><span class="p">(</span><span class="n">BaseIndex</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Subsample index generator.</span>
+
+<span class="sd">    Generates cross-validation folds according used to create ``J``</span>
+<span class="sd">    partitions of the data and ``v`` folds on each partition according to as</span>
+<span class="sd">    per [#]_:</span>
+
+<span class="sd">        1. Split ``X`` into ``J`` partitions</span>
+
+<span class="sd">        2. For each partition:</span>
+
+<span class="sd">            (a) For each fold ``v``, create train index of all idx not in ``v``</span>
+
+<span class="sd">            (b) Concatenate all the fold ``v`` indices into a test index for</span>
+<span class="sd">                fold ``v`` that spans all partitions</span>
+
+<span class="sd">    Setting ``J = 1`` is equivalent to the :class:`FullIndexer`, which returns</span>
+<span class="sd">    standard K-Fold train and test set indices.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`FoldIndex`, :class:`BlendIndex`, :class:`Subsemble`</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [#] Sapp, S., van der Laan, M. J., &amp; Canny, J. (2014). Subsemble: an</span>
+<span class="sd">       ensemble method for combining subset-specific algorithm fits. Journal</span>
+<span class="sd">       of Applied Statistics, 41(6), 1247-1259.</span>
+<span class="sd">       http://doi.org/10.1080/02664763.2013.864263</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    partitions : int, list (default = 2)</span>
+<span class="sd">        Number of partitions to split data in. If ``partitions=1``,</span>
+<span class="sd">        :class:`SubsetIndex` reduces to standard K-Fold.</span>
+
+<span class="sd">    folds : int (default = 2)</span>
+<span class="sd">        Number of splits to create in each partition. ``folds`` can</span>
+<span class="sd">        not be 1 if ``n_partition &gt; 1``. Note that if ``folds = 1``,</span>
+<span class="sd">        both the train and test set will index the full data.</span>
+
+<span class="sd">    X : array-like of shape [n_samples,] , optional</span>
+<span class="sd">        the training set to partition. The training label array is also,</span>
+<span class="sd">        accepted, as only the first dimension is used. If ``X`` is not</span>
+<span class="sd">        passed at instantiation, the ``fit`` method must be called before</span>
+<span class="sd">        ``generate``, or ``X`` must be passed as an argument of</span>
+<span class="sd">        ``generate``.</span>
+
+<span class="sd">    raise_on_exception : bool (default = True)</span>
+<span class="sd">        whether to warn on suspicious slices or raise an error.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.index import SubsetIndex</span>
+<span class="sd">    &gt;&gt;&gt; X = np.arange(10)</span>
+<span class="sd">    &gt;&gt;&gt; idx = SubsetIndex(3, X=X)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;Expected partitions of X:&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;J = 1: {!r}&#39;.format(X[0:4]))</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;J = 2: {!r}&#39;.format(X[4:7]))</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;J = 3: {!r}&#39;.format(X[7:10]))</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;SubsetIndexer partitions:&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; for i, part in enumerate(idx.partition(as_array=True)):</span>
+<span class="sd">    ...     print(&#39;J = {}: {!r}&#39;.format(i + 1, part))</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;SubsetIndexer folds on partitions:&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; for i, (tri, tei) in enumerate(idx.generate()):</span>
+<span class="sd">    ...     fold = i % 2 + 1</span>
+<span class="sd">    ...     part = i // 2 + 1</span>
+<span class="sd">    ...     train = np.hstack([np.arange(t0, t1) for t0, t1 in tri])</span>
+<span class="sd">    ...     test = np.hstack([np.arange(t0, t1) for t0, t1 in tei])</span>
+<span class="sd">    &gt;&gt;&gt;     print(&quot;J = %i | f = %i | &quot;</span>
+<span class="sd">    ...           &quot;train: %15r | test: %r&quot; % (part, fold, train, test))</span>
+<span class="sd">    Expected partitions of X:</span>
+<span class="sd">    J = 1: array([0, 1, 2, 3])</span>
+<span class="sd">    J = 2: array([4, 5, 6])</span>
+<span class="sd">    J = 3: array([7, 8, 9])</span>
+<span class="sd">    SubsetIndexer partitions:</span>
+<span class="sd">    J = 1: array([0, 1, 2, 3])</span>
+<span class="sd">    J = 2: array([4, 5, 6])</span>
+<span class="sd">    J = 3: array([7, 8, 9])</span>
+<span class="sd">    SubsetIndexer folds on partitions:</span>
+<span class="sd">    J = 1 | f = 1 | train:   array([2, 3]) | test: array([0, 1, 4, 5, 7, 8])</span>
+<span class="sd">    J = 1 | f = 2 | train:   array([0, 1]) | test: array([2, 3, 6, 9])</span>
+<span class="sd">    J = 2 | f = 1 | train:      array([6]) | test: array([0, 1, 4, 5, 7, 8])</span>
+<span class="sd">    J = 2 | f = 2 | train:   array([4, 5]) | test: array([2, 3, 6, 9])</span>
+<span class="sd">    J = 3 | f = 1 | train:      array([9]) | test: array([0, 1, 4, 5, 7, 8])</span>
+<span class="sd">    J = 3 | f = 2 | train:   array([7, 8]) | test: array([2, 3, 6, 9])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">partitions</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                 <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                 <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">raise_on_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span> <span class="o">=</span> <span class="n">partitions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folds</span> <span class="o">=</span> <span class="n">folds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span> <span class="o">=</span> <span class="n">raise_on_exception</span>
+
+        <span class="k">if</span> <span class="n">X</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SubsetIndex.fit"><a class="viewcode-back" href="../../../module/mlens.index.subsemble.html#mlens.index.SubsetIndex.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method for storing array data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples, optional]</span>
+<span class="sd">            array to _collect dimension data from.</span>
+<span class="sd">        y : None</span>
+<span class="sd">            for compatibility</span>
+<span class="sd">        job : None</span>
+<span class="sd">            for compatibility</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        instance :</span>
+<span class="sd">            indexer with stores sample size data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">check_subsample_index</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folds</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_test_samples</span> <span class="o">=</span> <span class="n">n</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="SubsetIndex.partition"><a class="viewcode-back" href="../../../module/mlens.index.subsemble.html#mlens.index.SubsetIndex.partition">[docs]</a>    <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">as_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get partition indices for training full subset estimators.</span>
+
+<span class="sd">        Returns the index range for each partition of X.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples,] , optional</span>
+<span class="sd">            the training set to partition. The training label array is also,</span>
+<span class="sd">            accepted, as only the first dimension is used. If ``X`` is not</span>
+<span class="sd">            passed at instantiation, the ``fit`` method must be called before</span>
+<span class="sd">            ``generate``, or ``X`` must be passed as an argument of</span>
+<span class="sd">            ``generate``.</span>
+
+<span class="sd">        as_array : bool (default = False)</span>
+<span class="sd">            whether to return partition as an index array. Otherwise tuples</span>
+<span class="sd">            of ``(start, stop)`` indices are returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;n_samples&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">X</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;No array provided to indexer. Either &quot;</span>
+                                     <span class="s2">&quot;pass an array to the &#39;generate&#39; method, &quot;</span>
+                                     <span class="s2">&quot;or call the &#39;fit&#39; method first or &quot;</span>
+                                     <span class="s2">&quot;initiate the instance with an array X &quot;</span>
+                                     <span class="s2">&quot;as argument.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Need to call fit to continue</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="c1"># Return the partition indices.</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span><span class="p">)</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">last</span><span class="p">,</span> <span class="n">last</span> <span class="o">+</span> <span class="n">size</span>
+
+            <span class="k">if</span> <span class="n">as_array</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_range</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+            <span class="k">yield</span> <span class="n">idx</span>
+
+            <span class="n">last</span> <span class="o">+=</span> <span class="n">size</span></div>
+
+    <span class="k">def</span> <span class="nf">_build_test_sets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build global test folds for each split of every partition.</span>
+
+<span class="sd">        This method runs through each partition and fold to register all the</span>
+<span class="sd">        test set indices across partitions. For each test fold ``i``, the test</span>
+<span class="sd">        set indices are thus the union of fold ``i`` indices across all ``J``</span>
+<span class="sd">        partitions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">partitions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span>
+        <span class="n">folds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folds</span>
+
+        <span class="c1"># --- Create global test set folds ---</span>
+        <span class="c1"># In each partition, the test set spans all partitions</span>
+        <span class="c1"># Hence we must run through all partitions once first to</span>
+        <span class="c1"># register</span>
+        <span class="c1"># the global test set fold for each split of the folds</span>
+
+        <span class="c1"># Partition sizes</span>
+        <span class="n">p_len</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">partitions</span><span class="p">)</span>
+
+        <span class="c1"># Since the splitting is sequential and deterministic,</span>
+        <span class="c1"># we build a</span>
+        <span class="c1"># list of global test set indices. Hence, for any split, the</span>
+        <span class="c1"># test index will be a tuple of indexes of test folds from each</span>
+        <span class="c1"># partition. By concatenating these slices, the full test fold</span>
+        <span class="c1"># is constructed.</span>
+        <span class="n">tei</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">folds</span><span class="p">)]</span>
+        <span class="n">p_last</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">p_size</span> <span class="ow">in</span> <span class="n">p_len</span><span class="p">:</span>
+            <span class="n">p_start</span><span class="p">,</span> <span class="n">p_stop</span> <span class="o">=</span> <span class="n">p_last</span><span class="p">,</span> <span class="n">p_last</span> <span class="o">+</span> <span class="n">p_size</span>
+
+            <span class="n">t_len</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">p_stop</span> <span class="o">-</span> <span class="n">p_start</span><span class="p">,</span> <span class="n">folds</span><span class="p">)</span>
+
+            <span class="c1"># Append the partition&#39;s test fold indices to the</span>
+            <span class="c1"># global directory for that fold number.</span>
+            <span class="n">t_last</span> <span class="o">=</span> <span class="n">p_start</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t_size</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_len</span><span class="p">):</span>
+                <span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span> <span class="o">=</span> <span class="n">t_last</span><span class="p">,</span> <span class="n">t_last</span> <span class="o">+</span> <span class="n">t_size</span>
+
+                <span class="n">tei</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">)]</span>
+                <span class="n">t_last</span> <span class="o">+=</span> <span class="n">t_size</span>
+
+            <span class="n">p_last</span> <span class="o">+=</span> <span class="n">p_size</span>
+
+        <span class="k">return</span> <span class="n">tei</span>
+
+    <span class="k">def</span> <span class="nf">_gen_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create generator for subsample.</span>
+
+<span class="sd">        Generate indices of training set and test set for</span>
+<span class="sd">            - each partition</span>
+<span class="sd">            - each fold in the partition</span>
+
+<span class="sd">        Note that the test index return is *global*, i.e. it contains the</span>
+<span class="sd">        test indices of that fold across partitions. See Examples for</span>
+<span class="sd">        further details.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">partitions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span>
+        <span class="n">folds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folds</span>
+
+        <span class="n">T</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_test_sets</span><span class="p">()</span>
+
+        <span class="c1"># For each partition, for each fold, get the global test fold</span>
+        <span class="c1"># from T and index the partition samples not in T as train set</span>
+        <span class="n">p_len</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">partitions</span><span class="p">)</span>
+
+        <span class="n">p_last</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">p_size</span> <span class="ow">in</span> <span class="n">p_len</span><span class="p">:</span>
+            <span class="n">p_start</span><span class="p">,</span> <span class="n">p_stop</span> <span class="o">=</span> <span class="n">p_last</span><span class="p">,</span> <span class="n">p_last</span> <span class="o">+</span> <span class="n">p_size</span>
+
+            <span class="n">t_len</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">p_stop</span> <span class="o">-</span> <span class="n">p_start</span><span class="p">,</span> <span class="n">folds</span><span class="p">)</span>
+
+            <span class="n">t_last</span> <span class="o">=</span> <span class="n">p_start</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t_size</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_len</span><span class="p">):</span>
+                <span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span> <span class="o">=</span> <span class="n">t_last</span><span class="p">,</span> <span class="n">t_last</span> <span class="o">+</span> <span class="n">t_size</span>
+
+                <span class="c1"># Get global test set indices</span>
+                <span class="n">tei</span> <span class="o">=</span> <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+                <span class="c1"># Construct train set</span>
+                <span class="n">tri_start_below</span><span class="p">,</span> <span class="n">tri_stop_below</span> <span class="o">=</span> <span class="n">p_start</span><span class="p">,</span> <span class="n">t_start</span>
+                <span class="n">tri_start_above</span><span class="p">,</span> <span class="n">tri_stop_above</span> <span class="o">=</span> <span class="n">t_stop</span><span class="p">,</span> <span class="n">p_stop</span>
+
+                <span class="n">tri</span> <span class="o">=</span> <span class="n">prune_train</span><span class="p">(</span><span class="n">tri_start_below</span><span class="p">,</span> <span class="n">tri_stop_below</span><span class="p">,</span>
+                                  <span class="n">tri_start_above</span><span class="p">,</span> <span class="n">tri_stop_above</span><span class="p">)</span>
+
+                <span class="k">yield</span> <span class="n">tri</span><span class="p">,</span> <span class="n">tei</span>
+                <span class="n">t_last</span> <span class="o">+=</span> <span class="n">t_size</span>
+            <span class="n">p_last</span> <span class="o">+=</span> <span class="n">p_size</span></div>
+
+
+<div class="viewcode-block" id="ClusteredSubsetIndex"><a class="viewcode-back" href="../../../module/mlens.index.subsemble.html#mlens.index.ClusteredSubsetIndex">[docs]</a><span class="k">class</span> <span class="nc">ClusteredSubsetIndex</span><span class="p">(</span><span class="n">BaseIndex</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Clustered Subsample index generator.</span>
+
+<span class="sd">    Generates cross-validation folds according used to create ``J``</span>
+<span class="sd">    partitions of the data and ``v`` folds on each partition according to as</span>
+<span class="sd">    per [#]_:</span>
+
+<span class="sd">        1. Split ``X`` into ``J`` partitions</span>
+
+<span class="sd">        2. For each partition:</span>
+
+<span class="sd">            (a) For each fold ``v``, create train index of all idx not in ``v``</span>
+
+<span class="sd">            (b) Concatenate all the fold ``v`` indices into a test index for</span>
+<span class="sd">                fold ``v`` that spans all partitions</span>
+
+
+<span class="sd">    Setting ``J = 1`` is equivalent to the :class:`FullIndexer`, which returns</span>
+<span class="sd">    standard K-Fold train and test set indices.</span>
+
+<span class="sd">    :class:`ClusteredSubsetIndex` uses a user-provided estimator to partition</span>
+<span class="sd">    the data, in contrast to the :class:`SubsetIndex` generator, which</span>
+<span class="sd">    partitions data into randomly into equal sizes.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`FoldIndex`, :class:`BlendIndex`, :class:`SubsetIndex`</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [#] Sapp, S., van der Laan, M. J., &amp; Canny, J. (2014). Subsemble: an</span>
+<span class="sd">       ensemble method for combining subset-specific algorithm fits. Journal</span>
+<span class="sd">       of Applied Statistics, 41(6), 1247-1259.</span>
+<span class="sd">       http://doi.org/10.1080/02664763.2013.864263</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    partition_estimator : instance</span>
+<span class="sd">        Estimator to use for clustering.</span>
+
+<span class="sd">    partitions : int</span>
+<span class="sd">        Number of partitions the estimator will create.</span>
+
+<span class="sd">    folds : int (default = 2)</span>
+<span class="sd">        Number of folds to create in each partition. ``folds`` can</span>
+<span class="sd">        not be 1 if ``n_partition &gt; 1``. Note that if ``folds = 1``,</span>
+<span class="sd">        both the train and test set will index the full data.</span>
+
+<span class="sd">    fit_estimator : bool (default = True)</span>
+<span class="sd">        whether to fit the estimator separately before generating labels.</span>
+
+<span class="sd">    attr : str (default = &#39;predict&#39;)</span>
+<span class="sd">        the attribute to use for generating cluster membership labels.</span>
+
+<span class="sd">    X : array-like of shape [n_samples,] , optional</span>
+<span class="sd">        the training set to partition. The training label array is also,</span>
+<span class="sd">        accepted, as only the first dimension is used. If ``X`` is not</span>
+<span class="sd">        passed at instantiation, the ``fit`` method must be called before</span>
+<span class="sd">        ``generate``, or ``X`` must be passed as an argument of</span>
+<span class="sd">        ``generate``.</span>
+
+<span class="sd">    raise_on_exception : bool (default = True)</span>
+<span class="sd">        whether to warn on suspicious slices or raise an error.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.cluster import KMeans</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.index import ClusteredSubsetIndex</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; km = KMeans(3, random_state=0)</span>
+<span class="sd">    &gt;&gt;&gt; X = np.arange(12).reshape(-1, 1); np.random.shuffle(X)</span>
+<span class="sd">    &gt;&gt;&gt; print(&quot;Data: {}&quot;.format(X.ravel()))</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; s = ClusteredSubsetIndex(km)</span>
+<span class="sd">    &gt;&gt;&gt; s.fit(X)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; P = s.partition_estimator.predict(X)</span>
+<span class="sd">    &gt;&gt;&gt; print(&quot;cluster labels: {}&quot;.format(P))</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; for j, i in enumerate(s.partition(as_array=True)):</span>
+<span class="sd">    ...    print(&quot;partition ({}) index: {}, cluster labels: {}&quot;.format(i, j + 1, P[i]))</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; for i in s.generate(as_array=True):</span>
+<span class="sd">    ...     print(&quot;train fold index: {}, cluster labels: {}&quot;.format(i[0], P[i[0]]))</span>
+<span class="sd">    Data: [ 8  7  5  2  4 10 11  1  3  6  9  0]</span>
+<span class="sd">    cluster labels: [0 2 2 1 2 0 0 1 1 2 0 1]</span>
+<span class="sd">    partition (1) index: [ 0  5  6 10], cluster labels: [0 0 0 0]</span>
+<span class="sd">    partition (2) index: [ 3  7  8 11], cluster labels: [1 1 1 1]</span>
+<span class="sd">    partition (3) index: [1 2 4 9], cluster labels: [2 2 2 2]</span>
+<span class="sd">    train fold index: [0 3 5], cluster labels: [0 0 0]</span>
+<span class="sd">    train fold index: [ 6 10], cluster labels: [0 0]</span>
+<span class="sd">    train fold index: [2 7], cluster labels: [1 1]</span>
+<span class="sd">    train fold index: [ 9 11], cluster labels: [1 1]</span>
+<span class="sd">    train fold index: [1 4], cluster labels: [2 2]</span>
+<span class="sd">    train fold index: [8], cluster labels: [2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">partition_estimator</span><span class="p">,</span>
+                 <span class="n">partitions</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                 <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                 <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">fit_estimator</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;predict&#39;</span><span class="p">,</span>
+                 <span class="n">partition_on</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span>
+                 <span class="n">raise_on_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partition_estimator</span> <span class="o">=</span> <span class="n">partition_estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_estimator</span> <span class="o">=</span> <span class="n">fit_estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr</span> <span class="o">=</span> <span class="n">attr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partition_on</span> <span class="o">=</span> <span class="n">partition_on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span> <span class="o">=</span> <span class="n">partitions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">folds</span> <span class="o">=</span> <span class="n">folds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span> <span class="o">=</span> <span class="n">raise_on_exception</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clusters_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">X</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ClusteredSubsetIndex.fit"><a class="viewcode-back" href="../../../module/mlens.index.subsemble.html#mlens.index.ClusteredSubsetIndex.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Method for storing array data.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            input array.</span>
+
+<span class="sd">        y : array-like of shape [n_samples, ]</span>
+<span class="sd">            labels.</span>
+
+<span class="sd">        job : str, [&#39;fit&#39;, &#39;predict&#39;] (default=&#39;fit&#39;)</span>
+<span class="sd">            type of estimation job. If &#39;fit&#39;, the indexer will be fitted,</span>
+<span class="sd">            which involves fitting the estimator. Otherwise, the indexer will</span>
+<span class="sd">            not be fitted (since it is not used for prediction).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        instance :</span>
+<span class="sd">            indexer with stores sample size data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_test_samples</span> <span class="o">=</span> <span class="n">n</span>
+
+        <span class="k">if</span> <span class="s1">&#39;fit&#39;</span> <span class="ow">in</span> <span class="n">job</span><span class="p">:</span>
+            <span class="c1"># Only generate new clusters if fitting an ensemble</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_estimator</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">partition_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                    <span class="c1"># Safeguard against estimators that do not accept y.</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">partition_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+            <span class="c1"># Indexers are assumed to need fitting once, so we need to</span>
+            <span class="c1"># generate cluster predictions during the fit call. To minimize</span>
+            <span class="c1"># memory consumption, store cluster indexes as list of tuples</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_clusters_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_partitions</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="ClusteredSubsetIndex.partition"><a class="viewcode-back" href="../../../module/mlens.index.subsemble.html#mlens.index.ClusteredSubsetIndex.partition">[docs]</a>    <span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">as_array</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get partition indices for training full subset estimators.</span>
+
+<span class="sd">        Returns the index range for each partition of X.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples, n_features] , optional</span>
+<span class="sd">            the set to partition. The training label array is also,</span>
+<span class="sd">            accepted, as only the first dimension is used. If ``X`` is not</span>
+<span class="sd">            passed at instantiation, the ``fit`` method must be called before</span>
+<span class="sd">            ``generate``, or ``X`` must be passed as an argument of</span>
+<span class="sd">            ``generate``.</span>
+
+<span class="sd">        y : array-like of shape [n_samples,], optional</span>
+<span class="sd">            the labels of the set to partition.</span>
+
+<span class="sd">        as_array : bool (default = False)</span>
+<span class="sd">            whether to return partition as an index array. Otherwise tuples</span>
+<span class="sd">            of ``(start, stop)`` indices are returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">X</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition_generator</span><span class="p">(</span><span class="n">as_array</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_partition_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">as_array</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generator for partitions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        as_array : bool:</span>
+<span class="sd">            whether to return partition indexes as a list of index tuples, or</span>
+<span class="sd">            as an array.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">cluster_index</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clusters_</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">as_array</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_range</span><span class="p">(</span><span class="n">cluster_index</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">cluster_index</span>
+
+    <span class="k">def</span> <span class="nf">_get_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get clustered partition indices from estimator.</span>
+
+<span class="sd">        Returns the index range for each partition of X. See :func:`partition`</span>
+<span class="sd">        for further details.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">partition_estimator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition_on</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+            <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">partition_on</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+            <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cluster_ids</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="n">clusters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">cluster_ids</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+
+        <span class="c1"># Condense the cluster index array into a list of tuples</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>  <span class="c1"># list of cluster indexes</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+            <span class="n">cluster_index</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="n">cluster_ids</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+            <span class="n">cluster_index_tup</span> <span class="o">=</span> <span class="n">make_tuple</span><span class="p">(</span><span class="n">cluster_index</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cluster_index_tup</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span> <span class="nf">_gen_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generator for clustered subsample.</span>
+
+<span class="sd">        Generate indices of training set and test set for</span>
+<span class="sd">            - each partition</span>
+<span class="sd">            - each fold in the partition</span>
+
+<span class="sd">        Note that the test index return is *global*, i.e. it contains the</span>
+<span class="sd">        test indices of that fold across partitions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span>
+        <span class="n">folds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">folds</span>
+
+        <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">prt</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition_generator</span><span class="p">(</span><span class="n">as_array</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+            <span class="n">t_len</span> <span class="o">=</span> <span class="n">partition</span><span class="p">(</span><span class="n">prt</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">folds</span><span class="p">)</span>
+
+            <span class="n">t_last</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">t_size</span> <span class="ow">in</span> <span class="n">t_len</span><span class="p">:</span>
+                <span class="n">t_start</span><span class="p">,</span> <span class="n">t_stop</span> <span class="o">=</span> <span class="n">t_last</span><span class="p">,</span> <span class="n">t_last</span> <span class="o">+</span> <span class="n">t_size</span>
+
+                <span class="n">tri</span> <span class="o">=</span> <span class="n">prt</span><span class="p">[</span><span class="n">t_start</span><span class="p">:</span><span class="n">t_stop</span><span class="p">]</span>
+
+                <span class="c1"># Create test set by iterating over the index range</span>
+                <span class="n">tei</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">tri</span><span class="p">])</span>
+
+                <span class="c1"># Condense indexes to list of tuples</span>
+                <span class="n">tri</span> <span class="o">=</span> <span class="n">make_tuple</span><span class="p">(</span><span class="n">tri</span><span class="p">)</span>
+                <span class="n">tei</span> <span class="o">=</span> <span class="n">make_tuple</span><span class="p">(</span><span class="n">tei</span><span class="p">)</span>
+
+                <span class="k">yield</span> <span class="n">tri</span><span class="p">,</span> <span class="n">tei</span>
+                <span class="n">t_last</span> <span class="o">+=</span> <span class="n">t_size</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

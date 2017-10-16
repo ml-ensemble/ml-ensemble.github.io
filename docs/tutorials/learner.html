@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Learner Mechanics &mdash; mlens 0.2.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../index.html"/>
+        <link rel="next" title="Layer Mechanics" href="layer.html"/>
+        <link rel="prev" title="Ready-made ensemble classes" href="../start/ensembles.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Learner Mechanics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/learner.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="learner-mechanics">
+<span id="learner-tutorial"></span><span id="sphx-glr-tutorials-learner-py"></span><h1>Learner Mechanics<a class="headerlink" href="#learner-mechanics" title="Permalink to this headline">¶</a></h1>
+<p>ML-Ensemble is designed to provide an easy user interface. But it is also designed
+to be extremely flexible, all the wile providing maximum concurrency at minimal
+memory consumption. The lower-level API that builds the ensemble and manages the
+computations is constructed in as modular a fashion as possible.</p>
+<p>The low-level API introduces a computational graph-like environment that you can
+directly exploit to gain further control over your ensemble. In fact, building
+your ensemble through the low-level API is almost as straight forward as using the
+high-level API. In this tutorial, we will walk through the key core <a class="reference internal" href="../module/mlens.parallel.learner.html#mlens.parallel.learner.Learner" title="mlens.parallel.learner.Learner"><code class="xref py py-class docutils literal"><span class="pre">Learner</span></code></a> class.</p>
+<div class="section" id="the-learner-api">
+<h2>The Learner API<a class="headerlink" href="#the-learner-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basics">
+<h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<p>When you pass an estimator to an ensemble, it gets wrapper
+in a <a class="reference internal" href="../module/mlens.parallel.learner.html#mlens.parallel.learner.Learner" title="mlens.parallel.learner.Learner"><code class="xref py py-class docutils literal"><span class="pre">Learner</span></code></a> instance. This class records relevant information
+about the estimator and manages the cross-validated fit. It also keeps
+track of which preprocessing pipeline to use (if any). A learner is a parent node
+in a computational sub-graph induced by the cross-validation strategy.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="kn">import</span> <span class="n">OLS</span>
+<span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">Learner</span>
+<span class="kn">from</span> <span class="nn">mlens.index</span> <span class="kn">import</span> <span class="n">FoldIndex</span>
+
+
+<span class="n">indexer</span> <span class="o">=</span> <span class="n">FoldIndex</span><span class="p">(</span><span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>               <span class="c1"># Define a training strategy</span>
+<span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">OLS</span><span class="p">(),</span>         <span class="c1"># Declare estimator</span>
+                  <span class="n">preprocess</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>         <span class="c1"># We&#39;ll get to this</span>
+                  <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>         <span class="c1"># Our above instance</span>
+                  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">,</span>              <span class="c1"># Don&#39;t reuse name</span>
+                  <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;predict&#39;</span><span class="p">,</span>          <span class="c1"># Attribute for prediction</span>
+                  <span class="n">scorer</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>             <span class="c1"># To get cv scores</span>
+                  <span class="n">output_columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>   <span class="c1"># Prediction feature index</span>
+                  <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">name</span></code> gives the learner a cache reference. When the learner is
+constructed by the high-level API , the name is guaranteed to be unique, but here
+you must ensure all learner names are unique. The <code class="docutils literal"><span class="pre">output_columns</span></code>
+tells the learner which column index in an output array it should populate
+when predicting. This helps us rapidly creating prediction with several learners. When
+we have a unique prediction array use <code class="docutils literal"><span class="pre">{0:</span> <span class="pre">0}</span></code>. When the training strategy creates
+partitions, we need to map <code class="docutils literal"><span class="pre">output_columns</span></code> for each partition. We’ll see an example of this below.
+The <code class="docutils literal"><span class="pre">attr</span></code> argument tells the learner which method to use.</p>
+<p>The learner doesn’t do any heavy lifting itself, it manages the creation a sub-graph
+of auxiliary <a class="reference internal" href="../module/mlens.parallel.learner.html#mlens.parallel.learner.SubLearner" title="mlens.parallel.learner.SubLearner"><code class="xref py py-class docutils literal"><span class="pre">SubLearner</span></code></a> nodes for each fold during estimation.
+This process is dynamic: the sub-learners are temporary instance created for each
+estimation. To fit a learner, we first fit the indexer, then iterate through each of the
+sub-learners created for the task:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Fit the indexer to data to create fold indexes</span>
+<span class="n">indexer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Specify a cache directory</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+
+<span class="c1"># Declare which type of job (fit, predict, transform) to run on which data</span>
+<span class="k">for</span> <span class="n">sub_learner</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">sub_learner</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Cached items:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">ols__0__0</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">ols__0__1</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">ols__0__2</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Cached</span> <span class="n">items</span><span class="p">:</span>
+<span class="p">[</span><span class="s1">&#39;ols__0__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__0__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__0__2.pkl&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Fitting the learner puts three copies of the OLS estimator in the <code class="docutils literal"><span class="pre">path</span></code>
+directory: one for each fold and one for the full dataset.
+These are named as <code class="docutils literal"><span class="pre">[name]__[col_id]__[fold_id]</span></code>. To load these into the
+learner, call <code class="docutils literal"><span class="pre">collect</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">learner</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The main estimator, fitted on all data, gets stored into the
+<code class="docutils literal"><span class="pre">learner_</span></code> attribute, while the others are stored in the
+<code class="docutils literal"><span class="pre">sublearners_</span></code>. These attributes are <em>generators</em> that create
+sub-learners on-the-fly from cached fitted estimators when called upon.</p>
+<p>To generate predictions, we can either use the <code class="docutils literal"><span class="pre">sublearners_</span></code>
+generator create cross-validated predictions, or <code class="docutils literal"><span class="pre">learner_</span></code>
+generator to generate predictions for the whole input set.</p>
+<p>Similarly to above, we predict by specifying the job and the data to use.
+Note that now we also specify the output array to populate.
+In particular, the learner will populate the columns given in the
+<code class="docutils literal"><span class="pre">output_columns</span></code> parameter. Here, we use the <code class="docutils literal"><span class="pre">transform</span></code> task, which
+uses the <code class="docutils literal"><span class="pre">sublearners_</span></code> generator to produce cross-validated
+predictions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">sub_learner</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">):</span>
+    <span class="n">sub_learner</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;P:&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">ols__0__1</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">0.72196469</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.71453283</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.70710097</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.69966911</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.69223725</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>        <span class="p">]]</span>
+
+<span class="n">ols__0__2</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">0.72196469</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.71453283</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.70710097</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.69966911</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.69223725</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.40914537</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.42290606</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.43666674</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.45042743</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.46418811</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>In the above loop, a sub-segment of <code class="docutils literal"><span class="pre">P</span></code> is updated by each sublearner
+spawned by the learner. To instead produce predictions for the full
+dataset using the estimator fitted on all training data,
+task the learner to <code class="docutils literal"><span class="pre">predict</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">sub_learner</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">):</span>
+    <span class="n">sub_learner</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;P:&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">ols__0__0</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">0.30948789</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.35602447</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.40256105</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.44909763</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.49563421</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.54217079</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.58870737</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.63524395</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.68178052</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.7283171</span> <span class="p">]]</span>
+</pre></div>
+</div>
+<p>ML-Ensemble follows the Scikit-learn API, so if you wish to update any
+hyper-parameters of the estimator, use the <code class="docutils literal"><span class="pre">get_params</span></code> and <code class="docutils literal"><span class="pre">set_params</span></code>
+API:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Params before:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">get_params</span><span class="p">())</span>
+
+<span class="n">learner</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">estimator__offset</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">indexer__folds</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Params after:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">get_params</span><span class="p">())</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span>Params before:
+{&#39;attr&#39;: &#39;predict&#39;, &#39;auxiliary&#39;: None, &#39;estimator__offset&#39;: 0, &#39;estimator&#39;: OLS(offset=0), &#39;indexer__X&#39;: None, &#39;indexer__folds&#39;: 2, &#39;indexer__raise_on_exception&#39;: True, &#39;indexer&#39;: FoldIndex(X=None, folds=2, raise_on_exception=True), &#39;name&#39;: &#39;ols&#39;, &#39;output_columns&#39;: {0: 0}, &#39;preprocess&#39;: None, &#39;proba&#39;: False, &#39;scorer&#39;: None, &#39;backend&#39;: &#39;threading&#39;, &#39;n_jobs&#39;: -1, &#39;dtype&#39;: &lt;class &#39;numpy.float32&#39;&gt;, &#39;raise_on_exception&#39;: True}
+Params after:
+{&#39;attr&#39;: &#39;predict&#39;, &#39;auxiliary&#39;: None, &#39;estimator__offset&#39;: 1, &#39;estimator&#39;: OLS(offset=1), &#39;indexer__X&#39;: None, &#39;indexer__folds&#39;: 3, &#39;indexer__raise_on_exception&#39;: True, &#39;indexer&#39;: FoldIndex(X=None, folds=3, raise_on_exception=True), &#39;name&#39;: &#39;ols&#39;, &#39;output_columns&#39;: {0: 0}, &#39;preprocess&#39;: None, &#39;proba&#39;: False, &#39;scorer&#39;: None, &#39;backend&#39;: &#39;threading&#39;, &#39;n_jobs&#39;: -1, &#39;dtype&#39;: &lt;class &#39;numpy.float32&#39;&gt;, &#39;raise_on_exception&#39;: True}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Updating the indexer on one learner updates the indexer on all
+learners that where initiated with the same instance.</p>
+</div>
+</div>
+<div class="section" id="partitioning">
+<h3>Partitioning<a class="headerlink" href="#partitioning" title="Permalink to this headline">¶</a></h3>
+<p>We can create several other types of learners by
+varying the estimation strategy. An especially interesting strategy is to
+partition the training set and create several learners fitted on a given
+partition. This will create one prediction feature per partition.
+The learner handles the computational graph for us, all we need to
+input is a mapping between partitions and output columns in the
+<code class="docutils literal"><span class="pre">output_columns</span></code> dict. In the following example we fit the OLS model
+using two partitions and three fold CV on each
+partition. Note that by passing the output array as an argument during <code class="docutils literal"><span class="pre">'fit'</span></code>,
+we get predictions immediately.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="kn">import</span> <span class="n">SubsetIndex</span>
+
+<span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span> <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">indexer</span> <span class="o">=</span> <span class="n">SubsetIndex</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
+<span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">OLS</span><span class="p">(),</span>
+                  <span class="n">preprocess</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                  <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">,</span>
+                  <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;predict&#39;</span><span class="p">,</span>
+                  <span class="n">scorer</span><span class="o">=</span><span class="n">mse</span><span class="p">,</span>
+                  <span class="n">output_columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>    <span class="c1"># First partition</span>
+                                  <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>   <span class="c1"># Second partition</span>
+                  <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># P needs 2 cols</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Pass P during &#39;fit&#39; to get prediction immediately</span>
+<span class="k">for</span> <span class="n">sub_learner</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">P</span><span class="p">):</span>
+    <span class="n">sub_learner</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;P:&#39;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">()</span>
+
+<span class="n">learner</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">ols__0__0</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]]</span>
+
+<span class="n">ols__1__0</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]]</span>
+
+<span class="n">ols__0__1</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.45590354</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.24903892</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.04217431</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.57841954</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.78528416</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.99214877</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]]</span>
+
+<span class="n">ols__0__2</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.45590354</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.24903892</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.04217431</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.96723518</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.23367421</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.57841954</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.78528416</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.99214877</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.29943033</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.56586936</span>  <span class="mf">0.</span>        <span class="p">]]</span>
+
+<span class="n">ols__1__1</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.45590354</span>  <span class="mf">5.42998621</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.24903892</span>  <span class="mf">4.86718678</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.04217431</span>  <span class="mf">4.30438736</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.96723518</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.23367421</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.57841954</span>  <span class="mf">2.61598908</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.78528416</span>  <span class="mf">2.05318966</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.99214877</span>  <span class="mf">1.49039023</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.29943033</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.56586936</span>  <span class="mf">0.</span>        <span class="p">]]</span>
+
+<span class="n">ols__1__2</span>                      <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">P</span><span class="p">:</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.45590354</span>  <span class="mf">5.42998621</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.24903892</span>  <span class="mf">4.86718678</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.04217431</span>  <span class="mf">4.30438736</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.96723518</span>  <span class="mf">0.19702432</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.23367421</span>  <span class="mf">0.35994134</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.57841954</span>  <span class="mf">2.61598908</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.78528416</span>  <span class="mf">2.05318966</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.99214877</span>  <span class="mf">1.49039023</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.29943033</span>  <span class="mf">1.01160946</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.56586936</span>  <span class="mf">1.17452649</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Each sub-learner records fit and predict times during fitting, and if
+a scorer is passed scores the predictions as well. The learner aggregates
+this data into a <code class="docutils literal"><span class="pre">raw_data</span></code> attribute in the form of a list.
+More conveniently, the <code class="docutils literal"><span class="pre">data</span></code> attribute returns a dict with a specialized
+representation that gives a tabular output directly:
+Standard data is fit time (<code class="docutils literal"><span class="pre">ft</span></code>), predict time (<code class="docutils literal"><span class="pre">pr</span></code>).
+If a scorer was passed to the learner, cross-validated test set prediction
+scores are computed. For brevity, <code class="docutils literal"><span class="pre">-m</span></code> denotes the mean and <code class="docutils literal"><span class="pre">-s</span></code>
+denotes standard deviation.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Data:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">learner</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Data</span><span class="p">:</span>
+          <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
+<span class="n">ols</span>  <span class="mi">0</span>       <span class="mf">1.15</span>     <span class="mf">0.88</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">ols</span>  <span class="mi">1</span>       <span class="mf">5.68</span>     <span class="mf">5.51</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="preprocessing">
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
+<p>We can easily create a preprocessing pipeline before fitting the estimator.
+In general, several estimators will share the same preprocessing pipeline,
+so we don’t want to pipeline the transformations in the estimator itself–
+this will result in duplicate transformers.
+The learner accepts a <code class="docutils literal"><span class="pre">preprocess</span></code> argument that points it to reference in
+the estimation cache, and wil load the cached transformer for the given fold
+when running an estimation. This does mean that the input will be processed
+for each estimator and each fold, but pre-processing the data and storing the
+data does not scale as memory consumption grows exponentially.
+In contrast, running (not fitting) a transformer pipeline is often an
+efficient operation that introduce only a minor overhead on computation time.</p>
+<p>To facilitate preprocessing across several learners,
+we need new type of node, the <a class="reference internal" href="../module/mlens.parallel.learner.html#mlens.parallel.learner.Transformer" title="mlens.parallel.learner.Transformer"><code class="xref py py-class docutils literal"><span class="pre">Transformer</span></code></a>. This class behaves
+similarly to the learner, but differs in that it doesn’t output any
+predictions or transformations, but merely fits a pipeline and caches it
+for the learner to load when needed. To construct a learner with
+a preprocessing pipeline, we begin by constructing the
+transformer.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="kn">import</span> <span class="n">Scale</span>
+<span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">Transformer</span>
+
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;trans&#39;</span><span class="p">,</span> <span class="n">Scale</span><span class="p">())],</span>  <span class="c1"># the pipeline should be a list of transformers</span>
+                          <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+                          <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sc&#39;</span><span class="p">,</span>
+                          <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, to build the learner we now pass the <code class="docutils literal"><span class="pre">name</span></code> of the transformer as
+the <code class="docutils literal"><span class="pre">preprocess</span></code> argument to the learner.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">OLS</span><span class="p">(),</span>
+                  <span class="n">preprocess</span><span class="o">=</span><span class="s1">&#39;sc&#39;</span><span class="p">,</span>
+                  <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">,</span>
+                  <span class="n">attr</span><span class="o">=</span><span class="s1">&#39;predict&#39;</span><span class="p">,</span>
+                  <span class="n">scorer</span><span class="o">=</span><span class="n">mse</span><span class="p">,</span>
+                  <span class="n">output_columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+                  <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We now repeat the above process to fit the learner, starting with fitting
+the transformer. Both follow the same API.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">st</span> <span class="ow">in</span> <span class="n">transformer</span><span class="o">.</span><span class="n">gen_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">st</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">P</span><span class="p">):</span>
+    <span class="n">lr</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">transformer</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">learner</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">sc__0__0</span>                       <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__1__0</span>                       <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__0__1</span>                       <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__0__2</span>                       <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__1__1</span>                       <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__1__2</span>                       <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__0</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__0</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__1</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__2</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__1</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__2</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>Note that the cache now contains the transformers as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Cache: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Cache</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ols__0__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__0__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__0__2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__1__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__1__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;ols__1__2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__0__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__0__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__0__2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__1__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__1__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__1__2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__ols__0__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__ols__0__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__ols__0__2.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__ols__1__0.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__ols__1__1.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;sc__ols__1__2.pkl&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Data is collected on a partition basis:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Data:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">learner</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Data</span><span class="p">:</span>
+              <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
+<span class="n">sc</span>  <span class="n">ols</span>  <span class="mi">0</span>       <span class="mf">0.79</span>     <span class="mf">0.29</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">sc</span>  <span class="n">ols</span>  <span class="mi">1</span>       <span class="mf">4.09</span>     <span class="mf">3.77</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parallel-estimation">
+<h3>Parallel estimation<a class="headerlink" href="#parallel-estimation" title="Permalink to this headline">¶</a></h3>
+<p>Since the learner and transformer class do not perform estimations themselves,
+we are free to modify the estimation behavior. For instance, to parallelize
+estimation with several learners, we don’t want a nested loop over each learner,
+but instead flatten the for loops for maximal concurrency.
+This is the topic of our next walkthrough, here we show how to parallelize
+estimation with a single learner. Using the integrated <a class="reference external" href="https://pythonhosted.org/joblib/index.html#module-joblib" title="(in joblib v0.11)"><code class="xref py py-mod docutils literal"><span class="pre">joblib</span></code></a> package, we can fit a
+learner in parallel as follow:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.externals.joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="kn">import</span> <span class="n">assert_array_equal</span>
+
+<span class="n">P_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Since ML-Ensemble is thread-safe, we use threading as P_t is not memmapped.</span>
+<span class="k">with</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s1">&#39;threading&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">parallel</span><span class="p">:</span>
+    <span class="n">parallel</span><span class="p">(</span><span class="n">delayed</span><span class="p">(</span><span class="n">sublearner</span><span class="p">,</span> <span class="n">check_pickle</span><span class="o">=</span><span class="bp">False</span><span class="p">)(</span><span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+             <span class="k">for</span> <span class="n">sublearner</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">P_t</span><span class="p">)</span>
+             <span class="p">)</span>
+
+<span class="n">assert_array_equal</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">P_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">sc__ols__1__0</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__0</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__1</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__2</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__2</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__1</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>Joblib is built on top of the <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#module-multiprocessing" title="(in Python v3.6)"><code class="xref py py-mod docutils literal"><span class="pre">multiprocessing</span></code></a> package, and we
+can similarly directly use the <code class="docutils literal"><span class="pre">Pool().map()</span></code> API to achieve the same
+result:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># The dummy module wraps the threading package in the multiprocessing API</span>
+<span class="kn">from</span> <span class="nn">multiprocessing.dummy</span> <span class="kn">import</span> <span class="n">Pool</span>
+
+<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">tup</span><span class="p">):</span> <span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">P_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">Pool</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="p">[(</span><span class="n">sublearner</span><span class="p">,</span> <span class="n">path</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">sublearner</span> <span class="ow">in</span> <span class="n">learner</span><span class="o">.</span><span class="n">gen_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">P_p</span><span class="p">)])</span>
+
+<span class="n">assert_array_equal</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">P_t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">sc__ols__1__0</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__1</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__0</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__0__2</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__1</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc__ols__1__2</span>                  <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>Next we handle several learners by grouping them in a layer in the
+<a class="reference internal" href="layer.html#layer-tutorial"><span class="std std-ref">layer mechanics tutorial</span></a>.</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.161 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/learner.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">learner.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/learner.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">learner.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

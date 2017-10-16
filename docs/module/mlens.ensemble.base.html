@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.ensemble.base module &mdash; mlens 0.2.0.dev0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../index.html"/>
+        <link rel="up" title="mlens.ensemble package" href="mlens.ensemble.html"/>
+        <link rel="next" title="mlens.ensemble.blend module" href="mlens.ensemble.blend.html"/>
+        <link rel="prev" title="mlens.ensemble package" href="mlens.ensemble.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">mlens</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mlens.html">mlens package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="mlens.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">mlens</a> &raquo;</li>
+        
+          <li><a href="mlens.html">mlens package</a> &raquo;</li>
+        
+          <li><a href="mlens.ensemble.html">mlens.ensemble package</a> &raquo;</li>
+        
+      <li>mlens.ensemble.base module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/mlens.ensemble.base.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mlens.ensemble.base">
+<span id="mlens-ensemble-base-module"></span><h1>mlens.ensemble.base module<a class="headerlink" href="#module-mlens.ensemble.base" title="Permalink to this headline">¶</a></h1>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Base classes for ensemble layer management.</p>
+<dl class="class">
+<dt id="mlens.ensemble.base.BaseEnsemble">
+<em class="property">class </em><code class="descclassname">mlens.ensemble.base.</code><code class="descname">BaseEnsemble</code><span class="sig-paren">(</span><em>shuffle=False</em>, <em>random_state=None</em>, <em>scorer=None</em>, <em>verbose=False</em>, <em>layers=None</em>, <em>array_check=2</em>, <em>model_selection=False</em>, <em>sample_size=20</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#BaseEnsemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.ensemble.base.Sequential" title="mlens.ensemble.base.Sequential"><code class="xref py py-class docutils literal"><span class="pre">mlens.ensemble.base.Sequential</span></code></a></p>
+<p>BaseEnsemble class.</p>
+<p>Core ensemble class methods used to add ensemble layers and manipulate
+parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model_selection</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default=False</em><em>)</em>) – Whether to use the ensemble in model selection mode. If <code class="docutils literal"><span class="pre">True</span></code>,
+this will alter the <code class="docutils literal"><span class="pre">transform</span></code> method. When calling <code class="docutils literal"><span class="pre">transform</span></code>
+on new data, the ensemble will call <code class="docutils literal"><span class="pre">predict</span></code>, while calling
+<code class="docutils literal"><span class="pre">transform</span></code> with the training data reproduces predictions from the
+<code class="docutils literal"><span class="pre">fit</span></code> call. Hence the ensemble can be used as a pure transformer
+in a preprocessing pipeline passed to the <code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code>, as
+training folds are faithfully reproduced as during a <code class="docutils literal"><span class="pre">fit``call</span> <span class="pre">and</span>
+<span class="pre">test</span> <span class="pre">folds</span> <span class="pre">are</span> <span class="pre">transformed</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">``predict</span></code> method.</li>
+<li><strong>samples_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=20</em><em>)</em>) – size of training set sample
+(<code class="docutils literal"><span class="pre">[min(sample_size,</span> <span class="pre">X.size[0]),</span> <span class="pre">min(X.size[1],</span> <span class="pre">sample_size)]</span></code></li>
+<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default=False</em><em>)</em>) – whether to shuffle input data during fit calls</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default=False</em><em>)</em>) – random seed.</li>
+<li><strong>scorer</strong> (<em>obj</em><em>, </em><em>optional</em>) – scorer function</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – verbosity</li>
+<li><strong>array_check</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=2</em><em>)</em>) – severity of array checks. <code class="docutils literal"><span class="pre">2</span></code> mimicks Scikit-learn, <code class="docutils literal"><span class="pre">1</span></code> warns,
+<code class="docutils literal"><span class="pre">0</span></code> disables.</li>
+<li><strong>samples_size</strong> – size of training set sample
+(<code class="docutils literal"><span class="pre">[min(sample_size,</span> <span class="pre">X.size[0]),</span> <span class="pre">min(X.size[1],</span> <span class="pre">sample_size)]</span></code></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.ensemble.base.BaseEnsemble.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>estimators</em>, <em>indexer</em>, <em>preprocessing=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#BaseEnsemble.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method for adding a layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>estimators</strong> (dict of lists or list of estimators, or <cite>:class:`Layer</cite>.) – <p>Pre-made layer or estimators to construct layer with.
+If <code class="docutils literal"><span class="pre">preprocessing</span></code> is <code class="docutils literal"><span class="pre">None</span></code> or <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">estimators</span></code> should
+be a <code class="docutils literal"><span class="pre">list</span></code>. The list can either contain estimator instances,
+named tuples of estimator instances, or a combination of both.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;est-1&quot;</span><span class="p">,</span> <span class="n">estimator_1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps estimators to preprocessing pipelines must be passed.
+The names of the estimator dictionary must correspond to the
+names of the estimator dictionary.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">]</span><span class="o">.</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">]</span><span class="o">.</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal"><span class="pre">option_1</span></code>,
+<code class="docutils literal"><span class="pre">option_2</span></code> and <code class="docutils literal"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>indexer</strong> (<em>instance</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – Indexer instance to use. Defaults to the layer class
+indexer with default settings. See <code class="xref py py-mod docutils literal"><span class="pre">mlens.base</span></code> for details.</li>
+<li><strong>preprocessing</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em><em> (</em><em>default = None</em><em>)</em>) – <p>preprocessing pipelines for given layer. If
+the same preprocessing applies to all estimators, <code class="docutils literal"><span class="pre">preprocessing</span></code>
+should be a list of transformer instances. The list can contain the
+instances directly, named tuples of transformers,
+or a combination of both.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;trans-1&quot;</span><span class="p">,</span> <span class="n">transformer_1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps preprocessing pipelines must be passed. The names of the
+preprocessing dictionary must correspond to the names of the
+estimator dictionary.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">]</span><span class="o">.</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">]</span><span class="o">.</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal"><span class="pre">option_1</span></code>,
+<code class="docutils literal"><span class="pre">option_2</span></code> and <code class="docutils literal"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – keyword arguments to be passed onto the layer at instantiation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – if <code class="docutils literal"><span class="pre">in_place</span> <span class="pre">=</span> <span class="pre">True</span></code>, returns <code class="docutils literal"><span class="pre">self</span></code> with the layer
+instantiated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance, optional</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.BaseEnsemble.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#BaseEnsemble.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit ensemble.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – output vector to trained estimators on.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – class instance with fitted estimators.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.ensemble.base.BaseEnsemble.model_selection">
+<code class="descname">model_selection</code><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble.model_selection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn model selection mode</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.BaseEnsemble.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#BaseEnsemble.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict with fitted ensemble.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>y_pred</strong> – predictions for provided input array.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array-like, shape=[n_samples, ]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.BaseEnsemble.predict_proba">
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#BaseEnsemble.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict class probabilities with fitted ensemble.</p>
+<p>Compatibility method for Scikit-learn. This method checks that the
+final layer has <code class="docutils literal"><span class="pre">proba=True</span></code>, then calls the regular <code class="docutils literal"><span class="pre">predict</span></code>
+method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>y_pred</strong> – predicted class membership probabilities for provided input array.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">array-like, shape=[n_samples, n_classes]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.BaseEnsemble.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#BaseEnsemble.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.BaseEnsemble.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform with fitted ensemble.</p>
+<p>Replicates cross-validated prediction process from training.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><a class="reference internal" href="mlens.parallel.base.html#mlens.parallel.base.OutputMixin.shape" title="mlens.parallel.base.OutputMixin.shape"><em>shape</em></a><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – targets. Needs to be passed as input in model selection mode as
+some indexers will reduce the size of the input array (X) and
+y must be adjusted accordingly.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pred</strong> – predictions for provided input array. If in model selection mode,
+return a tuple <code class="docutils literal"><span class="pre">(X_trans,</span> <span class="pre">y_trans)</span></code> where <code class="docutils literal"><span class="pre">y_trans</span></code> is either
+<code class="docutils literal"><span class="pre">y</span></code>, or a trunctated version to match the samples in <code class="docutils literal"><span class="pre">X_trans</span></code>.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)">tuple</a>, shape=[n_samples, n_features]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.ensemble.base.Sequential">
+<em class="property">class </em><code class="descclassname">mlens.ensemble.base.</code><code class="descname">Sequential</code><span class="sig-paren">(</span><em>layers=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#Sequential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.Sequential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.parallel.base.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.base.BaseBackend</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></p>
+<p>Container class for layers.</p>
+<p>The Sequential class stories all layers as an ordered dictionary
+and modifies possesses a <code class="docutils literal"><span class="pre">get_params</span></code> method to appear as an estimator
+in the Scikit-learn API. This allows correct cloning and parameter
+updating.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em><em> (</em><em>default = None</em><em>)</em>) – list of layers to instantiate with.</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = -1</em><em>)</em>) – Degree of concurrency. Set <code class="docutils literal"><span class="pre">n_jobs</span> <span class="pre">=</span> <span class="pre">-1</span></code> for maximal parallelism and
+<code class="docutils literal"><span class="pre">n_jobs=1</span></code> for sequential processing.</li>
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>(</em><em>default=&quot;threading&quot;</em><em>)</em>) – the joblib backend to use (i.e. “multiprocessing” or “threading”).</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – raise error on soft exceptions. Otherwise issue warning.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – <p>level of verbosity.</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">0</span></code> silent (same as <code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">False</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">1</span></code> messages at start and finish
+(same as <code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">True</span></code>)</li>
+<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">2</span></code> messages for each layer</li>
+<li>etc</li>
+</ul>
+</div></blockquote>
+<p>If <code class="docutils literal"><span class="pre">verbose</span> <span class="pre">&gt;=</span> <span class="pre">10</span></code> prints to <code class="docutils literal"><span class="pre">sys.stderr</span></code>, else <code class="docutils literal"><span class="pre">sys.stdout</span></code>.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mlens.ensemble.base.Sequential.data">
+<code class="descname">data</code><a class="headerlink" href="#mlens.ensemble.base.Sequential.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensemble data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.Sequential.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#Sequential.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.Sequential.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit instance.</p>
+<p>Iterative fits each layer in the stack on the output of
+the subsequent layer. First layer is fitted on input data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for fitting and predicting.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional arguments to processor</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.Sequential.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#Sequential.get_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.Sequential.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>deep</strong> (<em>boolean</em><em>, </em><em>optional</em>) – whether to return nested parameters.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.Sequential.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#Sequential.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.Sequential.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_pred</strong> – predictions from final layer.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like of shape = [n_samples, n_fitted_estimators]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.base.Sequential.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#Sequential.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.Sequential.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict using sub-learners as is done during the <code class="docutils literal"><span class="pre">fit</span></code> call.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>*args</strong> (<em>optional</em>) – optional arguments.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_pred</strong> – predictions from <code class="docutils literal"><span class="pre">fit</span></code> call to final layer.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like of shape = [n_test_samples, n_fitted_estimators]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.ensemble.base.Sequential.verbose">
+<code class="descname">verbose</code><a class="headerlink" href="#mlens.ensemble.base.Sequential.verbose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjust the level of verbosity.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.ensemble.base.check_kwargs">
+<code class="descclassname">mlens.ensemble.base.</code><code class="descname">check_kwargs</code><span class="sig-paren">(</span><em>kwargs</em>, <em>forbidden</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#check_kwargs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.check_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop unwanted arguments and issue warning</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.ensemble.base.print_job">
+<code class="descclassname">mlens.ensemble.base.</code><code class="descname">print_job</code><span class="sig-paren">(</span><em>lc</em>, <em>start_message</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/ensemble/base.html#print_job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.base.print_job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print job details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lc</strong> (<a class="reference internal" href="#mlens.ensemble.base.Sequential" title="mlens.ensemble.base.Sequential"><code class="xref py py-class docutils literal"><span class="pre">Sequential</span></code></a>) – The LayerContainer instance running the job.</li>
+<li><strong>start_message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Initial message.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0.dev0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

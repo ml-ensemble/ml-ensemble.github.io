@@ -33,7 +33,7 @@ api:
 
 # Populate parent dir
 arange:
-	cp -r build/html ../docs
+	cp -r build/html/ ../
 	rm -r build
 	-rm -rf tutorials
 
@@ -43,6 +43,12 @@ clean-build:
 # Make docs
 docs:
 	make api
+	make html
+	make arange
+	make clean-build
+
+# Make docs but don't rebuild modules
+populate:
 	make html
 	make arange
 	make clean-build
