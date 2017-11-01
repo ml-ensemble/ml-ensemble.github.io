@@ -1,0 +1,1039 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.joblib.numpy_pickle_utils &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.externals.joblib.numpy_pickle_utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.externals.joblib.numpy_pickle_utils</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utilities for fast persistence of big data, with optional compression.&quot;&quot;&quot;</span>
+
+<span class="c1"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span>
+<span class="c1"># Copyright (c) 2009 Gael Varoquaux</span>
+<span class="c1"># License: BSD Style, 3 clauses.</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">zlib</span>
+<span class="kn">import</span> <span class="nn">gzip</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">closing</span>
+
+<span class="kn">from</span> <span class="nn">._compat</span> <span class="k">import</span> <span class="n">PY3_OR_LATER</span><span class="p">,</span> <span class="n">PY27</span><span class="p">,</span> <span class="n">_basestring</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">RLock</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">dummy_threading</span> <span class="k">import</span> <span class="n">RLock</span>
+
+<span class="k">if</span> <span class="n">PY3_OR_LATER</span><span class="p">:</span>
+    <span class="n">Unpickler</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">_Unpickler</span>
+    <span class="n">Pickler</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">_Pickler</span>
+    <span class="n">xrange</span> <span class="o">=</span> <span class="nb">range</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">Unpickler</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">Unpickler</span>
+    <span class="n">Pickler</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">Pickler</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">np</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">lzma</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">lzma</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># The python standard library can be built without bz2 so we make bz2</span>
+    <span class="c1"># usage optional.</span>
+    <span class="c1"># see https://github.com/scikit-learn/scikit-learn/issues/7526 for more</span>
+    <span class="c1"># details.</span>
+    <span class="kn">import</span> <span class="nn">bz2</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">bz2</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="c1"># Magic numbers of supported compression file formats.        &#39;</span>
+<span class="n">_ZFILE_PREFIX</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;ZF&#39;</span>  <span class="c1"># used with pickle files created before 0.9.3.</span>
+<span class="n">_ZLIB_PREFIX</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x78</span><span class="s1">&#39;</span>
+<span class="n">_GZIP_PREFIX</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x1f\x8b</span><span class="s1">&#39;</span>
+<span class="n">_BZ2_PREFIX</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;BZ&#39;</span>
+<span class="n">_XZ_PREFIX</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xfd\x37\x7a\x58\x5a</span><span class="s1">&#39;</span>
+<span class="n">_LZMA_PREFIX</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x5d\x00</span><span class="s1">&#39;</span>
+
+<span class="c1"># Supported compressors</span>
+<span class="n">_COMPRESSORS</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;zlib&#39;</span><span class="p">,</span> <span class="s1">&#39;bz2&#39;</span><span class="p">,</span> <span class="s1">&#39;lzma&#39;</span><span class="p">,</span> <span class="s1">&#39;xz&#39;</span><span class="p">,</span> <span class="s1">&#39;gzip&#39;</span><span class="p">)</span>
+<span class="n">_COMPRESSOR_CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="n">gzip</span><span class="o">.</span><span class="n">GzipFile</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="n">bz2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_COMPRESSOR_CLASSES</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">lzma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">_COMPRESSOR_CLASSES</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lzma</span><span class="o">.</span><span class="n">LZMAFile</span><span class="p">)</span>
+
+<span class="c1"># The max magic number length of supported compression file types.</span>
+<span class="n">_MAX_PREFIX_LEN</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+                      <span class="k">for</span> <span class="n">prefix</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_ZFILE_PREFIX</span><span class="p">,</span> <span class="n">_GZIP_PREFIX</span><span class="p">,</span> <span class="n">_BZ2_PREFIX</span><span class="p">,</span>
+                                     <span class="n">_XZ_PREFIX</span><span class="p">,</span> <span class="n">_LZMA_PREFIX</span><span class="p">))</span>
+
+<span class="c1"># Buffer size used in io.BufferedReader and io.BufferedWriter</span>
+<span class="n">_IO_BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">**</span> <span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">_is_raw_file</span><span class="p">(</span><span class="n">fileobj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if fileobj is a raw file object, e.g created with open.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">PY3_OR_LATER</span><span class="p">:</span>
+        <span class="n">fileobj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">fileobj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">FileIO</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>  <span class="c1"># noqa</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Cache file utilities</span>
+<span class="k">def</span> <span class="nf">_detect_compressor</span><span class="p">(</span><span class="n">fileobj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the compressor matching fileobj.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fileobj: file object</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    str in {&#39;zlib&#39;, &#39;gzip&#39;, &#39;bz2&#39;, &#39;lzma&#39;, &#39;xz&#39;, &#39;compat&#39;, &#39;not-compressed&#39;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Read the magic number in the first bytes of the file.</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;peek&#39;</span><span class="p">):</span>
+        <span class="c1"># Peek allows to read those bytes without moving the cursor in the</span>
+        <span class="c1"># file whic.</span>
+        <span class="n">first_bytes</span> <span class="o">=</span> <span class="n">fileobj</span><span class="o">.</span><span class="n">peek</span><span class="p">(</span><span class="n">_MAX_PREFIX_LEN</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Fallback to seek if the fileobject is not peekable.</span>
+        <span class="n">first_bytes</span> <span class="o">=</span> <span class="n">fileobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">_MAX_PREFIX_LEN</span><span class="p">)</span>
+        <span class="n">fileobj</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">first_bytes</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_ZLIB_PREFIX</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;zlib&quot;</span>
+    <span class="k">elif</span> <span class="n">first_bytes</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_GZIP_PREFIX</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;gzip&quot;</span>
+    <span class="k">elif</span> <span class="n">first_bytes</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_BZ2_PREFIX</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;bz2&quot;</span>
+    <span class="k">elif</span> <span class="n">first_bytes</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_LZMA_PREFIX</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;lzma&quot;</span>
+    <span class="k">elif</span> <span class="n">first_bytes</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_XZ_PREFIX</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;xz&quot;</span>
+    <span class="k">elif</span> <span class="n">first_bytes</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_ZFILE_PREFIX</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;compat&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;not-compressed&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_buffered_read_file</span><span class="p">(</span><span class="n">fobj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a buffered version of a read file object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">PY27</span> <span class="ow">and</span> <span class="n">bz2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">):</span>
+        <span class="c1"># Python 2.7 doesn&#39;t work with BZ2File through a buffer: &quot;no</span>
+        <span class="c1"># attribute &#39;readable&#39;&quot; error.</span>
+        <span class="k">return</span> <span class="n">fobj</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">BufferedReader</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="n">buffer_size</span><span class="o">=</span><span class="n">_IO_BUFFER_SIZE</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_buffered_write_file</span><span class="p">(</span><span class="n">fobj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a buffered version of a write file object.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">PY27</span> <span class="ow">and</span> <span class="n">bz2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">):</span>
+        <span class="c1"># Python 2.7 doesn&#39;t work with BZ2File through a buffer: no attribute</span>
+        <span class="c1"># &#39;writable&#39;.</span>
+        <span class="c1"># BZ2File doesn&#39;t implement the file object context manager in python 2</span>
+        <span class="c1"># so we wrap the fileobj using `closing`.</span>
+        <span class="k">return</span> <span class="n">closing</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">BufferedWriter</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="n">buffer_size</span><span class="o">=</span><span class="n">_IO_BUFFER_SIZE</span><span class="p">)</span>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">_read_fileobject</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility function opening the right fileobject from a filename.</span>
+
+<span class="sd">    The magic number is used to choose between the type of file object to open:</span>
+<span class="sd">    * regular file object (default)</span>
+<span class="sd">    * zlib file object</span>
+<span class="sd">    * gzip file object</span>
+<span class="sd">    * bz2 file object</span>
+<span class="sd">    * lzma file object (for xz and lzma compressor)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fileobj: file object</span>
+<span class="sd">    compressor: str in {&#39;zlib&#39;, &#39;gzip&#39;, &#39;bz2&#39;, &#39;lzma&#39;, &#39;xz&#39;, &#39;compat&#39;,</span>
+<span class="sd">                        &#39;not-compressed&#39;}</span>
+<span class="sd">    filename: str</span>
+<span class="sd">        filename path corresponding to the fileobj parameter.</span>
+<span class="sd">    mmap_mode: str</span>
+<span class="sd">        memory map mode that should be used to open the pickle file. This</span>
+<span class="sd">        parameter is useful to verify that the user is not trying to one with</span>
+<span class="sd">        compression. Default: None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">        a file like object</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Detect if the fileobj contains compressed data.</span>
+    <span class="n">compressor</span> <span class="o">=</span> <span class="n">_detect_compressor</span><span class="p">(</span><span class="n">fileobj</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">compressor</span> <span class="o">==</span> <span class="s1">&#39;compat&#39;</span><span class="p">:</span>
+        <span class="c1"># Compatibility with old pickle mode: simply return the input</span>
+        <span class="c1"># filename &quot;as-is&quot; and let the compatibility function be called by the</span>
+        <span class="c1"># caller.</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;The file &#39;</span><span class="si">%s</span><span class="s2">&#39; has been generated with a joblib &quot;</span>
+                      <span class="s2">&quot;version less than 0.10. &quot;</span>
+                      <span class="s2">&quot;Please regenerate this pickle file.&quot;</span> <span class="o">%</span> <span class="n">filename</span><span class="p">,</span>
+                      <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="n">filename</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># based on the compressor detected in the file, we open the</span>
+        <span class="c1"># correct decompressor file object, wrapped in a buffer.</span>
+        <span class="k">if</span> <span class="n">compressor</span> <span class="o">==</span> <span class="s1">&#39;zlib&#39;</span><span class="p">:</span>
+            <span class="n">fileobj</span> <span class="o">=</span> <span class="n">_buffered_read_file</span><span class="p">(</span><span class="n">BinaryZlibFile</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">compressor</span> <span class="o">==</span> <span class="s1">&#39;gzip&#39;</span><span class="p">:</span>
+            <span class="n">fileobj</span> <span class="o">=</span> <span class="n">_buffered_read_file</span><span class="p">(</span><span class="n">BinaryGzipFile</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">compressor</span> <span class="o">==</span> <span class="s1">&#39;bz2&#39;</span> <span class="ow">and</span> <span class="n">bz2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">PY3_OR_LATER</span><span class="p">:</span>
+                <span class="n">fileobj</span> <span class="o">=</span> <span class="n">_buffered_read_file</span><span class="p">(</span><span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># In python 2, BZ2File doesn&#39;t support a fileobj opened in</span>
+                <span class="c1"># binary mode. In this case, we pass the filename.</span>
+                <span class="n">fileobj</span> <span class="o">=</span> <span class="n">_buffered_read_file</span><span class="p">(</span><span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">fileobj</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">compressor</span> <span class="o">==</span> <span class="s1">&#39;lzma&#39;</span> <span class="ow">or</span> <span class="n">compressor</span> <span class="o">==</span> <span class="s1">&#39;xz&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">PY3_OR_LATER</span> <span class="ow">and</span> <span class="n">lzma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># We support lzma only in python 3 because in python 2 users</span>
+                <span class="c1"># may have installed the pyliblzma package, which also provides</span>
+                <span class="c1"># the lzma module, but that unfortunately doesn&#39;t fully support</span>
+                <span class="c1"># the buffer interface required by joblib.</span>
+                <span class="c1"># See https://github.com/joblib/joblib/issues/403 for details.</span>
+                <span class="n">fileobj</span> <span class="o">=</span> <span class="n">_buffered_read_file</span><span class="p">(</span><span class="n">lzma</span><span class="o">.</span><span class="n">LZMAFile</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Lzma decompression is not &quot;</span>
+                                          <span class="s2">&quot;supported for this version of &quot;</span>
+                                          <span class="s2">&quot;python (</span><span class="si">{}</span><span class="s2">.</span><span class="si">{}</span><span class="s2">)&quot;</span>
+                                          <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                  <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="c1"># Checking if incompatible load parameters with the type of file:</span>
+        <span class="c1"># mmap_mode cannot be used with compressed file or in memory buffers</span>
+        <span class="c1"># such as io.BytesIO.</span>
+        <span class="k">if</span> <span class="n">mmap_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fileobj</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">):</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;In memory persistence is not compatible with &#39;</span>
+                              <span class="s1">&#39;mmap_mode &quot;</span><span class="si">%(mmap_mode)s</span><span class="s1">&quot; flag passed. &#39;</span>
+                              <span class="s1">&#39;mmap_mode option will be ignored.&#39;</span>
+                              <span class="o">%</span> <span class="nb">locals</span><span class="p">(),</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">compressor</span> <span class="o">!=</span> <span class="s1">&#39;not-compressed&#39;</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;mmap_mode &quot;</span><span class="si">%(mmap_mode)s</span><span class="s1">&quot; is not compatible &#39;</span>
+                              <span class="s1">&#39;with compressed file </span><span class="si">%(filename)s</span><span class="s1">. &#39;</span>
+                              <span class="s1">&#39;&quot;</span><span class="si">%(mmap_mode)s</span><span class="s1">&quot; flag will be ignored.&#39;</span>
+                              <span class="o">%</span> <span class="nb">locals</span><span class="p">(),</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">_is_raw_file</span><span class="p">(</span><span class="n">fileobj</span><span class="p">):</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;&quot;</span><span class="si">%(fileobj)r</span><span class="s1">&quot; is not a raw file, mmap_mode &#39;</span>
+                              <span class="s1">&#39;&quot;</span><span class="si">%(mmap_mode)s</span><span class="s1">&quot; flag will be ignored.&#39;</span>
+                              <span class="o">%</span> <span class="nb">locals</span><span class="p">(),</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">yield</span> <span class="n">fileobj</span>
+
+
+<span class="k">def</span> <span class="nf">_write_fileobject</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;zlib&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;Return the right compressor file object in write mode.&quot;&quot;&quot;</span>
+    <span class="n">compressmethod</span> <span class="o">=</span> <span class="n">compress</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">compresslevel</span> <span class="o">=</span> <span class="n">compress</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">compressmethod</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_buffered_write_file</span><span class="p">(</span><span class="n">BinaryGzipFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">,</span>
+                                    <span class="n">compresslevel</span><span class="o">=</span><span class="n">compresslevel</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">compressmethod</span> <span class="o">==</span> <span class="s2">&quot;bz2&quot;</span> <span class="ow">and</span> <span class="n">bz2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_buffered_write_file</span><span class="p">(</span><span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">,</span>
+                                                <span class="n">compresslevel</span><span class="o">=</span><span class="n">compresslevel</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">lzma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">compressmethod</span> <span class="o">==</span> <span class="s2">&quot;xz&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_buffered_write_file</span><span class="p">(</span><span class="n">lzma</span><span class="o">.</span><span class="n">LZMAFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">,</span>
+                                                  <span class="n">check</span><span class="o">=</span><span class="n">lzma</span><span class="o">.</span><span class="n">CHECK_NONE</span><span class="p">,</span>
+                                                  <span class="n">preset</span><span class="o">=</span><span class="n">compresslevel</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">lzma</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">compressmethod</span> <span class="o">==</span> <span class="s2">&quot;lzma&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_buffered_write_file</span><span class="p">(</span><span class="n">lzma</span><span class="o">.</span><span class="n">LZMAFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">,</span>
+                                                  <span class="n">preset</span><span class="o">=</span><span class="n">compresslevel</span><span class="p">,</span>
+                                                  <span class="nb">format</span><span class="o">=</span><span class="n">lzma</span><span class="o">.</span><span class="n">FORMAT_ALONE</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_buffered_write_file</span><span class="p">(</span><span class="n">BinaryZlibFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">,</span>
+                                    <span class="n">compresslevel</span><span class="o">=</span><span class="n">compresslevel</span><span class="p">))</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1">#  Joblib zlib compression file object definition</span>
+
+<span class="n">_MODE_CLOSED</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">_MODE_READ</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">_MODE_READ_EOF</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">_MODE_WRITE</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">_BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">8192</span>
+
+
+<div class="viewcode-block" id="BinaryZlibFile"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile">[docs]</a><span class="k">class</span> <span class="nc">BinaryZlibFile</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BufferedIOBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A file object providing transparent zlib (de)compression.</span>
+
+<span class="sd">    A BinaryZlibFile can act as a wrapper for an existing file object, or refer</span>
+<span class="sd">    directly to a named file on disk.</span>
+
+<span class="sd">    Note that BinaryZlibFile provides only a *binary* file interface: data read</span>
+<span class="sd">    is returned as bytes, and data to be written should be given as bytes.</span>
+
+<span class="sd">    This object is an adaptation of the BZ2File object and is compatible with</span>
+<span class="sd">    versions of python &gt;= 2.7.</span>
+
+<span class="sd">    If filename is a str or bytes object, it gives the name</span>
+<span class="sd">    of the file to be opened. Otherwise, it should be a file object,</span>
+<span class="sd">    which will be used to read or write the compressed data.</span>
+
+<span class="sd">    mode can be &#39;rb&#39; for reading (default) or &#39;wb&#39; for (over)writing</span>
+
+<span class="sd">    If mode is &#39;wb&#39;, compresslevel can be a number between 1</span>
+<span class="sd">    and 9 specifying the level of compression: 1 produces the least</span>
+<span class="sd">    compression, and 9 (default) produces the most compression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">wbits</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">MAX_WBITS</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;rb&quot;</span><span class="p">,</span> <span class="n">compresslevel</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+        <span class="c1"># This lock must be recursive, so that BufferedIOBase&#39;s</span>
+        <span class="c1"># readline(), readlines() and writelines() don&#39;t deadlock.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">_MODE_CLOSED</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">compresslevel</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">compresslevel</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;compresslevel&#39; must be an integer &quot;</span>
+                             <span class="s2">&quot;between 1 and 9. You provided &#39;compresslevel=</span><span class="si">{}</span><span class="s2">&#39;&quot;</span>
+                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">compresslevel</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;rb&quot;</span><span class="p">:</span>
+            <span class="n">mode_code</span> <span class="o">=</span> <span class="n">_MODE_READ</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompressobj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wbits</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;wb&quot;</span><span class="p">:</span>
+            <span class="n">mode_code</span> <span class="o">=</span> <span class="n">_MODE_WRITE</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_compressor</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">compressobj</span><span class="p">(</span><span class="n">compresslevel</span><span class="p">,</span>
+                                                <span class="n">zlib</span><span class="o">.</span><span class="n">DEFLATED</span><span class="p">,</span>
+                                                <span class="bp">self</span><span class="o">.</span><span class="n">wbits</span><span class="p">,</span>
+                                                <span class="n">zlib</span><span class="o">.</span><span class="n">DEF_MEM_LEVEL</span><span class="p">,</span>
+                                                <span class="mi">0</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid mode: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mode</span><span class="p">,))</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">_basestring</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode_code</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;write&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="n">filename</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">mode_code</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;filename must be a str or bytes object, &quot;</span>
+                            <span class="s2">&quot;or a file&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BinaryZlibFile.close"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Flush and close the file.</span>
+
+<span class="sd">        May be called more than once without error. Once the file is</span>
+<span class="sd">        closed, any other operation on it will raise a ValueError.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">_MODE_CLOSED</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_MODE_READ</span><span class="p">,</span> <span class="n">_MODE_READ_EOF</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">_MODE_WRITE</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compressor</span><span class="o">.</span><span class="n">flush</span><span class="p">())</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_compressor</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="k">finally</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span> <span class="o">=</span> <span class="kc">None</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_closefp</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">_MODE_CLOSED</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">closed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;True if this file is closed.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">_MODE_CLOSED</span>
+
+<div class="viewcode-block" id="BinaryZlibFile.fileno"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.fileno">[docs]</a>    <span class="k">def</span> <span class="nf">fileno</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the file descriptor for the underlying file.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BinaryZlibFile.seekable"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.seekable">[docs]</a>    <span class="k">def</span> <span class="nf">seekable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return whether the file supports seeking.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">readable</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">seekable</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BinaryZlibFile.readable"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.readable">[docs]</a>    <span class="k">def</span> <span class="nf">readable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return whether the file was opened for reading.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_MODE_READ</span><span class="p">,</span> <span class="n">_MODE_READ_EOF</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BinaryZlibFile.writable"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.writable">[docs]</a>    <span class="k">def</span> <span class="nf">writable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return whether the file was opened for writing.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">_MODE_WRITE</span></div>
+
+    <span class="c1"># Mode-checking helper functions.</span>
+
+    <span class="k">def</span> <span class="nf">_check_not_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">closed</span><span class="p">:</span>
+            <span class="n">fname</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;I/O operation on closed file&quot;</span>
+            <span class="k">if</span> <span class="n">fname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot; </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot;.&quot;</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_can_read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_MODE_READ</span><span class="p">,</span> <span class="n">_MODE_READ_EOF</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">io</span><span class="o">.</span><span class="n">UnsupportedOperation</span><span class="p">(</span><span class="s2">&quot;File not open for reading&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_can_write</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">!=</span> <span class="n">_MODE_WRITE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">io</span><span class="o">.</span><span class="n">UnsupportedOperation</span><span class="p">(</span><span class="s2">&quot;File not open for writing&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_can_seek</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_MODE_READ</span><span class="p">,</span> <span class="n">_MODE_READ_EOF</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">io</span><span class="o">.</span><span class="n">UnsupportedOperation</span><span class="p">(</span><span class="s2">&quot;Seeking is only supported &quot;</span>
+                                          <span class="s2">&quot;on files open for reading&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">seekable</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">io</span><span class="o">.</span><span class="n">UnsupportedOperation</span><span class="p">(</span><span class="s2">&quot;The underlying file object &quot;</span>
+                                          <span class="s2">&quot;does not support seeking&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Fill the readahead buffer if it is empty. Returns False on EOF.</span>
+    <span class="k">def</span> <span class="nf">_fill_buffer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">==</span> <span class="n">_MODE_READ_EOF</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="c1"># Depending on the input data, our call to the decompressor may not</span>
+        <span class="c1"># return any data. In this case, try again after reading another block.</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">rawblock</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span><span class="o">.</span><span class="n">unused_data</span> <span class="ow">or</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">_BUFFER_SIZE</span><span class="p">))</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">rawblock</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">EOFError</span>
+            <span class="k">except</span> <span class="ne">EOFError</span><span class="p">:</span>
+                <span class="c1"># End-of-stream marker and end of file. We&#39;re good.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">_MODE_READ_EOF</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">rawblock</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Read data until EOF.</span>
+    <span class="c1"># If return_data is false, consume the data without returning it.</span>
+    <span class="k">def</span> <span class="nf">_read_all</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1"># The loop assumes that _buffer_offset is 0. Ensure that this is true.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fill_buffer</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">return_data</span><span class="p">:</span>
+                <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">return_data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+
+    <span class="c1"># Read a block of up to n bytes.</span>
+    <span class="c1"># If return_data is false, consume the data without returning it.</span>
+    <span class="k">def</span> <span class="nf">_read_block</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_bytes</span><span class="p">,</span> <span class="n">return_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="c1"># If we have enough data buffered, return immediately.</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">+</span> <span class="n">n_bytes</span>
+        <span class="k">if</span> <span class="n">end</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">):</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span><span class="p">:</span> <span class="n">end</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="n">end</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">data</span> <span class="k">if</span> <span class="n">return_data</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="c1"># The loop assumes that _buffer_offset is 0. Ensure that this is true.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span><span class="p">:]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">blocks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="n">n_bytes</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fill_buffer</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">n_bytes</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">):</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:</span><span class="n">n_bytes</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="n">n_bytes</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+            <span class="k">if</span> <span class="n">return_data</span><span class="p">:</span>
+                <span class="n">blocks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">n_bytes</span> <span class="o">-=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">return_data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">blocks</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BinaryZlibFile.read"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read up to size uncompressed bytes from the file.</span>
+
+<span class="sd">        If size is negative or omitted, read until EOF is reached.</span>
+<span class="sd">        Returns b&#39;&#39; if the file is already at EOF.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_can_read</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+            <span class="k">elif</span> <span class="n">size</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_all</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_block</span><span class="p">(</span><span class="n">size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BinaryZlibFile.readinto"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.readinto">[docs]</a>    <span class="k">def</span> <span class="nf">readinto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Read up to len(b) bytes into b.</span>
+
+<span class="sd">        Returns the number of bytes read (0 for EOF).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">BufferedIOBase</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BinaryZlibFile.write"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Write a byte string to the file.</span>
+
+<span class="sd">        Returns the number of uncompressed bytes written, which is</span>
+<span class="sd">        always len(data). Note that due to buffering, the file on disk</span>
+<span class="sd">        may not reflect the data written until close() is called.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_can_write</span><span class="p">()</span>
+            <span class="c1"># Convert data type if called by io.BufferedWriter.</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">memoryview</span><span class="p">):</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+
+            <span class="n">compressed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compressor</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+    <span class="c1"># Rewind the file to the beginning of the data stream.</span>
+    <span class="k">def</span> <span class="nf">_rewind</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mode</span> <span class="o">=</span> <span class="n">_MODE_READ</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_decompressor</span> <span class="o">=</span> <span class="n">zlib</span><span class="o">.</span><span class="n">decompressobj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wbits</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_offset</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="BinaryZlibFile.seek"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.seek">[docs]</a>    <span class="k">def</span> <span class="nf">seek</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">whence</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Change the file position.</span>
+
+<span class="sd">        The new position is specified by offset, relative to the</span>
+<span class="sd">        position indicated by whence. Values for whence are:</span>
+
+<span class="sd">            0: start of stream (default); offset must not be negative</span>
+<span class="sd">            1: current stream position</span>
+<span class="sd">            2: end of stream; offset must not be positive</span>
+
+<span class="sd">        Returns the new file position.</span>
+
+<span class="sd">        Note that seeking is emulated, so depending on the parameters,</span>
+<span class="sd">        this operation may be extremely slow.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_can_seek</span><span class="p">()</span>
+
+            <span class="c1"># Recalculate offset as an absolute file position.</span>
+            <span class="k">if</span> <span class="n">whence</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">pass</span>
+            <span class="k">elif</span> <span class="n">whence</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span> <span class="o">+</span> <span class="n">offset</span>
+            <span class="k">elif</span> <span class="n">whence</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="c1"># Seeking relative to EOF - we need to know the file&#39;s size.</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_read_all</span><span class="p">(</span><span class="n">return_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_size</span> <span class="o">+</span> <span class="n">offset</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid value for whence: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">whence</span><span class="p">,))</span>
+
+            <span class="c1"># Make it so that offset is the number of bytes to skip forward.</span>
+            <span class="k">if</span> <span class="n">offset</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_rewind</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">offset</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span>
+
+            <span class="c1"># Read and discard data until we reach the desired position.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_read_block</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">return_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span></div>
+
+<div class="viewcode-block" id="BinaryZlibFile.tell"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryZlibFile.tell">[docs]</a>    <span class="k">def</span> <span class="nf">tell</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the current file position.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_not_closed</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pos</span></div></div>
+
+
+<div class="viewcode-block" id="BinaryGzipFile"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.numpy_pickle_utils.BinaryGzipFile">[docs]</a><span class="k">class</span> <span class="nc">BinaryGzipFile</span><span class="p">(</span><span class="n">BinaryZlibFile</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A file object providing transparent gzip (de)compression.</span>
+
+<span class="sd">    If filename is a str or bytes object, it gives the name</span>
+<span class="sd">    of the file to be opened. Otherwise, it should be a file object,</span>
+<span class="sd">    which will be used to read or write the compressed data.</span>
+
+<span class="sd">    mode can be &#39;rb&#39; for reading (default) or &#39;wb&#39; for (over)writing</span>
+
+<span class="sd">    If mode is &#39;wb&#39;, compresslevel can be a number between 1</span>
+<span class="sd">    and 9 specifying the level of compression: 1 produces the least</span>
+<span class="sd">    compression, and 9 (default) produces the most compression.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">wbits</span> <span class="o">=</span> <span class="mi">31</span>  <span class="c1"># zlib compressor/decompressor wbits value for gzip format.</span></div>
+
+
+<span class="c1"># Utility functions/variables from numpy required for writing arrays.</span>
+<span class="c1"># We need at least the functions introduced in version 1.9 of numpy. Here,</span>
+<span class="c1"># we use the ones from numpy 1.10.2.</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">18</span>  <span class="c1"># size of buffer for reading npz files in bytes</span>
+
+
+<span class="k">def</span> <span class="nf">_read_bytes</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">error_template</span><span class="o">=</span><span class="s2">&quot;ran out of data&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Read from file-like object until size bytes are read.</span>
+
+<span class="sd">    Raises ValueError if not EOF is encountered before size bytes are read.</span>
+<span class="sd">    Non-blocking objects only supported if they derive from io objects.</span>
+
+<span class="sd">    Required as e.g. ZipExtFile in python 2.6 can return less data than</span>
+<span class="sd">    requested.</span>
+
+<span class="sd">    This function was taken from numpy/lib/format.py in version 1.10.2.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fp: file-like object</span>
+<span class="sd">    size: int</span>
+<span class="sd">    error_template: str</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    a bytes object</span>
+<span class="sd">        The data read in bytes.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">()</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># io files (default in python3) return None or raise on</span>
+        <span class="c1"># would-block, python2 file will truncate, probably nothing can be</span>
+        <span class="c1"># done about that.  note that regular files can&#39;t be non-blocking</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">size</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+            <span class="n">data</span> <span class="o">+=</span> <span class="n">r</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="n">size</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">except</span> <span class="n">io</span><span class="o">.</span><span class="n">BlockingIOError</span><span class="p">:</span>
+            <span class="k">pass</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">!=</span> <span class="n">size</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;EOF: reading </span><span class="si">%s</span><span class="s2">, expected </span><span class="si">%d</span><span class="s2"> bytes got </span><span class="si">%d</span><span class="s2">&quot;</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">error_template</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

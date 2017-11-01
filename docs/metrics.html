@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.metrics &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="index.html"/>
+        <link rel="next" title="mlens.visualization" href="visualization.html"/>
+        <link rel="prev" title="mlens.preprocessing" href="preprocessing.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="config.html">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config.html#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-backend"><span class="hidden-section">set_backend</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#run"><span class="hidden-section">run</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.metrics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/metrics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-mlens.metrics"></span><p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Metric utilities and functions.</p>
+<div class="section" id="mlens-metrics">
+<h1>mlens.metrics<a class="headerlink" href="#mlens-metrics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data">
+<h2><span class="hidden-section">Data</span><a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="mlens.metrics.Data">
+<em class="property">class </em><code class="descclassname">mlens.metrics.</code><code class="descname">Data</code><span class="sig-paren">(</span><em>data=None</em>, <em>padding=2</em>, <em>decimals=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/utils.html#Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">collections.OrderedDict</span></code></a></p>
+<p>Wrapper class around dict to get pretty prints</p>
+<p><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a> is an ordered dictionary that implements a dedicated
+pretty print method for a nested dictionary. Printing a <a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a>
+dictionary provides a human-readable table. The input dictionary is
+expected to have two levels: the first level gives the columns and the
+second level the rows. Rows names are parsed as
+<code class="docutils literal"><span class="pre">[OUTER]/[MIDDLE].[INNER]--[IDX]</span></code>, where IDX has to be an integer. All
+entries are optional.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a></p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a> is an internal class that expects a particular functions.
+This class cannot be used as a general drop-in replacement for the standard
+<code class="docutils literal"><span class="pre">dict</span></code> class.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">Data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;row-idx-1.row-idx-2.0.0&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;column-1&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;column-2&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">                        column-a  column-b</span>
+<span class="go">row-idx-1  row-idx-2        0.10      0.20</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="assemble-data">
+<h2><span class="hidden-section">assemble_data</span><a class="headerlink" href="#assemble-data" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.metrics.assemble_data">
+<code class="descclassname">mlens.metrics.</code><code class="descname">assemble_data</code><span class="sig-paren">(</span><em>data_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/utils.html#assemble_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.assemble_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a data dictionary out of a list of entries and data dicts</p>
+<p>Given a list named tuples of dictionaries, <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a>
+returns a nested ordered dictionary with data keys as outer keys and
+tuple names as inner keys. The returned dictionary can be printed in
+tabular format by <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">assemble_data</span><span class="p">,</span> <span class="n">assemble_table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;row-idx-1.row-idx-2.a.b&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;column-1&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;column-2&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">assemble_table</span><span class="p">(</span><span class="n">assemble_data</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
+<span class="go">                        column-2-m  column-2-s  column-1-m  column-1-s</span>
+<span class="go">row-idx-1  row-idx-2          0.10        0.00        0.10        0.00</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="assemble-table">
+<h2><span class="hidden-section">assemble_table</span><a class="headerlink" href="#assemble-table" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.metrics.assemble_table">
+<code class="descclassname">mlens.metrics.</code><code class="descname">assemble_table</code><span class="sig-paren">(</span><em>data</em>, <em>padding=2</em>, <em>decimals=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/utils.html#assemble_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.assemble_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct data table from input dict</p>
+<p>Given a nested dictionary formed by <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a>,
+<a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a> returns a string that prints the contents of
+the input in tabular format. The input dictionary is
+expected to have two levels: the first level gives the columns and the
+second level the rows. Rows names are parsed as
+<code class="docutils literal"><span class="pre">[OUTER]/[MIDDLE].[INNER]--[IDX]</span></code>, where IDX must be an integer. All
+entries are optional.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a></p>
+</div>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">assemble_data</span><span class="p">,</span> <span class="n">assemble_table</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;row-idx-1.row-idx-2.a.b&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;column-1&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;column-2&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">})]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">assemble_table</span><span class="p">(</span><span class="n">assemble_data</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
+<span class="go">                        column-2-m  column-2-s  column-1-m  column-1-s</span>
+<span class="go">row-idx-1  row-idx-2          0.10        0.00        0.10        0.00</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="make-scorer">
+<h2><span class="hidden-section">make_scorer</span><a class="headerlink" href="#make-scorer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.metrics.make_scorer">
+<code class="descclassname">mlens.metrics.</code><code class="descname">make_scorer</code><span class="sig-paren">(</span><em>score_func</em>, <em>greater_is_better=True</em>, <em>needs_proba=False</em>, <em>needs_threshold=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/externals/sklearn/scorer.html#make_scorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.make_scorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a scorer from a performance metric or loss function.</p>
+<p>This factory function wraps scoring functions for use in GridSearchCV
+and cross_val_score. It takes a score function, such as <code class="docutils literal"><span class="pre">accuracy_score</span></code>,
+<code class="docutils literal"><span class="pre">mean_squared_error</span></code>, <code class="docutils literal"><span class="pre">adjusted_rand_index</span></code> or <code class="docutils literal"><span class="pre">average_precision</span></code>
+and returns a callable that scores an estimator’s output.</p>
+<p>Read more in the <a class="reference external" href="http://scikit-learn.org/stable/modules/model_evaluation.html#scoring" title="(in scikit-learn v0.19.1)"><span class="xref std std-ref">User Guide</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>score_func</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)"><em>callable</em></a><em>,</em>) – Score function (or loss function) with signature
+<code class="docutils literal"><span class="pre">score_func(y,</span> <span class="pre">y_pred,</span> <span class="pre">**kwargs)</span></code>.</li>
+<li><strong>greater_is_better</strong> (<em>boolean</em><em>, </em><em>default=True</em>) – Whether score_func is a score function (default), meaning high is good,
+or a loss function, meaning low is good. In the latter case, the
+scorer object will sign-flip the outcome of the score_func.</li>
+<li><strong>needs_proba</strong> (<em>boolean</em><em>, </em><em>default=False</em>) – Whether score_func requires predict_proba to get probability estimates
+out of a classifier.</li>
+<li><strong>needs_threshold</strong> (<em>boolean</em><em>, </em><em>default=False</em>) – <p>Whether score_func takes a continuous decision certainty.
+This only works for binary classification using estimators that
+have either a decision_function or predict_proba method.</p>
+<p>For example <code class="docutils literal"><span class="pre">average_precision</span></code> or the area under the roc curve
+can not be computed using discrete predictions alone.</p>
+</li>
+<li><strong>**kwargs</strong> (<em>additional arguments</em>) – Additional parameters to be passed to score_func.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scorer</strong> – Callable object that returns a scalar score; greater is better.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)">callable</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">make_scorer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">fbeta_score</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span>
+<span class="go">make_scorer(fbeta_score, beta=2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span>
+<span class="gp">... </span>                    <span class="n">scoring</span><span class="o">=</span><span class="n">ftwo_scorer</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="rmse">
+<h2><span class="hidden-section">rmse</span><a class="headerlink" href="#rmse" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.metrics.rmse">
+<code class="descclassname">mlens.metrics.</code><code class="descname">rmse</code><span class="sig-paren">(</span><em>y</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/metrics.html#rmse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.rmse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Root Mean Square Error.</p>
+<div class="math">
+\[RMSE(\mathbf{y}, \mathbf{p}) = \sqrt{MSE(\mathbf{y}, \mathbf{p})},\]</div>
+<p>with</p>
+<div class="math">
+\[MSE(\mathbf{y}, \mathbf{p}) = |S| \sum_{i \in S} (y_i - p_i)^2\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – ground truth.</li>
+<li><strong>p</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – predicted labels.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>z</strong> – root mean squared error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="mape">
+<h2><span class="hidden-section">mape</span><a class="headerlink" href="#mape" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.metrics.mape">
+<code class="descclassname">mlens.metrics.</code><code class="descname">mape</code><span class="sig-paren">(</span><em>y</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/metrics.html#mape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.mape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mean Average Percentage Error.</p>
+<div class="math">
+\[MAPE(\mathbf{y}, \mathbf{p}) =
+|S| \sum_{i \in S} | \frac{y_i - p_i}{y_i} |\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – ground truth.</li>
+<li><strong>p</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – predicted labels.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>z</strong> – mean average percentage error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="wape">
+<h2><span class="hidden-section">wape</span><a class="headerlink" href="#wape" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.metrics.wape">
+<code class="descclassname">mlens.metrics.</code><code class="descname">wape</code><span class="sig-paren">(</span><em>y</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/metrics.html#wape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.wape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weighted Mean Average Percentage Error.</p>
+<div class="math">
+\[WAPE(\mathbf{y}, \mathbf{p}) =
+\frac{\sum_{i \in S} | y_i - p_i|}{ \sum_{i \in S} |y_i|}\]</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – ground truth.</li>
+<li><strong>p</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – predicted labels.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>z</strong> – weighted mean average percentage error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

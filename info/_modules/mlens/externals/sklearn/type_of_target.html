@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.sklearn.type_of_target &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.externals.sklearn.type_of_target</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.externals.sklearn.type_of_target</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">Imports from the utils.multiclass module of Scikit-learn.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Author: Arnaud Joly, Joel Nothman, Hamzeh Alsalhi</span>
+<span class="c1"># License: BSD 3 clause</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">Sequence</span>
+
+
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">issparse</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.base</span> <span class="k">import</span> <span class="n">spmatrix</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">dok_matrix</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">lil_matrix</span>
+
+<span class="kn">from</span> <span class="nn">..six</span> <span class="k">import</span> <span class="n">string_types</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="is_multilabel"><a class="viewcode-back" href="../../../../test/mlens.externals.sklearn.html#mlens.externals.sklearn.type_of_target.is_multilabel">[docs]</a><span class="k">def</span> <span class="nf">is_multilabel</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Check if ``y`` is in a multilabel format.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y : numpy array of shape [n_samples]</span>
+<span class="sd">        Target values.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    out : bool,</span>
+<span class="sd">        Return ``True``, if ``y`` is in a multilabel format, else ```False``.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.utils.multiclass import is_multilabel</span>
+<span class="sd">    &gt;&gt;&gt; is_multilabel([0, 1, 0, 1])</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; is_multilabel([[1], [0, 2], []])</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; is_multilabel(np.array([[1, 0], [0, 0]]))</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; is_multilabel(np.array([[1], [0], [0]]))</span>
+<span class="sd">    False</span>
+<span class="sd">    &gt;&gt;&gt; is_multilabel(np.array([[1, 0, 0]]))</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;__array__&#39;</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">dok_matrix</span><span class="p">,</span> <span class="n">lil_matrix</span><span class="p">)):</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span>
+                <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="s1">&#39;biu&#39;</span> <span class="ow">or</span>  <span class="c1"># bool, int, uint</span>
+                 <span class="n">_is_integral_float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">data</span><span class="p">))))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="s1">&#39;biu&#39;</span> <span class="ow">or</span>  <span class="c1"># bool, int, uint</span>
+                                    <span class="n">_is_integral_float</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span></div>
+
+
+<span class="k">def</span> <span class="nf">_is_integral_float</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="type_of_target"><a class="viewcode-back" href="../../../../test/mlens.externals.sklearn.html#mlens.externals.sklearn.type_of_target.type_of_target">[docs]</a><span class="k">def</span> <span class="nf">type_of_target</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determine the type of data indicated by target `y`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y : array-like</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    target_type : string</span>
+<span class="sd">        One of:</span>
+<span class="sd">        * &#39;continuous&#39;: `y` is an array-like of floats that are not all</span>
+<span class="sd">          integers, and is 1d or a column vector.</span>
+<span class="sd">        * &#39;continuous-multioutput&#39;: `y` is a 2d array of floats that are</span>
+<span class="sd">          not all integers, and both dimensions are of size &gt; 1.</span>
+<span class="sd">        * &#39;binary&#39;: `y` contains &lt;= 2 discrete values and is 1d or a column</span>
+<span class="sd">          vector.</span>
+<span class="sd">        * &#39;multiclass&#39;: `y` contains more than two discrete values, is not a</span>
+<span class="sd">          sequence of sequences, and is 1d or a column vector.</span>
+<span class="sd">        * &#39;multiclass-multioutput&#39;: `y` is a 2d array that contains more</span>
+<span class="sd">          than two discrete values, is not a sequence of sequences, and both</span>
+<span class="sd">          dimensions are of size &gt; 1.</span>
+<span class="sd">        * &#39;multilabel-indicator&#39;: `y` is a label indicator matrix, an array</span>
+<span class="sd">          of two dimensions with at least two columns, and at most 2 unique</span>
+<span class="sd">          values.</span>
+<span class="sd">        * &#39;unknown&#39;: `y` is array-like but none of the above, such as a 3d</span>
+<span class="sd">          array, sequence of sequences, or an array of non-sequence objects.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([0.1, 0.6])</span>
+<span class="sd">    &#39;continuous&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([1, -1, -1, 1])</span>
+<span class="sd">    &#39;binary&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([&#39;a&#39;, &#39;b&#39;, &#39;a&#39;])</span>
+<span class="sd">    &#39;binary&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([1.0, 2.0])</span>
+<span class="sd">    &#39;binary&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([1, 0, 2])</span>
+<span class="sd">    &#39;multiclass&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([1.0, 0.0, 3.0])</span>
+<span class="sd">    &#39;multiclass&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;])</span>
+<span class="sd">    &#39;multiclass&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target(np.array([[1, 2], [3, 1]]))</span>
+<span class="sd">    &#39;multiclass-multioutput&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target([[1, 2]])</span>
+<span class="sd">    &#39;multiclass-multioutput&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target(np.array([[1.5, 2.0], [3.0, 1.6]]))</span>
+<span class="sd">    &#39;continuous-multioutput&#39;</span>
+<span class="sd">    &gt;&gt;&gt; type_of_target(np.array([[0, 1], [1, 1]]))</span>
+<span class="sd">    &#39;multilabel-indicator&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">valid</span> <span class="o">=</span> <span class="p">((</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">Sequence</span><span class="p">,</span> <span class="n">spmatrix</span><span class="p">))</span> <span class="ow">or</span>
+             <span class="nb">hasattr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;__array__&#39;</span><span class="p">))</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">string_types</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Expected array-like (array or non-string sequence), &#39;</span>
+                         <span class="s1">&#39;got </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_multilabel</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;multilabel-indicator&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># Known to fail in numpy 1.3 for array of arrays</span>
+        <span class="k">return</span> <span class="s1">&#39;unknown&#39;</span>
+
+    <span class="c1"># The old sequence of sequences format</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;__array__&#39;</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Sequence</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">string_types</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;You appear to be using a legacy multi-label data&#39;</span>
+                             <span class="s1">&#39; representation. Sequence of sequences are no&#39;</span>
+                             <span class="s1">&#39; longer supported; use a binary array or sparse&#39;</span>
+                             <span class="s1">&#39; matrix instead.&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Invalid inputs</span>
+    <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="ow">and</span>
+                      <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">string_types</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="s1">&#39;unknown&#39;</span>  <span class="c1"># [[[1, 2]]] or [obj_1] and not [&quot;label_1&quot;]</span>
+
+    <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;unknown&#39;</span>  <span class="c1"># [[]]</span>
+
+    <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;-multioutput&quot;</span>  <span class="c1"># [[1, 2], [1, 2]]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># [1, 2, 3] or [[1], [2], [3]]</span>
+
+    <span class="c1"># check float and contains non-integer float values</span>
+    <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)):</span>
+        <span class="c1"># [.1, .2, 3] or [[.1, .2, 3]] or [[1., .2]] and not [1., 2., 3.]</span>
+        <span class="k">return</span> <span class="s1">&#39;continuous&#39;</span> <span class="o">+</span> <span class="n">suffix</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;multiclass&#39;</span> <span class="o">+</span> <span class="n">suffix</span>  <span class="c1"># [1, 2, 3] or [[1., 2., 3]] or [[1, 2]]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;binary&#39;</span>  <span class="c1"># [1, 2] or [[&quot;a&quot;], [&quot;b&quot;]]</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.utils.dummy &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.utils.dummy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.utils.dummy</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-ENSEMBLE</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Collection of dummy estimator classes, Mixins to build transparent layers for</span>
+<span class="sd">unit testing.</span>
+
+<span class="sd">Also contains pre-made Layer, LayerContainers and data generation functions</span>
+<span class="sd">for unit testing.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="k">import</span> <span class="n">NotFittedError</span>
+<span class="kn">from</span> <span class="nn">..externals.sklearn.base</span> <span class="k">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">,</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">..externals.sklearn.validation</span> <span class="k">import</span> <span class="n">check_X_y</span><span class="p">,</span> <span class="n">check_array</span>
+
+
+<div class="viewcode-block" id="OLS"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.OLS">[docs]</a><span class="k">class</span> <span class="nc">OLS</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;No frills vanilla OLS estimator implemented through the normal equation.</span>
+
+<span class="sd">    MWE of a Scikit-learn estimator.</span>
+
+<span class="sd">    OLS is a simple estimator designed to allow for total control over</span>
+<span class="sd">    predictions in unit testing. It implements OLS through the Normal</span>
+<span class="sd">    Equation, no learning takes place. The ``offset`` option allows</span>
+<span class="sd">    the user to offset weights by a scalar value, if different instances</span>
+<span class="sd">    should be differentiated in their predictions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    offset : float (default = 0)</span>
+<span class="sd">        scalar value to add to the coefficient vector after fitting.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Asserting the OLS passes the Scikit-learn estimator test</span>
+
+<span class="sd">    &gt;&gt;&gt; from sklearn.utils.estimator_checks import check_estimator</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.utils.dummy import OLS</span>
+<span class="sd">    &gt;&gt;&gt; check_estimator(OLS)</span>
+
+<span class="sd">    OLS comparison with Scikit-learn&#39;s LinearRegression</span>
+
+<span class="sd">    &gt;&gt;&gt; from numpy.testing import assert_array_equal</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.utils.dummy import OLS</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.linear_model import LinearRegression</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.datasets import load_boston</span>
+<span class="sd">    &gt;&gt;&gt; X, y = load_boston(True)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; lr = LinearRegression(False)</span>
+<span class="sd">    &gt;&gt;&gt; lr.fit(X, y)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; ols = OLS()</span>
+<span class="sd">    &gt;&gt;&gt; ols.fit(X, y)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; assert_array_equal(lr.coef_, ols.coef_)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="n">offset</span>
+
+<div class="viewcode-block" id="OLS.fit"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.OLS.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit coefficient vector.&quot;&quot;&quot;</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">O</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">offset</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resid_</span> <span class="o">=</span> <span class="n">O</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="OLS.predict"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.OLS.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict with fitted weights.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;coef_&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Estimator not fitted. Call &#39;fit&#39; first.&quot;</span><span class="p">)</span>
+
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">T</span><span class="p">)</span></div></div>
+
+
+
+<div class="viewcode-block" id="LogisticRegression"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.LogisticRegression">[docs]</a><span class="k">class</span> <span class="nc">LogisticRegression</span><span class="p">(</span><span class="n">OLS</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;No frill Logistic Regressor w. one-vs-rest estimation of P(label).</span>
+
+<span class="sd">    MWE of a Scikit-learn classifier.</span>
+
+<span class="sd">    LogisticRegression is a simple classifier estimator designed for</span>
+<span class="sd">    transparency in unit testing. It implements a Logistic</span>
+<span class="sd">    Regression with one-vs-rest strategy of classification.</span>
+
+<span class="sd">    The estimator is a wrapper around the :class:`OLS`. The OLS</span>
+<span class="sd">    prediction is squashed using the Sigmoid function, and classification</span>
+<span class="sd">    is done by picking the label with the highest probability.</span>
+
+<span class="sd">    The ``offset`` option allows the user to offset weights in the OLS by a</span>
+<span class="sd">    scalar value, if different instances should be differentiated in their</span>
+<span class="sd">    predictions.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    Asserting the LogisticRegression passes the Scikit-learn estimator test</span>
+
+<span class="sd">    &gt;&gt;&gt; from sklearn.utils.estimator_checks import check_estimator</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.utils.dummy import LogisticRegression</span>
+<span class="sd">    &gt;&gt;&gt; check_estimator(LogisticRegression)</span>
+
+<span class="sd">    Comparison with Scikit-learn&#39;s LogisticRegression</span>
+
+<span class="sd">    &gt;&gt;&gt; from mlens.utils.dummy import LogisticRegression as mlensL</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.linear_model import LogisticRegression as sklearnL</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.datasets import make_classification</span>
+<span class="sd">    &gt;&gt;&gt; X, y = make_classification()</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; slr = sklearnL()</span>
+<span class="sd">    &gt;&gt;&gt; slr.fit(X, y)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; mlr = mlensL()</span>
+<span class="sd">    &gt;&gt;&gt; mlr.fit(X, y)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; (mlr.predict(X) == slr.predict(X)).sum() / y.shape</span>
+<span class="sd">    array([ 0.98])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LogisticRegression.fit"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.LogisticRegression.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit one model per label.&quot;&quot;&quot;</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels_</span><span class="p">:</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">label</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OLS</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_models_</span> <span class="o">=</span> <span class="n">models</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">l</span><span class="o">.</span><span class="n">coef_</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models_</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="LogisticRegression.predict_proba"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.LogisticRegression.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get probability predictions.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_models_&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Estimator not fitted. Call &#39;fit&#39; first.&quot;</span><span class="p">)</span>
+
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_models_</span><span class="p">:</span>
+
+            <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
+
+            <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span><span class="o">.</span><span class="n">T</span></div>
+
+<div class="viewcode-block" id="LogisticRegression.predict"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.LogisticRegression.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get label predictions.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_models_&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Estimator not fitted. Call &#39;fit&#39; first.&quot;</span><span class="p">)</span>
+
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels_</span><span class="p">[</span><span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()]</span>
+
+        <span class="k">return</span> <span class="n">labels</span></div></div>
+
+
+<div class="viewcode-block" id="Scale"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.Scale">[docs]</a><span class="k">class</span> <span class="nc">Scale</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Removes the a learnt mean in a column-wise manner in an array.</span>
+
+<span class="sd">    MWE of a Scikit-learn transformer, to be used for unit-tests of ensemble</span>
+<span class="sd">    classes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    copy : bool (default = True)</span>
+<span class="sd">        Whether to copy X before transforming.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    Asserting :class:`Scale` passes the Scikit-learn estimator test</span>
+
+<span class="sd">    &gt;&gt;&gt; from sklearn.utils.estimator_checks import check_estimator</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.utils.dummy import Scale</span>
+<span class="sd">    &gt;&gt;&gt; check_estimator(Scale)</span>
+
+<span class="sd">    Scaling elements</span>
+
+<span class="sd">    &gt;&gt;&gt; from numpy import arange</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.utils.dummy import Scale</span>
+<span class="sd">    &gt;&gt;&gt; X = arange(6).reshape(3, 2)</span>
+<span class="sd">    &gt;&gt;&gt; X[:, 1] *= 2</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;X:&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;%r&#39; % X)</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;Scaled:&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; S = Scale().fit_transform(X)</span>
+<span class="sd">    &gt;&gt;&gt; print(&#39;%r&#39; % S)</span>
+<span class="sd">    X:</span>
+<span class="sd">    array([[ 0,  2],</span>
+<span class="sd">           [ 2,  6],</span>
+<span class="sd">           [ 4, 10]])</span>
+<span class="sd">    Scaled:</span>
+<span class="sd">    array([[-2., -4.],</span>
+<span class="sd">           [ 0.,  0.],</span>
+<span class="sd">           [ 2.,  4.]])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">copy</span> <span class="o">=</span> <span class="n">copy</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_fitted__</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="Scale.fit"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.Scale.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Estimate mean.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like</span>
+<span class="sd">            training data to fit transformer on.</span>
+
+<span class="sd">        y : array-like or None</span>
+<span class="sd">            pass through for pipeline.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__is_fitted__</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Scale.transform"><a class="viewcode-back" href="../../../module/mlens.utils.dummy.html#mlens.utils.dummy.Scale.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform array by adjusting all elements with scale.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : ndarray</span>
+<span class="sd">            matrix to transform.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_fitted__</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Estimator not fitted.&quot;</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">Xt</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span> <span class="k">else</span> <span class="n">X</span>
+        <span class="k">return</span> <span class="n">Xt</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean_</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+mlens\.utils package
+====================
+
+Submodules
+----------
+
+mlens\.utils\.checks module
+---------------------------
+
+.. automodule:: mlens.utils.checks
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.utils\.dummy module
+--------------------------
+
+.. automodule:: mlens.utils.dummy
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.utils\.exceptions module
+-------------------------------
+
+.. automodule:: mlens.utils.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.utils\.formatting module
+-------------------------------
+
+.. automodule:: mlens.utils.formatting
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.utils\.id\_train module
+------------------------------
+
+.. automodule:: mlens.utils.id_train
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.utils\.utils module
+--------------------------
+
+.. automodule:: mlens.utils.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.utils\.validation module
+-------------------------------
+
+.. automodule:: mlens.utils.validation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:

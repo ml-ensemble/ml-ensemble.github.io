@@ -1,7 +1,7 @@
 // Styling for the navbar
 #mainNav {
-    border-color: fade-out($gray-darker, .95);
-    background-color: white;
+    border-color: transparent;
+    background-color: $theme-primary;
     @include transition-all;
     @include heading-font;
     .navbar-brand {
@@ -57,7 +57,7 @@
             }
         }
         &.navbar-shrink {
-            border-color: fade-out($gray-darker, .9);
+            border-color: transparent;
             background-color: $theme-nav-shrink;
             .navbar-brand {
                 color: $gray-darker;

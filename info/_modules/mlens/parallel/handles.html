@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.parallel.handles &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.parallel.handles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.parallel.handles</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-Ensemble</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Handles for mlens.parallel.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span> <span class="nn">.learner</span> <span class="k">import</span> <span class="n">Learner</span><span class="p">,</span> <span class="n">Transformer</span>
+<span class="kn">from</span> <span class="nn">._base_functions</span> <span class="k">import</span> <span class="n">mold_objects</span><span class="p">,</span> <span class="n">transform</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">format_name</span><span class="p">,</span> <span class="n">check_instances</span>
+<span class="kn">from</span> <span class="nn">..utils.formatting</span> <span class="k">import</span> <span class="n">_check_instances</span>
+<span class="kn">from</span> <span class="nn">..externals.sklearn.base</span> <span class="k">import</span> <span class="n">clone</span><span class="p">,</span> <span class="n">BaseEstimator</span> <span class="k">as</span> <span class="n">_BaseEstimator</span>
+
+<span class="n">GLOBAL_GROUP_NAMES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">GLOBAL_PIPELINE_NAMES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="Pipeline"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Pipeline">[docs]</a><span class="k">class</span> <span class="nc">Pipeline</span><span class="p">(</span><span class="n">_BaseEstimator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Transformer pipeline</span>
+
+<span class="sd">    Pipeline class for wrapping a preprocessing pipeline of transformers.</span>
+
+<span class="sd">    .. versionadded: 0.2.0</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pipeline : list, instance</span>
+<span class="sd">        A :class:`~mlens.parallel.Transformer` instance or a list of</span>
+<span class="sd">        :class:`~mlens.parallel.Transformer`</span>
+<span class="sd">        instances. Accepted input formats::</span>
+
+<span class="sd">            option_1 = transformer_1</span>
+<span class="sd">            option_2 = [transformer_1, transformer_2]</span>
+<span class="sd">            option_3 = [(&quot;tr-1&quot;, transformer_1), (&quot;tr-2&quot;, transformer_2)]</span>
+<span class="sd">            option_4 = [transformer_1, (&quot;tr-2&quot;, transformer_2)]</span>
+
+<span class="sd">    name : str, optional</span>
+<span class="sd">        name of pipeline.</span>
+
+<span class="sd">    return_y : bool, default = False</span>
+<span class="sd">        If True, both X and y will be returned in a</span>
+<span class="sd">        :func:`~mlens.parallel.handles.Pipeline.transform` call.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_y</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">format_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;pipeline&#39;</span><span class="p">,</span> <span class="n">GLOBAL_PIPELINE_NAMES</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">_check_instances</span><span class="p">(</span><span class="n">pipeline</span><span class="p">)</span> <span class="k">if</span> <span class="n">pipeline</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_y</span> <span class="o">=</span> <span class="n">return_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fit</span><span class="p">,</span> <span class="n">process</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run job on pipeline.&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_empty</span><span class="p">(</span><span class="n">process</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">out</span>
+
+        <span class="k">if</span> <span class="n">fit</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span> <span class="o">=</span> <span class="p">[(</span><span class="n">tr_name</span><span class="p">,</span> <span class="n">clone</span><span class="p">(</span><span class="n">tr</span><span class="p">))</span>
+                              <span class="k">for</span> <span class="n">tr_name</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">tr_name</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">fit</span><span class="p">:</span>
+                <span class="n">tr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pipeline</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">process</span><span class="p">:</span>
+                <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">process</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_y</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+            <span class="k">return</span> <span class="n">X</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">_check_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">process</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check if empty pipeline and return vacuously&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: remove ability to set None pipelines: need to modify Evalutor</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">process</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_y</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+        <span class="k">return</span> <span class="n">X</span>
+
+<div class="viewcode-block" id="Pipeline.fit"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Pipeline.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit pipeline.</span>
+
+<span class="sd">        Note that the :class:`Pipeline` accepts both X and y arguments, and</span>
+<span class="sd">        can return both X and y, depending on the transformers. The</span>
+<span class="sd">        pipeline itself does no checks on the input.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples, ]</span>
+<span class="sd">            Targets</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : instance</span>
+<span class="sd">            Fitted pipeline</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Pipeline.transform"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Pipeline.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform pipeline.</span>
+
+<span class="sd">        Note that the :class:`Pipeline` accepts both X and y arguments, and</span>
+<span class="sd">        can return both X and y, depending on the transformers.</span>
+<span class="sd">        Pipeline itself does not checks the input.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples, ]</span>
+<span class="sd">            Targets</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        X_processed : array-like of shape [n_samples, n_preprocessed_features]</span>
+<span class="sd">            Preprocessed input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples, ], optional</span>
+<span class="sd">            Original or preprocessed targets, depending on the transformers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Pipeline.fit_transform"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Pipeline.fit_transform">[docs]</a>    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit and transform pipeline.</span>
+
+<span class="sd">        Note that the :class:`Pipeline` accepts both X and y arguments, and</span>
+<span class="sd">        can return both X and y, depending on the transformers. The</span>
+<span class="sd">        pipeline itself does no checks on the input.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples, ]</span>
+<span class="sd">            Targets</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        X_processed : array-like of shape [n_samples, n_preprocessed_features]</span>
+<span class="sd">            Preprocessed input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples, ], optional</span>
+<span class="sd">            Preprocessed targets</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Pipeline.get_params"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Pipeline.get_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">deep</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">out</span>
+
+        <span class="k">for</span> <span class="n">tr_name</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tr</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">out</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tr_name</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span> <span class="o">=</span> <span class="n">v</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">tr_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span>
+        <span class="k">return</span> <span class="n">out</span></div></div>
+
+
+<div class="viewcode-block" id="Group"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Group">[docs]</a><span class="k">class</span> <span class="nc">Group</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;A handle for learners and transformers that share a common indexer.</span>
+
+<span class="sd">    Lightweight class for pairing a set of independent learners with</span>
+<span class="sd">    a set of transformers that all share the same cross-validation strategy.</span>
+<span class="sd">    A :class:`Group` instance is an acceptable caller to</span>
+<span class="sd">    :class:`~mlens.parallel.ParallelProcessing`.</span>
+
+<span class="sd">    .. versionadded:: 0.2.0</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        All instances will share *the same* indexer. If instances have a</span>
+<span class="sd">        different indexer, that indexer will be replaced.</span>
+
+<span class="sd">    .. seealso::</span>
+<span class="sd">        To run a :class:`Group` instance, see :func:`~mlens.parallel.wrapper.run`.</span>
+<span class="sd">        To handle several groups, use the :class:`~mlens.parallel.layer.Layer`</span>
+<span class="sd">        class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    indexer : inst, optional</span>
+<span class="sd">        A :module:`mlens.index` indexer to build learner and transformers on.</span>
+<span class="sd">        If not passed, the first indexer of the learners will be enforced</span>
+<span class="sd">        on all instances.</span>
+
+<span class="sd">    learners : list, inst, optional</span>
+<span class="sd">        :class:`~mlens.parallel.learner.Learner` instance(s) attached to</span>
+<span class="sd">        indexer. Note that :class:`Group` overrides previous</span>
+<span class="sd">        ``indexer`` parameter settings.</span>
+
+<span class="sd">    transformers : list, inst, optional</span>
+<span class="sd">        :class:`~mlens.parallel.learner.Transformer` instance(s) attached to</span>
+<span class="sd">        indexer. Note that :class:`Group` overrides previous</span>
+<span class="sd">        ``indexer`` parameter settings.</span>
+
+<span class="sd">    name : str, optional</span>
+<span class="sd">        name of group</span>
+
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Optional keyword arguments to the</span>
+<span class="sd">        :class:`~mlens.parallel.base.BaseParallel` backend.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transformers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">format_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">GLOBAL_GROUP_NAMES</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Group</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">learners</span><span class="p">,</span> <span class="n">transformers</span> <span class="o">=</span> <span class="n">mold_objects</span><span class="p">(</span><span class="n">learners</span><span class="p">,</span> <span class="n">transformers</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">indexer</span><span class="p">:</span>
+            <span class="n">indexer</span> <span class="o">=</span> <span class="n">learners</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">indexer</span>
+
+        <span class="c1"># Enforce common indexer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="n">indexer</span>
+        <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">learners</span> <span class="o">+</span> <span class="n">transformers</span><span class="p">:</span>
+            <span class="n">o</span><span class="o">.</span><span class="n">set_indexer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">learners</span> <span class="o">=</span> <span class="n">learners</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transformers</span> <span class="o">=</span> <span class="n">transformers</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__static__</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;indexer&#39;</span><span class="p">,</span> <span class="s1">&#39;learners&#39;</span><span class="p">,</span> <span class="s1">&#39;transformers&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># We update optional backend kwargs that might have been passed</span>
+        <span class="c1"># to ensure these are passed to the instances</span>
+        <span class="n">backend_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">param</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="s1">&#39;raise_on_exception&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformers</span><span class="p">:</span>
+            <span class="n">tr</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">backend_kwargs</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">tr</span>
+        <span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">learners</span><span class="p">:</span>
+            <span class="n">lr</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="o">**</span><span class="n">backend_kwargs</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">lr</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">__fitted__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fitted status&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_static_params</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">o</span><span class="o">.</span><span class="n">__fitted__</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">learners</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformers</span><span class="p">])</span>
+
+<div class="viewcode-block" id="Group.get_params"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.Group.get_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Group</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">deep</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">out</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="n">deep</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">out</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="k">return</span> <span class="n">out</span></div></div>
+
+
+<div class="viewcode-block" id="make_group"><a class="viewcode-back" href="../../../module/mlens.parallel.handles.html#mlens.parallel.make_group">[docs]</a><span class="k">def</span> <span class="nf">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span>
+               <span class="n">learner_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">transformer_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creating a :class:`Group` from a set learners and transformers</span>
+
+<span class="sd">    Utility function for creating mapping a set of estimators and</span>
+<span class="sd">    preprocessing pipelines to a :class:`Group` of</span>
+<span class="sd">    :class:`~mlens.parallel.learner.Learner` and</span>
+<span class="sd">    :class:`~mlens.parallel.learner.Transformer` instances.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    indexer : instance or None, default = None</span>
+<span class="sd">        Indexer instance to use. See :module:`mlens.index` for details.</span>
+
+<span class="sd">    estimators : dict of lists or list of estimators.</span>
+<span class="sd">        If ``preprocessing`` is ``None`` or ``list``, ``estimators`` should</span>
+<span class="sd">        be a ``list``. The list can either contain estimator instances,</span>
+<span class="sd">        named tuples of estimator instances, or a combination of both. ::</span>
+
+<span class="sd">            option_1 = [estimator_1, estimator_2]</span>
+<span class="sd">            option_2 = [(&quot;est-1&quot;, estimator_1), (&quot;est-2&quot;, estimator_2)]</span>
+<span class="sd">            option_3 = [estimator_1, (&quot;est-2&quot;, estimator_2)]</span>
+
+<span class="sd">        If different preprocessing pipelines are desired, a dictionary</span>
+<span class="sd">        that maps estimators to preprocessing pipelines must be passed.</span>
+<span class="sd">        The names of the estimator dictionary must correspond to the</span>
+<span class="sd">        names of the estimator dictionary. ::</span>
+
+<span class="sd">            preprocessing_cases = {&quot;case-1&quot;: [trans_1, trans_2].</span>
+<span class="sd">                                   &quot;case-2&quot;: [alt_trans_1, alt_trans_2]}</span>
+
+<span class="sd">            estimators = {&quot;case-1&quot;: [est_a, est_b].</span>
+<span class="sd">                          &quot;case-2&quot;: [est_c, est_d]}</span>
+
+<span class="sd">        The lists for each dictionary entry can be any of ``option_1``,</span>
+<span class="sd">        ``option_2`` and ``option_3``.</span>
+
+
+<span class="sd">    preprocessing : dict of lists or list, optional (default = None)</span>
+<span class="sd">        preprocessing pipelines for given layer. If</span>
+<span class="sd">        the same preprocessing applies to all estimators, ``preprocessing``</span>
+<span class="sd">        should be a list of transformer instances. The list can contain the</span>
+<span class="sd">        instances directly, named tuples of transformers,</span>
+<span class="sd">        or a combination of both. ::</span>
+
+<span class="sd">            option_1 = [transformer_1, transformer_2]</span>
+<span class="sd">            option_2 = [(&quot;trans-1&quot;, transformer_1),</span>
+<span class="sd">                        (&quot;trans-2&quot;, transformer_2)]</span>
+<span class="sd">            option_3 = [transformer_1, (&quot;trans-2&quot;, transformer_2)]</span>
+
+<span class="sd">        If different preprocessing pipelines are desired, a dictionary</span>
+<span class="sd">        that maps preprocessing pipelines must be passed. The names of the</span>
+<span class="sd">        preprocessing dictionary must correspond to the names of the</span>
+<span class="sd">        estimator dictionary. ::</span>
+
+<span class="sd">            preprocessing_cases = {&quot;case-1&quot;: [trans_1, trans_2].</span>
+<span class="sd">                                   &quot;case-2&quot;: [alt_trans_1, alt_trans_2]}</span>
+
+<span class="sd">            estimators = {&quot;case-1&quot;: [est_a, est_b].</span>
+<span class="sd">                          &quot;case-2&quot;: [est_c, est_d]}</span>
+
+<span class="sd">        The lists for each dictionary entry can be any of ``option_1``,</span>
+<span class="sd">        ``option_2`` and ``option_3``.</span>
+
+<span class="sd">    transformer_kwargs : dict, optional</span>
+<span class="sd">        Keyword arguments to pass to the</span>
+<span class="sd">        :class:`~mlens.parallel.learner.Transformer` instances.</span>
+
+<span class="sd">    learner_kwargs : dict, optional</span>
+<span class="sd">        Keyword arguments to pass to the</span>
+<span class="sd">        :class:`~mlens.parallel.learner.Learner` instances.</span>
+
+<span class="sd">    name : str, optional</span>
+<span class="sd">        Name of group. Should be unique.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preprocessing</span><span class="p">,</span> <span class="n">estimators</span> <span class="o">=</span> <span class="n">check_instances</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">learner_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">learner_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">transformer_kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">transformer_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">transformers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Transformer</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="n">return_y</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+                                <span class="n">name</span><span class="o">=</span><span class="n">case_name</span><span class="p">,</span> <span class="o">**</span><span class="n">transformer_kwargs</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">case_name</span><span class="p">,</span> <span class="n">tr</span> <span class="ow">in</span> <span class="n">preprocessing</span><span class="p">]</span>
+
+    <span class="n">learners</span> <span class="o">=</span> <span class="p">[</span><span class="n">Learner</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">est</span><span class="p">,</span> <span class="n">preprocess</span><span class="o">=</span><span class="n">case_name</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">learner_name</span><span class="p">,</span> <span class="o">**</span><span class="n">learner_kwargs</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">case_name</span><span class="p">,</span> <span class="n">learner_name</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">estimators</span><span class="p">]</span>
+
+    <span class="n">group</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="n">learners</span><span class="o">=</span><span class="n">learners</span><span class="p">,</span>
+                  <span class="n">transformers</span><span class="o">=</span><span class="n">transformers</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">group</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

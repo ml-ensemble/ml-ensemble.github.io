@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.index.fold &mdash; mlens 0.2.0.dev0 documentation</title>
+  <title>mlens.index.fold &mdash; mlens 0.2.0 documentation</title>
   
 
   
@@ -32,9 +32,9 @@
   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   
-    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
-  
     <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
   
     <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../../../index.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -100,162 +100,163 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../config.html">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
-</ul>
-<p class="caption"><span class="caption-text">High-level API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-backend"><span class="hidden-section">set_backend</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Mechanics</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Details</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Additional Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Package index</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#run"><span class="hidden-section">run</span></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metrics.html">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization.html">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
 </ul>
 </li>
 </ul>
@@ -336,7 +337,7 @@
 <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseIndex</span>
 
 
-<div class="viewcode-block" id="FoldIndex"><a class="viewcode-back" href="../../../module/mlens.index.fold.html#mlens.index.FoldIndex">[docs]</a><span class="k">class</span> <span class="nc">FoldIndex</span><span class="p">(</span><span class="n">BaseIndex</span><span class="p">):</span>
+<div class="viewcode-block" id="FoldIndex"><a class="viewcode-back" href="../../../mod_index.html#mlens.index.FoldIndex">[docs]</a><span class="k">class</span> <span class="nc">FoldIndex</span><span class="p">(</span><span class="n">BaseIndex</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;Indexer that generates the full size of ``X``.</span>
 
@@ -374,7 +375,7 @@
 <span class="sd">    Creating arrays of folds and checking overlap</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy as np</span>
-<span class="sd">    &gt;&gt;&gt; from mlens.indexer import FoldIndex</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.index import FoldIndex</span>
 <span class="sd">    &gt;&gt;&gt; X = np.arange(10)</span>
 <span class="sd">    &gt;&gt;&gt; print(&quot;Data set: %r&quot; % X)</span>
 <span class="sd">    &gt;&gt;&gt; print()</span>
@@ -396,23 +397,20 @@
 <span class="sd">    &gt;&gt;&gt;</span>
 <span class="sd">    &gt;&gt;&gt; print(&quot;No overlap between train set and test set.&quot;)</span>
 <span class="sd">    Data set: array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
-
 <span class="sd">    TRAIN IDX:     array([3, 4, 5, 6, 7, 8, 9]) | TEST IDX: array([0, 1, 2])</span>
 <span class="sd">    TRAIN IDX:     array([0, 1, 2, 6, 7, 8, 9]) | TEST IDX: array([3, 4, 5])</span>
 <span class="sd">    TRAIN IDX:  array([0, 1, 2, 3, 4, 5, 8, 9]) | TEST IDX:    array([6, 7])</span>
 <span class="sd">    TRAIN IDX:  array([0, 1, 2, 3, 4, 5, 6, 7]) | TEST IDX:    array([8, 9])</span>
-
 <span class="sd">    TRAIN SET:     array([3, 4, 5, 6, 7, 8, 9]) | TEST SET: array([0, 1, 2])</span>
 <span class="sd">    TRAIN SET:     array([0, 1, 2, 6, 7, 8, 9]) | TEST SET: array([3, 4, 5])</span>
 <span class="sd">    TRAIN SET:  array([0, 1, 2, 3, 4, 5, 8, 9]) | TEST SET:    array([6, 7])</span>
 <span class="sd">    TRAIN SET:  array([0, 1, 2, 3, 4, 5, 6, 7]) | TEST SET:    array([8, 9])</span>
-
 <span class="sd">    No overlap between train set and test set.</span>
 
-<span class="sd">    Passing ``folds = 1`` without raising exception.</span>
+<span class="sd">    Passing ``folds = 1`` without raising exception:</span>
 
 <span class="sd">    &gt;&gt;&gt; import numpy as np</span>
-<span class="sd">    &gt;&gt;&gt; from mlens.indexer import FoldIndex</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.index import FoldIndex</span>
 <span class="sd">    &gt;&gt;&gt; X = np.arange(3)</span>
 <span class="sd">    &gt;&gt;&gt; print(&quot;Data set: %r&quot; % X)</span>
 <span class="sd">    &gt;&gt;&gt; print()</span>
@@ -424,23 +422,19 @@
 <span class="sd">    /../mlens/base/indexer.py:167: UserWarning: &#39;folds&#39; is 1, will return</span>
 <span class="sd">    full index as both training set and test set.</span>
 <span class="sd">    warnings.warn(&quot;&#39;folds&#39; is 1, will return full index as &quot;</span>
-
 <span class="sd">    Data set: array([0, 1, 2])</span>
 <span class="sd">    TRAIN IDX: array([0, 1, 2]) | TEST IDX: array([0, 1, 2])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                 <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">raise_on_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">partitions</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">raise_on_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FoldIndex</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">folds</span> <span class="o">=</span> <span class="n">folds</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span> <span class="o">=</span> <span class="n">raise_on_exception</span>
 
         <span class="k">if</span> <span class="n">X</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-<div class="viewcode-block" id="FoldIndex.fit"><a class="viewcode-back" href="../../../module/mlens.index.fold.html#mlens.index.FoldIndex.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="FoldIndex.fit"><a class="viewcode-back" href="../../../mod_index.html#mlens.index.FoldIndex.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method for storing array data.</span>
 
 <span class="sd">        Parameters</span>
@@ -461,7 +455,7 @@
         <span class="n">check_full_index</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">n_test_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples</span> <span class="o">=</span> <span class="n">n</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="nf">_gen_indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -503,7 +497,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.2.0.dev0',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

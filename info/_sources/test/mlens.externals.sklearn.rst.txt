@@ -1,0 +1,54 @@
+mlens\.externals\.sklearn package
+=================================
+
+Submodules
+----------
+
+mlens\.externals\.sklearn\.base module
+--------------------------------------
+
+.. automodule:: mlens.externals.sklearn.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.sklearn\.exceptions module
+--------------------------------------------
+
+.. automodule:: mlens.externals.sklearn.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.sklearn\.scorer module
+----------------------------------------
+
+.. automodule:: mlens.externals.sklearn.scorer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.sklearn\.type\_of\_target module
+--------------------------------------------------
+
+.. automodule:: mlens.externals.sklearn.type_of_target
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.sklearn\.validation module
+--------------------------------------------
+
+.. automodule:: mlens.externals.sklearn.validation
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.externals.sklearn
+    :members:
+    :undoc-members:
+    :show-inheritance:

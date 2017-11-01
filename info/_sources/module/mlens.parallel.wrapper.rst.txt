@@ -1,0 +1,7 @@
+mlens\.parallel\.wrapper module
+===============================
+
+.. automodule:: mlens.parallel.wrapper
+    :members:
+    :undoc-members:
+    :show-inheritance:

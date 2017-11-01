@@ -1,0 +1,1555 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.model_selection package &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.model_selection package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/test/mlens.model_selection.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlens-model-selection-package">
+<h1>mlens.model_selection package<a class="headerlink" href="#mlens-model-selection-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mlens.model_selection.ensemble_transformer">
+<span id="mlens-model-selection-ensemble-transformer-module"></span><h2>mlens.model_selection.ensemble_transformer module<a class="headerlink" href="#module-mlens.model_selection.ensemble_transformer" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Ensemble transformer class. Fully integrable with Scikit-learn.</p>
+<dl class="class">
+<dt id="mlens.model_selection.ensemble_transformer.EnsembleTransformer">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.ensemble_transformer.</code><code class="descname">EnsembleTransformer</code><span class="sig-paren">(</span><em>shuffle=False</em>, <em>random_state=None</em>, <em>raise_on_exception=True</em>, <em>array_check=2</em>, <em>verbose=False</em>, <em>n_jobs=-1</em>, <em>layers=None</em>, <em>backend=None</em>, <em>sample_dim=20</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.ensemble_transformer.EnsembleTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.ensemble.html#mlens.ensemble.base.BaseEnsemble" title="mlens.ensemble.base.BaseEnsemble"><code class="xref py py-class docutils literal"><span class="pre">mlens.ensemble.base.BaseEnsemble</span></code></a></p>
+<p>Ensemble Transformer class.</p>
+<p>The Ensemble class allows users to build layers of an ensemble through a
+transformer API. The transformer is closely related to
+<code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code>, in that any accepted type of layer can be
+added. The transformer differs fundamentally in one significant aspect:
+when fitted, it will store a random sample of the training set together
+with the training dimensions, and if in a call to <code class="docutils literal"><span class="pre">transform</span></code>, the
+data to be transformed correspodns to the training set, the transformer
+will recreate the prediction matrix from the <code class="docutils literal"><span class="pre">fit</span></code> call. In contrast,
+a fitted ensemble will only use the base learners fitted on the full
+dataset, and as such predicting the training set will not reproduce the
+predictions from the <code class="docutils literal"><span class="pre">fit</span></code> call.</p>
+<p>The <a class="reference internal" href="#mlens.model_selection.ensemble_transformer.EnsembleTransformer" title="mlens.model_selection.ensemble_transformer.EnsembleTransformer"><code class="xref py py-class docutils literal"><span class="pre">EnsembleTransformer</span></code></a> is a powerful tool to use as a
+preprocessing pipeline in an <code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code> instance, as it would
+faithfully recreate the prediction matrix a potential meta learner would
+face. Hence, a user can ‘preprocess’ the training data with the
+<a class="reference internal" href="#mlens.model_selection.ensemble_transformer.EnsembleTransformer" title="mlens.model_selection.ensemble_transformer.EnsembleTransformer"><code class="xref py py-class docutils literal"><span class="pre">EnsembleTransformer</span></code></a> to generate k-fold base learner predictions,
+and then fit different meta learners (or higher-order layers) in a call
+to <code class="docutils literal"><span class="pre">evaluate</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be deprecated in 0.2.2.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code>, <code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to shuffle data before generating folds.</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = None</em>) – random seed if shuffling inputs.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to issue warnings on soft exceptions or raise error.
+Examples include lack of layers, bad inputs, and failed fit of an
+estimator in a layer. If set to <code class="docutils literal"><span class="pre">False</span></code>, warnings are issued instead
+but estimation continues unless exception is fatal. Note that this
+can result in unexpected behavior unless the exception is anticipated.</li>
+<li><strong>sample_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = 20</em>) – dimensionality of training set to sample. During a call to <cite>fit</cite>, a
+random sample of size [sample_dim, sample_dim] will be sampled from the
+training data, along with the dimensions of the training data. If in a
+call to <code class="docutils literal"><span class="pre">transform</span></code>, sampling the same indices on the array to
+transform gives the same sample matrix, the transformer will reproduce
+the predictions from the call to <code class="docutils literal"><span class="pre">fit</span></code>, as opposed to using the
+base learners fitted on the full training data.</li>
+<li><strong>raise_on_exception</strong> – whether to issue warnings on soft exceptions or raise error.
+Examples include lack of layers, bad inputs, and failed fit of an
+estimator in a layer. If set to <code class="docutils literal"><span class="pre">False</span></code>, warnings are issued instead
+but estimation continues unless exception is fatal. Note that this
+can result in unexpected behavior unless the exception is anticipated.</li>
+<li><strong>array_check</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = 2</em>) – level of strictness in checking input arrays. For <code class="docutils literal"><span class="pre">0</span></code> not checks are
+made. For <cite>1`</cite>, will check <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> for inconsistencies and
+warn when format looks suspicious, but retain original format. With
+<code class="docutils literal"><span class="pre">2</span></code>, Scikit-learn’s array checks are imposed, which converts
+<code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to numpy arrays and raises error if conversion fails.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = False</em>) – level of verbosity. <code class="docutils literal"><span class="pre">0</span></code> (or <code class="docutils literal"><span class="pre">False</span></code>) is silent, <code class="docutils literal"><span class="pre">1</span></code> (or <code class="docutils literal"><span class="pre">True</span></code>)
+outputs messages at start and finish. <code class="docutils literal"><span class="pre">2</span></code> print messages for
+each layer.</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = -1</em><em>)</em>) – number of CPU cores to use for fitting and prediction.</li>
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em> (</em><em>default = 'threading'</em><em>)</em>) – backend infrastructure to use during call to
+<a class="reference internal" href="mlens.externals.joblib.html#mlens.externals.joblib.Parallel" title="mlens.externals.joblib.Parallel"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.joblib.Parallel</span></code></a>. See Joblib for further
+documentation. To change global backend, call
+<a class="reference internal" href="mlens.html#mlens.config.set_backend" title="mlens.config.set_backend"><code class="xref py py-func docutils literal"><span class="pre">mlens.config.set_backend()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="k">import</span> <span class="n">EnsembleTransformer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="k">import</span> <span class="n">Evaluator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">rmse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">uniform</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">EnsembleTransformer</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">SVR</span><span class="p">(),</span> <span class="n">Lasso</span><span class="p">()])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evl</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="n">make_scorer</span><span class="p">(</span><span class="n">rmse</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pr&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">)]})</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draws</span> <span class="o">=</span> <span class="p">{(</span><span class="s1">&#39;pr&#39;</span><span class="p">,</span> <span class="s1">&#39;svr&#39;</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">100</span><span class="p">)},</span>
+<span class="gp">... </span>         <span class="p">(</span><span class="s1">&#39;pr&#39;</span><span class="p">,</span> <span class="s1">&#39;lasso&#39;</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">uniform</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)}</span>
+<span class="gp">... </span>        <span class="p">}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;pr&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">SVR</span><span class="p">(),</span> <span class="n">Lasso</span><span class="p">()]},</span> <span class="n">draws</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">evl</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+<span class="go">                 test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s                           params</span>
+<span class="go">pr  lasso           6.899         0.216          6.100          1.078       0.543       0.126        0.000        0.000      {&#39;alpha&#39;: 0.012075194935940151}</span>
+<span class="go">pr  svr            10.164         1.363          5.568          1.575       0.365       0.025        0.003        0.002             {&#39;C&#39;: 12.07519493594015}</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="mlens.model_selection.ensemble_transformer.EnsembleTransformer.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>cls</em>, <em>estimators</em>, <em>preprocessing=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.ensemble_transformer.EnsembleTransformer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add layer to ensemble.</p>
+<p>For full set of optional arguments, see the ensemble API for the
+specified type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – <p>layer class. Accepted types are:</p>
+<blockquote>
+<div><ul>
+<li>’blend’ : blend ensemble</li>
+<li>’subsemble’ : subsemble</li>
+<li>’stack’ : super learner</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>estimators</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>instance</em>) – <p>estimators constituting the layer. If preprocessing is none and the
+layer is meant to be the meta estimator, it is permissible to pass
+a single instantiated estimator. If <code class="docutils literal"><span class="pre">preprocessing</span></code> is
+<code class="docutils literal"><span class="pre">None</span></code> or <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">estimators</span></code> should be a <code class="docutils literal"><span class="pre">list</span></code>.
+The list can either contain estimator instances,
+named tuples of estimator instances, or a combination of both.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;est-1&quot;</span><span class="p">,</span> <span class="n">estimator_1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps estimators to preprocessing pipelines must be passed.
+The names of the estimator dictionary must correspond to the
+names of the estimator dictionary.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">],</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">],</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal"><span class="pre">option_1</span></code>,
+<code class="docutils literal"><span class="pre">option_2</span></code> and <code class="docutils literal"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em><em> (</em><em>default = None</em><em>)</em>) – <p>preprocessing pipelines for given layer. If
+the same preprocessing applies to all estimators, <code class="docutils literal"><span class="pre">preprocessing</span></code>
+should be a list of transformer instances. The list can contain the
+instances directly, named tuples of transformers,
+or a combination of both.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;trans-1&quot;</span><span class="p">,</span> <span class="n">transformer_1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps preprocessing pipelines must be passed. The names of the
+preprocessing dictionary must correspond to the names of the
+estimator dictionary.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">],</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">],</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal"><span class="pre">option_1</span></code>,
+<code class="docutils literal"><span class="pre">option_2</span></code> and <code class="docutils literal"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments to instantiate layer with. See
+respective ensemble for further details.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – ensemble instance with layer instantiated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.model_selection.ensemble_transformer.EnsembleTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.ensemble_transformer.EnsembleTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the transformer.</p>
+<p>Same as the fit method on an ensemble, except that a sample of X is
+stored for future training set comparison.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – output vector to trained estimators on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.model_selection.ensemble_transformer.EnsembleTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.ensemble_transformer.EnsembleTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform input.</p>
+<p>If the input is training set, the transformer will
+reproduce the prediction array from the call to <code class="docutils literal"><span class="pre">fit</span></code>. If X is another
+data set, predictions are generated using base learners fitted on the
+full training data (equivalent to calling <code class="docutils literal"><span class="pre">predict</span></code> on an ensemble.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – output vector to trained estimators on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.model_selection.model_selection">
+<span id="mlens-model-selection-model-selection-module"></span><h2>mlens.model_selection.model_selection module<a class="headerlink" href="#module-mlens.model_selection.model_selection" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Model selection suite for tuning and benchmarking a set of estimators.</p>
+<dl class="class">
+<dt id="mlens.model_selection.model_selection.BaseEval">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.model_selection.</code><code class="descname">BaseEval</code><span class="sig-paren">(</span><em>verbose=False</em>, <em>array_check=2</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#BaseEval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.BaseEval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.parallel.html#mlens.parallel.base.IndexMixin" title="mlens.parallel.base.IndexMixin"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.base.IndexMixin</span></code></a>, <a class="reference internal" href="mlens.parallel.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.base.BaseBackend</span></code></a></p>
+<p>Base Evaluation class.</p>
+<dl class="method">
+<dt id="mlens.model_selection.model_selection.BaseEval.collect">
+<code class="descname">collect</code><span class="sig-paren">(</span><em>path</em>, <em>case</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#BaseEval.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.BaseEval.collect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect cache estimators</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.model_selection.model_selection.BaseEval.raw_data">
+<code class="descname">raw_data</code><a class="headerlink" href="#mlens.model_selection.model_selection.BaseEval.raw_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cross validated scores</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.model_selection.model_selection.Benchmark">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.model_selection.</code><code class="descname">Benchmark</code><span class="sig-paren">(</span><em>verbose=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Benchmark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.Benchmark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.model_selection.model_selection.BaseEval" title="mlens.model_selection.model_selection.BaseEval"><code class="xref py py-class docutils literal"><span class="pre">mlens.model_selection.model_selection.BaseEval</span></code></a></p>
+<p>Benchmark engine without hyper-parameter grid search.</p>
+<p>A simplified version of the <a class="reference internal" href="#mlens.model_selection.model_selection.Evaluator" title="mlens.model_selection.model_selection.Evaluator"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> that performs a single
+pass over a set of estimators and preprocessing pipelines for
+benchmarking purposes.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Verbosity during estimation.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Optional keyword argument to <a class="reference internal" href="mlens.parallel.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.model_selection.model_selection.Benchmark.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>scorer</em>, <em>cv</em>, <em>estimators</em>, <em>preprocessing=None</em>, <em>error_score=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Benchmark.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.Benchmark.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run benchmarking job on given data with given estimators.</p>
+<p>Fit preprocessing if applicable and evaluate estimators if applicable.
+The method automatically determines whether to only run preprocessing,
+only evaluation (possibly on previously fitted preprocessing), or both.
+Calling <code class="docutils literal"><span class="pre">fit</span></code> will overwrite previously stored data where applicable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input data to preprocess and create folds from.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>scorer</strong> (<em>function</em>) – <p>a scoring function that follows the Scikit-learn API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A user defines scoring function, <code class="docutils literal"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code> can be
+made into a scorer by calling on the ML-Ensemble implementation of
+Scikit-learn’s <code class="docutils literal"><span class="pre">make_scorer</span></code>. NOTE: do <strong>not</strong> use Scikit-learn’s
+<code class="docutils literal"><span class="pre">make_scorer</span></code> if the Evaluator is to be pickled.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">scoring_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – score to assign when fitting an estimator fails. If <code class="docutils literal"><span class="pre">None</span></code>, the
+evaluator will raise an error.</li>
+<li><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>obj</em><em> (</em><em>default = 2</em><em>)</em>) – cross validation folds to use. Either pass a <code class="docutils literal"><span class="pre">KFold</span></code> class
+that obeys the Scikit-learn API.</li>
+<li><strong>estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>set of estimators to use. If no preprocessing is desired or if
+only on preprocessing pipeline should apply to all, pass a list of
+estimators. The list can contain elements of named tuples
+(i.e. <code class="docutils literal"><span class="pre">('my_name',</span> <span class="pre">my_est)</span></code>).</p>
+<p>If different estimators should be mapped to preprocessing cases,
+a dictionary that maps estimators to each case should
+be passed: <code class="docutils literal"><span class="pre">{'case_a':</span> <span class="pre">list_of_est,</span> <span class="pre">...}</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>preprocessing cases to consider. Pass a dictionary mapping a
+case name to a preprocessing pipeline.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case_name&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – Fitted Benchmark instance. Results available in the
+<code class="docutils literal"><span class="pre">results</span></code> attribute.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inst</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.model_selection.model_selection.Evaluator">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.model_selection.</code><code class="descname">Evaluator</code><span class="sig-paren">(</span><em>scorer</em>, <em>cv=2</em>, <em>shuffle=True</em>, <em>random_state=None</em>, <em>error_score=None</em>, <em>metrics=None</em>, <em>array_check=2</em>, <em>verbose=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Evaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.Evaluator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.model_selection.model_selection.BaseEval" title="mlens.model_selection.model_selection.BaseEval"><code class="xref py py-class docutils literal"><span class="pre">mlens.model_selection.model_selection.BaseEval</span></code></a></p>
+<p>Model selection across several estimators and preprocessing pipelines.</p>
+<p>The <a class="reference internal" href="#mlens.model_selection.model_selection.Evaluator" title="mlens.model_selection.model_selection.Evaluator"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> allows users to evaluate several models in one call
+across a set preprocessing pipelines. The class is useful for comparing
+a set of estimators, especially when several preprocessing pipelines is to
+be evaluated. By pre-making all folds and iteratively fitting estimators
+with different parameter settings, array slicing and preprocessing is kept
+to a minimum. This can greatly reduced fit time compared to
+creating pipeline classes for each estimator and pipeline and fitting them
+one at a time in an Scikit-learn
+<code class="xref py py-class docutils literal"><span class="pre">sklearn.model_selection.GridSearch</span></code> class.</p>
+<p>Preprocessing can be done before making any evaluation, and several
+evaluations can be made on the pre-made folds. Current implementation
+relies on a randomized grid search, so parameter grids must be specified as
+SciPy distributions (or a class that accepts an <code class="docutils literal"><span class="pre">rvs</span></code> method).</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scorer</strong> (<em>function</em>) – <p>a scoring function that follows the Scikit-learn API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A user defines scoring function, <code class="docutils literal"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code> can be
+made into a scorer by calling on the ML-Ensemble implementation of
+Scikit-learn’s <code class="docutils literal"><span class="pre">make_scorer</span></code>. NOTE: do <strong>not</strong> use Scikit-learn’s
+<code class="docutils literal"><span class="pre">make_scorer</span></code> if the Evaluator is to be pickled.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">scoring_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – score to assign when fitting an estimator fails. If <code class="docutils literal"><span class="pre">None</span></code>, the
+evaluator will raise an error.</li>
+<li><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>obj</em><em>, </em><em>default = 2</em>) – cross validation folds to use. Either pass a <code class="docutils literal"><span class="pre">KFold</span></code> class
+that obeys the Scikit-learn API.</li>
+<li><strong>metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – list of aggregation metrics to calculate on scores. Default is
+mean and standard deviation.</li>
+<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to shuffle input data before creating cv folds.</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – seed for creating folds (if shuffled) and parameter draws</li>
+<li><strong>array_check</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = 2</em>) – <p>level of strictness in checking input arrays.</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal"><span class="pre">array_check</span> <span class="pre">=</span> <span class="pre">0</span></code> will not check <code class="docutils literal"><span class="pre">X</span></code> or <code class="docutils literal"><span class="pre">y</span></code></li>
+<li><code class="docutils literal"><span class="pre">array_check</span> <span class="pre">=</span> <span class="pre">1</span></code> will check <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> for
+inconsistencies and warn when format looks suspicious,
+but retain original format.</li>
+<li><code class="docutils literal"><span class="pre">array_check</span> <span class="pre">=</span> <span class="pre">2</span></code> will impose Scikit-learn array checks,
+which converts <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to numpy arrays and raises
+an error if conversion fails.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = -1</em>) – number of CPU cores to use.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = False</em>) – <p>level of printed messages. Levels:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><code class="docutils literal"><span class="pre">verbose=1</span></code>: Message at start and end with total time</li>
+<li><code class="docutils literal"><span class="pre">verbose=2</span></code>: Additional messages for each sub-job (preprocess and evaluation)</li>
+<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">in</span> <span class="pre">[3,</span> <span class="pre">14]</span></code>: Additional messages with job completion status at increasing increasing frequency</li>
+<li><code class="docutils literal"><span class="pre">Verbose</span> <span class="pre">&gt;=</span> <span class="pre">15</span></code>: prints each job completed as [case].[est].[draw].[fold]</li>
+</ol>
+</div></blockquote>
+<p>If <code class="docutils literal"><span class="pre">verbose&gt;=20</span></code>, prints to <code class="docutils literal"><span class="pre">sys.stderr</span></code>, else <code class="docutils literal"><span class="pre">sys.stdout</span></code>.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.model_selection.model_selection.Evaluator.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>estimators=None</em>, <em>param_dicts=None</em>, <em>n_iter=2</em>, <em>preprocessing=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Evaluator.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.Evaluator.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit</p>
+<p>Fit preprocessing if applicable and evaluate estimators if applicable.
+The method automatically determines whether to only run preprocessing,
+only evaluation (possibly on previously fitted preprocessing), or both.
+Calling <code class="docutils literal"><span class="pre">fit</span></code> will overwrite previously stored data where applicable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input data to preprocess and create folds from.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>set of estimators to use. If no preprocessing is desired or if
+only on preprocessing pipeline should apply to all, pass a list of
+estimators. The list can contain elements of named tuples
+(i.e. <code class="docutils literal"><span class="pre">('my_name',</span> <span class="pre">my_est)</span></code>).</p>
+<p>If different estimators should be mapped to preprocessing cases,
+a dictionary that maps estimators to each case should
+be passed: <code class="docutils literal"><span class="pre">{'case_a':</span> <span class="pre">list_of_est,</span> <span class="pre">...}</span></code>.</p>
+</li>
+<li><strong>param_dicts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>parameter distribution mapping for estimators. Current
+implementation only supports randomized grid search. Passed
+distribution object must have an <code class="docutils literal"><span class="pre">rvs</span></code> method.
+See <code class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></code> for details.</p>
+<p>There is quite some flexibility in specifying <code class="docutils literal"><span class="pre">param_dicts</span></code>. If
+there is no preprocessing, or if all estimators are fitted on all
+preprocessing cases, the <code class="docutils literal"><span class="pre">param_dict</span></code> should have keys matching
+the names of the estimators.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">estimators</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">est</span><span class="p">),</span> <span class="n">est</span><span class="p">]</span>
+
+<span class="n">param_dicts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">},</span>
+               <span class="s1">&#39;est&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">}</span>
+              <span class="p">}</span>
+</pre></div>
+</div>
+<p>It is possible to specify different distributions for some or all
+preprocessing cases:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case-1&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,</span>
+                 <span class="s1">&#39;case-2&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">est</span><span class="p">),</span> <span class="n">est</span><span class="p">]</span>
+
+<span class="n">param_dicts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span>
+                   <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">},</span>
+               <span class="p">(</span><span class="s1">&#39;case-1&#39;</span><span class="p">,</span> <span class="s1">&#39;est&#39;</span><span class="p">):</span>
+                   <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">}</span>
+               <span class="p">(</span><span class="s1">&#39;case-2&#39;</span><span class="p">,</span> <span class="s1">&#39;est&#39;</span><span class="p">):</span>
+                   <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">,</span>
+                    <span class="s1">&#39;param-2&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">}</span>
+              <span class="p">}</span>
+</pre></div>
+</div>
+<p>If estimators are mapped on a per-preprocessing case basis as a
+dictionary, <code class="docutils literal"><span class="pre">param_dict</span></code> must have key entries of the form
+<code class="docutils literal"><span class="pre">(case_name,</span> <span class="pre">est_name)</span></code>.</p>
+</li>
+<li><strong>n_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of parameter draws to evaluate.</li>
+<li><strong>preprocessing</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>preprocessing cases to consider. Pass a dictionary mapping a
+case name to a preprocessing pipeline.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case_name&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – class instance with stored estimator evaluation results in
+the <code class="docutils literal"><span class="pre">results</span></code> attribute.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.model_selection.model_selection.benchmark">
+<code class="descclassname">mlens.model_selection.model_selection.</code><code class="descname">benchmark</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>scorer</em>, <em>cv</em>, <em>estimators</em>, <em>preprocessing</em>, <em>error_score=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#benchmark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.model_selection.benchmark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Benchmark estimators across preprocessing pipelines.</p>
+<p><a class="reference internal" href="#mlens.model_selection.model_selection.benchmark" title="mlens.model_selection.model_selection.benchmark"><code class="xref py py-func docutils literal"><span class="pre">benchmark()</span></code></a> runs cross validation scoring of a set of estimators,
+possible against a set of preprocessing pipelines. Equivalent to</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">evl</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input data to preprocess and create folds from.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>scorer</strong> (<em>function</em>) – <p>a scoring function that follows the Scikit-learn API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A user defines scoring function, <code class="docutils literal"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code> can be
+made into a scorer by calling on the ML-Ensemble implementation of
+Scikit-learn’s <code class="docutils literal"><span class="pre">make_scorer</span></code>. NOTE: do <strong>not</strong> use Scikit-learn’s
+<code class="docutils literal"><span class="pre">make_scorer</span></code> if the Evaluator is to be pickled.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">scoring_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – score to assign when fitting an estimator fails. If <code class="docutils literal"><span class="pre">None</span></code>, the
+evaluator will raise an error.</li>
+<li><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>obj</em><em> (</em><em>default = 2</em><em>)</em>) – cross validation folds to use. Either pass a <code class="docutils literal"><span class="pre">KFold</span></code> class
+that obeys the Scikit-learn API.</li>
+<li><strong>estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>set of estimators to use. If no preprocessing is desired or if
+only on preprocessing pipeline should apply to all, pass a list of
+estimators. The list can contain elements of named tuples
+(i.e. <code class="docutils literal"><span class="pre">('my_name',</span> <span class="pre">my_est)</span></code>).</p>
+<p>If different estimators should be mapped to preprocessing cases,
+a dictionary that maps estimators to each case should
+be passed: <code class="docutils literal"><span class="pre">{'case_a':</span> <span class="pre">list_of_est,</span> <span class="pre">...}</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>preprocessing cases to consider. Pass a dictionary mapping a
+case name to a preprocessing pipeline.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case_name&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,}</span>
+</pre></div>
+</div>
+</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Optional arguments to <a class="reference internal" href="mlens.parallel.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> – Summary output that shows data for best mean test scores, such as
+test and train scores, std, fit times, and params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.model_selection">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mlens.model_selection" title="Permalink to this headline">¶</a></h2>
+<p>ML-Ensemble</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Model selection suite for ensemble learning.</p>
+<dl class="class">
+<dt id="mlens.model_selection.Evaluator">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.</code><code class="descname">Evaluator</code><span class="sig-paren">(</span><em>scorer</em>, <em>cv=2</em>, <em>shuffle=True</em>, <em>random_state=None</em>, <em>error_score=None</em>, <em>metrics=None</em>, <em>array_check=2</em>, <em>verbose=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Evaluator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.Evaluator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.model_selection.model_selection.BaseEval" title="mlens.model_selection.model_selection.BaseEval"><code class="xref py py-class docutils literal"><span class="pre">mlens.model_selection.model_selection.BaseEval</span></code></a></p>
+<p>Model selection across several estimators and preprocessing pipelines.</p>
+<p>The <a class="reference internal" href="#mlens.model_selection.Evaluator" title="mlens.model_selection.Evaluator"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> allows users to evaluate several models in one call
+across a set preprocessing pipelines. The class is useful for comparing
+a set of estimators, especially when several preprocessing pipelines is to
+be evaluated. By pre-making all folds and iteratively fitting estimators
+with different parameter settings, array slicing and preprocessing is kept
+to a minimum. This can greatly reduced fit time compared to
+creating pipeline classes for each estimator and pipeline and fitting them
+one at a time in an Scikit-learn
+<code class="xref py py-class docutils literal"><span class="pre">sklearn.model_selection.GridSearch</span></code> class.</p>
+<p>Preprocessing can be done before making any evaluation, and several
+evaluations can be made on the pre-made folds. Current implementation
+relies on a randomized grid search, so parameter grids must be specified as
+SciPy distributions (or a class that accepts an <code class="docutils literal"><span class="pre">rvs</span></code> method).</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scorer</strong> (<em>function</em>) – <p>a scoring function that follows the Scikit-learn API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A user defines scoring function, <code class="docutils literal"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code> can be
+made into a scorer by calling on the ML-Ensemble implementation of
+Scikit-learn’s <code class="docutils literal"><span class="pre">make_scorer</span></code>. NOTE: do <strong>not</strong> use Scikit-learn’s
+<code class="docutils literal"><span class="pre">make_scorer</span></code> if the Evaluator is to be pickled.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">scoring_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – score to assign when fitting an estimator fails. If <code class="docutils literal"><span class="pre">None</span></code>, the
+evaluator will raise an error.</li>
+<li><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>obj</em><em>, </em><em>default = 2</em>) – cross validation folds to use. Either pass a <code class="docutils literal"><span class="pre">KFold</span></code> class
+that obeys the Scikit-learn API.</li>
+<li><strong>metrics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – list of aggregation metrics to calculate on scores. Default is
+mean and standard deviation.</li>
+<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to shuffle input data before creating cv folds.</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – seed for creating folds (if shuffled) and parameter draws</li>
+<li><strong>array_check</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = 2</em>) – <p>level of strictness in checking input arrays.</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal"><span class="pre">array_check</span> <span class="pre">=</span> <span class="pre">0</span></code> will not check <code class="docutils literal"><span class="pre">X</span></code> or <code class="docutils literal"><span class="pre">y</span></code></li>
+<li><code class="docutils literal"><span class="pre">array_check</span> <span class="pre">=</span> <span class="pre">1</span></code> will check <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> for
+inconsistencies and warn when format looks suspicious,
+but retain original format.</li>
+<li><code class="docutils literal"><span class="pre">array_check</span> <span class="pre">=</span> <span class="pre">2</span></code> will impose Scikit-learn array checks,
+which converts <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to numpy arrays and raises
+an error if conversion fails.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = -1</em>) – number of CPU cores to use.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = False</em>) – <p>level of printed messages. Levels:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><code class="docutils literal"><span class="pre">verbose=1</span></code>: Message at start and end with total time</li>
+<li><code class="docutils literal"><span class="pre">verbose=2</span></code>: Additional messages for each sub-job (preprocess and evaluation)</li>
+<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">in</span> <span class="pre">[3,</span> <span class="pre">14]</span></code>: Additional messages with job completion status at increasing increasing frequency</li>
+<li><code class="docutils literal"><span class="pre">Verbose</span> <span class="pre">&gt;=</span> <span class="pre">15</span></code>: prints each job completed as [case].[est].[draw].[fold]</li>
+</ol>
+</div></blockquote>
+<p>If <code class="docutils literal"><span class="pre">verbose&gt;=20</span></code>, prints to <code class="docutils literal"><span class="pre">sys.stderr</span></code>, else <code class="docutils literal"><span class="pre">sys.stdout</span></code>.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.model_selection.Evaluator.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>estimators=None</em>, <em>param_dicts=None</em>, <em>n_iter=2</em>, <em>preprocessing=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Evaluator.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.Evaluator.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit</p>
+<p>Fit preprocessing if applicable and evaluate estimators if applicable.
+The method automatically determines whether to only run preprocessing,
+only evaluation (possibly on previously fitted preprocessing), or both.
+Calling <code class="docutils literal"><span class="pre">fit</span></code> will overwrite previously stored data where applicable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input data to preprocess and create folds from.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>set of estimators to use. If no preprocessing is desired or if
+only on preprocessing pipeline should apply to all, pass a list of
+estimators. The list can contain elements of named tuples
+(i.e. <code class="docutils literal"><span class="pre">('my_name',</span> <span class="pre">my_est)</span></code>).</p>
+<p>If different estimators should be mapped to preprocessing cases,
+a dictionary that maps estimators to each case should
+be passed: <code class="docutils literal"><span class="pre">{'case_a':</span> <span class="pre">list_of_est,</span> <span class="pre">...}</span></code>.</p>
+</li>
+<li><strong>param_dicts</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>parameter distribution mapping for estimators. Current
+implementation only supports randomized grid search. Passed
+distribution object must have an <code class="docutils literal"><span class="pre">rvs</span></code> method.
+See <code class="xref py py-mod docutils literal"><span class="pre">scipy.stats</span></code> for details.</p>
+<p>There is quite some flexibility in specifying <code class="docutils literal"><span class="pre">param_dicts</span></code>. If
+there is no preprocessing, or if all estimators are fitted on all
+preprocessing cases, the <code class="docutils literal"><span class="pre">param_dict</span></code> should have keys matching
+the names of the estimators.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">estimators</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">est</span><span class="p">),</span> <span class="n">est</span><span class="p">]</span>
+
+<span class="n">param_dicts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">},</span>
+               <span class="s1">&#39;est&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">}</span>
+              <span class="p">}</span>
+</pre></div>
+</div>
+<p>It is possible to specify different distributions for some or all
+preprocessing cases:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case-1&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,</span>
+                 <span class="s1">&#39;case-2&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">est</span><span class="p">),</span> <span class="n">est</span><span class="p">]</span>
+
+<span class="n">param_dicts</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span>
+                   <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">},</span>
+               <span class="p">(</span><span class="s1">&#39;case-1&#39;</span><span class="p">,</span> <span class="s1">&#39;est&#39;</span><span class="p">):</span>
+                   <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">}</span>
+               <span class="p">(</span><span class="s1">&#39;case-2&#39;</span><span class="p">,</span> <span class="s1">&#39;est&#39;</span><span class="p">):</span>
+                   <span class="p">{</span><span class="s1">&#39;param-1&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">,</span>
+                    <span class="s1">&#39;param-2&#39;</span><span class="p">:</span> <span class="n">some_distribution</span><span class="p">}</span>
+              <span class="p">}</span>
+</pre></div>
+</div>
+<p>If estimators are mapped on a per-preprocessing case basis as a
+dictionary, <code class="docutils literal"><span class="pre">param_dict</span></code> must have key entries of the form
+<code class="docutils literal"><span class="pre">(case_name,</span> <span class="pre">est_name)</span></code>.</p>
+</li>
+<li><strong>n_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of parameter draws to evaluate.</li>
+<li><strong>preprocessing</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>preprocessing cases to consider. Pass a dictionary mapping a
+case name to a preprocessing pipeline.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case_name&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – class instance with stored estimator evaluation results in
+the <code class="docutils literal"><span class="pre">results</span></code> attribute.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.model_selection.EnsembleTransformer">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.</code><code class="descname">EnsembleTransformer</code><span class="sig-paren">(</span><em>shuffle=False</em>, <em>random_state=None</em>, <em>raise_on_exception=True</em>, <em>array_check=2</em>, <em>verbose=False</em>, <em>n_jobs=-1</em>, <em>layers=None</em>, <em>backend=None</em>, <em>sample_dim=20</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.EnsembleTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.ensemble.html#mlens.ensemble.base.BaseEnsemble" title="mlens.ensemble.base.BaseEnsemble"><code class="xref py py-class docutils literal"><span class="pre">mlens.ensemble.base.BaseEnsemble</span></code></a></p>
+<p>Ensemble Transformer class.</p>
+<p>The Ensemble class allows users to build layers of an ensemble through a
+transformer API. The transformer is closely related to
+<code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code>, in that any accepted type of layer can be
+added. The transformer differs fundamentally in one significant aspect:
+when fitted, it will store a random sample of the training set together
+with the training dimensions, and if in a call to <code class="docutils literal"><span class="pre">transform</span></code>, the
+data to be transformed correspodns to the training set, the transformer
+will recreate the prediction matrix from the <code class="docutils literal"><span class="pre">fit</span></code> call. In contrast,
+a fitted ensemble will only use the base learners fitted on the full
+dataset, and as such predicting the training set will not reproduce the
+predictions from the <code class="docutils literal"><span class="pre">fit</span></code> call.</p>
+<p>The <a class="reference internal" href="#mlens.model_selection.EnsembleTransformer" title="mlens.model_selection.EnsembleTransformer"><code class="xref py py-class docutils literal"><span class="pre">EnsembleTransformer</span></code></a> is a powerful tool to use as a
+preprocessing pipeline in an <a class="reference internal" href="#mlens.model_selection.Evaluator" title="mlens.model_selection.Evaluator"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> instance, as it would
+faithfully recreate the prediction matrix a potential meta learner would
+face. Hence, a user can ‘preprocess’ the training data with the
+<a class="reference internal" href="#mlens.model_selection.EnsembleTransformer" title="mlens.model_selection.EnsembleTransformer"><code class="xref py py-class docutils literal"><span class="pre">EnsembleTransformer</span></code></a> to generate k-fold base learner predictions,
+and then fit different meta learners (or higher-order layers) in a call
+to <code class="docutils literal"><span class="pre">evaluate</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be deprecated in 0.2.2.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code>, <a class="reference internal" href="#mlens.model_selection.Evaluator" title="mlens.model_selection.Evaluator"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to shuffle data before generating folds.</li>
+<li><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = None</em>) – random seed if shuffling inputs.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to issue warnings on soft exceptions or raise error.
+Examples include lack of layers, bad inputs, and failed fit of an
+estimator in a layer. If set to <code class="docutils literal"><span class="pre">False</span></code>, warnings are issued instead
+but estimation continues unless exception is fatal. Note that this
+can result in unexpected behavior unless the exception is anticipated.</li>
+<li><strong>sample_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = 20</em>) – dimensionality of training set to sample. During a call to <cite>fit</cite>, a
+random sample of size [sample_dim, sample_dim] will be sampled from the
+training data, along with the dimensions of the training data. If in a
+call to <code class="docutils literal"><span class="pre">transform</span></code>, sampling the same indices on the array to
+transform gives the same sample matrix, the transformer will reproduce
+the predictions from the call to <code class="docutils literal"><span class="pre">fit</span></code>, as opposed to using the
+base learners fitted on the full training data.</li>
+<li><strong>raise_on_exception</strong> – whether to issue warnings on soft exceptions or raise error.
+Examples include lack of layers, bad inputs, and failed fit of an
+estimator in a layer. If set to <code class="docutils literal"><span class="pre">False</span></code>, warnings are issued instead
+but estimation continues unless exception is fatal. Note that this
+can result in unexpected behavior unless the exception is anticipated.</li>
+<li><strong>array_check</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>default = 2</em>) – level of strictness in checking input arrays. For <code class="docutils literal"><span class="pre">0</span></code> not checks are
+made. For <cite>1`</cite>, will check <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> for inconsistencies and
+warn when format looks suspicious, but retain original format. With
+<code class="docutils literal"><span class="pre">2</span></code>, Scikit-learn’s array checks are imposed, which converts
+<code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to numpy arrays and raises error if conversion fails.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = False</em>) – level of verbosity. <code class="docutils literal"><span class="pre">0</span></code> (or <code class="docutils literal"><span class="pre">False</span></code>) is silent, <code class="docutils literal"><span class="pre">1</span></code> (or <code class="docutils literal"><span class="pre">True</span></code>)
+outputs messages at start and finish. <code class="docutils literal"><span class="pre">2</span></code> print messages for
+each layer.</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = -1</em><em>)</em>) – number of CPU cores to use for fitting and prediction.</li>
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em> (</em><em>default = 'threading'</em><em>)</em>) – backend infrastructure to use during call to
+<a class="reference internal" href="mlens.externals.joblib.html#mlens.externals.joblib.Parallel" title="mlens.externals.joblib.Parallel"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.joblib.Parallel</span></code></a>. See Joblib for further
+documentation. To change global backend, call
+<a class="reference internal" href="mlens.html#mlens.config.set_backend" title="mlens.config.set_backend"><code class="xref py py-func docutils literal"><span class="pre">mlens.config.set_backend()</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="k">import</span> <span class="n">EnsembleTransformer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="k">import</span> <span class="n">Evaluator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">rmse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">uniform</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">EnsembleTransformer</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">SVR</span><span class="p">(),</span> <span class="n">Lasso</span><span class="p">()])</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evl</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="n">make_scorer</span><span class="p">(</span><span class="n">rmse</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pr&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">)]})</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draws</span> <span class="o">=</span> <span class="p">{(</span><span class="s1">&#39;pr&#39;</span><span class="p">,</span> <span class="s1">&#39;svr&#39;</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span>  <span class="mi">100</span><span class="p">)},</span>
+<span class="gp">... </span>         <span class="p">(</span><span class="s1">&#39;pr&#39;</span><span class="p">,</span> <span class="s1">&#39;lasso&#39;</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="p">{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">uniform</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)}</span>
+<span class="gp">... </span>        <span class="p">}</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;pr&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">SVR</span><span class="p">(),</span> <span class="n">Lasso</span><span class="p">()]},</span> <span class="n">draws</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">evl</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+<span class="go">                 test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s                           params</span>
+<span class="go">pr  lasso           6.899         0.216          6.100          1.078       0.543       0.126        0.000        0.000      {&#39;alpha&#39;: 0.012075194935940151}</span>
+<span class="go">pr  svr            10.164         1.363          5.568          1.575       0.365       0.025        0.003        0.002             {&#39;C&#39;: 12.07519493594015}</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="mlens.model_selection.EnsembleTransformer.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>cls</em>, <em>estimators</em>, <em>preprocessing=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.EnsembleTransformer.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add layer to ensemble.</p>
+<p>For full set of optional arguments, see the ensemble API for the
+specified type.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – <p>layer class. Accepted types are:</p>
+<blockquote>
+<div><ul>
+<li>’blend’ : blend ensemble</li>
+<li>’subsemble’ : subsemble</li>
+<li>’stack’ : super learner</li>
+</ul>
+</div></blockquote>
+</li>
+<li><strong>estimators</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>instance</em>) – <p>estimators constituting the layer. If preprocessing is none and the
+layer is meant to be the meta estimator, it is permissible to pass
+a single instantiated estimator. If <code class="docutils literal"><span class="pre">preprocessing</span></code> is
+<code class="docutils literal"><span class="pre">None</span></code> or <code class="docutils literal"><span class="pre">list</span></code>, <code class="docutils literal"><span class="pre">estimators</span></code> should be a <code class="docutils literal"><span class="pre">list</span></code>.
+The list can either contain estimator instances,
+named tuples of estimator instances, or a combination of both.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;est-1&quot;</span><span class="p">,</span> <span class="n">estimator_1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps estimators to preprocessing pipelines must be passed.
+The names of the estimator dictionary must correspond to the
+names of the estimator dictionary.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">],</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">],</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal"><span class="pre">option_1</span></code>,
+<code class="docutils literal"><span class="pre">option_2</span></code> and <code class="docutils literal"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em><em> (</em><em>default = None</em><em>)</em>) – <p>preprocessing pipelines for given layer. If
+the same preprocessing applies to all estimators, <code class="docutils literal"><span class="pre">preprocessing</span></code>
+should be a list of transformer instances. The list can contain the
+instances directly, named tuples of transformers,
+or a combination of both.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;trans-1&quot;</span><span class="p">,</span> <span class="n">transformer_1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps preprocessing pipelines must be passed. The names of the
+preprocessing dictionary must correspond to the names of the
+estimator dictionary.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">],</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">],</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal"><span class="pre">option_1</span></code>,
+<code class="docutils literal"><span class="pre">option_2</span></code> and <code class="docutils literal"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments to instantiate layer with. See
+respective ensemble for further details.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – ensemble instance with layer instantiated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.model_selection.EnsembleTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.EnsembleTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit the transformer.</p>
+<p>Same as the fit method on an ensemble, except that a sample of X is
+stored for future training set comparison.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – output vector to trained estimators on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.model_selection.EnsembleTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/ensemble_transformer.html#EnsembleTransformer.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.EnsembleTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform input.</p>
+<p>If the input is training set, the transformer will
+reproduce the prediction array from the call to <code class="docutils literal"><span class="pre">fit</span></code>. If X is another
+data set, predictions are generated using base learners fitted on the
+full training data (equivalent to calling <code class="docutils literal"><span class="pre">predict</span></code> on an ensemble.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – output vector to trained estimators on.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.model_selection.Benchmark">
+<em class="property">class </em><code class="descclassname">mlens.model_selection.</code><code class="descname">Benchmark</code><span class="sig-paren">(</span><em>verbose=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Benchmark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.Benchmark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.model_selection.model_selection.BaseEval" title="mlens.model_selection.model_selection.BaseEval"><code class="xref py py-class docutils literal"><span class="pre">mlens.model_selection.model_selection.BaseEval</span></code></a></p>
+<p>Benchmark engine without hyper-parameter grid search.</p>
+<p>A simplified version of the <a class="reference internal" href="#mlens.model_selection.Evaluator" title="mlens.model_selection.Evaluator"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> that performs a single
+pass over a set of estimators and preprocessing pipelines for
+benchmarking purposes.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Verbosity during estimation.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Optional keyword argument to <a class="reference internal" href="mlens.parallel.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.model_selection.Benchmark.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>scorer</em>, <em>cv</em>, <em>estimators</em>, <em>preprocessing=None</em>, <em>error_score=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#Benchmark.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.Benchmark.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run benchmarking job on given data with given estimators.</p>
+<p>Fit preprocessing if applicable and evaluate estimators if applicable.
+The method automatically determines whether to only run preprocessing,
+only evaluation (possibly on previously fitted preprocessing), or both.
+Calling <code class="docutils literal"><span class="pre">fit</span></code> will overwrite previously stored data where applicable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input data to preprocess and create folds from.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>scorer</strong> (<em>function</em>) – <p>a scoring function that follows the Scikit-learn API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A user defines scoring function, <code class="docutils literal"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code> can be
+made into a scorer by calling on the ML-Ensemble implementation of
+Scikit-learn’s <code class="docutils literal"><span class="pre">make_scorer</span></code>. NOTE: do <strong>not</strong> use Scikit-learn’s
+<code class="docutils literal"><span class="pre">make_scorer</span></code> if the Evaluator is to be pickled.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">scoring_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – score to assign when fitting an estimator fails. If <code class="docutils literal"><span class="pre">None</span></code>, the
+evaluator will raise an error.</li>
+<li><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>obj</em><em> (</em><em>default = 2</em><em>)</em>) – cross validation folds to use. Either pass a <code class="docutils literal"><span class="pre">KFold</span></code> class
+that obeys the Scikit-learn API.</li>
+<li><strong>estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>set of estimators to use. If no preprocessing is desired or if
+only on preprocessing pipeline should apply to all, pass a list of
+estimators. The list can contain elements of named tuples
+(i.e. <code class="docutils literal"><span class="pre">('my_name',</span> <span class="pre">my_est)</span></code>).</p>
+<p>If different estimators should be mapped to preprocessing cases,
+a dictionary that maps estimators to each case should
+be passed: <code class="docutils literal"><span class="pre">{'case_a':</span> <span class="pre">list_of_est,</span> <span class="pre">...}</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>preprocessing cases to consider. Pass a dictionary mapping a
+case name to a preprocessing pipeline.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case_name&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – Fitted Benchmark instance. Results available in the
+<code class="docutils literal"><span class="pre">results</span></code> attribute.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">inst</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.model_selection.benchmark">
+<code class="descclassname">mlens.model_selection.</code><code class="descname">benchmark</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>scorer</em>, <em>cv</em>, <em>estimators</em>, <em>preprocessing</em>, <em>error_score=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/model_selection/model_selection.html#benchmark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.model_selection.benchmark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Benchmark estimators across preprocessing pipelines.</p>
+<p><a class="reference internal" href="#mlens.model_selection.benchmark" title="mlens.model_selection.benchmark"><code class="xref py py-func docutils literal"><span class="pre">benchmark()</span></code></a> runs cross validation scoring of a set of estimators,
+possible against a set of preprocessing pipelines. Equivalent to</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">evl</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input data to preprocess and create folds from.</li>
+<li><strong>y</strong> (<em>array-like</em><em>, </em><em>shape=</em><em>[</em><em>n_samples</em><em>, </em><em>]</em>) – training labels.</li>
+<li><strong>scorer</strong> (<em>function</em>) – <p>a scoring function that follows the Scikit-learn API:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">score</span> <span class="o">=</span> <span class="n">scorer</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A user defines scoring function, <code class="docutils literal"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code> can be
+made into a scorer by calling on the ML-Ensemble implementation of
+Scikit-learn’s <code class="docutils literal"><span class="pre">make_scorer</span></code>. NOTE: do <strong>not</strong> use Scikit-learn’s
+<code class="docutils literal"><span class="pre">make_scorer</span></code> if the Evaluator is to be pickled.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span>
+<span class="n">scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">scoring_function</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – score to assign when fitting an estimator fails. If <code class="docutils literal"><span class="pre">None</span></code>, the
+evaluator will raise an error.</li>
+<li><strong>cv</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>obj</em><em> (</em><em>default = 2</em><em>)</em>) – cross validation folds to use. Either pass a <code class="docutils literal"><span class="pre">KFold</span></code> class
+that obeys the Scikit-learn API.</li>
+<li><strong>estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>set of estimators to use. If no preprocessing is desired or if
+only on preprocessing pipeline should apply to all, pass a list of
+estimators. The list can contain elements of named tuples
+(i.e. <code class="docutils literal"><span class="pre">('my_name',</span> <span class="pre">my_est)</span></code>).</p>
+<p>If different estimators should be mapped to preprocessing cases,
+a dictionary that maps estimators to each case should
+be passed: <code class="docutils literal"><span class="pre">{'case_a':</span> <span class="pre">list_of_est,</span> <span class="pre">...}</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – <p>preprocessing cases to consider. Pass a dictionary mapping a
+case name to a preprocessing pipeline.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;case_name&#39;</span><span class="p">:</span> <span class="n">transformer_list</span><span class="p">,}</span>
+</pre></div>
+</div>
+</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Optional arguments to <a class="reference internal" href="mlens.parallel.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> – Summary output that shows data for best mean test scores, such as
+test and train scores, std, fit times, and params.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Performance benchmarks &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="Scale benchmarks" href="scaling.html"/>
+        <link rel="prev" title="Memory consumption" href="memory.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Performance benchmarks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/benchmarks/benchmarks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="performance-benchmarks">
+<span id="benchmarks"></span><h1>Performance benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mnist">
+<span id="id1"></span><h2>MNIST<a class="headerlink" href="#mnist" title="Permalink to this headline">¶</a></h2>
+<p>MNIST is a standardized image dataset of handwritten digits <a class="footnote-reference" href="#id6" id="id2">[1]</a>, commonly used to benchmark classifiers. Here, we adapt <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/master/benchmarks/bench_mnist.py">Scikit-learn’s MNIST benchmark</a> to include a supervised <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code>. We use the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.cluster.MiniBatchKMeans</span></code></a> clustering algorithm to create five partitions that we train using 2-fold cross validation.</p>
+<div class="section" id="benchmark">
+<h3>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline">¶</a></h3>
+<p>We use four base learners, the MLP fitted with Adam, the two random forests and the logistic regression fitted with SAG. Each base learner is predicts with <code class="docutils literal"><span class="pre">predict_proba</span></code> to create a <span class="math">\(N \times (10 \times L)\)</span> prediction matrix, where <span class="math">\(N\)</span> is the number of observations and <span class="math">\(L\)</span> is the number base learners. A <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> is used as meta learner. Here’s the code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">clt</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">ens</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">(</span><span class="n">partition_estimator</span><span class="o">=</span><span class="n">clt</span><span class="p">,</span>
+                <span class="n">partitions</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ens</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ens</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Supervised <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code> outperforms the benchmarks, improving the error rate by about <span class="math">\(6\%\)</span>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">mnist</span><span class="o">.</span><span class="n">py</span>
+<span class="go">[..]</span>
+
+<span class="go">Classification performance:</span>
+<span class="go">===========================</span>
+<span class="go">Classifier               train-time   test-time   error-rate</span>
+<span class="go">------------------------------------------------------------</span>
+<span class="go">Subsemble                   343.31s       3.17s       0.0210</span>
+<span class="go">MLP_adam                     53.46s       0.11s       0.0224</span>
+<span class="go">Nystroem-SVM                112.97s       0.92s       0.0228</span>
+<span class="go">MultilayerPerceptron         24.33s       0.14s       0.0287</span>
+<span class="go">ExtraTrees                   42.99s       0.57s       0.0294</span>
+<span class="go">RandomForest                 42.70s       0.49s       0.0318</span>
+<span class="go">SampledRBF-SVM              135.81s       0.56s       0.0486</span>
+<span class="go">LinearRegression-SAG         16.67s       0.06s       0.0824</span>
+<span class="go">CART                         20.69s       0.02s       0.1219</span>
+<span class="go">dummy                         0.00s       0.01s       0.8973</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="the-friedman-regression-problem-1">
+<h2>The Friedman Regression Problem 1<a class="headerlink" href="#the-friedman-regression-problem-1" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1">The Friedman Regression Problem 1</a>, as described in <a class="footnote-reference" href="#id7" id="id3">[2]</a> and <a class="footnote-reference" href="#id8" id="id4">[3]</a>,
+is constructed as follows. Set some sample size <span class="math">\(m\)</span> ,
+feature dimensionality <span class="math">\(n\)</span>, and noise level <span class="math">\(e\)</span>. Then the input
+data <span class="math">\(\mathbf{X}\)</span> and output data <span class="math">\(y(\mathbf{X})\)</span> is given by:</p>
+<div class="math">
+\[\begin{split}\mathbf{X} &amp;= [X_i]_{i \in \{1, 2, ..., n\}} \in
+\mathbb{R}^{m \ \times \ n}, \\
+X &amp;\sim u[0, 1], \\
+\\
+y(\mathbf{X}) &amp;= 10 \sin(\pi X_1 X_2) + 20(X_3 - 0.5)^2 + 10X_4 + 5X_5 +
+\epsilon, \\
+\\
+\epsilon &amp;\sim \mathrm{N}(0, e).\end{split}\]</div>
+<div class="section" id="id5">
+<h3>Benchmark<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The following benchmark uses 10 features and scores a relatively wide selection
+of Scikit-learn estimators against a specified <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code>. All
+estimators are used with default parameter settings. As such, the benchmark
+does not reflect the best possible score of each estimator, but shows rather
+how stacking even relatively low-performing estimators can yield superior
+predictive power. In this case, the Super Learner improves on the best
+stand-alone estimator by 25%.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">friedman_scores</span><span class="o">.</span><span class="n">py</span>
+<span class="go">Benchmark of ML-ENSEMBLE against Scikit-learn estimators on the friedman1 dataset.</span>
+
+<span class="go">Scoring metric: Root Mean Squared Error.</span>
+
+<span class="go">Available CPUs: 4</span>
+
+<span class="go">Ensemble architecture</span>
+<span class="go">Num layers: 2</span>
+<span class="go">layer-1 | Min Max Scaling - Estimators: [&#39;svr&#39;].</span>
+<span class="go">layer-1 | Standard Scaling - Estimators: [&#39;elasticnet&#39;, &#39;lasso&#39;, &#39;kneighborsregressor&#39;].</span>
+<span class="go">layer-1 | No Preprocessing - Estimators: [&#39;randomforestregressor&#39;, &#39;gradientboostingregressor&#39;].</span>
+<span class="go">layer-2 | (meta) GradientBoostingRegressor</span>
+
+<span class="go">Benchmark estimators: GBM KNN Kernel Ridge Lasso Random Forest SVR Elastic-Net</span>
+
+<span class="go">Data</span>
+<span class="go">Features: 10</span>
+<span class="go">Training set sizes: from 2000 to 20000 with step size 2000.</span>
+
+<span class="go">SCORES</span>
+<span class="go">  size | Ensemble |      GBM |      KNN | Kern Rid |    Lasso | Random F |      SVR |    elNet |</span>
+<span class="go">  2000 |     0.83 |     0.92 |     2.26 |     2.42 |     3.13 |     1.61 |     2.32 |     3.18 |</span>
+<span class="go">  4000 |     0.75 |     0.91 |     2.11 |     2.49 |     3.13 |     1.39 |     2.31 |     3.16 |</span>
+<span class="go">  6000 |     0.66 |     0.83 |     2.02 |     2.43 |     3.21 |     1.29 |     2.18 |     3.25 |</span>
+<span class="go">  8000 |     0.66 |     0.84 |     1.95 |     2.43 |     3.19 |     1.24 |     2.09 |     3.24 |</span>
+<span class="go"> 10000 |     0.62 |     0.79 |     1.90 |     2.46 |     3.17 |     1.16 |     2.03 |     3.21 |</span>
+<span class="go"> 12000 |     0.68 |     0.86 |     1.84 |     2.46 |     3.16 |     1.10 |     1.97 |     3.21 |</span>
+<span class="go"> 14000 |     0.59 |     0.75 |     1.78 |     2.45 |     3.15 |     1.05 |     1.92 |     3.20 |</span>
+<span class="go"> 16000 |     0.62 |     0.80 |     1.76 |     2.45 |     3.15 |     1.02 |     1.87 |     3.19 |</span>
+<span class="go"> 18000 |     0.59 |     0.79 |     1.73 |     2.43 |     3.12 |     1.01 |     1.83 |     3.17 |</span>
+<span class="go"> 20000 |     0.56 |     0.73 |     1.70 |     2.42 |     4.87 |     0.99 |     1.81 |     4.75 |</span>
+
+<span class="go">FIT TIMES</span>
+<span class="go">  size | Ensemble |      GBM |      KNN | Kern Rid |    Lasso | Random F |      SVR |    elNet |</span>
+<span class="go">  2000 |     0:01 |     0:00 |     0:00 |     0:00 |     0:00 |     0:00 |     0:00 |     0:00 |</span>
+<span class="go">  4000 |     0:02 |     0:00 |     0:00 |     0:00 |     0:00 |     0:00 |     0:00 |     0:00 |</span>
+<span class="go">  6000 |     0:03 |     0:00 |     0:00 |     0:01 |     0:00 |     0:00 |     0:01 |     0:00 |</span>
+<span class="go">  8000 |     0:04 |     0:00 |     0:00 |     0:04 |     0:00 |     0:00 |     0:02 |     0:00 |</span>
+<span class="go"> 10000 |     0:06 |     0:01 |     0:00 |     0:08 |     0:00 |     0:00 |     0:03 |     0:00 |</span>
+<span class="go"> 12000 |     0:08 |     0:01 |     0:00 |     0:12 |     0:00 |     0:00 |     0:04 |     0:00 |</span>
+<span class="go"> 14000 |     0:10 |     0:01 |     0:00 |     0:20 |     0:00 |     0:00 |     0:06 |     0:00 |</span>
+<span class="go"> 16000 |     0:13 |     0:02 |     0:00 |     0:34 |     0:00 |     0:00 |     0:08 |     0:00 |</span>
+<span class="go"> 18000 |     0:17 |     0:02 |     0:00 |     0:47 |     0:00 |     0:00 |     0:10 |     0:00 |</span>
+<span class="go"> 20000 |     0:20 |     0:02 |     0:00 |     1:20 |     0:00 |     0:00 |     0:13 |     0:00 |</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Y. LeCun, C. Cortes, C.J.C. Burges “MNIST handwritten digit database”,
+<a class="reference external" href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a>, 2013.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>J. Friedman, “Multivariate adaptive regression splines”,
+The Annals of Statistics 19 (1), pages 1-67, 1991.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>L. Breiman, “Bagging predictors”,
+Machine Learning 24, pages 123-140, 1996.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

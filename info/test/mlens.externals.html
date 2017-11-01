@@ -1,0 +1,1217 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals package &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.externals package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/test/mlens.externals.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlens-externals-package">
+<h1>mlens.externals package<a class="headerlink" href="#mlens-externals-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mlens.externals.joblib.html">mlens.externals.joblib package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.backports">mlens.externals.joblib.backports module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.disk">mlens.externals.joblib.disk module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.format_stack">mlens.externals.joblib.format_stack module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.func_inspect">mlens.externals.joblib.func_inspect module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.hashing">mlens.externals.joblib.hashing module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.logger">mlens.externals.joblib.logger module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.memory">mlens.externals.joblib.memory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.my_exceptions">mlens.externals.joblib.my_exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.numpy_pickle">mlens.externals.joblib.numpy_pickle module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.numpy_pickle_compat">mlens.externals.joblib.numpy_pickle_compat module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.numpy_pickle_utils">mlens.externals.joblib.numpy_pickle_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.parallel">mlens.externals.joblib.parallel module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib.pool">mlens.externals.joblib.pool module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.joblib.html#module-mlens.externals.joblib">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mlens.externals.joblib.html#vision">Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.externals.joblib.html#main-features">Main features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mlens.externals.sklearn.html">mlens.externals.sklearn package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#module-mlens.externals.sklearn.base">mlens.externals.sklearn.base module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#module-mlens.externals.sklearn.exceptions">mlens.externals.sklearn.exceptions module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#module-mlens.externals.sklearn.scorer">mlens.externals.sklearn.scorer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#module-mlens.externals.sklearn.type_of_target">mlens.externals.sklearn.type_of_target module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#module-mlens.externals.sklearn.validation">mlens.externals.sklearn.validation module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mlens.externals.sklearn.html#module-mlens.externals.sklearn">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mlens.externals.fixes">
+<span id="mlens-externals-fixes-module"></span><h2>mlens.externals.fixes module<a class="headerlink" href="#module-mlens.externals.fixes" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<p>Collection of simpler fixes occasionally necessary for backwards
+compatibility.</p>
+<dl class="function">
+<dt id="mlens.externals.fixes.redirect">
+<code class="descclassname">mlens.externals.fixes.</code><code class="descname">redirect</code><span class="sig-paren">(</span><em>target</em>, <em>file=&lt;_io.TextIOWrapper name='&lt;stderr&gt;' mode='w' encoding='UTF-8'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/fixes.html#redirect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.fixes.redirect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replication of <code class="docutils literal"><span class="pre">redirect_stderr</span></code> or <code class="docutils literal"><span class="pre">redirect_stdout</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="http://stackoverflow.com/questions/4675728/redirect-stdout-to-a-file-in-python/22434262#22434262">http://stackoverflow.com/questions/4675728/redirect-stdout-to-a-file-in-python/22434262#22434262</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.funcsigs">
+<span id="mlens-externals-funcsigs-module"></span><h2>mlens.externals.funcsigs module<a class="headerlink" href="#module-mlens.externals.funcsigs" title="Permalink to this headline">¶</a></h2>
+<p>Function signature objects for callables</p>
+<p>Back port of Python 3.3’s function signature tools from the inspect module,
+modified to be compatible with Python 2.6, 2.7 and 3.2+.</p>
+<dl class="class">
+<dt id="mlens.externals.funcsigs.BoundArguments">
+<em class="property">class </em><code class="descclassname">mlens.externals.funcsigs.</code><code class="descname">BoundArguments</code><span class="sig-paren">(</span><em>signature</em>, <em>arguments</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#BoundArguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.BoundArguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Result of <cite>Signature.bind</cite> call.  Holds the mapping of arguments
+to the function’s parameters.</p>
+<p>Has the following public attributes:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>arguments <span class="classifier-delimiter">:</span> <span class="classifier">OrderedDict</span></dt>
+<dd>An ordered mutable mapping of parameters’ names to arguments’ values.
+Does not contain arguments’ default values.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>signature <span class="classifier-delimiter">:</span> <span class="classifier">Signature</span></dt>
+<dd>The Signature object that created this instance.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>args <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd>Tuple of positional arguments values.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>kwargs <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd>Dict of keyword arguments values.</dd>
+</dl>
+</li>
+</ul>
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.BoundArguments.args">
+<code class="descname">args</code><a class="headerlink" href="#mlens.externals.funcsigs.BoundArguments.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.BoundArguments.kwargs">
+<code class="descname">kwargs</code><a class="headerlink" href="#mlens.externals.funcsigs.BoundArguments.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.BoundArguments.signature">
+<code class="descname">signature</code><a class="headerlink" href="#mlens.externals.funcsigs.BoundArguments.signature" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.funcsigs.Parameter">
+<em class="property">class </em><code class="descclassname">mlens.externals.funcsigs.</code><code class="descname">Parameter</code><span class="sig-paren">(</span><em>name</em>, <em>kind</em>, <em>default=&lt;class 'mlens.externals.funcsigs._empty'&gt;</em>, <em>annotation=&lt;class 'mlens.externals.funcsigs._empty'&gt;</em>, <em>_partial_kwarg=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Represents a parameter in a function signature.</p>
+<p>Has the following public attributes:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>name <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>The name of the parameter as a string.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>default <span class="classifier-delimiter">:</span> <span class="classifier">object</span></dt>
+<dd>The default value for the parameter if specified.  If the
+parameter has no default value, this attribute is not set.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>annotation</dt>
+<dd>The annotation for the parameter if specified.  If the
+parameter has no annotation, this attribute is not set.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>kind <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Describes how argument values are bound to the parameter.
+Possible values: <cite>Parameter.POSITIONAL_ONLY</cite>,
+<cite>Parameter.POSITIONAL_OR_KEYWORD</cite>, <cite>Parameter.VAR_POSITIONAL</cite>,
+<cite>Parameter.KEYWORD_ONLY</cite>, <cite>Parameter.VAR_KEYWORD</cite>.</dd>
+</dl>
+</li>
+</ul>
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.KEYWORD_ONLY">
+<code class="descname">KEYWORD_ONLY</code><em class="property"> = &lt;_ParameterKind: 'KEYWORD_ONLY'&gt;</em><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.KEYWORD_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.POSITIONAL_ONLY">
+<code class="descname">POSITIONAL_ONLY</code><em class="property"> = &lt;_ParameterKind: 'POSITIONAL_ONLY'&gt;</em><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.POSITIONAL_ONLY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.POSITIONAL_OR_KEYWORD">
+<code class="descname">POSITIONAL_OR_KEYWORD</code><em class="property"> = &lt;_ParameterKind: 'POSITIONAL_OR_KEYWORD'&gt;</em><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.POSITIONAL_OR_KEYWORD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.VAR_KEYWORD">
+<code class="descname">VAR_KEYWORD</code><em class="property"> = &lt;_ParameterKind: 'VAR_KEYWORD'&gt;</em><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.VAR_KEYWORD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.VAR_POSITIONAL">
+<code class="descname">VAR_POSITIONAL</code><em class="property"> = &lt;_ParameterKind: 'VAR_POSITIONAL'&gt;</em><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.VAR_POSITIONAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.annotation">
+<code class="descname">annotation</code><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.default">
+<code class="descname">default</code><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.empty">
+<code class="descname">empty</code><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_empty</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.kind">
+<code class="descname">kind</code><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.kind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Parameter.name">
+<code class="descname">name</code><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mlens.externals.funcsigs.Parameter.replace">
+<code class="descname">replace</code><span class="sig-paren">(</span><em>name=&lt;class 'mlens.externals.funcsigs._void'&gt;</em>, <em>kind=&lt;class 'mlens.externals.funcsigs._void'&gt;</em>, <em>annotation=&lt;class 'mlens.externals.funcsigs._void'&gt;</em>, <em>default=&lt;class 'mlens.externals.funcsigs._void'&gt;</em>, <em>_partial_kwarg=&lt;class 'mlens.externals.funcsigs._void'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Parameter.replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Parameter.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a customized copy of the Parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.funcsigs.Signature">
+<em class="property">class </em><code class="descclassname">mlens.externals.funcsigs.</code><code class="descname">Signature</code><span class="sig-paren">(</span><em>parameters=None</em>, <em>return_annotation=&lt;class 'mlens.externals.funcsigs._empty'&gt;</em>, <em>__validate_parameters__=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>A Signature object represents the overall signature of a function.
+It stores a Parameter object for each parameter accepted by the
+function, as well as information specific to the function itself.</p>
+<p>A Signature object has the following public attributes and methods:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>parameters <span class="classifier-delimiter">:</span> <span class="classifier">OrderedDict</span></dt>
+<dd>An ordered mapping of parameters’ names to the corresponding
+Parameter objects (keyword-only arguments are in the same order
+as listed in <cite>code.co_varnames</cite>).</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>return_annotation <span class="classifier-delimiter">:</span> <span class="classifier">object</span></dt>
+<dd>The annotation for the return type of the function if specified.
+If the function has no annotation for its return type, this
+attribute is not set.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>bind(<a href="#id1"><span class="problematic" id="id2">*</span></a>args, <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs) -&gt; BoundArguments</dt>
+<dd>Creates a mapping from positional and keyword arguments to
+parameters.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>bind_partial(<a href="#id5"><span class="problematic" id="id6">*</span></a>args, <a href="#id7"><span class="problematic" id="id8">**</span></a>kwargs) -&gt; BoundArguments</dt>
+<dd>Creates a partial mapping from positional and keyword arguments
+to parameters (simulating ‘functools.partial’ behavior.)</dd>
+</dl>
+</li>
+</ul>
+<dl class="method">
+<dt id="mlens.externals.funcsigs.Signature.bind">
+<code class="descname">bind</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Signature.bind"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Signature.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a BoundArguments object, that maps the passed <cite>args</cite>
+and <cite>kwargs</cite> to the function’s signature.  Raises <cite>TypeError</cite>
+if the passed arguments can not be bound.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.externals.funcsigs.Signature.bind_partial">
+<code class="descname">bind_partial</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Signature.bind_partial"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Signature.bind_partial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a BoundArguments object, that partially maps the
+passed <cite>args</cite> and <cite>kwargs</cite> to the function’s signature.
+Raises <cite>TypeError</cite> if the passed arguments can not be bound.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Signature.empty">
+<code class="descname">empty</code><a class="headerlink" href="#mlens.externals.funcsigs.Signature.empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal"><span class="pre">_empty</span></code></p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="mlens.externals.funcsigs.Signature.from_function">
+<em class="property">classmethod </em><code class="descname">from_function</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Signature.from_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Signature.from_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs Signature for the given python function</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Signature.parameters">
+<code class="descname">parameters</code><a class="headerlink" href="#mlens.externals.funcsigs.Signature.parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mlens.externals.funcsigs.Signature.replace">
+<code class="descname">replace</code><span class="sig-paren">(</span><em>parameters=&lt;class 'mlens.externals.funcsigs._void'&gt;</em>, <em>return_annotation=&lt;class 'mlens.externals.funcsigs._void'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#Signature.replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.Signature.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a customized copy of the Signature.
+Pass ‘parameters’ and/or ‘return_annotation’ arguments
+to override them in the new copy.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.funcsigs.Signature.return_annotation">
+<code class="descname">return_annotation</code><a class="headerlink" href="#mlens.externals.funcsigs.Signature.return_annotation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.funcsigs.signature">
+<code class="descclassname">mlens.externals.funcsigs.</code><code class="descname">signature</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/funcsigs.html#signature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.funcsigs.signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a signature object for the passed callable.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.six">
+<span id="mlens-externals-six-module"></span><h2>mlens.externals.six module<a class="headerlink" href="#module-mlens.externals.six" title="Permalink to this headline">¶</a></h2>
+<p>Utilities for writing code that runs on Python 2 and 3</p>
+<dl class="class">
+<dt id="mlens.externals.six.Module_six_moves_urllib">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">Module_six_moves_urllib</code><a class="reference internal" href="../_modules/mlens/externals/six.html#Module_six_moves_urllib"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">module</span></code></p>
+<p>Create a six.moves.urllib namespace that resembles the Python 3 namespace</p>
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib.error">
+<code class="descname">error</code><em class="property"> = &lt;module 'mlens.externals.six.moves.urllib.error'&gt;</em><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib.parse">
+<code class="descname">parse</code><em class="property"> = &lt;module 'mlens.externals.six.moves.urllib_parse'&gt;</em><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib.request">
+<code class="descname">request</code><em class="property"> = &lt;module 'mlens.externals.six.moves.urllib.request'&gt;</em><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib.response">
+<code class="descname">response</code><em class="property"> = &lt;module 'mlens.externals.six.moves.urllib.response'&gt;</em><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib.response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib.robotparser">
+<code class="descname">robotparser</code><em class="property"> = &lt;module 'mlens.externals.six.moves.urllib.robotparser'&gt;</em><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib.robotparser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.Module_six_moves_urllib_error">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">Module_six_moves_urllib_error</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#Module_six_moves_urllib_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyModule</span></code></p>
+<p>Lazy loading of moved objects in six.moves.urllib_error</p>
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_error.ContentTooShortError">
+<code class="descname">ContentTooShortError</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_error.ContentTooShortError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_error.HTTPError">
+<code class="descname">HTTPError</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_error.HTTPError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_error.URLError">
+<code class="descname">URLError</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_error.URLError" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">Module_six_moves_urllib_parse</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#Module_six_moves_urllib_parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyModule</span></code></p>
+<p>Lazy loading of moved objects in six.moves.urllib_parse</p>
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.ParseResult">
+<code class="descname">ParseResult</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.ParseResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.SplitResult">
+<code class="descname">SplitResult</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.SplitResult" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.parse_qs">
+<code class="descname">parse_qs</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.parse_qs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.parse_qsl">
+<code class="descname">parse_qsl</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.parse_qsl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.quote">
+<code class="descname">quote</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.quote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.quote_plus">
+<code class="descname">quote_plus</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.quote_plus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.splitquery">
+<code class="descname">splitquery</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.splitquery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.splittag">
+<code class="descname">splittag</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.splittag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.splituser">
+<code class="descname">splituser</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.splituser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.splitvalue">
+<code class="descname">splitvalue</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.splitvalue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.unquote">
+<code class="descname">unquote</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.unquote" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.unquote_plus">
+<code class="descname">unquote_plus</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.unquote_plus" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urldefrag">
+<code class="descname">urldefrag</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urldefrag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urlencode">
+<code class="descname">urlencode</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urlencode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urljoin">
+<code class="descname">urljoin</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urljoin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urlparse">
+<code class="descname">urlparse</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urlparse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urlsplit">
+<code class="descname">urlsplit</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urlsplit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urlunparse">
+<code class="descname">urlunparse</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urlunparse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.urlunsplit">
+<code class="descname">urlunsplit</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.urlunsplit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.uses_fragment">
+<code class="descname">uses_fragment</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.uses_fragment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.uses_netloc">
+<code class="descname">uses_netloc</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.uses_netloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.uses_params">
+<code class="descname">uses_params</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.uses_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.uses_query">
+<code class="descname">uses_query</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.uses_query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_parse.uses_relative">
+<code class="descname">uses_relative</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_parse.uses_relative" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">Module_six_moves_urllib_request</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#Module_six_moves_urllib_request"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyModule</span></code></p>
+<p>Lazy loading of moved objects in six.moves.urllib_request</p>
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.AbstractBasicAuthHandler">
+<code class="descname">AbstractBasicAuthHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.AbstractBasicAuthHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.AbstractDigestAuthHandler">
+<code class="descname">AbstractDigestAuthHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.AbstractDigestAuthHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.BaseHandler">
+<code class="descname">BaseHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.BaseHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.CacheFTPHandler">
+<code class="descname">CacheFTPHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.CacheFTPHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.FTPHandler">
+<code class="descname">FTPHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.FTPHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.FancyURLopener">
+<code class="descname">FancyURLopener</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.FancyURLopener" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.FileHandler">
+<code class="descname">FileHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.FileHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPBasicAuthHandler">
+<code class="descname">HTTPBasicAuthHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPBasicAuthHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPCookieProcessor">
+<code class="descname">HTTPCookieProcessor</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPCookieProcessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPDefaultErrorHandler">
+<code class="descname">HTTPDefaultErrorHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPDefaultErrorHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPDigestAuthHandler">
+<code class="descname">HTTPDigestAuthHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPDigestAuthHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPErrorProcessor">
+<code class="descname">HTTPErrorProcessor</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPErrorProcessor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPHandler">
+<code class="descname">HTTPHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPPasswordMgr">
+<code class="descname">HTTPPasswordMgr</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPPasswordMgr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPPasswordMgrWithDefaultRealm">
+<code class="descname">HTTPPasswordMgrWithDefaultRealm</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPPasswordMgrWithDefaultRealm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPRedirectHandler">
+<code class="descname">HTTPRedirectHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPRedirectHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.HTTPSHandler">
+<code class="descname">HTTPSHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.HTTPSHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.OpenerDirector">
+<code class="descname">OpenerDirector</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.OpenerDirector" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.ProxyBasicAuthHandler">
+<code class="descname">ProxyBasicAuthHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.ProxyBasicAuthHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.ProxyDigestAuthHandler">
+<code class="descname">ProxyDigestAuthHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.ProxyDigestAuthHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.ProxyHandler">
+<code class="descname">ProxyHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.ProxyHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.Request">
+<code class="descname">Request</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.Request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.URLopener">
+<code class="descname">URLopener</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.URLopener" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.UnknownHandler">
+<code class="descname">UnknownHandler</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.UnknownHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.build_opener">
+<code class="descname">build_opener</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.build_opener" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.getproxies">
+<code class="descname">getproxies</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.getproxies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.install_opener">
+<code class="descname">install_opener</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.install_opener" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.pathname2url">
+<code class="descname">pathname2url</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.pathname2url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.proxy_bypass">
+<code class="descname">proxy_bypass</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.proxy_bypass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.url2pathname">
+<code class="descname">url2pathname</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.url2pathname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.urlcleanup">
+<code class="descname">urlcleanup</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.urlcleanup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.urlopen">
+<code class="descname">urlopen</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.urlopen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_request.urlretrieve">
+<code class="descname">urlretrieve</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_request.urlretrieve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.Module_six_moves_urllib_response">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">Module_six_moves_urllib_response</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#Module_six_moves_urllib_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyModule</span></code></p>
+<p>Lazy loading of moved objects in six.moves.urllib_response</p>
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_response.addbase">
+<code class="descname">addbase</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_response.addbase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_response.addclosehook">
+<code class="descname">addclosehook</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_response.addclosehook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_response.addinfo">
+<code class="descname">addinfo</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_response.addinfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_response.addinfourl">
+<code class="descname">addinfourl</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_response.addinfourl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.Module_six_moves_urllib_robotparser">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">Module_six_moves_urllib_robotparser</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#Module_six_moves_urllib_robotparser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_robotparser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyModule</span></code></p>
+<p>Lazy loading of moved objects in six.moves.urllib_robotparser</p>
+<dl class="attribute">
+<dt id="mlens.externals.six.Module_six_moves_urllib_robotparser.RobotFileParser">
+<code class="descname">RobotFileParser</code><a class="headerlink" href="#mlens.externals.six.Module_six_moves_urllib_robotparser.RobotFileParser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.MovedAttribute">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">MovedAttribute</code><span class="sig-paren">(</span><em>name</em>, <em>old_mod</em>, <em>new_mod</em>, <em>old_attr=None</em>, <em>new_attr=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#MovedAttribute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.MovedAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyDescr</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.six.MovedModule">
+<em class="property">class </em><code class="descclassname">mlens.externals.six.</code><code class="descname">MovedModule</code><span class="sig-paren">(</span><em>name</em>, <em>old</em>, <em>new=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#MovedModule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.MovedModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.six._LazyDescr</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.add_metaclass">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">add_metaclass</code><span class="sig-paren">(</span><em>metaclass</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#add_metaclass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.add_metaclass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class decorator for creating a class with a metaclass.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.add_move">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">add_move</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#add_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.add_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an item to six.moves.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.assertCountEqual">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">assertCountEqual</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#assertCountEqual"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.assertCountEqual" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.assertRaisesRegex">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">assertRaisesRegex</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#assertRaisesRegex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.assertRaisesRegex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.assertRegex">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">assertRegex</code><span class="sig-paren">(</span><em>self</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#assertRegex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.assertRegex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.b">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">b</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#b"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Byte literal</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.create_unbound_method">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">create_unbound_method</code><span class="sig-paren">(</span><em>func</em>, <em>cls</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#create_unbound_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.create_unbound_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.get_unbound_function">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">get_unbound_function</code><span class="sig-paren">(</span><em>unbound</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#get_unbound_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.get_unbound_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the function out of a possibly unbound function</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.int2byte">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">int2byte</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mlens.externals.six.int2byte" title="Permalink to this definition">¶</a></dt>
+<dd><p>S.pack(v1, v2, …) -&gt; bytes</p>
+<p>Return a bytes object containing values v1, v2, … packed according
+to the format string S.format.  See help(struct) for more on format
+strings.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.iteritems">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">iteritems</code><span class="sig-paren">(</span><em>d</em>, <em>**kw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#iteritems"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.iteritems" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over the (key, value) pairs of a dictionary.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.iterkeys">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">iterkeys</code><span class="sig-paren">(</span><em>d</em>, <em>**kw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#iterkeys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.iterkeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over the keys of a dictionary.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.iterlists">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">iterlists</code><span class="sig-paren">(</span><em>d</em>, <em>**kw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#iterlists"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.iterlists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over the (key, [values]) pairs of a dictionary.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.itervalues">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">itervalues</code><span class="sig-paren">(</span><em>d</em>, <em>**kw</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#itervalues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.itervalues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an iterator over the values of a dictionary.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.python_2_unicode_compatible">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">python_2_unicode_compatible</code><span class="sig-paren">(</span><em>klass</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#python_2_unicode_compatible"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.python_2_unicode_compatible" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator that defines __unicode__ and __str__ methods under Python 2.
+Under Python 3 it does nothing.</p>
+<p>To support Python 2 and 3 with a single code base, define a __str__ method
+returning text and apply this decorator to the class.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.raise_from">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">raise_from</code><span class="sig-paren">(</span><em>value</em>, <em>from_value</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#raise_from"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.raise_from" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.remove_move">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">remove_move</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#remove_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.remove_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove item from six.moves.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.reraise">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">reraise</code><span class="sig-paren">(</span><em>tp</em>, <em>value</em>, <em>tb=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#reraise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.reraise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reraise an exception.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.u">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">u</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#u"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.u" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text literal</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.six.with_metaclass">
+<code class="descclassname">mlens.externals.six.</code><code class="descname">with_metaclass</code><span class="sig-paren">(</span><em>meta</em>, <em>*bases</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/six.html#with_metaclass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.six.with_metaclass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a base class with a metaclass.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mlens.externals" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE
+External dependencies with original source code.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

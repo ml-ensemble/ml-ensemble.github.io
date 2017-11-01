@@ -1,0 +1,118 @@
+mlens\.externals\.joblib package
+================================
+
+Submodules
+----------
+
+mlens\.externals\.joblib\.backports module
+------------------------------------------
+
+.. automodule:: mlens.externals.joblib.backports
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.disk module
+-------------------------------------
+
+.. automodule:: mlens.externals.joblib.disk
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.format\_stack module
+----------------------------------------------
+
+.. automodule:: mlens.externals.joblib.format_stack
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.func\_inspect module
+----------------------------------------------
+
+.. automodule:: mlens.externals.joblib.func_inspect
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.hashing module
+----------------------------------------
+
+.. automodule:: mlens.externals.joblib.hashing
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.logger module
+---------------------------------------
+
+.. automodule:: mlens.externals.joblib.logger
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.memory module
+---------------------------------------
+
+.. automodule:: mlens.externals.joblib.memory
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.my\_exceptions module
+-----------------------------------------------
+
+.. automodule:: mlens.externals.joblib.my_exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.numpy\_pickle module
+----------------------------------------------
+
+.. automodule:: mlens.externals.joblib.numpy_pickle
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.numpy\_pickle\_compat module
+------------------------------------------------------
+
+.. automodule:: mlens.externals.joblib.numpy_pickle_compat
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.numpy\_pickle\_utils module
+-----------------------------------------------------
+
+.. automodule:: mlens.externals.joblib.numpy_pickle_utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.parallel module
+-----------------------------------------
+
+.. automodule:: mlens.externals.joblib.parallel
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.externals\.joblib\.pool module
+-------------------------------------
+
+.. automodule:: mlens.externals.joblib.pool
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.externals.joblib
+    :members:
+    :undoc-members:
+    :show-inheritance:

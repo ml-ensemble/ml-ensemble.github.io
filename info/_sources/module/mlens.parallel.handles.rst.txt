@@ -1,0 +1,7 @@
+mlens\.parallel\.handles module
+===============================
+
+.. automodule:: mlens.parallel.handles
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Ready-made ensemble classes &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="Learner Mechanics" href="../tutorials/learner.html"/>
+        <link rel="prev" title="Advanced features tutorial" href="../tutorials/advanced.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Ready-made ensemble classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/start/ensembles.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ready-made-ensemble-classes">
+<h1>Ready-made ensemble classes<a class="headerlink" href="#ready-made-ensemble-classes" title="Permalink to this headline">¶</a></h1>
+<p>Currently, ML-Ensemble implements provides four ready-made ensembles classes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference internal" href="#super-learner"><span class="std std-ref">Super Learner</span></a> (stacking)</li>
+<li><a class="reference internal" href="#subsemble"><span class="std std-ref">Subsemble</span></a></li>
+<li><a class="reference internal" href="#blend-ensemble"><span class="std std-ref">Blend Ensemble</span></a></li>
+<li><a class="reference internal" href="#sequential-ensemble"><span class="std std-ref">Sequential Ensemble</span></a></li>
+</ul>
+</div></blockquote>
+<p>Each ensemble class can be built with several layers, and each layer can
+output class probabilities if desired. The <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> class
+is a generic ensemble class that allows the user to mix types between layers,
+for instance by setting the first layer to a Subsemble and the second layer
+to a Super Learner. Here, we will briefly introduce ensemble specific
+parameters and usage. For full documentation, see the <a class="reference internal" href="../deep/api.html#api"><span class="std std-ref">API</span></a> section.
+However, by accessing the <a class="reference internal" href="../deep/api.html#low-level-api"><span class="std std-ref">low-level API</span></a> it is possible
+to build virtually any type of ensemble. Further ready-made classes will be
+introduced on demand. Feel free to raise a feature issue at <a class="reference external" href="https://github.com/flennerhag/mlens/issues">Github</a>.</p>
+<div class="section" id="super-learner">
+<span id="id1"></span><h2>Super Learner<a class="headerlink" href="#super-learner" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code> (also known as a Stacking Ensemble) is an
+supervised ensemble algorithm that uses K-fold estimation to map a
+training set <span class="math">\((X, y)\)</span> into a prediction set <span class="math">\((Z, y)\)</span>,
+where the predictions in <span class="math">\(Z\)</span> are constructed using K-Fold splits
+of <span class="math">\(X\)</span> to ensure <span class="math">\(Z\)</span> reflects test errors, and that applies
+a user-specified meta learner to predict <span class="math">\(y\)</span> from <span class="math">\(Z\)</span>.</p>
+<p>The main parameter to specify is the <code class="docutils literal"><span class="pre">folds</span></code> parameter that determines the
+number of folds to use during cross-validation. The algorithm in
+sudo code follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Specify a library <span class="math">\(L\)</span> of base learners</li>
+<li>Fit all base learners on <span class="math">\(X\)</span> and store the fitted estimators.</li>
+<li>Split <span class="math">\(X\)</span> into <span class="math">\(K\)</span> folds, fit every learner in
+<span class="math">\(L\)</span> on the training set and predict test set. Repeat until
+all folds have been predicted.</li>
+<li>Construct a matrix <span class="math">\(Z\)</span> by stacking the predictions per fold.</li>
+<li>Fit the meta learner on <span class="math">\(Z\)</span> and store the learner</li>
+</ol>
+</div></blockquote>
+<p>The ensemble can be used for prediction by mapping a new test set <span class="math">\(T\)</span>
+into a prediction set <span class="math">\(Z'\)</span> using the learners fitted in (2),
+and then mapping <span class="math">\(Z'\)</span> to <span class="math">\(y'\)</span> using the fitted meta learner
+from (5).</p>
+<p>The Super Learner does asymptotically as well as (up to a constant) an
+Oracle selector. For the theory behind the Super Learner, see
+<a class="footnote-reference" href="#id4" id="id2">[1]</a> and <a class="footnote-reference" href="#id5" id="id3">[2]</a> as well as references therein.</p>
+<p>Stacking K-fold predictions to cover an entire training set is a time
+consuming method and can be prohibitively costly for large datasets.
+With large data, other ensembles that fits an ensemble on subsets
+can achieve similar performance at a fraction of the training time.
+However, when data is noisy or of high variance,
+the <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code> ensure all information is
+used during fitting.</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>van der Laan, Mark J.; Polley, Eric C.; and Hubbard, Alan E.,
+“Super Learner” (July 2007). U.C. Berkeley Division of Biostatistics
+Working Paper Series. Working Paper 222.
+<a class="reference external" href="http://biostats.bepress.com/ucbbiostat/paper222">http://biostats.bepress.com/ucbbiostat/paper222</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Polley, Eric C. and van der Laan, Mark J.,
+“Super Learner In Prediction” (May 2010). U.C. Berkeley Division of
+Biostatistics Working Paper Series. Working Paper 266.
+<a class="reference external" href="http://biostats.bepress.com/ucbbiostat/paper266">http://biostats.bepress.com/ucbbiostat/paper266</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>This implementation uses the agnostic meta learner approach, where the
+user supplies the meta learner to be used. For the original Super Learner
+algorithm (i.e. learn the best linear combination of the base learners),
+the user can specify a linear regression as the meta learner.</p>
+</div>
+</div>
+<div class="section" id="subsemble">
+<span id="id6"></span><h2>Subsemble<a class="headerlink" href="#subsemble" title="Permalink to this headline">¶</a></h2>
+<p><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code> is a supervised ensemble algorithm that uses subsets of
+the full data to fit a layer, and within each subset K-fold estimation
+to map a training set <span class="math">\((X, y)\)</span> into a prediction set <span class="math">\((Z, y)\)</span>,
+where <span class="math">\(Z\)</span> is a matrix of prediction from each estimator on each
+subset (thus of shape <code class="docutils literal"><span class="pre">[n_samples,</span> <span class="pre">(partitions</span> <span class="pre">*</span> <span class="pre">n_estimators)]</span></code>).
+<span class="math">\(Z\)</span> is constructed using K-Fold splits of each partition of <cite>X</cite> to
+ensure <span class="math">\(Z\)</span> reflects test errors within each partition. A final
+user-specified meta learner is fitted to the final ensemble layer’s
+prediction, to learn the best combination of subset-specific estimator
+predictions.</p>
+<p>The main parameters to consider is the number of <code class="docutils literal"><span class="pre">partitions</span></code>, which will
+increase the number of estimators in the layer by a factor of the number of
+base learners specified, and the number of <code class="docutils literal"><span class="pre">folds</span></code> to be used during
+cross validation in each partition.</p>
+<p>The algorithm in sudo code follows:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">For each layer in the ensemble, do:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Specify a library of <span class="math">\(L\)</span> base learners</p>
+</li>
+<li><p class="first">Specify a partition strategy and partition <span class="math">\(X\)</span> into
+<span class="math">\(J\)</span> subsets.</p>
+</li>
+<li><p class="first">For each partition do:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Fit all base learners and store them</li>
+<li>Create <span class="math">\(K\)</span> folds</li>
+<li>For each fold, do:<ol class="arabic">
+<li>Fit all base learners on the training folds</li>
+<li>Collect <em>all</em> test folds, across partitions, and predict.</li>
+</ol>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">Assemble a cross-validated prediction matrix
+<span class="math">\(Z \in \mathbb{R}^{(n \times (L \times J))}\)</span>  by
+stacking predictions made in the cross-validation step.</p>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">Fit the meta learner on <span class="math">\(Z\)</span> and store the learner.</p>
+</li>
+</ol>
+</div></blockquote>
+<p>The ensemble can be used for prediction by mapping a new test set <span class="math">\(T\)</span>
+into a prediction set <span class="math">\(Z'\)</span> using the learners fitted in
+(1.3.1), and then using <span class="math">\(Z'\)</span> to generate final predictions through
+the fitted meta learner from (2).</p>
+<p>The Subsemble does asymptotically as well as (up to a constant) the
+Oracle selector. For the theory behind the Subsemble, see
+<a class="footnote-reference" href="#id9" id="id7">[3]</a> and references therein.</p>
+<p>By partitioning the data into subset and fitting on those, a Subsemble
+can reduce training time considerably if estimators does not scale
+linearly. Moreover, Subsemble allows estimators to learn different
+patterns from each subset, and so can improve the overall performance
+by achieving a tighter fit on each subset. Since all observations in the
+training set are predicted, no information is lost between layers.</p>
+<div class="section" id="id8">
+<h3>References<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[3]</a></td><td>Sapp, S., van der Laan, M. J., &amp; Canny, J. (2014).
+Subsemble: an  ensemble method for combining subset-specific algorithm
+fits. Journal of Applied Statistics, 41(6), 1247-1259.
+<a class="reference external" href="http://doi.org/10.1080/02664763.2013.864263">http://doi.org/10.1080/02664763.2013.864263</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id10">
+<h3>Notes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>This implementation splits X into partitions sequentially, i.e. without
+randomizing indices. To achieve randomized partitioning, set <code class="docutils literal"><span class="pre">shuffle</span></code>
+to <code class="docutils literal"><span class="pre">True</span></code>. Supervised partitioning is under development.</p>
+</div>
+</div>
+<div class="section" id="blend-ensemble">
+<span id="id11"></span><h2>Blend Ensemble<a class="headerlink" href="#blend-ensemble" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> is a supervised ensemble closely related to
+the <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code>. It differs in that to estimate the prediction
+matrix Z used by the meta learner, it uses a subset of the data to predict
+its complement, and the meta learner is fitted on those predictions.</p>
+<p>The user must specify how much of the data should be used to train the layer,
+<code class="docutils literal"><span class="pre">test_size</span></code>, and how much should be held out for prediction. Prediction for
+the held-out set are passed to the next layer or meta estimator, so information
+is with each layer.</p>
+<p>By only fitting every base learner once on a subset of the full training data,
+<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> is a fast ensemble that can handle very large datasets
+simply by only using portion of it at each stage. The cost of this approach is
+that information is thrown out at each stage, as one layer will not see the
+training data used by the previous layer.</p>
+<p>With large data that can be expected to satisfy an i.i.d. assumption, the
+<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> can achieve similar performance to more
+sophisticated ensembles at a fraction of the training time. However, with
+data data is not uniformly distributed or exhibits high variance the
+<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> can be a poor choice as information is lost at
+each stage of fitting.</p>
+</div>
+<div class="section" id="sequential-ensemble">
+<span id="id12"></span><h2>Sequential Ensemble<a class="headerlink" href="#sequential-ensemble" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> allows users to build ensembles with
+different classes of layers. Instead of setting parameters upfront during
+instantiation, the user specified parameters for each layer when calling
+<code class="docutils literal"><span class="pre">add</span></code>. The user must thus specify what type of layer is being added
+(blend, super learner, subsemble), estimators, preprocessing if applicable, and
+any layer-specific parameters. The Sequential ensemble is best illustrated
+through an example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="k">import</span> <span class="n">SequentialEnsemble</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics.metrics</span> <span class="k">import</span> <span class="n">rmse</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVR</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pandas</span> <span class="k">import</span> <span class="n">DataFrame</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SequentialEnsemble</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="n">rmse</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a subsemble with 10 partitions and 10 folds as first layer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;subsemble&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">SVR</span><span class="p">(),</span> <span class="n">Lasso</span><span class="p">()],</span> <span class="n">partitions</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a super learner with 20 folds as second layer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">SVR</span><span class="p">(),</span> <span class="n">Lasso</span><span class="p">()],</span> <span class="n">folds</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Specify a meta estimator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">SVR</span><span class="p">())</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ensemble</span><span class="o">.</span><span class="n">data</span>
+<span class="go">                         score-m  score-s  ft-m  ft-s  pt-m  pt-s</span>
+<span class="go">    layer-1  lasso  0      11.79     2.74  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  1       7.53     1.24  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  2       7.24     1.82  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  3       9.59     1.72  0.01  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  4      12.44     3.48  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  5      17.36     2.65  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  6       8.89     1.81  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  7      12.72     3.52  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  8      12.18     1.23  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  lasso  9       7.27     1.82  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    0       9.62     1.19  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    1       9.16     0.90  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    2       9.97     1.36  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    3      11.89     0.88  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    4       9.37     0.77  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    5      11.92     1.22  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    6       9.23     1.03  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    7      12.75     1.76  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    8      12.88     1.67  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-1  svr    9       9.56     1.21  0.00  0.00  0.00  0.00</span>
+<span class="go">    layer-2  lasso  0       5.66     2.44  0.02  0.03  0.00  0.00</span>
+<span class="go">    layer-2  svr    0       8.34     4.10  0.03  0.01  0.00  0.00</span>
+</pre></div>
+</div>
+<p>Note how each of the two base learners specified are duplicated to each of the
+10 partitions.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

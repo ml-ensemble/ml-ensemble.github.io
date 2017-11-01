@@ -1,0 +1,22 @@
+mlens\.preprocessing package
+============================
+
+Submodules
+----------
+
+mlens\.preprocessing\.preprocess module
+---------------------------------------
+
+.. automodule:: mlens.preprocessing.preprocess
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.preprocessing
+    :members:
+    :undoc-members:
+    :show-inheritance:

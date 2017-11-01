@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.parallel.learner module &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+        <link rel="up" title="mlens.parallel package" href="mlens.parallel.html"/>
+        <link rel="next" title="mlens.parallel.wrapper module" href="mlens.parallel.wrapper.html"/>
+        <link rel="prev" title="mlens.parallel.layer module" href="mlens.parallel.layer.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">mlens</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mlens.html">mlens package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="mlens.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">mlens</a> &raquo;</li>
+        
+          <li><a href="mlens.html">mlens package</a> &raquo;</li>
+        
+          <li><a href="mlens.parallel.html">mlens.parallel package</a> &raquo;</li>
+        
+      <li>mlens.parallel.learner module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/mlens.parallel.learner.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mlens.parallel.learner">
+<span id="mlens-parallel-learner-module"></span><h1>mlens.parallel.learner module<a class="headerlink" href="#module-mlens.parallel.learner" title="Permalink to this headline">¶</a></h1>
+<p>ML-Ensemble</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Learner classes</p>
+<dl class="class">
+<dt id="mlens.parallel.learner.Cache">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">Cache</code><span class="sig-paren">(</span><em>obj</em>, <em>verbose</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#Cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.Cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Cache wrapper for IndexedEstimator</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.EvalLearner">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">EvalLearner</code><span class="sig-paren">(</span><em>estimator</em>, <em>preprocess</em>, <em>name</em>, <em>attr</em>, <em>scorer</em>, <em>error_score=None</em>, <em>verbose=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#EvalLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.EvalLearner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.parallel.learner.Learner" title="mlens.parallel.learner.Learner"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.learner.Learner</span></code></a></p>
+<p>EvalLearner is a derived class from Learner used for cross-validated
+scoring of an estimator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>estimator</strong> (<em>obj</em>) – estimator to construct learner from</li>
+<li><strong>preprocess</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – preprocess cache refernce</li>
+<li><strong>indexer</strong> (<em>obj</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – indexer to use for generating fits.
+Set to <code class="docutils literal"><span class="pre">None</span></code> to fit only on all data.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – name of learner. If <code class="docutils literal"><span class="pre">preprocess</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>,
+the name will be prepended to <code class="docutils literal"><span class="pre">preprocess__name</span></code>.</li>
+<li><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default='predict'</em><em>)</em>) – predict attribute, typically one of ‘predict’ and ‘predict_proba’</li>
+<li><strong>scorer</strong> (<em>func</em>) – function to use for scoring predictions during cross-validated
+fitting.</li>
+<li><strong>error_score</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – score to set if cross-validation fails. Set to <code class="docutils literal"><span class="pre">None</span></code> to raise error.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default=True</em><em>)</em>) – whether to warn on non-fatal exceptions or raise an error.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.parallel.learner.EvalLearner.gen_fit">
+<code class="descname">gen_fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>P=None</em>, <em>refit=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#EvalLearner.gen_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.EvalLearner.gen_fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generator for fitting learner on given data</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.EvalSubLearner">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">EvalSubLearner</code><span class="sig-paren">(</span><em>job</em>, <em>parent</em>, <em>estimator</em>, <em>in_index</em>, <em>out_index</em>, <em>in_array</em>, <em>targets</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#EvalSubLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.EvalSubLearner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.parallel.learner.SubLearner" title="mlens.parallel.learner.SubLearner"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.learner.SubLearner</span></code></a></p>
+<p>sub-routine for cross-validated evaluation.</p>
+<dl class="attribute">
+<dt id="mlens.parallel.learner.EvalSubLearner.data">
+<code class="descname">data</code><a class="headerlink" href="#mlens.parallel.learner.EvalSubLearner.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Score data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.EvalSubLearner.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#EvalSubLearner.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.EvalSubLearner.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate sub-learner</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.EvalTransformer">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">EvalTransformer</code><span class="sig-paren">(</span><em>estimator</em>, <em>indexer=None</em>, <em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#EvalTransformer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.EvalTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.parallel.learner.Transformer" title="mlens.parallel.learner.Transformer"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.learner.Transformer</span></code></a></p>
+<p>Evaluator version of the Transformer.</p>
+<p>Derived class from Transformer adapted to cross-validated grid-search.
+See <a class="reference internal" href="#mlens.parallel.learner.Transformer" title="mlens.parallel.learner.Transformer"><code class="xref py py-class docutils literal"><span class="pre">Transformer</span></code></a> for more details.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.IndexedEstimator">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">IndexedEstimator</code><span class="sig-paren">(</span><em>estimator</em>, <em>name</em>, <em>index</em>, <em>in_index</em>, <em>out_index</em>, <em>data</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#IndexedEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Indexed Estimator</p>
+<p>Lightweight wrapper around estimator dumps during fitting.</p>
+<dl class="attribute">
+<dt id="mlens.parallel.learner.IndexedEstimator.data">
+<code class="descname">data</code><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.learner.IndexedEstimator.estimator">
+<code class="descname">estimator</code><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator.estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deep copy of estimator</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.learner.IndexedEstimator.in_index">
+<code class="descname">in_index</code><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator.in_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.learner.IndexedEstimator.index">
+<code class="descname">index</code><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.learner.IndexedEstimator.name">
+<code class="descname">name</code><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.learner.IndexedEstimator.out_index">
+<code class="descname">out_index</code><a class="headerlink" href="#mlens.parallel.learner.IndexedEstimator.out_index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.Learner">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">Learner</code><span class="sig-paren">(</span><em>estimator</em>, <em>indexer=None</em>, <em>name=None</em>, <em>preprocess=None</em>, <em>attr=None</em>, <em>scorer=None</em>, <em>proba=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#Learner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.Learner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.parallel.base.html#mlens.parallel.base.ProbaMixin" title="mlens.parallel.base.ProbaMixin"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.base.ProbaMixin</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.learner._BaseEstimator</span></code></p>
+<p>Wrapper for base learners.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>estimator</strong> (<em>obj</em>) – estimator to construct learner from</li>
+<li><strong>preprocess</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>obj</em>) – preprocess transformer. Pass either the string
+cache reference or the transformer instance. If the latter,
+the <code class="xref py py-attr docutils literal"><span class="pre">preprocess</span></code> will refer to the transformer name.</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – name of learner. If <code class="docutils literal"><span class="pre">preprocess</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>,
+the name will be prepended to <code class="docutils literal"><span class="pre">preprocess__name</span></code>.</li>
+<li><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default='predict'</em><em>)</em>) – predict attribute, typically one of ‘predict’ and ‘predict_proba’</li>
+<li><strong>scorer</strong> (<em>func</em>) – function to use for scoring predictions during cross-validated
+fitting.</li>
+<li><strong>output_columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – mapping of prediction feature columns from learner to columns in
+output array. Normally, this map is <code class="docutils literal"><span class="pre">{0:</span> <span class="pre">x}</span></code>, but if the <code class="docutils literal"><span class="pre">indexer</span></code>
+creates partitions, each partition needs to be mapped:
+<code class="docutils literal"><span class="pre">{0:</span> <span class="pre">x,</span> <span class="pre">1:</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1}</span></code>. Note that if <code class="docutils literal"><span class="pre">output_columns</span></code> are not given at
+initialization, the <code class="docutils literal"><span class="pre">set_output_columns</span></code> method must be called before
+running estimations.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
+<li><strong>**kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default=True</em><em>)</em>) – Optional ParallelProcessing arguments. See <code class="xref py py-class docutils literal"><span class="pre">BaseParallel</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mlens.parallel.learner.Learner.scorer">
+<code class="descname">scorer</code><a class="headerlink" href="#mlens.parallel.learner.Learner.scorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy of scorer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.SubLearner">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">SubLearner</code><span class="sig-paren">(</span><em>job</em>, <em>parent</em>, <em>estimator</em>, <em>in_index</em>, <em>out_index</em>, <em>in_array</em>, <em>targets</em>, <em>out_array</em>, <em>index</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubLearner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubLearner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Estimation task</p>
+<p>Wrapper around a sub_learner job.</p>
+<dl class="attribute">
+<dt id="mlens.parallel.learner.SubLearner.data">
+<code class="descname">data</code><a class="headerlink" href="#mlens.parallel.learner.SubLearner.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.SubLearner.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubLearner.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubLearner.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit sub-learner</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.SubLearner.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubLearner.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubLearner.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict with sublearner</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.SubLearner.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubLearner.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubLearner.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict with sublearner</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.SubTransformer">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">SubTransformer</code><span class="sig-paren">(</span><em>job</em>, <em>parent</em>, <em>estimator</em>, <em>in_index</em>, <em>in_array</em>, <em>targets</em>, <em>index</em>, <em>out_index=None</em>, <em>out_array=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubTransformer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Sub-routine for fitting a pipeline</p>
+<dl class="attribute">
+<dt id="mlens.parallel.learner.SubTransformer.data">
+<code class="descname">data</code><a class="headerlink" href="#mlens.parallel.learner.SubTransformer.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit data</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.SubTransformer.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubTransformer.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubTransformer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit transformers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.SubTransformer.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubTransformer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubTransformer.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump transformers for prediction</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.learner.SubTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#SubTransformer.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.SubTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump transformers for prediction</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.learner.Transformer">
+<em class="property">class </em><code class="descclassname">mlens.parallel.learner.</code><code class="descname">Transformer</code><span class="sig-paren">(</span><em>estimator</em>, <em>indexer=None</em>, <em>name=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/learner.html#Transformer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.learner.Transformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.learner._BaseEstimator</span></code></p>
+<p>Preprocessing handler.</p>
+<p>Wrapper for transformation pipeline.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>indexer</strong> (<em>obj</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – indexer to use for generating fits.
+Set to <code class="docutils literal"><span class="pre">None</span></code> to fit only on all data.</li>
+<li><strong>estimator</strong> (<em>obj</em>) – transformation pipeline to construct learner from</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – name of learner. If <code class="docutils literal"><span class="pre">preprocess</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>,
+the name will be prepended to <code class="docutils literal"><span class="pre">preprocess__name</span></code>.</li>
+<li><strong>output_columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – If transformer is to be used to output data, need to
+set <code class="docutils literal"><span class="pre">output_columns</span></code>. Normally, this map is
+<code class="docutils literal"><span class="pre">{0:</span> <span class="pre">x}</span></code>, but if the <code class="docutils literal"><span class="pre">indexer</span></code>
+creates partitions, each partition needs to be mapped:
+<code class="docutils literal"><span class="pre">{0:</span> <span class="pre">x,</span> <span class="pre">1:</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1}</span></code>.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default=True</em><em>)</em>) – whether to warn on non-fatal exceptions or raise an error.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

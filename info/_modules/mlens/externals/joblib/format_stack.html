@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.joblib.format_stack &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.externals.joblib.format_stack</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.externals.joblib.format_stack</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Represent an exception with a lot of information.</span>
+
+<span class="sd">Provides 2 useful functions:</span>
+
+<span class="sd">format_exc: format an exception into a complete traceback, with full</span>
+<span class="sd">            debugging instruction.</span>
+
+<span class="sd">format_outer_frames: format the current position in the stack call.</span>
+
+<span class="sd">Adapted from IPython&#39;s VerboseTB.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Authors: Gael Varoquaux &lt; gael dot varoquaux at normalesup dot org &gt;</span>
+<span class="c1">#          Nathaniel Gray &lt;n8gray@caltech.edu&gt;</span>
+<span class="c1">#          Fernando Perez &lt;fperez@colorado.edu&gt;</span>
+<span class="c1"># Copyright: 2010, Gael Varoquaux</span>
+<span class="c1">#            2001-2004, Fernando Perez</span>
+<span class="c1">#            2001 Nathaniel Gray</span>
+<span class="c1"># License: BSD 3 clause</span>
+
+
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">keyword</span>
+<span class="kn">import</span> <span class="nn">linecache</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pydoc</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">tokenize</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+
+<span class="k">try</span><span class="p">:</span>                           <span class="c1"># Python 2</span>
+    <span class="n">generate_tokens</span> <span class="o">=</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">generate_tokens</span>
+<span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>         <span class="c1"># Python 3</span>
+    <span class="n">generate_tokens</span> <span class="o">=</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">tokenize</span>
+
+<span class="n">INDENT</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="mi">8</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># some internal-use functions</span>
+<div class="viewcode-block" id="safe_repr"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.safe_repr">[docs]</a><span class="k">def</span> <span class="nf">safe_repr</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Hopefully pretty robust repr equivalent.&quot;&quot;&quot;</span>
+    <span class="c1"># this is pretty horrible but should always return *something*</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pydoc</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">raise</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="k">raise</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># all still in an except block so we catch</span>
+                <span class="c1"># getattr raising</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+                    <span class="c1"># ick, recursion</span>
+                    <span class="k">return</span> <span class="n">safe_repr</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="n">klass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">klass</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> instance&#39;</span> <span class="o">%</span> <span class="n">safe_repr</span><span class="p">(</span><span class="n">klass</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                <span class="k">raise</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;UNRECOVERABLE REPR FAILURE&#39;</span></div>
+
+
+<div class="viewcode-block" id="eq_repr"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.eq_repr">[docs]</a><span class="k">def</span> <span class="nf">eq_repr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="n">safe_repr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="uniq_stable"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.uniq_stable">[docs]</a><span class="k">def</span> <span class="nf">uniq_stable</span><span class="p">(</span><span class="n">elems</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;uniq_stable(elems) -&gt; list</span>
+
+<span class="sd">    Return from an iterable, a list of all the unique elements in the input,</span>
+<span class="sd">    but maintaining the order in which they first appear.</span>
+
+<span class="sd">    A naive solution to this problem which just makes a dictionary with the</span>
+<span class="sd">    elements as keys fails to respect the stability condition, since</span>
+<span class="sd">    dictionaries are unsorted by nature.</span>
+
+<span class="sd">    Note: All elements in the input must be hashable.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">unique</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unique_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nn</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nn</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">unique_set</span><span class="p">:</span>
+            <span class="n">unique</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span>
+            <span class="n">unique_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nn</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">unique</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="fix_frame_records_filenames"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.fix_frame_records_filenames">[docs]</a><span class="k">def</span> <span class="nf">fix_frame_records_filenames</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Try to fix the filenames in each record from inspect.getinnerframes().</span>
+
+<span class="sd">    Particularly, modules loaded from within zip files have useless filenames</span>
+<span class="sd">    attached to their code object, and inspect.getinnerframes() just uses it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fixed_records</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">frame</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">line_no</span><span class="p">,</span> <span class="n">func_name</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="c1"># Look inside the frame&#39;s globals dictionary for __file__, which should</span>
+        <span class="c1"># be better.</span>
+        <span class="n">better_fn</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">better_fn</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Check the type just in case someone did something weird with</span>
+            <span class="c1"># __file__. It might also be None if the error occurred during</span>
+            <span class="c1"># import.</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">better_fn</span>
+        <span class="n">fixed_records</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">frame</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">line_no</span><span class="p">,</span> <span class="n">func_name</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span>
+                              <span class="n">index</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fixed_records</span></div>
+
+
+<span class="k">def</span> <span class="nf">_fixed_getframes</span><span class="p">(</span><span class="n">etb</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tb_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">LNUM_POS</span><span class="p">,</span> <span class="n">LINES_POS</span><span class="p">,</span> <span class="n">INDEX_POS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">fix_frame_records_filenames</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getinnerframes</span><span class="p">(</span><span class="n">etb</span><span class="p">,</span> <span class="n">context</span><span class="p">))</span>
+
+    <span class="c1"># If the error is at the console, don&#39;t build any context, since it would</span>
+    <span class="c1"># otherwise produce 5 blank lines printed out (there is no file at the</span>
+    <span class="c1"># console)</span>
+    <span class="n">rec_check</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">tb_offset</span><span class="p">:]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rname</span> <span class="o">=</span> <span class="n">rec_check</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">rname</span> <span class="o">==</span> <span class="s1">&#39;&lt;ipython console&gt;&#39;</span> <span class="ow">or</span> <span class="n">rname</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;&lt;string&gt;&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">rec_check</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">aux</span> <span class="o">=</span> <span class="n">traceback</span><span class="o">.</span><span class="n">extract_tb</span><span class="p">(</span><span class="n">etb</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">aux</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">lnum</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">aux</span><span class="p">):</span>
+        <span class="n">maybe_start</span> <span class="o">=</span> <span class="n">lnum</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">context</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maybe_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">context</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">linecache</span><span class="o">.</span><span class="n">getlines</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">LNUM_POS</span><span class="p">]</span> <span class="o">=</span> <span class="n">lnum</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">INDEX_POS</span><span class="p">]</span> <span class="o">=</span> <span class="n">lnum</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">LINES_POS</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span>
+        <span class="n">records</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">records</span><span class="p">[</span><span class="n">tb_offset</span><span class="p">:]</span>
+
+
+<span class="k">def</span> <span class="nf">_format_traceback_lines</span><span class="p">(</span><span class="n">lnum</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">lvals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">numbers_width</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">lnum</span> <span class="o">-</span> <span class="n">index</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">lnum</span><span class="p">:</span>
+            <span class="c1"># This is the line with the error</span>
+            <span class="n">pad</span> <span class="o">=</span> <span class="n">numbers_width</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">pad</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">pad</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&gt; &#39;</span>
+            <span class="k">elif</span> <span class="n">pad</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;&gt; &#39;</span>
+            <span class="k">elif</span> <span class="n">pad</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;&gt;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="n">marker</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">num</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%*s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">numbers_width</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">lvals</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span> <span class="n">lnum</span><span class="p">:</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lvals</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+
+<div class="viewcode-block" id="format_records"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.format_records">[docs]</a><span class="k">def</span> <span class="nf">format_records</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>   <span class="c1"># , print_globals=False):</span>
+    <span class="c1"># Loop over all records printing context and info</span>
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">abspath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span>
+    <span class="k">for</span> <span class="n">frame</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">lnum</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">records</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">file</span> <span class="ow">and</span> <span class="n">abspath</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="ow">or</span> <span class="s1">&#39;?&#39;</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+            <span class="c1"># if file is &#39;&lt;console&gt;&#39; or something not in the filesystem,</span>
+            <span class="c1"># the abspath call will throw an OSError.  Just ignore it and</span>
+            <span class="c1"># keep the original file string.</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.pyc&#39;</span><span class="p">):</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">file</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span>
+
+        <span class="n">link</span> <span class="o">=</span> <span class="n">file</span>
+
+        <span class="n">args</span><span class="p">,</span> <span class="n">varargs</span><span class="p">,</span> <span class="n">varkw</span><span class="p">,</span> <span class="nb">locals</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargvalues</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">func</span> <span class="o">==</span> <span class="s1">&#39;?&#39;</span><span class="p">:</span>
+            <span class="n">call</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Decide whether to include variable details or not</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">call</span> <span class="o">=</span> <span class="s1">&#39;in </span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">formatargvalues</span><span class="p">(</span><span class="n">args</span><span class="p">,</span>
+                                            <span class="n">varargs</span><span class="p">,</span> <span class="n">varkw</span><span class="p">,</span> <span class="nb">locals</span><span class="p">,</span>
+                                            <span class="n">formatvalue</span><span class="o">=</span><span class="n">eq_repr</span><span class="p">))</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="c1"># Very odd crash from inspect.formatargvalues().  The</span>
+                <span class="c1"># scenario under which it appeared was a call to</span>
+                <span class="c1"># view(array,scale) in NumTut.view.view(), where scale had</span>
+                <span class="c1"># been defined as a scalar (it should be a tuple). Somehow</span>
+                <span class="c1"># inspect messes up resolving the argument list of view()</span>
+                <span class="c1"># and barfs out. At some point I should dig into this one</span>
+                <span class="c1"># and file a bug report about it.</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Joblib&#39;s exception reporting continues...</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">call</span> <span class="o">=</span> <span class="s1">&#39;in </span><span class="si">%s</span><span class="s1">(***failed resolving arguments***)&#39;</span> <span class="o">%</span> <span class="n">func</span>
+
+        <span class="c1"># Initialize a list of names on the current line, which the</span>
+        <span class="c1"># tokenizer below will populate.</span>
+        <span class="n">names</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">def</span> <span class="nf">tokeneater</span><span class="p">(</span><span class="n">token_type</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;Stateful tokeneater which builds dotted names.</span>
+
+<span class="sd">            The list of names it appends to (from the enclosing scope) can</span>
+<span class="sd">            contain repeated composite names.  This is unavoidable, since</span>
+<span class="sd">            there is no way to disambiguate partial dotted structures until</span>
+<span class="sd">            the full list is known.  The caller is responsible for pruning</span>
+<span class="sd">            the final list of duplicates before using it.&quot;&quot;&quot;</span>
+
+            <span class="c1"># build composite names</span>
+            <span class="k">if</span> <span class="n">token</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;.&#39;</span>
+                    <span class="c1"># store state so the next token is added for x.y.z names</span>
+                    <span class="n">tokeneater</span><span class="o">.</span><span class="n">name_cont</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">return</span>
+                <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                    <span class="k">pass</span>
+            <span class="k">if</span> <span class="n">token_type</span> <span class="o">==</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">NAME</span> <span class="ow">and</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">keyword</span><span class="o">.</span><span class="n">kwlist</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tokeneater</span><span class="o">.</span><span class="n">name_cont</span><span class="p">:</span>
+                    <span class="c1"># Dotted names</span>
+                    <span class="n">names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">token</span>
+                    <span class="n">tokeneater</span><span class="o">.</span><span class="n">name_cont</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Regular new names.  We append everything, the caller</span>
+                    <span class="c1"># will be responsible for pruning the list later.  It&#39;s</span>
+                    <span class="c1"># very tricky to try to prune as we go, b/c composite</span>
+                    <span class="c1"># names can fool us.  The pruning at the end is easy</span>
+                    <span class="c1"># to do (or the caller can print a list with repeated</span>
+                    <span class="c1"># names if so desired.</span>
+                    <span class="n">names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">token_type</span> <span class="o">==</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">NEWLINE</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span>
+        <span class="c1"># we need to store a bit of state in the tokenizer to build</span>
+        <span class="c1"># dotted names</span>
+        <span class="n">tokeneater</span><span class="o">.</span><span class="n">name_cont</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">def</span> <span class="nf">linereader</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">lnum</span><span class="o">=</span><span class="p">[</span><span class="n">lnum</span><span class="p">],</span> <span class="n">getline</span><span class="o">=</span><span class="n">linecache</span><span class="o">.</span><span class="n">getline</span><span class="p">):</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">getline</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">lnum</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">lnum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">line</span>
+
+        <span class="c1"># Build the list of names on this line of code where the exception</span>
+        <span class="c1"># occurred.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># This builds the names list in-place by capturing it from the</span>
+            <span class="c1"># enclosing scope.</span>
+            <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">generate_tokens</span><span class="p">(</span><span class="n">linereader</span><span class="p">):</span>
+                <span class="n">tokeneater</span><span class="p">(</span><span class="o">*</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">UnicodeDecodeError</span><span class="p">,</span> <span class="ne">SyntaxError</span><span class="p">):</span>
+            <span class="c1"># signals exit of tokenizer</span>
+            <span class="c1"># SyntaxError can happen when trying to tokenize</span>
+            <span class="c1"># a compiled (e.g. .so or .pyd) extension</span>
+            <span class="k">pass</span>
+        <span class="k">except</span> <span class="n">tokenize</span><span class="o">.</span><span class="n">TokenError</span> <span class="k">as</span> <span class="n">msg</span><span class="p">:</span>
+            <span class="n">_m</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;An unexpected error occurred while tokenizing input file </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span>
+                  <span class="s2">&quot;The following traceback may be corrupted or invalid</span><span class="se">\n</span><span class="s2">&quot;</span>
+                  <span class="s2">&quot;The error message is: </span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">msg</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">_m</span><span class="p">)</span>
+
+        <span class="c1"># prune names list of duplicates, but keep the right order</span>
+        <span class="n">unique_names</span> <span class="o">=</span> <span class="n">uniq_stable</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+
+        <span class="c1"># Start loop over vars</span>
+        <span class="n">lvals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">name_full</span> <span class="ow">in</span> <span class="n">unique_names</span><span class="p">:</span>
+            <span class="n">name_base</span> <span class="o">=</span> <span class="n">name_full</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">name_base</span> <span class="ow">in</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_varnames</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">name_base</span> <span class="ow">in</span> <span class="nb">locals</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">safe_repr</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">name_full</span><span class="p">,</span> <span class="nb">locals</span><span class="p">))</span>
+                    <span class="k">except</span><span class="p">:</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;undefined&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;undefined&quot;</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">name_full</span>
+                <span class="n">lvals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> = </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+            <span class="c1">#elif print_globals:</span>
+            <span class="c1">#    if frame.f_globals.has_key(name_base):</span>
+            <span class="c1">#        try:</span>
+            <span class="c1">#            value = safe_repr(eval(name_full,frame.f_globals))</span>
+            <span class="c1">#        except:</span>
+            <span class="c1">#            value = &quot;undefined&quot;</span>
+            <span class="c1">#    else:</span>
+            <span class="c1">#        value = &quot;undefined&quot;</span>
+            <span class="c1">#    name = &#39;global %s&#39; % name_full</span>
+            <span class="c1">#    lvals.append(&#39;%s = %s&#39; % (name,value))</span>
+        <span class="k">if</span> <span class="n">lvals</span><span class="p">:</span>
+            <span class="n">lvals</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">INDENT</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">INDENT</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lvals</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lvals</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+        <span class="n">level</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">75</span> <span class="o">*</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">link</span><span class="p">,</span> <span class="n">call</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="n">_format_traceback_lines</span><span class="p">(</span><span class="n">lnum</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">lvals</span><span class="p">))))</span>
+
+    <span class="k">return</span> <span class="n">frames</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="format_exc"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.format_exc">[docs]</a><span class="k">def</span> <span class="nf">format_exc</span><span class="p">(</span><span class="n">etype</span><span class="p">,</span> <span class="n">evalue</span><span class="p">,</span> <span class="n">etb</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tb_offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a nice text document describing the traceback.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        etype, evalue, etb: as returned by sys.exc_info</span>
+<span class="sd">        context: number of lines of the source file to plot</span>
+<span class="sd">        tb_offset: the number of stack frame not to use (0 = use all)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># some locals</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">etype</span> <span class="o">=</span> <span class="n">etype</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Header with the exception type, python version, and date</span>
+    <span class="n">pyver</span> <span class="o">=</span> <span class="s1">&#39;Python &#39;</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">executable</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ctime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="s1">&#39;PID: </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+
+    <span class="n">head</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s%s%s</span><span class="se">\n</span><span class="si">%s%s%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+        <span class="n">etype</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">75</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">etype</span><span class="p">))</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">date</span><span class="p">)),</span>
+        <span class="n">date</span><span class="p">,</span> <span class="n">pid</span><span class="p">,</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="mi">75</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">pid</span><span class="p">))</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">pyver</span><span class="p">)),</span>
+        <span class="n">pyver</span><span class="p">)</span>
+
+    <span class="c1"># Drop topmost frames if requested</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">_fixed_getframes</span><span class="p">(</span><span class="n">etb</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">tb_offset</span><span class="p">)</span>
+
+    <span class="c1"># Get (safely) a string form of the exception info</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">etype_str</span><span class="p">,</span> <span class="n">evalue_str</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="p">(</span><span class="n">etype</span><span class="p">,</span> <span class="n">evalue</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># User exception is improperly defined.</span>
+        <span class="n">etype</span><span class="p">,</span> <span class="n">evalue</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[:</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">etype_str</span><span class="p">,</span> <span class="n">evalue_str</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="p">(</span><span class="n">etype</span><span class="p">,</span> <span class="n">evalue</span><span class="p">))</span>
+    <span class="c1"># ... and format it</span>
+    <span class="n">exception</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">etype_str</span><span class="p">,</span> <span class="n">evalue_str</span><span class="p">)]</span>
+    <span class="n">frames</span> <span class="o">=</span> <span class="n">format_records</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">head</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">frames</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">exception</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="format_outer_frames"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.format_stack.format_outer_frames">[docs]</a><span class="k">def</span> <span class="nf">format_outer_frames</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">stack_start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stack_end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">ignore_ipython</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">LNUM_POS</span><span class="p">,</span> <span class="n">LINES_POS</span><span class="p">,</span> <span class="n">INDEX_POS</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getouterframes</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">currentframe</span><span class="p">())</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">line_no</span><span class="p">,</span> <span class="n">func_name</span><span class="p">,</span> <span class="n">lines</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span> \
+                                                <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">records</span><span class="p">):</span>
+        <span class="c1"># Look inside the frame&#39;s globals dictionary for __file__, which should</span>
+        <span class="c1"># be better.</span>
+        <span class="n">better_fn</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_globals</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">better_fn</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># Check the type just in case someone did something weird with</span>
+            <span class="c1"># __file__. It might also be None if the error occurred during</span>
+            <span class="c1"># import.</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">better_fn</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.pyc&#39;</span><span class="p">):</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.py&#39;</span>
+        <span class="k">if</span> <span class="n">ignore_ipython</span><span class="p">:</span>
+            <span class="c1"># Hack to avoid printing the internals of IPython</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;iplib.py&#39;</span><span class="p">,</span> <span class="s1">&#39;py3compat.py&#39;</span><span class="p">)</span>
+                        <span class="ow">and</span> <span class="n">func_name</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;execfile&#39;</span><span class="p">,</span> <span class="s1">&#39;safe_execfile&#39;</span><span class="p">,</span> <span class="s1">&#39;runcode&#39;</span><span class="p">)):</span>
+                <span class="k">break</span>
+        <span class="n">maybe_start</span> <span class="o">=</span> <span class="n">line_no</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">context</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maybe_start</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">context</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">linecache</span><span class="o">.</span><span class="n">getlines</span><span class="p">(</span><span class="n">filename</span><span class="p">)[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">records</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">LNUM_POS</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_no</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">INDEX_POS</span><span class="p">]</span> <span class="o">=</span> <span class="n">line_no</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="n">buf</span><span class="p">[</span><span class="n">LINES_POS</span><span class="p">]</span> <span class="o">=</span> <span class="n">lines</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">buf</span><span class="p">))</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">format_records</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">stack_end</span><span class="p">:</span><span class="n">stack_start</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

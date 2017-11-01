@@ -1,0 +1,7 @@
+mlens\.parallel\.backend module
+===============================
+
+.. automodule:: mlens.parallel.backend
+    :members:
+    :undoc-members:
+    :show-inheritance:

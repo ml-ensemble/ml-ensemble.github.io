@@ -1,0 +1,7 @@
+mlens\.estimators\.estimators module
+====================================
+
+.. automodule:: mlens.estimators.estimators
+    :members:
+    :undoc-members:
+    :show-inheritance:
