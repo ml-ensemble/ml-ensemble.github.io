@@ -1,0 +1,632 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.config &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="index.html"/>
+        <link rel="next" title="mlens.ensemble" href="ensemble.html"/>
+        <link rel="prev" title="Documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-backend"><span class="hidden-section">set_backend</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#run"><span class="hidden-section">run</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-mlens.config"></span><p>ML-Ensemble</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+</tbody>
+</table>
+<p>Global backend configurations.</p>
+<p>Variables</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">DTYPE</span></code>: data type of prediction arrays. Must be a numpy dtype.
+Default is <code class="docutils literal"><span class="pre">float32</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">TMPDIR</span></code>: path to directory where temprorary caches will be hosted.
+Default is to use system <code class="docutils literal"><span class="pre">tmp</span></code> structure.</li>
+<li><code class="docutils literal"><span class="pre">PREFIX</span></code>: cache prefix. Default is <code class="docutils literal"><span class="pre">'.mlens_tmp_cache_'</span></code></li>
+<li><code class="docutils literal"><span class="pre">BACKEND</span></code>: global default backend. Default is <code class="docutils literal"><span class="pre">'threading'</span></code></li>
+<li><code class="docutils literal"><span class="pre">START_METHOD</span></code>: global start method (if <code class="docutils literal"><span class="pre">backend='multiprocessing'</span></code>)
+Default is <code class="docutils literal"><span class="pre">'fork'</span></code></li>
+<li><code class="docutils literal"><span class="pre">VERBOSE</span></code>: verbose import. Set to <code class="docutils literal"><span class="pre">Y</span></code> for verbose. Needs to be
+set before import (i.e. <code class="docutils literal"><span class="pre">export</span> <span class="pre">MLENS_VERBOSE=0</span></code>).</li>
+<li><code class="docutils literal"><span class="pre">IVALS</span></code>: load exception handling interval. Default is <code class="docutils literal"><span class="pre">(0.01,</span> <span class="pre">120)</span></code>.</li>
+</ol>
+<p>Environmental variables can be set by</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">MLENS_</span><span class="p">[</span><span class="n">VARIABLE</span><span class="p">]</span><span class="o">=</span><span class="n">VALUE</span>
+</pre></div>
+</div>
+<p>For changing defaults during a session, use
+<code class="docutils literal"><span class="pre">set_[variable]</span></code> and <code class="docutils literal"><span class="pre">get_[variable]</span></code>, where <code class="docutils literal"><span class="pre">[variable]</span></code> is replaced
+with the lower case name of the environmental variable to change.</p>
+<p>Changing global configurations in-session is experimental: Please report any
+unexpected behavior.</p>
+<div class="section" id="mlens-config">
+<h1>mlens.config<a class="headerlink" href="#mlens-config" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dtype">
+<h2>dtype<a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-dtype">
+<h3><span class="hidden-section">get_dtype</span><a class="headerlink" href="#get-dtype" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.get_dtype">
+<code class="descclassname">mlens.config.</code><code class="descname">get_dtype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#get_dtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.get_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dtype</p>
+</dd></dl>
+
+</div>
+<div class="section" id="set-dtype">
+<h3><span class="hidden-section">set_dtype</span><a class="headerlink" href="#set-dtype" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.set_dtype">
+<code class="descclassname">mlens.config.</code><code class="descname">set_dtype</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#set_dtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.set_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the  dtype to use during estimation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – numpy dtype</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="tmpdir">
+<h2>tmpdir<a class="headerlink" href="#tmpdir" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-tmpdir">
+<h3><span class="hidden-section">get_tmpdir</span><a class="headerlink" href="#get-tmpdir" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.get_tmpdir">
+<code class="descclassname">mlens.config.</code><code class="descname">get_tmpdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#get_tmpdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.get_tmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return start method</p>
+</dd></dl>
+
+</div>
+<div class="section" id="set-tmpdir">
+<h3><span class="hidden-section">set_tmpdir</span><a class="headerlink" href="#set-tmpdir" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.set_tmpdir">
+<code class="descclassname">mlens.config.</code><code class="descname">set_tmpdir</code><span class="sig-paren">(</span><em>tmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#set_tmpdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.set_tmpdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the root directory for temporary caches during estimation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tmp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – directory path</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="backend">
+<h2>backend<a class="headerlink" href="#backend" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-backend">
+<h3><span class="hidden-section">get_backend</span><a class="headerlink" href="#get-backend" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.get_backend">
+<code class="descclassname">mlens.config.</code><code class="descname">get_backend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#get_backend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.get_backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return backend</p>
+</dd></dl>
+
+</div>
+<div class="section" id="set-backend">
+<h3><span class="hidden-section">set_backend</span><a class="headerlink" href="#set-backend" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.set_backend">
+<code class="descclassname">mlens.config.</code><code class="descname">set_backend</code><span class="sig-paren">(</span><em>backend</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#set_backend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.set_backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parallel backend to use during estimation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – backend type, one of ‘multiprocessing’, ‘threading’, ‘sequential’</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="start-method">
+<h2>start_method<a class="headerlink" href="#start-method" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-start-method">
+<h3><span class="hidden-section">get_start_method</span><a class="headerlink" href="#get-start-method" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.get_start_method">
+<code class="descclassname">mlens.config.</code><code class="descname">get_start_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#get_start_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.get_start_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return start method</p>
+</dd></dl>
+
+</div>
+<div class="section" id="set-start-method">
+<h3><span class="hidden-section">set_start_method</span><a class="headerlink" href="#set-start-method" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.set_start_method">
+<code class="descclassname">mlens.config.</code><code class="descname">set_start_method</code><span class="sig-paren">(</span><em>method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#set_start_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.set_start_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the method for starting multiprocess worker pool.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Methods available: ‘fork’, ‘spawn’, ‘forkserver’.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="prefix">
+<h2>prefix<a class="headerlink" href="#prefix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-prefix">
+<h3><span class="hidden-section">get_prefix</span><a class="headerlink" href="#get-prefix" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.get_prefix">
+<code class="descclassname">mlens.config.</code><code class="descname">get_prefix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#get_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.get_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return cache prefix</p>
+</dd></dl>
+
+</div>
+<div class="section" id="set-prefix">
+<h3><span class="hidden-section">set_prefix</span><a class="headerlink" href="#set-prefix" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.set_prefix">
+<code class="descclassname">mlens.config.</code><code class="descname">set_prefix</code><span class="sig-paren">(</span><em>prefix</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#set_prefix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.set_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the prefix assigned to temporary directories during estimation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – cache file name prefix</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="ivals">
+<h2>ivals<a class="headerlink" href="#ivals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-ivals">
+<h3><span class="hidden-section">get_ivals</span><a class="headerlink" href="#get-ivals" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.get_ivals">
+<code class="descclassname">mlens.config.</code><code class="descname">get_ivals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#get_ivals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.get_ivals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return _IVALS</p>
+</dd></dl>
+
+</div>
+<div class="section" id="set-ivals">
+<h3><span class="hidden-section">set_ivals</span><a class="headerlink" href="#set-ivals" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.set_ivals">
+<code class="descclassname">mlens.config.</code><code class="descname">set_ivals</code><span class="sig-paren">(</span><em>interval</em>, <em>limit</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#set_ivals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.set_ivals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parallel backend to use during estimation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of seconds between each check</li>
+<li><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of seconds to wait.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="utility">
+<h2>Utility<a class="headerlink" href="#utility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clear-cache">
+<h3><span class="hidden-section">clear_cache</span><a class="headerlink" href="#clear-cache" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="mlens.config.clear_cache">
+<code class="descclassname">mlens.config.</code><code class="descname">clear_cache</code><span class="sig-paren">(</span><em>tmp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/config.html#clear_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.config.clear_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that cache directory is empty.</p>
+<p>Checks that a specified directory do not contain any directories with
+the ML-Ensemble temporary cache signature. Attempts to remove any found
+directories.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tmp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – the directory to check for residual caches in.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

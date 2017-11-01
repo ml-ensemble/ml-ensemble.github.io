@@ -1,0 +1,1199 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.sklearn package &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.externals.sklearn package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/test/mlens.externals.sklearn.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlens-externals-sklearn-package">
+<h1>mlens.externals.sklearn package<a class="headerlink" href="#mlens-externals-sklearn-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mlens.externals.sklearn.base">
+<span id="mlens-externals-sklearn-base-module"></span><h2>mlens.externals.sklearn.base module<a class="headerlink" href="#module-mlens.externals.sklearn.base" title="Permalink to this headline">¶</a></h2>
+<p>Import of <code class="docutils literal"><span class="pre">clone</span></code>, <code class="docutils literal"><span class="pre">BaseEstimator</span></code> and <code class="docutils literal"><span class="pre">TransformerMixin</span></code> from
+Scikit-learn’s  <code class="docutils literal"><span class="pre">base.py</span></code></p>
+<dl class="class">
+<dt id="mlens.externals.sklearn.base.BaseEstimator">
+<em class="property">class </em><code class="descclassname">mlens.externals.sklearn.base.</code><code class="descname">BaseEstimator</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#BaseEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.BaseEstimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Base class for all estimators in scikit-learn
+.. rubric:: Notes</p>
+<p>All estimators should specify all the parameters that can be set
+at the class level in their <code class="docutils literal"><span class="pre">__init__</span></code> as explicit keyword
+arguments (no <code class="docutils literal"><span class="pre">*args</span></code> or <code class="docutils literal"><span class="pre">**kwargs</span></code>).</p>
+<dl class="method">
+<dt id="mlens.externals.sklearn.base.BaseEstimator.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#BaseEstimator.get_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.BaseEstimator.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.
+:param deep: If True, will return the parameters for this estimator and</p>
+<blockquote>
+<div>contained subobjects that are estimators.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>params</strong> – Parameter names mapped to their values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">mapping of string to any</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.externals.sklearn.base.BaseEstimator.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#BaseEstimator.set_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.BaseEstimator.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.
+The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.
+:returns:
+:rtype: self</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.sklearn.base.MetaEstimatorMixin">
+<em class="property">class </em><code class="descclassname">mlens.externals.sklearn.base.</code><code class="descname">MetaEstimatorMixin</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#MetaEstimatorMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.MetaEstimatorMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Mixin class for all meta estimators in scikit-learn.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.externals.sklearn.base.TransformerMixin">
+<em class="property">class </em><code class="descclassname">mlens.externals.sklearn.base.</code><code class="descname">TransformerMixin</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#TransformerMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.TransformerMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Mixin class for all transformers in scikit-learn.</p>
+<dl class="method">
+<dt id="mlens.externals.sklearn.base.TransformerMixin.fit_transform">
+<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#TransformerMixin.fit_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.TransformerMixin.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit to data, then transform it.
+Fits transformer to X and y with optional parameters fit_params
+and returns a transformed version of X.
+:param X: Training set.
+:type X: numpy array of shape [n_samples, n_features]
+:param y: Target values.
+:type y: numpy array of shape [n_samples]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>X_new</strong> – Transformed array.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">numpy array of shape [n_samples, n_features_new]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.base.clone">
+<code class="descclassname">mlens.externals.sklearn.base.</code><code class="descname">clone</code><span class="sig-paren">(</span><em>estimator</em>, <em>safe=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new estimator with the same parameters.
+Clone does a deep copy of the model in an estimator
+without actually copying attached data. It yields a new estimator
+with the same parameters that has not been fit on any data.
+:param estimator: The estimator or group of estimators to be cloned
+:type estimator: estimator object, or list, tuple or set of objects
+:param safe: If safe is false, clone will fall back to a deep copy on objects</p>
+<blockquote>
+<div>that are not estimators.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.base.is_classifier">
+<code class="descclassname">mlens.externals.sklearn.base.</code><code class="descname">is_classifier</code><span class="sig-paren">(</span><em>estimator</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#is_classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.is_classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the given estimator is (probably) a classifier.
+:param estimator: Estimator object to test.
+:type estimator: object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – True if estimator is a classifier and False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.base.is_regressor">
+<code class="descclassname">mlens.externals.sklearn.base.</code><code class="descname">is_regressor</code><span class="sig-paren">(</span><em>estimator</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/base.html#is_regressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.base.is_regressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the given estimator is (probably) a regressor.
+:param estimator: Estimator object to test.
+:type estimator: object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – True if estimator is a regressor and False otherwise.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.sklearn.exceptions">
+<span id="mlens-externals-sklearn-exceptions-module"></span><h2>mlens.externals.sklearn.exceptions module<a class="headerlink" href="#module-mlens.externals.sklearn.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.exceptions" title="(in scikit-learn v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">sklearn.exceptions</span></code></a> module includes all custom warnings and error
+classes used across scikit-learn.</p>
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.NotFittedError">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">NotFittedError</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#NotFittedError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.NotFittedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">AttributeError</span></code></a></p>
+<p>Exception class to raise if estimator is used before fitting.</p>
+<p>This class inherits from both ValueError and AttributeError to help with
+exception handling and backward compatibility.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="k">import</span> <span class="n">NotFittedError</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">LinearSVC</span><span class="p">()</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">... </span><span class="k">except</span> <span class="n">NotFittedError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="gp">... </span>                       
+<span class="go">NotFittedError(&#39;This LinearSVC instance is not fitted yet&#39;,)</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.validation.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.ChangedBehaviorWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">ChangedBehaviorWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#ChangedBehaviorWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.ChangedBehaviorWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning class used to notify the user of any change in the behavior.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.base.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.ConvergenceWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">ConvergenceWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#ConvergenceWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.ConvergenceWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Custom warning to capture convergence problems</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.DataConversionWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">DataConversionWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#DataConversionWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.DataConversionWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning used to notify implicit data conversions happening in the code.</p>
+<p>This warning occurs when some input data needs to be converted or
+interpreted in a way that may not match the user’s expectations.</p>
+<dl class="docutils">
+<dt>For example, this warning may occur when the user</dt>
+<dd><ul class="first last simple">
+<li>passes an integer array to a function which expects float input and
+will convert the input</li>
+<li>requests a non-copying operation, but a copy is required to meet the
+implementation’s data-type expectations;</li>
+<li>passes an input whose shape can be interpreted ambiguously.</li>
+</ul>
+</dd>
+</dl>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.validation.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.DataDimensionalityWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">DataDimensionalityWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#DataDimensionalityWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.DataDimensionalityWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Custom warning to notify potential issues with data dimensionality.</p>
+<p>For example, in random projection, this warning is raised when the
+number of components, which quantifies the dimensionality of the target
+projection space, is higher than the number of features, which quantifies
+the dimensionality of the original source space, to imply that the
+dimensionality of the problem will not be reduced.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.EfficiencyWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">EfficiencyWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#EfficiencyWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.EfficiencyWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning used to notify the user of inefficient computation.</p>
+<p>This warning notifies the user that the efficiency may not be optimal due
+to some reason which may be included as a part of the warning message.
+This may be subclassed into a more specific Warning class.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.18.</span></p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.FitFailedWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">FitFailedWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#FitFailedWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.FitFailedWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">RuntimeWarning</span></code></a></p>
+<p>Warning class used if there is an error while fitting the estimator.</p>
+<p>This Warning is used in meta estimators GridSearchCV and RandomizedSearchCV
+and the cross-validation helper function cross_val_score to warn when there
+is an error while fitting the estimator.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="k">import</span> <span class="n">FitFailedWarning</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;always&#39;</span><span class="p">,</span> <span class="n">FitFailedWarning</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gs</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(),</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]},</span> <span class="n">error_score</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">(</span><span class="n">record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">gs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1"># This will raise a ValueError since C is &lt; 0</span>
+<span class="gp">... </span>    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">pass</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="p">))</span>
+<span class="gp">... </span>
+<span class="go">FitFailedWarning(&quot;Classifier fit failed. The score on this train-test</span>
+<span class="go">partition for these parameters will be set to 0.000000. Details:</span>
+<span class="go">\nValueError(&#39;Penalty term must be positive; got (C=-2)&#39;,)&quot;,)</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.cross_validation.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.NonBLASDotWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">NonBLASDotWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#NonBLASDotWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.NonBLASDotWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.externals.sklearn.exceptions.EfficiencyWarning" title="mlens.externals.sklearn.exceptions.EfficiencyWarning"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.exceptions.EfficiencyWarning</span></code></a></p>
+<p>Warning used when the dot operation does not use BLAS.</p>
+<p>This warning is used to notify the user that BLAS was not used for dot
+operation and hence the efficiency may be affected.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.validation, extends EfficiencyWarning.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.externals.sklearn.exceptions.UndefinedMetricWarning">
+<em class="property">exception </em><code class="descclassname">mlens.externals.sklearn.exceptions.</code><code class="descname">UndefinedMetricWarning</code><a class="reference internal" href="../_modules/mlens/externals/sklearn/exceptions.html#UndefinedMetricWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.exceptions.UndefinedMetricWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning used when the metric is invalid</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.base.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.sklearn.scorer">
+<span id="mlens-externals-sklearn-scorer-module"></span><h2>mlens.externals.sklearn.scorer module<a class="headerlink" href="#module-mlens.externals.sklearn.scorer" title="Permalink to this headline">¶</a></h2>
+<p>Scikit-learn imports to reconstruct the <code class="docutils literal"><span class="pre">make_scorer</span></code> function.</p>
+<p>arbitrary score functions.</p>
+<p>A scorer object is a callable that can be passed to
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.model_selection.GridSearchCV</span></code></a> or
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html#sklearn.model_selection.cross_val_score" title="(in scikit-learn v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">sklearn.model_selection.cross_val_score()</span></code></a> as the <code class="docutils literal"><span class="pre">scoring</span></code>
+parameter, to specify how a model should be evaluated.</p>
+<p>The signature of the call is <code class="docutils literal"><span class="pre">(estimator,</span> <span class="pre">X,</span> <span class="pre">y)</span></code> where <code class="docutils literal"><span class="pre">estimator</span></code>
+is the model to be evaluated, <code class="docutils literal"><span class="pre">X</span></code> is the test data and <code class="docutils literal"><span class="pre">y</span></code> is the
+ground truth labeling (or <code class="docutils literal"><span class="pre">None</span></code> in the case of unsupervised models).
+========================================================================</p>
+<dl class="function">
+<dt id="mlens.externals.sklearn.scorer.make_scorer">
+<code class="descclassname">mlens.externals.sklearn.scorer.</code><code class="descname">make_scorer</code><span class="sig-paren">(</span><em>score_func</em>, <em>greater_is_better=True</em>, <em>needs_proba=False</em>, <em>needs_threshold=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/scorer.html#make_scorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.scorer.make_scorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a scorer from a performance metric or loss function.</p>
+<p>This factory function wraps scoring functions for use in GridSearchCV
+and cross_val_score. It takes a score function, such as <code class="docutils literal"><span class="pre">accuracy_score</span></code>,
+<code class="docutils literal"><span class="pre">mean_squared_error</span></code>, <code class="docutils literal"><span class="pre">adjusted_rand_index</span></code> or <code class="docutils literal"><span class="pre">average_precision</span></code>
+and returns a callable that scores an estimator’s output.</p>
+<p>Read more in the <a class="reference external" href="http://scikit-learn.org/stable/modules/model_evaluation.html#scoring" title="(in scikit-learn v0.19.1)"><span class="xref std std-ref">User Guide</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>score_func</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)"><em>callable</em></a><em>,</em>) – Score function (or loss function) with signature
+<code class="docutils literal"><span class="pre">score_func(y,</span> <span class="pre">y_pred,</span> <span class="pre">**kwargs)</span></code>.</li>
+<li><strong>greater_is_better</strong> (<em>boolean</em><em>, </em><em>default=True</em>) – Whether score_func is a score function (default), meaning high is good,
+or a loss function, meaning low is good. In the latter case, the
+scorer object will sign-flip the outcome of the score_func.</li>
+<li><strong>needs_proba</strong> (<em>boolean</em><em>, </em><em>default=False</em>) – Whether score_func requires predict_proba to get probability estimates
+out of a classifier.</li>
+<li><strong>needs_threshold</strong> (<em>boolean</em><em>, </em><em>default=False</em>) – <p>Whether score_func takes a continuous decision certainty.
+This only works for binary classification using estimators that
+have either a decision_function or predict_proba method.</p>
+<p>For example <code class="docutils literal"><span class="pre">average_precision</span></code> or the area under the roc curve
+can not be computed using discrete predictions alone.</p>
+</li>
+<li><strong>**kwargs</strong> (<em>additional arguments</em>) – Additional parameters to be passed to score_func.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scorer</strong> – Callable object that returns a scalar score; greater is better.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)">callable</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">make_scorer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">fbeta_score</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span>
+<span class="go">make_scorer(fbeta_score, beta=2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">LinearSVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">LinearSVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]},</span>
+<span class="gp">... </span>                    <span class="n">scoring</span><span class="o">=</span><span class="n">ftwo_scorer</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.sklearn.type_of_target">
+<span id="mlens-externals-sklearn-type-of-target-module"></span><h2>mlens.externals.sklearn.type_of_target module<a class="headerlink" href="#module-mlens.externals.sklearn.type_of_target" title="Permalink to this headline">¶</a></h2>
+<p>Imports from the utils.multiclass module of Scikit-learn.</p>
+<dl class="function">
+<dt id="mlens.externals.sklearn.type_of_target.is_multilabel">
+<code class="descclassname">mlens.externals.sklearn.type_of_target.</code><code class="descname">is_multilabel</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/type_of_target.html#is_multilabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.type_of_target.is_multilabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if <code class="docutils literal"><span class="pre">y</span></code> is in a multilabel format.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>y</strong> (<em>numpy array of shape</em><em> [</em><em>n_samples</em><em>]</em>) – Target values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Return <code class="docutils literal"><span class="pre">True</span></code>, if <code class="docutils literal"><span class="pre">y</span></code> is in a multilabel format, else <code class="docutils literal"><span class="pre">`False</span></code>.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a>,</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils.multiclass</span> <span class="k">import</span> <span class="n">is_multilabel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_multilabel</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_multilabel</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[]])</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_multilabel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_multilabel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]]))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_multilabel</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.type_of_target.type_of_target">
+<code class="descclassname">mlens.externals.sklearn.type_of_target.</code><code class="descname">type_of_target</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/type_of_target.html#type_of_target"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.type_of_target.type_of_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the type of data indicated by target <cite>y</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>y</strong> (<em>array-like</em>) – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>target_type</strong> – One of:
+* ‘continuous’: <cite>y</cite> is an array-like of floats that are not all<blockquote>
+<div>integers, and is 1d or a column vector.</div></blockquote>
+<ul class="simple">
+<li>’continuous-multioutput’: <cite>y</cite> is a 2d array of floats that are
+not all integers, and both dimensions are of size &gt; 1.</li>
+<li>’binary’: <cite>y</cite> contains &lt;= 2 discrete values and is 1d or a column
+vector.</li>
+<li>’multiclass’: <cite>y</cite> contains more than two discrete values, is not a
+sequence of sequences, and is 1d or a column vector.</li>
+<li>’multiclass-multioutput’: <cite>y</cite> is a 2d array that contains more
+than two discrete values, is not a sequence of sequences, and both
+dimensions are of size &gt; 1.</li>
+<li>’multilabel-indicator’: <cite>y</cite> is a label indicator matrix, an array
+of two dimensions with at least two columns, and at most 2 unique
+values.</li>
+<li>’unknown’: <cite>y</cite> is array-like but none of the above, such as a 3d
+array, sequence of sequences, or an array of non-sequence objects.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)">string</a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span>
+<span class="go">&#39;continuous&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">&#39;binary&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="go">&#39;binary&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+<span class="go">&#39;binary&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="go">&#39;multiclass&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="go">&#39;multiclass&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="go">&#39;multiclass&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="go">&#39;multiclass-multioutput&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="go">&#39;multiclass-multioutput&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">]]))</span>
+<span class="go">&#39;continuous-multioutput&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">type_of_target</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="go">&#39;multilabel-indicator&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.sklearn.validation">
+<span id="mlens-externals-sklearn-validation-module"></span><h2>mlens.externals.sklearn.validation module<a class="headerlink" href="#module-mlens.externals.sklearn.validation" title="Permalink to this headline">¶</a></h2>
+<p>Scikit-learn utilities for input validation.</p>
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.as_float_array">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">as_float_array</code><span class="sig-paren">(</span><em>X</em>, <em>copy=True</em>, <em>force_all_finite=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#as_float_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.as_float_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an array-like to an array of floats.
+The new dtype will be np.float32 or np.float64, depending on the original
+type. The function can create a copy or modify the argument depending
+on the argument copy.
+:param X:
+:type X: {array-like, sparse matrix}
+:param copy: If True, a copy of X will be created. If False, a copy may still be</p>
+<blockquote>
+<div>returned if X’s dtype is not a floating point type.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>force_all_finite</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to raise an error on np.inf and np.nan in X.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>XT</strong> – An array of type np.float</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">{array, sparse matrix}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.assert_all_finite">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">assert_all_finite</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#assert_all_finite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.assert_all_finite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Throw a ValueError if X contains NaN or infinity.
+:param X:
+:type X: array or sparse matrix</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_X_y">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_X_y</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>accept_sparse=False</em>, <em>dtype='numeric'</em>, <em>order=None</em>, <em>copy=False</em>, <em>force_all_finite=True</em>, <em>ensure_2d=True</em>, <em>allow_nd=False</em>, <em>multi_output=False</em>, <em>ensure_min_samples=1</em>, <em>ensure_min_features=1</em>, <em>y_numeric=False</em>, <em>warn_on_dtype=False</em>, <em>estimator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_X_y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_X_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input validation for standard estimators.
+Checks X and y for consistent length, enforces X 2d and y 1d.
+Standard input checks are only applied to y, such as checking that y
+does not have np.nan or np.inf targets. For multi-label y, set
+multi_output=True to allow 2d and sparse y.  If the dtype of X is
+object, attempt converting to float, raising on failure.
+:param X: Input data.
+:type X: nd-array, list or sparse matrix
+:param y: Labels.
+:type y: nd-array, list or sparse matrix
+:param accept_sparse: String[s] representing allowed sparse matrix formats, such as ‘csc’,</p>
+<blockquote>
+<div><p>‘csr’, etc. If the input is sparse but not in the allowed format,
+it will be converted to the first listed format. True allows the input
+to be any format. False means that a sparse matrix input will
+raise an error.
+.. deprecated:: 0.19</p>
+<blockquote>
+<div>Passing ‘None’ to parameter <code class="docutils literal"><span class="pre">accept_sparse</span></code> in methods is
+deprecated in version 0.19 “and will be removed in 0.21. Use
+<code class="docutils literal"><span class="pre">accept_sparse=False</span></code> instead.</div></blockquote>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.6)"><em>type</em></a><em>, </em><em>list of types</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=&quot;numeric&quot;</em><em>)</em>) – Data type of result. If None, the dtype of the input is preserved.
+If “numeric”, dtype is preserved unless array.dtype is object.
+If dtype is a list of types, conversion on the first type is only
+performed if the dtype of the input is not in the list.</li>
+<li><strong>order</strong> (<em>'F'</em><em>, </em><em>'C'</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=None</em><em>)</em>) – Whether an array will be forced to be fortran or c-style.</li>
+<li><strong>copy</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether a forced copy will be triggered. If copy=False, a copy might
+be triggered by a conversion.</li>
+<li><strong>force_all_finite</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to raise an error on np.inf and np.nan in X. This parameter
+does not influence whether y can have np.inf or np.nan values.</li>
+<li><strong>ensure_2d</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to make X at least 2d.</li>
+<li><strong>allow_nd</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to allow X.ndim &gt; 2.</li>
+<li><strong>multi_output</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to allow 2-d y (array or sparse matrix). If false, y will be
+validated as a vector. y cannot have np.nan or np.inf values if
+multi_output=True.</li>
+<li><strong>ensure_min_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that X has a minimum number of samples in its first
+axis (rows for a 2D array).</li>
+<li><strong>ensure_min_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that the 2D array has some minimum number of features
+(columns). The default value of 1 rejects empty datasets.
+This check is only enforced when X has effectively 2 dimensions or
+is originally 1D and <code class="docutils literal"><span class="pre">ensure_2d</span></code> is True. Setting to 0 disables
+this check.</li>
+<li><strong>y_numeric</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to ensure that y has a numeric type. If dtype of y is object,
+it is converted to float64. Should only be used for regression
+algorithms.</li>
+<li><strong>warn_on_dtype</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Raise DataConversionWarning if the dtype of the input data structure
+does not match the requested dtype, causing a memory copy.</li>
+<li><strong>estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><em>estimator instance</em><em> (</em><em>default=None</em><em>)</em>) – If passed, include the name of the estimator in warning messages.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>X_converted</strong> (<em>object</em>) – The converted and validated X.</li>
+<li><strong>y_converted</strong> (<em>object</em>) – The converted and validated y.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_array">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_array</code><span class="sig-paren">(</span><em>array</em>, <em>accept_sparse=False</em>, <em>dtype='numeric'</em>, <em>order=None</em>, <em>copy=False</em>, <em>force_all_finite=True</em>, <em>ensure_2d=True</em>, <em>allow_nd=False</em>, <em>ensure_min_samples=1</em>, <em>ensure_min_features=1</em>, <em>warn_on_dtype=False</em>, <em>estimator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input validation on an array, list, sparse matrix or similar.
+By default, the input is converted to an at least 2D numpy array.
+If the dtype of the array is object, attempt converting to float,
+raising on failure.
+:param array: Input object to check / convert.
+:type array: object
+:param accept_sparse: String[s] representing allowed sparse matrix formats, such as ‘csc’,</p>
+<blockquote>
+<div><p>‘csr’, etc. If the input is sparse but not in the allowed format,
+it will be converted to the first listed format. True allows the input
+to be any format. False means that a sparse matrix input will
+raise an error.
+.. deprecated:: 0.19</p>
+<blockquote>
+<div>Passing ‘None’ to parameter <code class="docutils literal"><span class="pre">accept_sparse</span></code> in methods is
+deprecated in version 0.19 “and will be removed in 0.21. Use
+<code class="docutils literal"><span class="pre">accept_sparse=False</span></code> instead.</div></blockquote>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.6)"><em>type</em></a><em>, </em><em>list of types</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=&quot;numeric&quot;</em><em>)</em>) – Data type of result. If None, the dtype of the input is preserved.
+If “numeric”, dtype is preserved unless array.dtype is object.
+If dtype is a list of types, conversion on the first type is only
+performed if the dtype of the input is not in the list.</li>
+<li><strong>order</strong> (<em>'F'</em><em>, </em><em>'C'</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=None</em><em>)</em>) – Whether an array will be forced to be fortran or c-style.
+When order is None (default), then if copy=False, nothing is ensured
+about the memory layout of the output array; otherwise (copy=True)
+the memory layout of the returned array is kept as close as possible
+to the original array.</li>
+<li><strong>copy</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether a forced copy will be triggered. If copy=False, a copy might
+be triggered by a conversion.</li>
+<li><strong>force_all_finite</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to raise an error on np.inf and np.nan in X.</li>
+<li><strong>ensure_2d</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to raise a value error if X is not 2d.</li>
+<li><strong>allow_nd</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to allow X.ndim &gt; 2.</li>
+<li><strong>ensure_min_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that the array has a minimum number of samples in its first
+axis (rows for a 2D array). Setting to 0 disables this check.</li>
+<li><strong>ensure_min_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that the 2D array has some minimum number of features
+(columns). The default value of 1 rejects empty datasets.
+This check is only enforced when the input data has effectively 2
+dimensions or is originally 1D and <code class="docutils literal"><span class="pre">ensure_2d</span></code> is True. Setting to 0
+disables this check.</li>
+<li><strong>warn_on_dtype</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Raise DataConversionWarning if the dtype of the input data structure
+does not match the requested dtype, causing a memory copy.</li>
+<li><strong>estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><em>estimator instance</em><em> (</em><em>default=None</em><em>)</em>) – If passed, include the name of the estimator in warning messages.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_converted</strong> – The converted and validated X.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)">object</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_consistent_length">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_consistent_length</code><span class="sig-paren">(</span><em>*arrays</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_consistent_length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_consistent_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that all arrays have consistent first dimensions.
+Checks whether all objects in arrays have the same shape or length.
+:param *arrays: Objects that will be checked for consistent length.
+:type *arrays: list or tuple of input objects.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_is_fitted">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_is_fitted</code><span class="sig-paren">(</span><em>estimator</em>, <em>attributes</em>, <em>msg=None</em>, <em>all_or_any=&lt;built-in function all&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_is_fitted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_is_fitted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform is_fitted validation for estimator.
+Checks if the estimator is fitted by verifying the presence of
+“all_or_any” of the passed attributes and raises a NotFittedError with the
+given message.
+:param estimator: estimator instance for which the check is performed.
+:type estimator: estimator instance.
+:param attributes:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Eg.:</dt>
+<dd><code class="docutils literal"><span class="pre">[&quot;coef_&quot;,</span> <span class="pre">&quot;estimator_&quot;,</span> <span class="pre">...],</span> <span class="pre">&quot;coef_&quot;</span></code></dd>
+</dl>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a>) – The default error message is, “This %(name)s instance is not fitted
+yet. Call ‘fit’ with appropriate arguments before using this method.”
+For custom messages if “%(name)s” is present in the message string,
+it is substituted for the estimator name.
+Eg. : “Estimator, %(name)s, must be fitted before sparsifying”.</li>
+<li><strong>all_or_any</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)"><em>callable</em></a><em>, </em><em>{all</em><em>, </em><em>any}</em><em>, </em><em>default all</em>) – Specify whether all or any of the given attributes must exist.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)">None</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">NotFittedError</span></code> – If the attributes are not found.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_non_negative">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_non_negative</code><span class="sig-paren">(</span><em>X</em>, <em>whom</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_non_negative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_non_negative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if there is any negative value in an array.
+:param X: Input data.
+:type X: array-like or sparse matrix
+:param whom: Who passed X to this function.
+:type whom: string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_random_state">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_random_state</code><span class="sig-paren">(</span><em>seed</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_random_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_random_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn seed into a np.random.RandomState instance
+:param seed: If seed is None, return the RandomState singleton used by np.random.</p>
+<blockquote>
+<div>If seed is an int, return a new RandomState instance seeded with seed.
+If seed is already a RandomState instance, return it.
+Otherwise raise ValueError.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.check_symmetric">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">check_symmetric</code><span class="sig-paren">(</span><em>array</em>, <em>tol=1e-10</em>, <em>raise_warning=True</em>, <em>raise_exception=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#check_symmetric"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.check_symmetric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure that array is 2D, square and symmetric.
+If the array is not symmetric, then a symmetrized version is returned.
+Optionally, a warning or exception is raised if the matrix is not
+symmetric.
+:param array: Input object to check / convert. Must be two-dimensional and square,</p>
+<blockquote>
+<div>otherwise a ValueError will be raised.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – Absolute tolerance for equivalence of arrays. Default = 1E-10.</li>
+<li><strong>raise_warning</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – If True then raise a warning if conversion is required.</li>
+<li><strong>raise_exception</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – If True then raise an exception if array is not symmetric.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>array_sym</strong> – Symmetrized version of the input array, i.e. the average of array
+and array.transpose(). If sparse, then duplicate entries are first
+summed and zeros are eliminated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray or sparse matrix</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.column_or_1d">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">column_or_1d</code><span class="sig-paren">(</span><em>y</em>, <em>warn=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#column_or_1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.column_or_1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ravel column or 1d numpy array, else raises an error
+:param y:
+:type y: array-like
+:param warn: To control display of warnings.
+:type warn: boolean, default False</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>y</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/array.html#module-array" title="(in Python v3.6)">array</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.has_fit_parameter">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">has_fit_parameter</code><span class="sig-paren">(</span><em>estimator</em>, <em>parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#has_fit_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.has_fit_parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the estimator’s fit method supports the given parameter.
+:param estimator: An estimator to inspect.
+:type estimator: object
+:param parameter: The searched parameter.
+:type parameter: str</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>is_parameter</strong> – Whether the parameter was found to be a named parameter of the
+estimator’s fit method.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="k">import</span> <span class="n">SVC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">has_fit_parameter</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="s2">&quot;sample_weight&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.externals.sklearn.validation.indexable">
+<code class="descclassname">mlens.externals.sklearn.validation.</code><code class="descname">indexable</code><span class="sig-paren">(</span><em>*iterables</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/externals/sklearn/validation.html#indexable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.externals.sklearn.validation.indexable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make arrays indexable for cross-validation.
+Checks consistent length, passes through None, and ensures that everything
+can be indexed by converting sparse matrices to csr and converting
+non-interable objects to arrays.
+:param *iterables: List of objects to ensure sliceability.
+:type *iterables: lists, dataframes, arrays, sparse matrices</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.externals.sklearn">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mlens.externals.sklearn" title="Permalink to this headline">¶</a></h2>
+<p>External dependencies from Scikit-learn.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

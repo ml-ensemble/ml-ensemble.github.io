@@ -1,0 +1,684 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.parallel.wrapper &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.parallel.wrapper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.parallel.wrapper</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-Ensemble</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Estimator wrappers around base classes.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseParallel</span><span class="p">,</span> <span class="n">OutputMixin</span>
+<span class="kn">from</span> <span class="nn">.backend</span> <span class="k">import</span> <span class="n">ParallelProcessing</span>
+<span class="kn">from</span> <span class="nn">..utils.exceptions</span> <span class="k">import</span> <span class="n">ParallelProcessingError</span><span class="p">,</span> <span class="n">NotFittedError</span>
+<span class="kn">from</span> <span class="nn">..utils.validation</span> <span class="k">import</span> <span class="n">check_inputs</span> <span class="k">as</span> <span class="n">_check_inputs</span>
+
+
+<div class="viewcode-block" id="check_inputs"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.check_inputs">[docs]</a><span class="k">def</span> <span class="nf">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">check_level</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Wrapper to check inputs&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">check_level</span><span class="o">=</span><span class="n">check_level</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">check_level</span><span class="o">=</span><span class="n">check_level</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span></div>
+
+
+<div class="viewcode-block" id="EstimatorMixin"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.EstimatorMixin">[docs]</a><span class="k">class</span> <span class="nc">EstimatorMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Estimator mixin</span>
+
+<span class="sd">    Mixin class to build an estimator from a :mod:`mlens.parallel` backend</span>
+<span class="sd">    class. The backend class should be set as the ``_backend`` attribute</span>
+<span class="sd">    of the estimator during a ``fit`` call via a ``_build`` method. E.g::</span>
+
+<span class="sd">        Foo(EstimatorMixin, Learner):</span>
+
+<span class="sd">            def __init__(self, ...):</span>
+
+<span class="sd">                self._backend = None</span>
+
+<span class="sd">            def _build(self):</span>
+<span class="sd">                self._backend = Learner(...)</span>
+
+<span class="sd">    It is recommended to combine :class:`EstimatorMixin` with</span>
+<span class="sd">    `parallel.base.ParamMixin`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="EstimatorMixin.fit"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.EstimatorMixin.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit</span>
+
+<span class="sd">        Fit estimator.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array of size [n_samples, n_features]</span>
+<span class="sd">            input data</span>
+
+<span class="sd">        y: array of size [n_features,]</span>
+<span class="sd">            targets</span>
+
+<span class="sd">        proba: bool, optional</span>
+<span class="sd">            whether to fit for later predict_proba calls. Will register number</span>
+<span class="sd">            of classes to expect in later predict and transform calls.</span>
+
+<span class="sd">        refit: bool (default = True)</span>
+<span class="sd">            Whether to refit already fitted sub-learners.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self: instance</span>
+<span class="sd">            fitted estimator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_build&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
+
+        <span class="n">run</span><span class="p">(</span><span class="n">get_backend</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+            <span class="n">proba</span><span class="o">=</span><span class="n">proba</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="n">refit</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="EstimatorMixin.fit_transform"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.EstimatorMixin.fit_transform">[docs]</a>    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit</span>
+
+<span class="sd">        Fit estimator and return cross-validated predictions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array of size [n_samples, n_features]</span>
+<span class="sd">            input data</span>
+
+<span class="sd">        y: array of size [n_features,]</span>
+<span class="sd">            targets</span>
+
+<span class="sd">        proba: bool, optional</span>
+<span class="sd">            whether to fit for later predict_proba calls. Will register number</span>
+<span class="sd">            of classes to expect in later predict and transform calls.</span>
+
+<span class="sd">        refit: bool (default = True)</span>
+<span class="sd">            Whether to refit already fitted sub-learners.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        P: array of size [n_samples, n_prediction_features]</span>
+<span class="sd">            prediction generated by cross-validation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_build&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="n">get_backend</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="n">proba</span><span class="p">,</span>
+                   <span class="n">refit</span><span class="o">=</span><span class="n">refit</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EstimatorMixin.predict"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.EstimatorMixin.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict</span>
+
+<span class="sd">        Predict using full-fold estimator (fitted on all data).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array of size [n_samples, n_features]</span>
+<span class="sd">            input data</span>
+
+<span class="sd">        proba: bool, optional</span>
+<span class="sd">            whether to predict class probabilities</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        P: array of size [n_samples, n_prediction_features]</span>
+<span class="sd">            prediction with full-fold estimator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;__fitted__&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span>
+                    <span class="s2">&quot;Instance not fitted (with current params).&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">run</span><span class="p">(</span>
+            <span class="n">get_backend</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s1">&#39;predict&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="n">proba</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="EstimatorMixin.transform"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.EstimatorMixin.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Transform</span>
+
+<span class="sd">        Use cross-validated estimators to generate predictions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array of size [n_samples, n_features]</span>
+<span class="sd">            input data</span>
+
+<span class="sd">        proba: bool, optional</span>
+<span class="sd">            whether to predict class probabilities</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        P: array of size [n_samples, n_prediction_features]</span>
+<span class="sd">            prediction generated by cross-validation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;__fitted__&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span>
+                    <span class="s2">&quot;Instance not fitted (with current params).&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">run</span><span class="p">(</span><span class="n">get_backend</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="n">proba</span><span class="p">,</span>
+                   <span class="n">return_preds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="get_backend"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.get_backend">[docs]</a><span class="k">def</span> <span class="nf">get_backend</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check whether backend exists and return&quot;&quot;&quot;</span>
+    <span class="n">_backend</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="s1">&#39;_backend&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">_backend</span><span class="p">:</span>
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">_backend</span>
+
+    <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="n">BaseParallel</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="k">raise</span> <span class="n">ParallelProcessingError</span><span class="p">(</span>
+        <span class="s2">&quot;The estimator does not have a backend. Cannot process.&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_flags"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.set_flags">[docs]</a><span class="k">def</span> <span class="nf">set_flags</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set proba on backend&quot;&quot;&quot;</span>
+    <span class="n">resets</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">if</span> <span class="s1">&#39;layer&#39;</span> <span class="ow">in</span> <span class="n">backend</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="n">updates</span> <span class="o">=</span> <span class="p">[</span><span class="n">backend</span><span class="p">]</span> <span class="o">+</span> <span class="n">backend</span><span class="o">.</span><span class="n">learners</span>
+    <span class="k">elif</span> <span class="s1">&#39;group&#39;</span> <span class="ow">in</span> <span class="n">backend</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="n">updates</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">learners</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">backend</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">updates</span> <span class="o">=</span> <span class="p">[</span><span class="n">backend</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">updates</span> <span class="o">=</span> <span class="n">backend</span>
+
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">updates</span><span class="p">:</span>
+        <span class="n">_res</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">flags</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+                <span class="n">_res</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="n">resets</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">obj</span><span class="p">,</span> <span class="n">_res</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">resets</span></div>
+
+
+<div class="viewcode-block" id="reset_flags"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.reset_flags">[docs]</a><span class="k">def</span> <span class="nf">reset_flags</span><span class="p">(</span><span class="n">resets</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reset proba on backend&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">obj</span><span class="p">,</span> <span class="n">_res</span> <span class="ow">in</span> <span class="n">resets</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_res</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_predict"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.set_predict">[docs]</a><span class="k">def</span> <span class="nf">set_predict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set attr argument and proba&quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">proba</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;proba&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">proba</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;proba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">proba</span>
+        <span class="n">out</span><span class="p">[</span><span class="s1">&#39;attr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;predict_proba&#39;</span> <span class="k">if</span> <span class="n">proba</span> <span class="k">else</span> <span class="s1">&#39;predict&#39;</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="set_output"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.set_output">[docs]</a><span class="k">def</span> <span class="nf">set_output</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="nb">map</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the __no_output__ flag&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;return_preds&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;return_preds&#39;</span><span class="p">]:</span>
+            <span class="n">__no_output__</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">__no_output__</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">__no_output__</span> <span class="o">=</span> <span class="n">job</span> <span class="o">==</span> <span class="s1">&#39;fit&#39;</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;return_preds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">job</span> <span class="o">!=</span> <span class="s1">&#39;fit&#39;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">map</span><span class="p">:</span>
+        <span class="c1"># Need to ensure outputs always generated for stacking</span>
+        <span class="n">__no_output__</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">__no_output__</span></div>
+
+
+<div class="viewcode-block" id="run"><a class="viewcode-back" href="../../../module/mlens.parallel.wrapper.html#mlens.parallel.run">[docs]</a><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">map</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility for running a ParallelProcessing job on a set of callers.</span>
+
+<span class="sd">    Run is a utility mapping for setting up a ParallelProcessing job and</span>
+<span class="sd">    executing across a set of callers. By default run executes::</span>
+
+<span class="sd">        out = mgr.map(caller, job, X, y, **kwargs)</span>
+
+<span class="sd">    :func:`run` handles temporary parameter changes, for instance running</span>
+<span class="sd">    a learner with ``proba=True`` that has ``proba=False`` as default.</span>
+<span class="sd">    Similarly, instances destined to not produce output can be forced to</span>
+<span class="sd">    yield predictions by passing ``return_preds=True`` as a keyword argument.</span>
+
+<span class="sd">    .. note:: To run a learner with a ``preprocessing`` dependency, the</span>
+<span class="sd">        instances need to be wrapped in a :class:`Group` ::</span>
+
+<span class="sd">            run(Group(learner, transformer), &#39;predict&#39;, X, y)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    caller: instance, list</span>
+<span class="sd">        A runnable instance, or a list of instances.</span>
+
+<span class="sd">    job: str</span>
+<span class="sd">        type of job to run. One of ``&#39;fit&#39;``, ``&#39;transform&#39;``, ``&#39;predict&#39;``.</span>
+
+<span class="sd">    X: array-like</span>
+<span class="sd">        input</span>
+
+<span class="sd">    y: array-like, optional</span>
+<span class="sd">        targets</span>
+
+<span class="sd">    map: bool (default=True)</span>
+<span class="sd">        whether to run a :func:`ParallelProcessing.map` job. If ``False``,</span>
+<span class="sd">        will instead run a :func:`ParallelProcessing.stack` job.</span>
+
+<span class="sd">    **kwargs: optional</span>
+<span class="sd">        Keyword arguments. :func:`run` searches for</span>
+<span class="sd">        ``proba`` and ``return_preds`` to temporarily update callers to run</span>
+<span class="sd">        desired job and return desired output. Other ``kwargs`` are passed</span>
+<span class="sd">        to either ``map`` or ``stack``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;array_check&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="c1"># Temporary set of job flags</span>
+    <span class="n">flags</span> <span class="o">=</span> <span class="n">set_predict</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">flags</span><span class="p">[</span><span class="s1">&#39;__no_output__&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">set_output</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="nb">map</span><span class="p">)</span>
+
+    <span class="n">resets</span> <span class="o">=</span> <span class="n">set_flags</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">_backend</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="s1">&#39;backend&#39;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">get_backend</span><span class="p">())</span>
+        <span class="n">n_jobs</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="s1">&#39;n_jobs&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="n">_backend</span><span class="p">,</span> <span class="n">n_jobs</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span> <span class="k">as</span> <span class="n">mgr</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">map</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">mgr</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">caller</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">reset_flags</span><span class="p">(</span><span class="n">resets</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

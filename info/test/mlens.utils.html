@@ -1,0 +1,1561 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.utils package &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.utils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/test/mlens.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mlens-utils-package">
+<h1>mlens.utils package<a class="headerlink" href="#mlens-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mlens.utils.checks">
+<span id="mlens-utils-checks-module"></span><h2>mlens.utils.checks module<a class="headerlink" href="#module-mlens.utils.checks" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Controls that an estimator was built as expected.</p>
+<dl class="function">
+<dt id="mlens.utils.checks.assert_correct_format">
+<code class="descclassname">mlens.utils.checks.</code><code class="descname">assert_correct_format</code><span class="sig-paren">(</span><em>estimators</em>, <em>preprocessing</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#assert_correct_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.checks.assert_correct_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial check to assert layer can be constructed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.checks.assert_valid_estimator">
+<code class="descclassname">mlens.utils.checks.</code><code class="descname">assert_valid_estimator</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#assert_valid_estimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.checks.assert_valid_estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that an instance has a <code class="docutils literal"><span class="pre">get_params</span></code> and <code class="docutils literal"><span class="pre">fit</span></code> method.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.checks.assert_valid_pipeline">
+<code class="descclassname">mlens.utils.checks.</code><code class="descname">assert_valid_pipeline</code><span class="sig-paren">(</span><em>pipeline</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#assert_valid_pipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.checks.assert_valid_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quick check to ensure the pipeline is an mlens Pipeline</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.checks.check_ensemble_build">
+<code class="descclassname">mlens.utils.checks.</code><code class="descname">check_ensemble_build</code><span class="sig-paren">(</span><em>inst</em>, <em>attr='stack'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#check_ensemble_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.checks.check_ensemble_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that layers have been instantiated.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.checks.check_initialized">
+<code class="descclassname">mlens.utils.checks.</code><code class="descname">check_initialized</code><span class="sig-paren">(</span><em>inst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#check_initialized"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.checks.check_initialized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a ParallelProcessing instance is initialized properly.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils.dummy">
+<span id="mlens-utils-dummy-module"></span><h2>mlens.utils.dummy module<a class="headerlink" href="#module-mlens.utils.dummy" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Collection of dummy estimator classes, Mixins to build transparent layers for
+unit testing.</p>
+<p>Also contains pre-made Layer, LayerContainers and data generation functions
+for unit testing.</p>
+<dl class="class">
+<dt id="mlens.utils.dummy.LogisticRegression">
+<em class="property">class </em><code class="descclassname">mlens.utils.dummy.</code><code class="descname">LogisticRegression</code><span class="sig-paren">(</span><em>offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#LogisticRegression"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.LogisticRegression" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.utils.dummy.OLS" title="mlens.utils.dummy.OLS"><code class="xref py py-class docutils literal"><span class="pre">mlens.utils.dummy.OLS</span></code></a></p>
+<p>No frill Logistic Regressor w. one-vs-rest estimation of P(label).</p>
+<p>MWE of a Scikit-learn classifier.</p>
+<p>LogisticRegression is a simple classifier estimator designed for
+transparency in unit testing. It implements a Logistic
+Regression with one-vs-rest strategy of classification.</p>
+<p>The estimator is a wrapper around the <a class="reference internal" href="#mlens.utils.dummy.OLS" title="mlens.utils.dummy.OLS"><code class="xref py py-class docutils literal"><span class="pre">OLS</span></code></a>. The OLS
+prediction is squashed using the Sigmoid function, and classification
+is done by picking the label with the highest probability.</p>
+<p>The <code class="docutils literal"><span class="pre">offset</span></code> option allows the user to offset weights in the OLS by a
+scalar value, if different instances should be differentiated in their
+predictions.</p>
+<p class="rubric">Examples</p>
+<p>Asserting the LogisticRegression passes the Scikit-learn estimator test</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils.estimator_checks</span> <span class="k">import</span> <span class="n">check_estimator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_estimator</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Comparison with Scikit-learn’s LogisticRegression</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="k">import</span> <span class="n">LogisticRegression</span> <span class="k">as</span> <span class="n">mlensL</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span> <span class="k">as</span> <span class="n">sklearnL</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">make_classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slr</span> <span class="o">=</span> <span class="n">sklearnL</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlr</span> <span class="o">=</span> <span class="n">mlensL</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">mlr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">==</span> <span class="n">slr</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">array([ 0.98])</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="mlens.utils.dummy.LogisticRegression.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#LogisticRegression.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.LogisticRegression.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit one model per label.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.dummy.LogisticRegression.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#LogisticRegression.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.LogisticRegression.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get label predictions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.dummy.LogisticRegression.predict_proba">
+<code class="descname">predict_proba</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#LogisticRegression.predict_proba"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.LogisticRegression.predict_proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get probability predictions.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.utils.dummy.OLS">
+<em class="property">class </em><code class="descclassname">mlens.utils.dummy.</code><code class="descname">OLS</code><span class="sig-paren">(</span><em>offset=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#OLS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.OLS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.externals.sklearn.html#mlens.externals.sklearn.base.BaseEstimator" title="mlens.externals.sklearn.base.BaseEstimator"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></a></p>
+<p>No frills vanilla OLS estimator implemented through the normal equation.</p>
+<p>MWE of a Scikit-learn estimator.</p>
+<p>OLS is a simple estimator designed to allow for total control over
+predictions in unit testing. It implements OLS through the Normal
+Equation, no learning takes place. The <code class="docutils literal"><span class="pre">offset</span></code> option allows
+the user to offset weights by a scalar value, if different instances
+should be differentiated in their predictions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default = 0</em><em>)</em>) – scalar value to add to the coefficient vector after fitting.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Asserting the OLS passes the Scikit-learn estimator test</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils.estimator_checks</span> <span class="k">import</span> <span class="n">check_estimator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="k">import</span> <span class="n">OLS</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_estimator</span><span class="p">(</span><span class="n">OLS</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>OLS comparison with Scikit-learn’s LinearRegression</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="k">import</span> <span class="n">assert_array_equal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="k">import</span> <span class="n">OLS</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ols</span> <span class="o">=</span> <span class="n">OLS</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ols</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_array_equal</span><span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">ols</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="mlens.utils.dummy.OLS.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#OLS.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.OLS.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit coefficient vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.dummy.OLS.predict">
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#OLS.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.OLS.predict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predict with fitted weights.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.utils.dummy.Scale">
+<em class="property">class </em><code class="descclassname">mlens.utils.dummy.</code><code class="descname">Scale</code><span class="sig-paren">(</span><em>copy=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#Scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.Scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.externals.sklearn.html#mlens.externals.sklearn.base.BaseEstimator" title="mlens.externals.sklearn.base.BaseEstimator"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></a>, <a class="reference internal" href="mlens.externals.sklearn.html#mlens.externals.sklearn.base.TransformerMixin" title="mlens.externals.sklearn.base.TransformerMixin"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code></a></p>
+<p>Removes the a learnt mean in a column-wise manner in an array.</p>
+<p>MWE of a Scikit-learn transformer, to be used for unit-tests of ensemble
+classes.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – Whether to copy X before transforming.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>Asserting <a class="reference internal" href="#mlens.utils.dummy.Scale" title="mlens.utils.dummy.Scale"><code class="xref py py-class docutils literal"><span class="pre">Scale</span></code></a> passes the Scikit-learn estimator test</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.utils.estimator_checks</span> <span class="k">import</span> <span class="n">check_estimator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="k">import</span> <span class="n">Scale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_estimator</span><span class="p">(</span><span class="n">Scale</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Scaling elements</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">arange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="k">import</span> <span class="n">Scale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Scaled:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">S</span> <span class="o">=</span> <span class="n">Scale</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">S</span><span class="p">)</span>
+<span class="go">X:</span>
+<span class="go">array([[ 0,  2],</span>
+<span class="go">       [ 2,  6],</span>
+<span class="go">       [ 4, 10]])</span>
+<span class="go">Scaled:</span>
+<span class="go">array([[-2., -4.],</span>
+<span class="go">       [ 0.,  0.],</span>
+<span class="go">       [ 2.,  4.]])</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="mlens.utils.dummy.Scale.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#Scale.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.Scale.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate mean.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>X</strong> (<em>array-like</em>) – training data to fit transformer on.</li>
+<li><strong>y</strong> (<em>array-like</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – pass through for pipeline.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.dummy.Scale.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/dummy.html#Scale.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.dummy.Scale.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform array by adjusting all elements with scale.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>ndarray</em>) – matrix to transform.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils.exceptions">
+<span id="mlens-utils-exceptions-module"></span><h2>mlens.utils.exceptions module<a class="headerlink" href="#module-mlens.utils.exceptions" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<p>Exception handling classes.</p>
+<dl class="exception">
+<dt id="mlens.utils.exceptions.DataConversionWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">DataConversionWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#DataConversionWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.DataConversionWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning used to notify implicit data conversions happening in the code.</p>
+<p>This warning occurs when some input data needs to be converted or
+interpreted in a way that may not match the user’s expectations.</p>
+<dl class="docutils">
+<dt>For example, this warning may occur when the user</dt>
+<dd><ul class="first last simple">
+<li>passes an integer array to a function which expects float input and
+will convert the input</li>
+<li>requests a non-copying operation, but a copy is required to meet the
+implementation’s data-type expectations;</li>
+<li>passes an input whose shape can be interpreted ambiguously.</li>
+</ul>
+</dd>
+</dl>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.validation.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">imported from Scikit-learn for validation compatibility.</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.DeprecationWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">DeprecationWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#DeprecationWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.DeprecationWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning to notify the user of a deprecated feature</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.EfficiencyWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">EfficiencyWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#EfficiencyWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.EfficiencyWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning used to notify the user of inefficient computation.</p>
+<p>This warning notifies the user that the efficiency may not be optimal due
+to some reason which may be included as a part of the warning message.
+This may be subclassed into a more specific Warning class.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.18.</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">imported from Scikit-learn for validation compatibility</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.FitFailedWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">FitFailedWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#FitFailedWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.FitFailedWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">RuntimeWarning</span></code></a></p>
+<p>Warning for a failed estimator ‘fit’ call.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.InputDataWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">InputDataWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#InputDataWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.InputDataWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning used to notify that an array does not behave as expected.</p>
+<p>Raised if data looks suspicious, but not outright fatal. Used sparingly,
+as it is often better to raise an error if input does not look like
+expected. Debugging corrupt data during parallel estimation is difficult
+and requires knowledge of backend operations.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.LayerSpecificationError">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">LayerSpecificationError</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#LayerSpecificationError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.LayerSpecificationError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">TypeError</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a></p>
+<p>Error class for incorrectly specified layers.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.LayerSpecificationWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">LayerSpecificationWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#LayerSpecificationWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.LayerSpecificationWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning class if layer has been specified in a dubious form.</p>
+<p>This warning is raised when the input does not look like expected, but
+is not fatal and a best guess of how to fix it will be made.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.MetricWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">MetricWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#MetricWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.MetricWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warning to notify that scoring do not behave as expected.</p>
+<p>Raised if scoring fails or if aggregating scores fails.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.NonBLASDotWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">NonBLASDotWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#NonBLASDotWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.NonBLASDotWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.utils.exceptions.EfficiencyWarning" title="mlens.utils.exceptions.EfficiencyWarning"><code class="xref py py-class docutils literal"><span class="pre">mlens.utils.exceptions.EfficiencyWarning</span></code></a></p>
+<p>Warning used when the dot operation does not use BLAS.</p>
+<p>FROM SCIKIT-LEARN</p>
+<p>This warning is used to notify the user that BLAS was not used for dot
+operation and hence the efficiency may be affected.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.18: </span>Moved from sklearn.utils.validation, extends EfficiencyWarning.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">imported from Scikit-learn for validation compatibility</p>
+</div>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.NotFittedError">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">NotFittedError</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#NotFittedError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.NotFittedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">AttributeError</span></code></a></p>
+<p>Error class for an ensemble or estimator that is not fitted yet</p>
+<p>Raised when some method has been called that expects the instance to be
+fitted.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.NotInitializedError">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">NotInitializedError</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#NotInitializedError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.NotInitializedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">ValueError</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">AttributeError</span></code></a></p>
+<p>Error class for an instance that has not been properly initialized.</p>
+<p>Raised when required methods and attributes have not been initialized.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.ParallelProcessingError">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">ParallelProcessingError</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#ParallelProcessingError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.ParallelProcessingError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">AttributeError</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">RuntimeError</span></code></a></p>
+<p>Error class for fatal errors related to <code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code>.</p>
+<p>Can be subclassed for more specific error classes.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="mlens.utils.exceptions.ParallelProcessingWarning">
+<em class="property">exception </em><code class="descclassname">mlens.utils.exceptions.</code><code class="descname">ParallelProcessingWarning</code><a class="reference internal" href="../_modules/mlens/utils/exceptions.html#ParallelProcessingWarning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.exceptions.ParallelProcessingWarning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#UserWarning" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">UserWarning</span></code></a></p>
+<p>Warnings related to methods on <code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code>.</p>
+<p>Can be subclassed for more specific warning classes.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils.formatting">
+<span id="mlens-utils-formatting-module"></span><h2>mlens.utils.formatting module<a class="headerlink" href="#module-mlens.utils.formatting" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Formatting of instance lists.</p>
+<dl class="function">
+<dt id="mlens.utils.formatting.check_instances">
+<code class="descclassname">mlens.utils.formatting.</code><code class="descname">check_instances</code><span class="sig-paren">(</span><em>estimators=None</em>, <em>preprocessing=None</em>, <em>namespace=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/formatting.html#check_instances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.formatting.check_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure estimators and preprocessing pipelines are correctly formatted</p>
+<p>Utility for formating estimator iterable and preprocessing iterable into
+formats accepted by a the <code class="xref py py-class docutils literal"><span class="pre">Layer</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>estimators</strong> (<em>iterable</em><em>, </em><em>optional</em>) – estimator instances.</li>
+<li><strong>preprocessing</strong> (<em>iterable</em><em>, </em><em>optional</em>) – preprocessing pipeline instances.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.formatting.format_name">
+<code class="descclassname">mlens.utils.formatting.</code><code class="descname">format_name</code><span class="sig-paren">(</span><em>name</em>, <em>cls</em>, <em>global_names</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/formatting.html#format_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.formatting.format_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility for assigning a unique name</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils.id_train">
+<span id="mlens-utils-id-train-module"></span><h2>mlens.utils.id_train module<a class="headerlink" href="#module-mlens.utils.id_train" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Class for identifying a training set after an estimator has been fitted. Used
+for determining whether a <cite>predict</cite> or <cite>transform</cite> method should use
+cross validation to create predictions, or estimators fitted on full
+training data.</p>
+<dl class="class">
+<dt id="mlens.utils.id_train.IdTrain">
+<em class="property">class </em><code class="descclassname">mlens.utils.id_train.</code><code class="descname">IdTrain</code><span class="sig-paren">(</span><em>size=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/id_train.html#IdTrain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.id_train.IdTrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.externals.sklearn.html#mlens.externals.sklearn.base.BaseEstimator" title="mlens.externals.sklearn.base.BaseEstimator"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></a></p>
+<p>Container to identify training set.</p>
+<p>Samples a random subset from set passed to the <cite>fit</cite> method, to allow
+identification of the training set in a <cite>transform</cite> or <cite>predict</cite> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – size to sample. A random subset of size [size, size] will be stored
+in the instance.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.utils.id_train.IdTrain.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/id_train.html#IdTrain.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.id_train.IdTrain.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a training set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array-like</em>) – training set to sample observations from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>self</strong> – fitted instance with stored sample.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">obj</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.id_train.IdTrain.is_train">
+<code class="descname">is_train</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/id_train.html#IdTrain.is_train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.id_train.IdTrain.is_train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if an array is the training set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array-like</em>) – training set to sample observations from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>self</strong> – fitted instance with stored sample.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">obj</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.id_train.permutation">
+<code class="descclassname">mlens.utils.id_train.</code><code class="descname">permutation</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#mlens.utils.id_train.permutation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Randomly permute a sequence, or return a permuted range.</p>
+<p>If <cite>x</cite> is a multi-dimensional array, it is only shuffled along its
+first index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><em>array_like</em>) – If <cite>x</cite> is an integer, randomly permute <code class="docutils literal"><span class="pre">np.arange(x)</span></code>.
+If <cite>x</cite> is an array, make a copy and shuffle the elements
+randomly.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong> – Permuted sequence or array range.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ndarray</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">array([1, 7, 4, 3, 0, 9, 2, 5, 8, 6])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<span class="go">array([15,  1,  9,  4, 12])</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="go">array([[6, 7, 8],</span>
+<span class="go">       [0, 1, 2],</span>
+<span class="go">       [3, 4, 5]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils.utils">
+<span id="mlens-utils-utils-module"></span><h2>mlens.utils.utils module<a class="headerlink" href="#module-mlens.utils.utils" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="mlens.utils.utils.CMLog">
+<em class="property">class </em><code class="descclassname">mlens.utils.utils.</code><code class="descname">CMLog</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#CMLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.CMLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>CPU and Memory logger.</p>
+<p>Class for starting a monitor job of CPU and memory utilization in the
+background in a Python script. The <code class="docutils literal"><span class="pre">monitor</span></code> class records the
+<code class="docutils literal"><span class="pre">cpu_percent</span></code>, <code class="docutils literal"><span class="pre">rss</span></code> and <code class="docutils literal"><span class="pre">vms</span></code> as collected by the
+<a class="reference external" href="https://pypi.python.org/pypi/psutil">psutil</a> library for the parent process’ pid.</p>
+<p>CPU usage and memory utilization are stored as attributes in numpy arrays.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.utils</span> <span class="k">import</span> <span class="n">CMLog</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">CMLog</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">monitor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Collecting before completion triggers a message but no error</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">_collect</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">_collect</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;CPU usage:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">cpu</span>
+<span class="go">[CMLog] Monitoring for 2 seconds with checks every 0.5 seconds.</span>
+<span class="go">[CMLog] Job not finished. Cannot _collect yet.</span>
+<span class="go">[CMLog] Collecting... done. Read 4 lines in 0.000 seconds.</span>
+<span class="go">CPU usage:</span>
+<span class="go">array([ 50. ,  22.4,   6. ,  11.9])</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><em>ImportError :</em> – Depends on psutil. If not installed, raises ImportError on
+instantiation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – whether to notify of job start.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.utils.utils.CMLog.collect">
+<code class="descname">collect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#CMLog.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.CMLog.collect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect monitored data.</p>
+<p>Once a monitor job finishes, call <code class="docutils literal"><span class="pre">_collect</span></code> to read the CPU and
+memory usage into python objects in the current process. If called
+before the job finishes, _collect issues a print statement to try
+again later, but no warning or error is raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.utils.CMLog.monitor">
+<code class="descname">monitor</code><span class="sig-paren">(</span><em>stop=None</em>, <em>ival=0.1</em>, <em>kill=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#CMLog.monitor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.CMLog.monitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start monitoring CPU and memory usage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – seconds to monitor for. If None, monitors until <code class="docutils literal"><span class="pre">_collect</span></code> is
+called.</li>
+<li><strong>ival</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default=0.1</em><em>)</em>) – interval of monitoring.</li>
+<li><strong>kill</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to kill the monitoring job if <code class="docutils literal"><span class="pre">_collect</span></code> is called before
+timeout (<code class="docutils literal"><span class="pre">stop</span></code>). If set to False, calling <code class="docutils literal"><span class="pre">_collect</span></code> will
+cause the instance to wait until the job completes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.clone_attribute">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">clone_attribute</code><span class="sig-paren">(</span><em>iterable</em>, <em>attribute</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#clone_attribute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.clone_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>clone parameters</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.kwarg_parser">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">kwarg_parser</code><span class="sig-paren">(</span><em>func</em>, <em>kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#kwarg_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.kwarg_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for parsing keyword arguments</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.load">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">load</code><span class="sig-paren">(</span><em>file</em>, <em>enforce_filetype=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility exception handler for loading file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.pickle_load">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">pickle_load</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#pickle_load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.pickle_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for loading pickled object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.pickle_save">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">pickle_save</code><span class="sig-paren">(</span><em>obj</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#pickle_save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.pickle_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for pickling an object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.pickled">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">pickled</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#pickled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.pickled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filetype enforcer</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.print_time">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">print_time</code><span class="sig-paren">(</span><em>t0</em>, <em>message=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#print_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.print_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for printing time</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.utils.safe_print">
+<code class="descclassname">mlens.utils.utils.</code><code class="descname">safe_print</code><span class="sig-paren">(</span><em>*objects</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#safe_print"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.utils.safe_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safe print function for backwards compatibility.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils.validation">
+<span id="mlens-utils-validation-module"></span><h2>mlens.utils.validation module<a class="headerlink" href="#module-mlens.utils.validation" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Input validation module. Builds on Scikit-learns <code class="docutils literal"><span class="pre">validation</span></code> module, but
+extends it to a soft check that issues warnings but don’t force changes to the
+inputs.</p>
+<dl class="function">
+<dt id="mlens.utils.validation.check_all_finite">
+<code class="descclassname">mlens.utils.validation.</code><code class="descname">check_all_finite</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/validation.html#check_all_finite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.validation.check_all_finite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return False if X contains NaN or infinity.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.validation.check_inputs">
+<code class="descclassname">mlens.utils.validation.</code><code class="descname">check_inputs</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>check_level=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/validation.html#check_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.validation.check_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-checks on input arrays X and y.</p>
+<p>Checks input data according to <code class="docutils literal"><span class="pre">check_level</span></code> to ensure format is roughly
+in line with what a typical estimator expects.</p>
+<p>If <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">0</span></code> this test is turned off.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>nd-array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>sparse matrix</em>) – Input data.</li>
+<li><strong>y</strong> (<em>nd-array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>sparse matrix</em>) – Labels.</li>
+<li><strong>check_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – <p>level of strictness in checking input arrays.</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">0</span></code> no checks, returns X, y</li>
+<li><code class="docutils literal"><span class="pre">check_level</span></code> = 1 will raises warnings if any non-critical
+test fails. Returns boolean FAIL flag.</li>
+<li><code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">2</span></code> will impose Scikit-learn array  check,
+which converts <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to numpy arrays and raises error
+if conversion fails.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>FAIL</strong> (<em>fail flag, optional</em>) – boolean for whether any test failed. Returned if <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">1</span></code></li>
+<li><strong>X_converted</strong> (<em>numpy array, optional</em>) – The converted and validated X. Returned if <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">2</span></code></li>
+<li><strong>y_converted</strong> (<em>numpy array, optional</em>) – The converted and validated y. Returned if <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">2</span></code>.</li>
+<li><strong>random_state</strong> (<em>object, optional</em>) – numpy RandomState object.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.validation.soft_check_1d">
+<code class="descclassname">mlens.utils.validation.</code><code class="descname">soft_check_1d</code><span class="sig-paren">(</span><em>y</em>, <em>y_numeric</em>, <em>estimator</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/validation.html#soft_check_1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.validation.soft_check_1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if y is numeric, finite and one-dimensional.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.validation.soft_check_array">
+<code class="descclassname">mlens.utils.validation.</code><code class="descname">soft_check_array</code><span class="sig-paren">(</span><em>array</em>, <em>accept_sparse=True</em>, <em>dtype=None</em>, <em>ensure_2d=True</em>, <em>force_all_finite=True</em>, <em>allow_nd=True</em>, <em>ensure_min_samples=1</em>, <em>ensure_min_features=1</em>, <em>estimator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/validation.html#soft_check_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.validation.soft_check_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input validation on an array, list, sparse matrix or similar.</p>
+<p>Like Scikit-learn’s <code class="docutils literal"><span class="pre">check_array</span></code> , but issues warnings on failed tests
+and do no forced array conversion.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>array</strong> (<em>array-like</em>) – Input object, expected to be array-like, to check / convert.</li>
+<li><strong>accept_sparse</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a><em>, </em><em>list of string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=None</em><em>)</em>) – String[s] representing allowed sparse matrix formats, such as ‘csc’,
+‘csr’, etc.  None means that sparse matrix input will raise an error.
+If the input is sparse but not in the allowed format, it will be
+converted to the first listed format.</li>
+<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.6)"><em>type</em></a><em>, </em><em>list of types</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=&quot;numeric&quot;</em><em>)</em>) – Data type of result. If None, the dtype of the input is preserved.
+If “numeric”, warning is raised if array.dtype is object.
+If dtype is a list of types, warning is raised if array.dtype is not
+a member of the list.</li>
+<li><strong>force_all_finite</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to raise an error on np.inf and np.nan in X.</li>
+<li><strong>ensure_2d</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to warn if X is not at least 2d.</li>
+<li><strong>allow_nd</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to allow X.ndim &gt; 2.</li>
+<li><strong>ensure_min_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that the array has a minimum number of samples in its first
+axis (rows for a 2D array). Setting to 0 disables this check.</li>
+<li><strong>ensure_min_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that the 2D array has some minimum number of features
+(columns). The default value of 1 rejects empty datasets.
+This check is only enforced when the input data has effectively 2
+dimensions or is originally 1D and <code class="docutils literal"><span class="pre">ensure_2d</span></code> is True. Setting to 0
+disables this check.</li>
+<li><strong>estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><em>estimator instance</em><em> (</em><em>default=None</em><em>)</em>) – If passed, include the name of the estimator in warning messages.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>CHANGE</strong> – Whether X should be changed.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)">bool</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.validation.soft_check_x_y">
+<code class="descclassname">mlens.utils.validation.</code><code class="descname">soft_check_x_y</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>accept_sparse=True</em>, <em>dtype=None</em>, <em>force_all_finite=True</em>, <em>ensure_2d=True</em>, <em>allow_nd=True</em>, <em>multi_output=False</em>, <em>ensure_min_samples=1</em>, <em>ensure_min_features=1</em>, <em>y_numeric=False</em>, <em>estimator=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/validation.html#soft_check_x_y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.validation.soft_check_x_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input validation before estimation.</p>
+<p>Checks X and y for consistent length, and X 2d and y 1d.
+Standard input checks are only applied to y, such as checking that y
+does not have np.nan or np.inf targets. For multi-label y, set
+multi_output=True to allow 2d and sparse y.  Raises warnings if the
+dtype is object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>nd-array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>sparse matrix</em>) – Input data.</li>
+<li><strong>y</strong> (<em>nd-array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>sparse matrix</em>) – Labels.</li>
+<li><strong>accept_sparse</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a><em>, </em><em>list of string</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=None</em><em>)</em>) – String[s] representing allowed sparse matrix formats, such as ‘csc’,
+‘csr’, etc.  None means that sparse matrix input will raise an error.
+If the input is sparse but not in the allowed format, it will be
+converted to the first listed format.</li>
+<li><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/string.html#module-string" title="(in Python v3.6)"><em>string</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.6)"><em>type</em></a><em>, </em><em>list of types</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default=&quot;numeric&quot;</em><em>)</em>) – Data type of result. If None, the dtype of the input is preserved.
+If “numeric”, dtype is preserved unless array.dtype is object.
+If dtype is a list of types, conversion on the first type is only
+performed if the dtype of the input is not in the list.</li>
+<li><strong>force_all_finite</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to raise an error on np.inf and np.nan in X. This parameter
+does not influence whether y can have np.inf or np.nan values.</li>
+<li><strong>ensure_2d</strong> (<em>boolean</em><em> (</em><em>default=True</em><em>)</em>) – Whether to make X at least 2d.</li>
+<li><strong>allow_nd</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to allow X.ndim &gt; 2.</li>
+<li><strong>multi_output</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to allow 2-d y (array or sparse matrix). If false, y will be
+validated as a vector. y cannot have np.nan or np.inf values if
+multi_output=True.</li>
+<li><strong>ensure_min_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that X has a minimum number of samples in its first
+axis (rows for a 2D array).</li>
+<li><strong>ensure_min_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – Make sure that the 2D array has some minimum number of features
+(columns). The default value of 1 rejects empty datasets.
+This check is only enforced when X has effectively 2 dimensions or
+is originally 1D and <code class="docutils literal"><span class="pre">ensure_2d</span></code> is True. Setting to 0 disables
+this check.</li>
+<li><strong>y_numeric</strong> (<em>boolean</em><em> (</em><em>default=False</em><em>)</em>) – Whether to ensure that y has a numeric type. If dtype of y is object,
+it is converted to float64. Should only be used for regression
+algorithms.</li>
+<li><strong>estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><em>estimator instance</em><em> (</em><em>default=None</em><em>)</em>) – If passed, include the name of the estimator in warning messages.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>X_converted</strong> (<em>object</em>) – The converted and validated X.</li>
+<li><strong>y_converted</strong> (<em>object</em>) – The converted and validated y.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mlens.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mlens.utils" title="Permalink to this headline">¶</a></h2>
+<p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="mlens.utils.IdTrain">
+<em class="property">class </em><code class="descclassname">mlens.utils.</code><code class="descname">IdTrain</code><span class="sig-paren">(</span><em>size=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/id_train.html#IdTrain"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.IdTrain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="mlens.externals.sklearn.html#mlens.externals.sklearn.base.BaseEstimator" title="mlens.externals.sklearn.base.BaseEstimator"><code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></a></p>
+<p>Container to identify training set.</p>
+<p>Samples a random subset from set passed to the <cite>fit</cite> method, to allow
+identification of the training set in a <cite>transform</cite> or <cite>predict</cite> method.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – size to sample. A random subset of size [size, size] will be stored
+in the instance.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.utils.IdTrain.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/id_train.html#IdTrain.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.IdTrain.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample a training set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array-like</em>) – training set to sample observations from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>self</strong> – fitted instance with stored sample.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">obj</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.IdTrain.is_train">
+<code class="descname">is_train</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/id_train.html#IdTrain.is_train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.IdTrain.is_train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if an array is the training set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>X</strong> (<em>array-like</em>) – training set to sample observations from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>self</strong> – fitted instance with stored sample.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">obj</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.check_inputs">
+<code class="descclassname">mlens.utils.</code><code class="descname">check_inputs</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>check_level=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/validation.html#check_inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.check_inputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-checks on input arrays X and y.</p>
+<p>Checks input data according to <code class="docutils literal"><span class="pre">check_level</span></code> to ensure format is roughly
+in line with what a typical estimator expects.</p>
+<p>If <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">0</span></code> this test is turned off.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>nd-array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>sparse matrix</em>) – Input data.</li>
+<li><strong>y</strong> (<em>nd-array</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> or </em><em>sparse matrix</em>) – Labels.</li>
+<li><strong>check_level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – <p>level of strictness in checking input arrays.</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">0</span></code> no checks, returns X, y</li>
+<li><code class="docutils literal"><span class="pre">check_level</span></code> = 1 will raises warnings if any non-critical
+test fails. Returns boolean FAIL flag.</li>
+<li><code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">2</span></code> will impose Scikit-learn array  check,
+which converts <code class="docutils literal"><span class="pre">X</span></code> and <code class="docutils literal"><span class="pre">y</span></code> to numpy arrays and raises error
+if conversion fails.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><strong>FAIL</strong> (<em>fail flag, optional</em>) – boolean for whether any test failed. Returned if <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">1</span></code></li>
+<li><strong>X_converted</strong> (<em>numpy array, optional</em>) – The converted and validated X. Returned if <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">2</span></code></li>
+<li><strong>y_converted</strong> (<em>numpy array, optional</em>) – The converted and validated y. Returned if <code class="docutils literal"><span class="pre">check_level</span> <span class="pre">=</span> <span class="pre">2</span></code>.</li>
+<li><strong>random_state</strong> (<em>object, optional</em>) – numpy RandomState object.</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.check_instances">
+<code class="descclassname">mlens.utils.</code><code class="descname">check_instances</code><span class="sig-paren">(</span><em>estimators=None</em>, <em>preprocessing=None</em>, <em>namespace=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/formatting.html#check_instances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.check_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensure estimators and preprocessing pipelines are correctly formatted</p>
+<p>Utility for formating estimator iterable and preprocessing iterable into
+formats accepted by a the <code class="xref py py-class docutils literal"><span class="pre">Layer</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>estimators</strong> (<em>iterable</em><em>, </em><em>optional</em>) – estimator instances.</li>
+<li><strong>preprocessing</strong> (<em>iterable</em><em>, </em><em>optional</em>) – preprocessing pipeline instances.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.check_ensemble_build">
+<code class="descclassname">mlens.utils.</code><code class="descname">check_ensemble_build</code><span class="sig-paren">(</span><em>inst</em>, <em>attr='stack'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#check_ensemble_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.check_ensemble_build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check that layers have been instantiated.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.assert_correct_format">
+<code class="descclassname">mlens.utils.</code><code class="descname">assert_correct_format</code><span class="sig-paren">(</span><em>estimators</em>, <em>preprocessing</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#assert_correct_format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.assert_correct_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial check to assert layer can be constructed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.assert_valid_estimator">
+<code class="descclassname">mlens.utils.</code><code class="descname">assert_valid_estimator</code><span class="sig-paren">(</span><em>instance</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#assert_valid_estimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.assert_valid_estimator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that an instance has a <code class="docutils literal"><span class="pre">get_params</span></code> and <code class="docutils literal"><span class="pre">fit</span></code> method.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.assert_valid_pipeline">
+<code class="descclassname">mlens.utils.</code><code class="descname">assert_valid_pipeline</code><span class="sig-paren">(</span><em>pipeline</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#assert_valid_pipeline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.assert_valid_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Quick check to ensure the pipeline is an mlens Pipeline</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.check_initialized">
+<code class="descclassname">mlens.utils.</code><code class="descname">check_initialized</code><span class="sig-paren">(</span><em>inst</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/checks.html#check_initialized"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.check_initialized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a ParallelProcessing instance is initialized properly.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.pickle_save">
+<code class="descclassname">mlens.utils.</code><code class="descname">pickle_save</code><span class="sig-paren">(</span><em>obj</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#pickle_save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.pickle_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for pickling an object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.pickle_load">
+<code class="descclassname">mlens.utils.</code><code class="descname">pickle_load</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#pickle_load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.pickle_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for loading pickled object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.load">
+<code class="descclassname">mlens.utils.</code><code class="descname">load</code><span class="sig-paren">(</span><em>file</em>, <em>enforce_filetype=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility exception handler for loading file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.time">
+<code class="descclassname">mlens.utils.</code><code class="descname">time</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mlens.utils.time" title="Permalink to this definition">¶</a></dt>
+<dd><p>perf_counter() -&gt; float</p>
+<p>Performance counter for benchmarking.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.print_time">
+<code class="descclassname">mlens.utils.</code><code class="descname">print_time</code><span class="sig-paren">(</span><em>t0</em>, <em>message=''</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#print_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.print_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for printing time</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.safe_print">
+<code class="descclassname">mlens.utils.</code><code class="descname">safe_print</code><span class="sig-paren">(</span><em>*objects</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#safe_print"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.safe_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safe print function for backwards compatibility.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.utils.CMLog">
+<em class="property">class </em><code class="descclassname">mlens.utils.</code><code class="descname">CMLog</code><span class="sig-paren">(</span><em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#CMLog"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.CMLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>CPU and Memory logger.</p>
+<p>Class for starting a monitor job of CPU and memory utilization in the
+background in a Python script. The <code class="docutils literal"><span class="pre">monitor</span></code> class records the
+<code class="docutils literal"><span class="pre">cpu_percent</span></code>, <code class="docutils literal"><span class="pre">rss</span></code> and <code class="docutils literal"><span class="pre">vms</span></code> as collected by the
+<a class="reference external" href="https://pypi.python.org/pypi/psutil">psutil</a> library for the parent process’ pid.</p>
+<p>CPU usage and memory utilization are stored as attributes in numpy arrays.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.utils</span> <span class="k">import</span> <span class="n">CMLog</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">CMLog</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">monitor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Collecting before completion triggers a message but no error</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">_collect</span><span class="p">()</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">_collect</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;CPU usage:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">cpu</span>
+<span class="go">[CMLog] Monitoring for 2 seconds with checks every 0.5 seconds.</span>
+<span class="go">[CMLog] Job not finished. Cannot _collect yet.</span>
+<span class="go">[CMLog] Collecting... done. Read 4 lines in 0.000 seconds.</span>
+<span class="go">CPU usage:</span>
+<span class="go">array([ 50. ,  22.4,   6. ,  11.9])</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><em>ImportError :</em> – Depends on psutil. If not installed, raises ImportError on
+instantiation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – whether to notify of job start.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.utils.CMLog.collect">
+<code class="descname">collect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#CMLog.collect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.CMLog.collect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect monitored data.</p>
+<p>Once a monitor job finishes, call <code class="docutils literal"><span class="pre">_collect</span></code> to read the CPU and
+memory usage into python objects in the current process. If called
+before the job finishes, _collect issues a print statement to try
+again later, but no warning or error is raised.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.utils.CMLog.monitor">
+<code class="descname">monitor</code><span class="sig-paren">(</span><em>stop=None</em>, <em>ival=0.1</em>, <em>kill=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#CMLog.monitor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.CMLog.monitor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start monitoring CPU and memory usage.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – seconds to monitor for. If None, monitors until <code class="docutils literal"><span class="pre">_collect</span></code> is
+called.</li>
+<li><strong>ival</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default=0.1</em><em>)</em>) – interval of monitoring.</li>
+<li><strong>kill</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to kill the monitoring job if <code class="docutils literal"><span class="pre">_collect</span></code> is called before
+timeout (<code class="docutils literal"><span class="pre">stop</span></code>). If set to False, calling <code class="docutils literal"><span class="pre">_collect</span></code> will
+cause the instance to wait until the job completes.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.kwarg_parser">
+<code class="descclassname">mlens.utils.</code><code class="descname">kwarg_parser</code><span class="sig-paren">(</span><em>func</em>, <em>kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#kwarg_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.kwarg_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility function for parsing keyword arguments</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.clone_attribute">
+<code class="descclassname">mlens.utils.</code><code class="descname">clone_attribute</code><span class="sig-paren">(</span><em>iterable</em>, <em>attribute</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/utils.html#clone_attribute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.clone_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>clone parameters</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.utils.format_name">
+<code class="descclassname">mlens.utils.</code><code class="descname">format_name</code><span class="sig-paren">(</span><em>name</em>, <em>cls</em>, <em>global_names</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/utils/formatting.html#format_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.utils.format_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility for assigning a unique name</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

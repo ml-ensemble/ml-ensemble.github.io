@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.parallel.backend module &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+        <link rel="up" title="mlens.parallel package" href="mlens.parallel.html"/>
+        <link rel="next" title="mlens.parallel.base module" href="mlens.parallel.base.html"/>
+        <link rel="prev" title="mlens.parallel package" href="mlens.parallel.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">mlens</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="mlens.html">mlens package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="mlens.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">mlens</a> &raquo;</li>
+        
+          <li><a href="mlens.html">mlens package</a> &raquo;</li>
+        
+          <li><a href="mlens.parallel.html">mlens.parallel package</a> &raquo;</li>
+        
+      <li>mlens.parallel.backend module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/module/mlens.parallel.backend.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-mlens.parallel.backend">
+<span id="mlens-parallel-backend-module"></span><h1>mlens.parallel.backend module<a class="headerlink" href="#module-mlens.parallel.backend" title="Permalink to this headline">¶</a></h1>
+<p>ML-Ensemble</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Parallel processing backend classes. Manages memory-mapping of data, estimation
+caching and job scheduling.</p>
+<dl class="class">
+<dt id="mlens.parallel.backend.BaseProcessor">
+<em class="property">class </em><code class="descclassname">mlens.parallel.backend.</code><code class="descname">BaseProcessor</code><span class="sig-paren">(</span><em>backend=None</em>, <em>n_jobs=None</em>, <em>verbose=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#BaseProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Parallel processing base class.</p>
+<p>Base class for parallel processing engines.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – Type of backend. One of <code class="docutils literal"><span class="pre">'threading'</span></code>, <code class="docutils literal"><span class="pre">'multiprocessing'</span></code>,
+<code class="docutils literal"><span class="pre">'sequential'</span></code>.</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Degree of concurrency.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Level of verbosity of the
+<code class="xref py py-class docutils literal"><span class="pre">Parallel</span></code> instance.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mlens.parallel.backend.BaseProcessor.backend">
+<code class="descname">backend</code><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.backend" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.BaseProcessor.caller">
+<code class="descname">caller</code><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.caller" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.BaseProcessor.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#BaseProcessor.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy cache and reset instance job parameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.BaseProcessor.initialize">
+<code class="descname">initialize</code><span class="sig-paren">(</span><em>job</em>, <em>X</em>, <em>y</em>, <em>path</em>, <em>warm_start=False</em>, <em>return_preds=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#BaseProcessor.initialize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.initialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize processing engine.</p>
+<p>Set up the job parameters before an estimation call. Calling
+<a class="reference internal" href="#mlens.parallel.backend.BaseProcessor.clear" title="mlens.parallel.backend.BaseProcessor.clear"><code class="xref py py-func docutils literal"><span class="pre">clear()</span></code></a>
+undoes initialization.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – type of job to complete with each task. One of <code class="docutils literal"><span class="pre">'fit'</span></code>,
+<code class="docutils literal"><span class="pre">'predict'</span></code> and <code class="docutils literal"><span class="pre">'transform'</span></code>.</li>
+<li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – Input data</li>
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>]</em><em>, </em><em>optional.</em>) – targets. Required for fit, should not be passed to predict or
+transform jobs.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Custom estimation cache. Pass a string to force use of persistent
+cache on disk. Pass a <code class="docutils literal"><span class="pre">dict</span></code> for in-memory cache (requires
+<code class="docutils literal"><span class="pre">backend</span> <span class="pre">!=</span> <span class="pre">'multiprocessing'</span></code>.</li>
+<li><strong>return_preds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – whether to return prediction ouput. If <code class="docutils literal"><span class="pre">True</span></code>, final prediction
+is returned. Alternatively, pass a list of task names for which
+output should be returned.</li>
+<li><strong>warm_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – whether to re-use previous input data initialization. Useful if
+repeated jobs are made on the same input arrays.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments to pass onto the task’s call method.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – An output parameter dictionary to pass to pass to an estimation
+method. Either <code class="docutils literal"><span class="pre">None</span></code> (no output), or
+<code class="docutils literal"><span class="pre">{'final':True}</span></code> for only final prediction, or
+<code class="docutils literal"><span class="pre">{'final':</span> <span class="pre">False,</span> <span class="pre">'return_names':</span> <span class="pre">return_preds}</span></code> if a list of
+task-specific output was passed.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.BaseProcessor.job">
+<code class="descname">job</code><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.BaseProcessor.n_jobs">
+<code class="descname">n_jobs</code><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.n_jobs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.BaseProcessor.verbose">
+<code class="descname">verbose</code><a class="headerlink" href="#mlens.parallel.backend.BaseProcessor.verbose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.backend.Job">
+<em class="property">class </em><code class="descclassname">mlens.parallel.backend.</code><code class="descname">Job</code><span class="sig-paren">(</span><em>job</em>, <em>stack</em>, <em>split</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Container class for holding and managing job data.</p>
+<p><a class="reference internal" href="#mlens.parallel.backend.Job" title="mlens.parallel.backend.Job"><code class="xref py py-class docutils literal"><span class="pre">Job</span></code></a> is intended as a on-the-fly job handler that keeps track
+of input data, predictions, and manages estimation caches.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.2.0.</span></p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing" title="mlens.parallel.backend.ParallelProcessing"><code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code></a>, <a class="reference internal" href="#mlens.parallel.backend.ParallelEvaluation" title="mlens.parallel.backend.ParallelEvaluation"><code class="xref py py-class docutils literal"><span class="pre">ParallelEvaluation</span></code></a></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Type of job to run. One of <code class="docutils literal"><span class="pre">'fit'</span></code>, <code class="docutils literal"><span class="pre">'transform'</span></code>, <code class="docutils literal"><span class="pre">'predict'</span></code>.</li>
+<li><strong>stack</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to stack outputs when calls to
+<a class="reference internal" href="#mlens.parallel.backend.Job.update" title="mlens.parallel.backend.Job.update"><code class="xref py py-func docutils literal"><span class="pre">update()</span></code></a> are made. This will make
+the <code class="docutils literal"><span class="pre">predict_out</span></code> array become <code class="docutils literal"><span class="pre">predict_in</span></code>.</li>
+<li><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to create a new sub-cache when the
+<a class="reference internal" href="#mlens.parallel.backend.Job.args" title="mlens.parallel.backend.Job.args"><code class="xref py py-attr docutils literal"><span class="pre">args</span></code></a> property is called.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.parallel.backend.Job.args">
+<code class="descname">args</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job.args"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce args dict</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+<p>Returns the arguments dictionary passed to a task of a parallel
+processing manager. Output dictionary has the following form:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;auxiliary&#39;</span><span class="p">:</span>
+           <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="p">},</span>
+       <span class="s1">&#39;main&#39;</span><span class="p">:</span>
+           <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="p">},</span>
+       <span class="s1">&#39;dir&#39;</span><span class="p">:</span>
+           <span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="p">(),</span>
+       <span class="s1">&#39;job&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">job</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>**kwargs</strong> (<em>optional</em>) – Optional keyword arguments to pass to the task.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>args</strong> – Arguments dictionary</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.Job.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job.clear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear output data for new task</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.dir">
+<code class="descname">dir</code><a class="headerlink" href="#mlens.parallel.backend.Job.dir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.job">
+<code class="descname">job</code><a class="headerlink" href="#mlens.parallel.backend.Job.job" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.kwargs">
+<code class="descname">kwargs</code><a class="headerlink" href="#mlens.parallel.backend.Job.kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.predict_in">
+<code class="descname">predict_in</code><a class="headerlink" href="#mlens.parallel.backend.Job.predict_in" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.predict_out">
+<code class="descname">predict_out</code><a class="headerlink" href="#mlens.parallel.backend.Job.predict_out" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.Job.rebase">
+<code class="descname">rebase</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job.rebase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job.rebase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebase output labels to input indexing.</p>
+<p>Some indexers that only generate predictions for subsets of the
+training data require the targets to be rebased. Since indexers
+operate in a strictly sequential manner, rebase simply drop the first
+<code class="docutils literal"><span class="pre">n</span></code> observations in the target vector until number of observations
+remaining coincide.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="mlens.index.blend.html#mlens.index.blend.BlendIndex" title="mlens.index.blend.BlendIndex"><code class="xref py py-class docutils literal"><span class="pre">BlendIndex</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.Job.shuffle">
+<code class="descname">shuffle</code><span class="sig-paren">(</span><em>random_state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job.shuffle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job.shuffle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shuffle inputs.</p>
+<p>Permutes the indexing of <code class="docutils literal"><span class="pre">predict_in</span></code> and <code class="docutils literal"><span class="pre">y</span></code> arrays.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>random_state</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>obj</em>) – Random seed number or generator to use.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.split">
+<code class="descname">split</code><a class="headerlink" href="#mlens.parallel.backend.Job.split" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.stack">
+<code class="descname">stack</code><a class="headerlink" href="#mlens.parallel.backend.Job.stack" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.Job.subdir">
+<code class="descname">subdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job.subdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job.subdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a cache subdirectory</p>
+<p>If <code class="docutils literal"><span class="pre">split</span></code> is en force, a new sub-cache will be created in the
+main cache. Otherwise the same sub-cache as used in previous call
+will be returned.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0.</span></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>cache</strong> – Either a string pointing to a cache persisted to disk, or an
+in-memory cache in the form of a list.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.tmp">
+<code class="descname">tmp</code><a class="headerlink" href="#mlens.parallel.backend.Job.tmp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.Job.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#Job.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updated output array and shift to input if stacked.</p>
+<p>If stacking is en force, the output array will replace the input
+array, and used as input for subsequent jobs. Sparse matrices are
+force-converted to <code class="docutils literal"><span class="pre">csr</span></code> format.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mlens.parallel.backend.Job.y">
+<code class="descname">y</code><a class="headerlink" href="#mlens.parallel.backend.Job.y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.backend.ParallelEvaluation">
+<em class="property">class </em><code class="descclassname">mlens.parallel.backend.</code><code class="descname">ParallelEvaluation</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelEvaluation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelEvaluation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.parallel.backend.BaseProcessor" title="mlens.parallel.backend.BaseProcessor"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.backend.BaseProcessor</span></code></a></p>
+<p>Parallel cross-validation engine.</p>
+<p>Minimal parallel processing engine. Similar to <a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing" title="mlens.parallel.backend.ParallelProcessing"><code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code></a>,
+but offers less features, only fits the <em>callers</em> indexer, and excepts
+no task output.</p>
+<dl class="method">
+<dt id="mlens.parallel.backend.ParallelEvaluation.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>caller</em>, <em>case</em>, <em>X</em>, <em>y</em>, <em>path=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelEvaluation.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelEvaluation.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process caller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>caller</strong> (<em>iterable</em>) – Iterable for evaluation job.s Expected caller is a
+<code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code> instance.</li>
+<li><strong>case</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – evaluation case to run on the evaluator. One of
+<code class="docutils literal"><span class="pre">'preprocess'</span></code> and <code class="docutils literal"><span class="pre">'evaluate'</span></code>.</li>
+<li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – Input data</li>
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>]</em><em>, </em><em>optional.</em>) – targets. Required for fit, should not be passed to predict or
+transform jobs.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Custom estimation cache. Pass a string to force use of persistent
+cache on disk. Pass a <code class="docutils literal"><span class="pre">dict</span></code> for in-memory cache (requires
+<code class="docutils literal"><span class="pre">backend</span> <span class="pre">!=</span> <span class="pre">'multiprocessing'</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mlens.parallel.backend.ParallelProcessing">
+<em class="property">class </em><code class="descclassname">mlens.parallel.backend.</code><code class="descname">ParallelProcessing</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mlens.parallel.backend.BaseProcessor" title="mlens.parallel.backend.BaseProcessor"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.backend.BaseProcessor</span></code></a></p>
+<p>Parallel processing engine.</p>
+<p>Engine for running computational graph.</p>
+<p><a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing" title="mlens.parallel.backend.ParallelProcessing"><code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code></a> is a manager for executing a sequence of tasks
+in a given caller, where each task is run sequentially, but assumed to be
+parallelized internally. The main responsibility of
+<a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing" title="mlens.parallel.backend.ParallelProcessing"><code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code></a> is to handle memory-mapping, estimation
+cache updates, input and output array updates and output collection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>caller</strong> (<em>obj</em>) – the caller of the job. Either a Layer or a meta layer class
+such as Sequential.</li>
+<li><strong>*args</strong> (<em>optional</em>) – Optional arguments to <a class="reference internal" href="#mlens.parallel.backend.BaseProcessor" title="mlens.parallel.backend.BaseProcessor"><code class="xref py py-class docutils literal"><span class="pre">BaseProcessor</span></code></a></li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Optional keyword arguments to
+<a class="reference internal" href="#mlens.parallel.backend.BaseProcessor" title="mlens.parallel.backend.BaseProcessor"><code class="xref py py-class docutils literal"><span class="pre">BaseProcessor</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="mlens.parallel.backend.ParallelProcessing.get_preds">
+<code class="descname">get_preds</code><span class="sig-paren">(</span><em>dtype=None</em>, <em>order='C'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelProcessing.get_preds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing.get_preds" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return prediction matrix.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dtype</strong> (<em>numpy dtype object</em><em>, </em><em>optional</em>) – data type to return</li>
+<li><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default = 'C'</em><em>)</em>) – data order. See <code class="xref py py-class docutils literal"><span class="pre">numpy.asarray</span></code> for details.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>P</strong> – Prediction array</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.ParallelProcessing.map">
+<code class="descname">map</code><span class="sig-paren">(</span><em>caller</em>, <em>job</em>, <em>X</em>, <em>y=None</em>, <em>path=None</em>, <em>return_preds=False</em>, <em>wart_start=False</em>, <em>split=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelProcessing.map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parallel task mapping.</p>
+<p>Run independent tasks in caller in parallel.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">By default, the :~mlens.parallel.backend.ParallelProcessing.map` runs
+on a shallow cache, where all tasks share the same cache. As such, the
+user must ensure that each task has a unique name, or cache retrieval
+will be corrupted. To commit a seperate sub-cache to each task, set
+<code class="docutils literal"><span class="pre">split=True</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>caller</strong> (<em>iterable</em>) – Iterable that generates accepted task instances. Caller should be
+a child of the <a class="reference internal" href="mlens.parallel.base.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a> class,
+and tasks need to implement an appropriate call method.</li>
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – type of job to complete with each task. One of <code class="docutils literal"><span class="pre">'fit'</span></code>,
+<code class="docutils literal"><span class="pre">'predict'</span></code> and <code class="docutils literal"><span class="pre">'transform'</span></code>.</li>
+<li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – Input data</li>
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>]</em><em>, </em><em>optional.</em>) – targets. Required for fit, should not be passed to predict or
+transform jobs.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Custom estimation cache. Pass a string to force use of persistent
+cache on disk. Pass a <code class="docutils literal"><span class="pre">dict</span></code> for in-memory cache (requires
+<code class="docutils literal"><span class="pre">backend</span> <span class="pre">!=</span> <span class="pre">'multiprocessing'</span></code>.</li>
+<li><strong>return_preds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – whether to return prediction ouput. If <code class="docutils literal"><span class="pre">True</span></code>, final prediction
+is returned. Alternatively, pass a list of task names for which
+output should be returned.</li>
+<li><strong>warm_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – whether to re-use previous input data initialization. Useful if
+repeated jobs are made on the same input arrays.</li>
+<li><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = False</em>) – whether to commit a separate sub-cache to each task.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments to pass onto each task.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Prediction array(s).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a>, optional</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.ParallelProcessing.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>caller</em>, <em>out</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelProcessing.process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process job.</p>
+<p>Main method for processing a caller. Requires the instance to be
+setup by a prior call to
+<a class="reference internal" href="#mlens.parallel.backend.BaseProcessor.initialize" title="mlens.parallel.backend.BaseProcessor.initialize"><code class="xref py py-func docutils literal"><span class="pre">initialize()</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing.map" title="mlens.parallel.backend.ParallelProcessing.map"><code class="xref py py-func docutils literal"><span class="pre">map()</span></code></a>,
+<a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing.stack" title="mlens.parallel.backend.ParallelProcessing.stack"><code class="xref py py-func docutils literal"><span class="pre">stack()</span></code></a></p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>caller</strong> (<em>iterable</em>) – Iterable that generates accepted task instances. Caller should be
+a child of the <a class="reference internal" href="mlens.parallel.base.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a> class,
+and tasks need to implement an appropriate call method.</li>
+<li><strong>out</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) – A dictionary with output parameters. Pass an empty dict for no
+output. See
+<a class="reference internal" href="#mlens.parallel.backend.BaseProcessor.initialize" title="mlens.parallel.backend.BaseProcessor.initialize"><code class="xref py py-func docutils literal"><span class="pre">initialize()</span></code></a> for more
+details.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Prediction array(s).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a>, optional</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.parallel.backend.ParallelProcessing.stack">
+<code class="descname">stack</code><span class="sig-paren">(</span><em>caller</em>, <em>job</em>, <em>X</em>, <em>y=None</em>, <em>path=None</em>, <em>return_preds=False</em>, <em>wart_start=False</em>, <em>split=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#ParallelProcessing.stack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing.stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stacked parallel task mapping.</p>
+<p>Run stacked tasks in caller in parallel.</p>
+<p>This method runs a stack of tasks as a stack, where the output of
+each task is the input to the next.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">By default, the <a class="reference internal" href="#mlens.parallel.backend.ParallelProcessing.stack" title="mlens.parallel.backend.ParallelProcessing.stack"><code class="xref py py-func docutils literal"><span class="pre">stack()</span></code></a>
+method runs on a deep cache, where each tasks has a separate cache.
+As such, the user must ensure that tasks don’t depend on data cached
+by previous tasks. To run all tasks in a single sub-cache, set
+<code class="docutils literal"><span class="pre">split=False</span></code>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>caller</strong> (<em>iterable</em>) – Iterable that generates accepted task instances. Caller should be
+a child of the <a class="reference internal" href="mlens.parallel.base.html#mlens.parallel.base.BaseBackend" title="mlens.parallel.base.BaseBackend"><code class="xref py py-class docutils literal"><span class="pre">BaseBackend</span></code></a> class,
+and tasks need to implement an appropriate call method.</li>
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – type of job to complete with each task. One of <code class="docutils literal"><span class="pre">'fit'</span></code>,
+<code class="docutils literal"><span class="pre">'predict'</span></code> and <code class="docutils literal"><span class="pre">'transform'</span></code>.</li>
+<li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – Input data</li>
+<li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>]</em><em>, </em><em>optional.</em>) – targets. Required for fit, should not be passed to predict or
+transform jobs.</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – Custom estimation cache. Pass a string to force use of persistent
+cache on disk. Pass a <code class="docutils literal"><span class="pre">dict</span></code> for in-memory cache (requires
+<code class="docutils literal"><span class="pre">backend</span> <span class="pre">!=</span> <span class="pre">'multiprocessing'</span></code>.</li>
+<li><strong>return_preds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><em>optional</em>) – whether to return prediction output. If <code class="docutils literal"><span class="pre">True</span></code>, final prediction
+is returned. Alternatively, pass a list of task names for which
+output should be returned.</li>
+<li><strong>warm_start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>optional</em>) – whether to re-use previous input data initialization. Useful if
+repeated jobs are made on the same input arrays.</li>
+<li><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><em>default = True</em>) – whether to commit a separate sub-cache to each task.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments to pass onto each task.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> – Prediction array(s).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a>, optional</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="mlens.parallel.backend.dump_array">
+<code class="descclassname">mlens.parallel.backend.</code><code class="descname">dump_array</code><span class="sig-paren">(</span><em>array</em>, <em>name</em>, <em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mlens/parallel/backend.html#dump_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.dump_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump array for memmapping.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>array</strong> (<em>array-like</em>) – Array to be persisted</li>
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Name of file</li>
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Path to cache.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>f</strong> – memory-mapped array.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">array-like</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

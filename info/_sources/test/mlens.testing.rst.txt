@@ -1,0 +1,22 @@
+mlens\.testing package
+======================
+
+Submodules
+----------
+
+mlens\.testing\.dummy module
+----------------------------
+
+.. automodule:: mlens.testing.dummy
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.testing
+    :members:
+    :undoc-members:
+    :show-inheritance:

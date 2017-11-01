@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.joblib.func_inspect &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.externals.joblib.func_inspect</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.externals.joblib.func_inspect</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">My own variation on function-specific inspect-like features.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span>
+<span class="c1"># Copyright (c) 2009 Gael Varoquaux</span>
+<span class="c1"># License: BSD Style, 3 clauses.</span>
+
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">islice</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">._compat</span> <span class="k">import</span> <span class="n">_basestring</span>
+<span class="kn">from</span> <span class="nn">.logger</span> <span class="k">import</span> <span class="n">pformat</span>
+<span class="kn">from</span> <span class="nn">._memory_helpers</span> <span class="k">import</span> <span class="n">open_py_source</span>
+<span class="kn">from</span> <span class="nn">._compat</span> <span class="k">import</span> <span class="n">PY3_OR_LATER</span>
+
+
+<div class="viewcode-block" id="get_func_code"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.func_inspect.get_func_code">[docs]</a><span class="k">def</span> <span class="nf">get_func_code</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Attempts to retrieve a reliable function code hash.</span>
+
+<span class="sd">        The reason we don&#39;t use inspect.getsource is that it caches the</span>
+<span class="sd">        source, whereas we want this to be modified on the fly when the</span>
+<span class="sd">        function is modified.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        func_code: string</span>
+<span class="sd">            The function code</span>
+<span class="sd">        source_file: string</span>
+<span class="sd">            The path to the file in which the function is defined.</span>
+<span class="sd">        first_line: int</span>
+<span class="sd">            The first line of the code in the source file.</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        ------</span>
+<span class="sd">        This function does a bit more magic than inspect, and is thus</span>
+<span class="sd">        more robust.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">source_file</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__code__</span>
+        <span class="n">source_file</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">co_filename</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">source_file</span><span class="p">):</span>
+            <span class="c1"># Use inspect for lambda functions and functions defined in an</span>
+            <span class="c1"># interactive shell, or in doctests</span>
+            <span class="n">source_code</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getsourcelines</span><span class="p">(</span><span class="n">func</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">line_no</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">source_file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;doctest &#39;</span><span class="p">):</span>
+                <span class="n">source_file</span><span class="p">,</span> <span class="n">line_no</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span>
+                    <span class="sa">r</span><span class="s1">&#39;\&lt;doctest (.*\.rst)\[(.*)\]\&gt;&#39;</span><span class="p">,</span> <span class="n">source_file</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()</span>
+                <span class="n">line_no</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line_no</span><span class="p">)</span>
+                <span class="n">source_file</span> <span class="o">=</span> <span class="s1">&#39;&lt;doctest </span><span class="si">%s</span><span class="s1">&gt;&#39;</span> <span class="o">%</span> <span class="n">source_file</span>
+            <span class="k">return</span> <span class="n">source_code</span><span class="p">,</span> <span class="n">source_file</span><span class="p">,</span> <span class="n">line_no</span>
+        <span class="c1"># Try to retrieve the source code.</span>
+        <span class="k">with</span> <span class="n">open_py_source</span><span class="p">(</span><span class="n">source_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">source_file_obj</span><span class="p">:</span>
+            <span class="n">first_line</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">co_firstlineno</span>
+            <span class="c1"># All the lines after the function definition:</span>
+            <span class="n">source_lines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">islice</span><span class="p">(</span><span class="n">source_file_obj</span><span class="p">,</span> <span class="n">first_line</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getblock</span><span class="p">(</span><span class="n">source_lines</span><span class="p">)),</span> <span class="n">source_file</span><span class="p">,</span> <span class="n">first_line</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1"># If the source code fails, we use the hash. This is fragile and</span>
+        <span class="c1"># might change from one session to another.</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;__code__&#39;</span><span class="p">):</span>
+            <span class="c1"># Python 3.X</span>
+            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()),</span> <span class="n">source_file</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Weird objects like numpy ufunc don&#39;t have __code__</span>
+            <span class="c1"># This is fragile, as quite often the id of the object is</span>
+            <span class="c1"># in the repr, so it might not persist across sessions,</span>
+            <span class="c1"># however it will work for ufuncs.</span>
+            <span class="k">return</span> <span class="nb">repr</span><span class="p">(</span><span class="n">func</span><span class="p">),</span> <span class="n">source_file</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span></div>
+
+
+<span class="k">def</span> <span class="nf">_clean_win_chars</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Windows cannot encode some characters in filename.&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">urllib</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">urllib</span><span class="p">,</span> <span class="s1">&#39;quote&#39;</span><span class="p">):</span>
+        <span class="n">quote</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">quote</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># In Python 3, quote is elsewhere</span>
+        <span class="kn">import</span> <span class="nn">urllib.parse</span>
+        <span class="n">quote</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span>
+    <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">):</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">char</span><span class="p">,</span> <span class="n">quote</span><span class="p">(</span><span class="n">char</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">string</span>
+
+
+<div class="viewcode-block" id="get_func_name"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.func_inspect.get_func_name">[docs]</a><span class="k">def</span> <span class="nf">get_func_name</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">resolv_alias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">win_characters</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return the function import path (as a list of module names), and</span>
+<span class="sd">        a name for the function.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        func: callable</span>
+<span class="sd">            The func to inspect</span>
+<span class="sd">        resolv_alias: boolean, optional</span>
+<span class="sd">            If true, possible local aliases are indicated.</span>
+<span class="sd">        win_characters: boolean, optional</span>
+<span class="sd">            If true, substitute special characters using urllib.quote</span>
+<span class="sd">            This is useful in Windows, as it cannot encode some filenames</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;__module__&#39;</span><span class="p">):</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__module__</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmodule</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">):</span>
+                <span class="n">module</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
+    <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Happens in doctests, eg</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">module</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">getsourcefile</span><span class="p">(</span><span class="n">func</span><span class="p">))</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># mangling of full path to filename</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;ipython-input&#39;</span><span class="p">):</span>
+                <span class="c1"># function is defined in an IPython session. The filename</span>
+                <span class="c1"># will change with every new kernel instance. This hack</span>
+                <span class="c1"># always returns the same filename</span>
+                <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;__ipython-input__&#39;</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.py&#39;</span><span class="p">):</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="n">module</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="n">filename</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;func_name&#39;</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">func_name</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;unknown&#39;</span>
+    <span class="c1"># Hack to detect functions not defined at the module-level</span>
+    <span class="k">if</span> <span class="n">resolv_alias</span><span class="p">:</span>
+        <span class="c1"># TODO: Maybe add a warning here?</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;func_globals&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">func</span><span class="o">.</span><span class="n">func_globals</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">func</span><span class="o">.</span><span class="n">func_globals</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="ow">is</span> <span class="n">func</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-alias&#39;</span> <span class="o">%</span> <span class="n">name</span>
+    <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="c1"># We need to add the name of the class</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s1">&#39;im_class&#39;</span><span class="p">):</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">im_class</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">klass</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;nt&#39;</span> <span class="ow">and</span> <span class="n">win_characters</span><span class="p">:</span>
+        <span class="c1"># Stupid windows can&#39;t encode certain characters in filenames</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">_clean_win_chars</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="p">[</span><span class="n">_clean_win_chars</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">module</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">module</span><span class="p">,</span> <span class="n">name</span></div>
+
+
+<div class="viewcode-block" id="getfullargspec"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.func_inspect.getfullargspec">[docs]</a><span class="k">def</span> <span class="nf">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compatibility function to provide inspect.getfullargspec in Python 2</span>
+
+<span class="sd">    This should be rewritten using a backport of Python 3 signature</span>
+<span class="sd">    once we drop support for Python 2.6. We went for a simpler</span>
+<span class="sd">    approach at the time of writing because signature uses OrderedDict</span>
+<span class="sd">    which is not available in Python 2.6.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="n">arg_spec</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="kn">import</span> <span class="nn">collections</span>
+        <span class="n">tuple_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;args varargs varkw defaults kwonlyargs &#39;</span>
+                        <span class="s1">&#39;kwonlydefaults annotations&#39;</span><span class="p">)</span>
+        <span class="n">tuple_type</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;FullArgSpec&#39;</span><span class="p">,</span> <span class="n">tuple_fields</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">tuple_type</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">arg_spec</span><span class="o">.</span><span class="n">args</span><span class="p">,</span>
+                          <span class="n">varargs</span><span class="o">=</span><span class="n">arg_spec</span><span class="o">.</span><span class="n">varargs</span><span class="p">,</span>
+                          <span class="n">varkw</span><span class="o">=</span><span class="n">arg_spec</span><span class="o">.</span><span class="n">keywords</span><span class="p">,</span>
+                          <span class="n">defaults</span><span class="o">=</span><span class="n">arg_spec</span><span class="o">.</span><span class="n">defaults</span><span class="p">,</span>
+                          <span class="n">kwonlyargs</span><span class="o">=</span><span class="p">[],</span>
+                          <span class="n">kwonlydefaults</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">annotations</span><span class="o">=</span><span class="p">{})</span></div>
+
+
+<span class="k">def</span> <span class="nf">_signature_str</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">arg_spec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Helper function to output a function signature&quot;&quot;&quot;</span>
+    <span class="c1"># inspect.formatargspec can not deal with the same</span>
+    <span class="c1"># number of arguments in python 2 and 3</span>
+    <span class="n">arg_spec_for_format</span> <span class="o">=</span> <span class="n">arg_spec</span><span class="p">[:</span><span class="mi">7</span> <span class="k">if</span> <span class="n">PY3_OR_LATER</span> <span class="k">else</span> <span class="mi">4</span><span class="p">]</span>
+
+    <span class="n">arg_spec_str</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">formatargspec</span><span class="p">(</span><span class="o">*</span><span class="n">arg_spec_for_format</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{}{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">arg_spec_str</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_function_called_str</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Helper function to output a function call&quot;&quot;&quot;</span>
+    <span class="n">template_str</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">(</span><span class="si">{1}</span><span class="s1">, </span><span class="si">{2}</span><span class="s1">)&#39;</span>
+
+    <span class="n">args_str</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">args</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">kwargs_str</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+                           <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">template_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">args_str</span><span class="p">,</span>
+                               <span class="n">kwargs_str</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="filter_args"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.func_inspect.filter_args">[docs]</a><span class="k">def</span> <span class="nf">filter_args</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">ignore_lst</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="n">kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">()):</span>
+    <span class="sd">&quot;&quot;&quot; Filters the given args and kwargs using a list of arguments to</span>
+<span class="sd">        ignore, and a function specification.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        func: callable</span>
+<span class="sd">            Function giving the argument specification</span>
+<span class="sd">        ignore_lst: list of strings</span>
+<span class="sd">            List of arguments to ignore (either a name of an argument</span>
+<span class="sd">            in the function spec, or &#39;*&#39;, or &#39;**&#39;)</span>
+<span class="sd">        *args: list</span>
+<span class="sd">            Positional arguments passed to the function.</span>
+<span class="sd">        **kwargs: dict</span>
+<span class="sd">            Keyword arguments passed to the function</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        filtered_args: list</span>
+<span class="sd">            List of filtered positional and keyword arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ignore_lst</span><span class="p">,</span> <span class="n">_basestring</span><span class="p">):</span>
+        <span class="c1"># Catch a common mistake</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s1">&#39;ignore_lst must be a list of parameters to ignore &#39;</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> (type </span><span class="si">%s</span><span class="s1">) was given&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ignore_lst</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ignore_lst</span><span class="p">)))</span>
+    <span class="c1"># Special case for functools.partial objects</span>
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">func</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">(</span><span class="n">func</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">ignore_lst</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Cannot inspect object </span><span class="si">%s</span><span class="s1">, ignore list will &#39;</span>
+                          <span class="s1">&#39;not work.&#39;</span> <span class="o">%</span> <span class="n">func</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;*&#39;</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">}</span>
+    <span class="n">arg_spec</span> <span class="o">=</span> <span class="n">getfullargspec</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="n">arg_names</span> <span class="o">=</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">args</span> <span class="o">+</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">kwonlyargs</span>
+    <span class="n">arg_defaults</span> <span class="o">=</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">defaults</span> <span class="ow">or</span> <span class="p">()</span>
+    <span class="n">arg_defaults</span> <span class="o">=</span> <span class="n">arg_defaults</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">arg_spec</span><span class="o">.</span><span class="n">kwonlydefaults</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                                        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">kwonlyargs</span><span class="p">)</span>
+    <span class="n">arg_varargs</span> <span class="o">=</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">varargs</span>
+    <span class="n">arg_varkw</span> <span class="o">=</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">varkw</span>
+
+    <span class="k">if</span> <span class="n">inspect</span><span class="o">.</span><span class="n">ismethod</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="c1"># First argument is &#39;self&#39;, it has been removed by Python</span>
+        <span class="c1"># we need to add it back:</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="vm">__self__</span><span class="p">,</span> <span class="p">]</span> <span class="o">+</span> <span class="n">args</span>
+    <span class="c1"># XXX: Maybe I need an inspect.isbuiltin to detect C-level methods, such</span>
+    <span class="c1"># as on ndarrays.</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_func_name</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">resolv_alias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">arg_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">arg_position</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="n">arg_position</span><span class="p">,</span> <span class="n">arg_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">arg_names</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arg_position</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+            <span class="c1"># Positional argument or keyword argument given as positional</span>
+            <span class="k">if</span> <span class="n">arg_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">arg_spec</span><span class="o">.</span><span class="n">kwonlyargs</span><span class="p">:</span>
+                <span class="n">arg_dict</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">arg_position</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Keyword-only parameter &#39;</span><span class="si">%s</span><span class="s2">&#39; was passed as &quot;</span>
+                    <span class="s1">&#39;positional parameter for </span><span class="si">%s</span><span class="s1">:</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="s1">&#39;     </span><span class="si">%s</span><span class="s1"> was called.&#39;</span>
+                    <span class="o">%</span> <span class="p">(</span><span class="n">arg_name</span><span class="p">,</span>
+                       <span class="n">_signature_str</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">arg_spec</span><span class="p">),</span>
+                       <span class="n">_function_called_str</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+                <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="n">arg_position</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg_names</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">arg_name</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="n">arg_dict</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">arg_name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">arg_dict</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_defaults</span><span class="p">[</span><span class="n">position</span><span class="p">]</span>
+                <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
+                    <span class="c1"># Missing argument</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s1">&#39;Wrong number of arguments for </span><span class="si">%s</span><span class="s1">:</span><span class="se">\n</span><span class="s1">&#39;</span>
+                        <span class="s1">&#39;     </span><span class="si">%s</span><span class="s1"> was called.&#39;</span>
+                        <span class="o">%</span> <span class="p">(</span><span class="n">_signature_str</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">arg_spec</span><span class="p">),</span>
+                           <span class="n">_function_called_str</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">))</span>
+                    <span class="p">)</span>
+
+    <span class="n">varkwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">arg_name</span><span class="p">,</span> <span class="n">arg_value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="n">arg_name</span> <span class="ow">in</span> <span class="n">arg_dict</span><span class="p">:</span>
+            <span class="n">arg_dict</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+        <span class="k">elif</span> <span class="n">arg_varkw</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">varkwargs</span><span class="p">[</span><span class="n">arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">arg_value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Ignore list for </span><span class="si">%s</span><span class="s2">() contains an unexpected &quot;</span>
+                            <span class="s2">&quot;keyword argument &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">arg_name</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">arg_varkw</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">arg_dict</span><span class="p">[</span><span class="s1">&#39;**&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">varkwargs</span>
+    <span class="k">if</span> <span class="n">arg_varargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">varargs</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="n">arg_position</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="n">arg_dict</span><span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">varargs</span>
+
+    <span class="c1"># Now remove the arguments to be ignored</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ignore_lst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">arg_dict</span><span class="p">:</span>
+            <span class="n">arg_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Ignore list: argument &#39;</span><span class="si">%s</span><span class="s2">&#39; is not defined for &quot;</span>
+                             <span class="s2">&quot;function </span><span class="si">%s</span><span class="s2">&quot;</span>
+                             <span class="o">%</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span>
+                                <span class="n">_signature_str</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">arg_spec</span><span class="p">))</span>
+                             <span class="p">)</span>
+    <span class="c1"># XXX: Return a sorted list of pairs?</span>
+    <span class="k">return</span> <span class="n">arg_dict</span></div>
+
+
+<span class="k">def</span> <span class="nf">_format_arg</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">formatted_arg</span> <span class="o">=</span> <span class="n">pformat</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">formatted_arg</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1500</span><span class="p">:</span>
+        <span class="n">formatted_arg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">formatted_arg</span><span class="p">[:</span><span class="mi">700</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">formatted_arg</span>
+
+
+<div class="viewcode-block" id="format_signature"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.func_inspect.format_signature">[docs]</a><span class="k">def</span> <span class="nf">format_signature</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># XXX: Should this use inspect.formatargvalues/formatargspec?</span>
+    <span class="n">module</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="n">get_func_name</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">module</span> <span class="k">if</span> <span class="n">m</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">module</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">module_path</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module_path</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="n">arg_str</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">previous_length</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="n">formatted_arg</span> <span class="o">=</span> <span class="n">_format_arg</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">previous_length</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+            <span class="n">formatted_arg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">formatted_arg</span>
+        <span class="n">previous_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">formatted_arg</span><span class="p">)</span>
+        <span class="n">arg_str</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">formatted_arg</span><span class="p">)</span>
+    <span class="n">arg_str</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">_format_arg</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span>
+    <span class="n">arg_str</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">arg_str</span><span class="p">)</span>
+
+    <span class="n">signature</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">arg_str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">module_path</span><span class="p">,</span> <span class="n">signature</span></div>
+
+
+<div class="viewcode-block" id="format_call"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.func_inspect.format_call">[docs]</a><span class="k">def</span> <span class="nf">format_call</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">object_name</span><span class="o">=</span><span class="s2">&quot;Memory&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Returns a nicely formatted statement displaying the function</span>
+<span class="sd">        call with the given arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span><span class="p">,</span> <span class="n">signature</span> <span class="o">=</span> <span class="n">format_signature</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s1">[</span><span class="si">%s</span><span class="s1">] Calling </span><span class="si">%s</span><span class="s1">...</span><span class="se">\n</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">80</span> <span class="o">*</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span>
+                                          <span class="n">path</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">msg</span></div>
+    <span class="c1"># XXX: Not using logging framework</span>
+    <span class="c1"># self.debug(msg)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

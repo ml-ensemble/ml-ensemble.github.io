@@ -1,0 +1,54 @@
+mlens\.ensemble package
+=======================
+
+Submodules
+----------
+
+mlens\.ensemble\.base module
+----------------------------
+
+.. automodule:: mlens.ensemble.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.ensemble\.blend module
+-----------------------------
+
+.. automodule:: mlens.ensemble.blend
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.ensemble\.sequential module
+----------------------------------
+
+.. automodule:: mlens.ensemble.sequential
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.ensemble\.subsemble module
+---------------------------------
+
+.. automodule:: mlens.ensemble.subsemble
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.ensemble\.super\_learner module
+--------------------------------------
+
+.. automodule:: mlens.ensemble.super_learner
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.ensemble
+    :members:
+    :undoc-members:
+    :show-inheritance:

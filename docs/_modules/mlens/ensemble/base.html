@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.ensemble.base &mdash; mlens 0.2.0.dev0 documentation</title>
+  <title>mlens.ensemble.base &mdash; mlens 0.2.0 documentation</title>
   
 
   
@@ -32,9 +32,9 @@
   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   
-    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
-  
     <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
   
     <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../../../index.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -100,162 +100,163 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../config.html">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
-</ul>
-<p class="caption"><span class="caption-text">High-level API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-backend"><span class="hidden-section">set_backend</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Mechanics</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Details</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Additional Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Package index</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#run"><span class="hidden-section">run</span></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metrics.html">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization.html">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
 </ul>
 </li>
 </ul>
@@ -341,15 +342,15 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">config</span>
-<span class="kn">from</span> <span class="nn">..parallel</span> <span class="k">import</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">ParallelProcessing</span><span class="p">,</span> <span class="n">make_learners</span>
-<span class="kn">from</span> <span class="nn">..parallel.base</span> <span class="k">import</span> <span class="n">BaseBackend</span>
-<span class="kn">from</span> <span class="nn">..externals.sklearn.base</span> <span class="k">import</span> <span class="n">BaseEstimator</span>
+<span class="kn">from</span> <span class="nn">..parallel</span> <span class="k">import</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">ParallelProcessing</span><span class="p">,</span> <span class="n">make_group</span>
+<span class="kn">from</span> <span class="nn">..parallel.base</span> <span class="k">import</span> <span class="n">BaseStacker</span>
 <span class="kn">from</span> <span class="nn">..externals.sklearn.validation</span> <span class="k">import</span> <span class="n">check_random_state</span>
-<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="p">(</span>
-    <span class="n">check_ensemble_build</span><span class="p">,</span> <span class="n">check_layers</span><span class="p">,</span> <span class="n">check_inputs</span><span class="p">,</span> <span class="n">print_time</span><span class="p">,</span>
-    <span class="n">safe_print</span><span class="p">,</span> <span class="n">IdTrain</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">..utils.exceptions</span> <span class="k">import</span> <span class="n">LayerSpecificationWarning</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">check_ensemble_build</span><span class="p">,</span> <span class="n">check_inputs</span><span class="p">,</span> <span class="n">print_time</span><span class="p">,</span>
+                     <span class="n">safe_print</span><span class="p">,</span> <span class="n">IdTrain</span><span class="p">,</span> <span class="n">format_name</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..utils.exceptions</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">LayerSpecificationWarning</span><span class="p">,</span> <span class="n">NotFittedError</span><span class="p">,</span> <span class="n">NotInitializedError</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..metrics</span> <span class="k">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">..externals.sklearn.base</span> <span class="k">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">clone</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># Try get performance counter</span>
     <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">perf_counter</span> <span class="k">as</span> <span class="n">time</span>
@@ -358,7 +359,10 @@
     <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
 
 
-<div class="viewcode-block" id="check_kwargs"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.check_kwargs">[docs]</a><span class="k">def</span> <span class="nf">check_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">forbidden</span><span class="p">):</span>
+<span class="n">GLOBAL_SEQUENTIAL_NAME</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">check_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">forbidden</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Pop unwanted arguments and issue warning&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">forbidden</span><span class="p">:</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -366,10 +370,10 @@
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
                 <span class="s2">&quot;Layer-specific parameter &#39;</span><span class="si">%s</span><span class="s2">&#39; contradicts&quot;</span>
                 <span class="s2">&quot;ensemble-wide settings. Ignoring.&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">,</span>
-                <span class="n">LayerSpecificationWarning</span><span class="p">)</span></div>
+                <span class="n">LayerSpecificationWarning</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="print_job"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.print_job">[docs]</a><span class="k">def</span> <span class="nf">print_job</span><span class="p">(</span><span class="n">lc</span><span class="p">,</span> <span class="n">start_message</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">print_job</span><span class="p">(</span><span class="n">lc</span><span class="p">,</span> <span class="n">start_message</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Print job details.</span>
 
 <span class="sd">    Parameters</span>
@@ -382,24 +386,24 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="n">lc</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
     <span class="k">if</span> <span class="n">lc</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
-        <span class="n">safe_print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> layers&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">start_message</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">n_layers</span><span class="p">),</span>
+        <span class="n">safe_print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">%s</span><span class="s2"> </span><span class="si">%d</span><span class="s2"> layers&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">start_message</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">stack</span><span class="p">)),</span>
                    <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">lc</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
             <span class="n">safe_print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;[INFO] n_jobs = </span><span class="si">%i</span><span class="s2"></span>
 <span class="s2">[INFO] backend = </span><span class="si">%r</span><span class="s2"></span>
 <span class="s2">[INFO] start_method = </span><span class="si">%r</span><span class="s2"></span>
 <span class="s2">[INFO] cache = </span><span class="si">%r</span><span class="s2"></span>
-<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">START_METHOD</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">TMPDIR</span><span class="p">),</span>
+<span class="s2">&quot;&quot;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">get_start_method</span><span class="p">(),</span> <span class="n">config</span><span class="o">.</span><span class="n">get_tmpdir</span><span class="p">()),</span>
                        <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="n">t0</span></div>
+    <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="n">t0</span>
 
 
 <span class="c1">###############################################################################</span>
-<div class="viewcode-block" id="Sequential"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.Sequential">[docs]</a><span class="k">class</span> <span class="nc">Sequential</span><span class="p">(</span><span class="n">BaseBackend</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
+<div class="viewcode-block" id="Sequential"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.Sequential">[docs]</a><span class="k">class</span> <span class="nc">Sequential</span><span class="p">(</span><span class="n">BaseStacker</span><span class="p">):</span>
 
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Container class for layers.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Container class for a stack of sequentially processed estimators.</span>
 
 <span class="sd">    The Sequential class stories all layers as an ordered dictionary</span>
 <span class="sd">    and modifies possesses a ``get_params`` method to appear as an estimator</span>
@@ -409,8 +413,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    layers : list, optional (default = None)</span>
-<span class="sd">        list of layers to instantiate with.</span>
+<span class="sd">    stack: list, optional (default = None)</span>
+<span class="sd">        list of estimators (i.e. layers) to build instance with.</span>
 
 <span class="sd">    n_jobs : int (default = -1)</span>
 <span class="sd">        Degree of concurrency. Set ``n_jobs = -1`` for maximal parallelism and</span>
@@ -434,36 +438,25 @@
 <span class="sd">        If ``verbose &gt;= 10`` prints to ``sys.stderr``, else ``sys.stdout``.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Sequential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_init_layers</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">stack</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">stack</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;layer&#39;</span><span class="p">:</span>
+                <span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">stack</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Expect stack to be a Layer or a list of Layers. &quot;</span>
+                    <span class="s2">&quot;Got </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stack</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">layers</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Add layers to instance</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        *layers : iterable</span>
-<span class="sd">            list of layers to add to sequential</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">check_layers</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">lyr</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">lyr</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="n">lr</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">]:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Layer name exists in stack. &quot;</span>
-                                 <span class="s2">&quot;Rename layers before attempting to push.&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span>
-            <span class="n">attr</span> <span class="o">=</span> <span class="n">lyr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">lyr</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">format_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;sequential&#39;</span><span class="p">,</span> <span class="n">GLOBAL_SEQUENTIAL_NAME</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sequential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">stack</span><span class="o">=</span><span class="n">stack</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generator for layers&quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generator for stacked layers&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">:</span>
             <span class="k">yield</span> <span class="n">layer</span>
 
-<div class="viewcode-block" id="Sequential.fit"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.Sequential.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Sequential.fit"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.Sequential.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fit instance.</span>
 
 <span class="sd">        Iterative fits each layer in the stack on the output of</span>
@@ -480,11 +473,14 @@
 <span class="sd">        **kwargs : optional</span>
 <span class="sd">            optional arguments to processor</span>
 <span class="sd">       &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__stack__</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotInitializedError</span><span class="p">(</span><span class="s2">&quot;No elements in stack to fit.&quot;</span><span class="p">)</span>
+
         <span class="n">f</span><span class="p">,</span> <span class="n">t0</span> <span class="o">=</span> <span class="n">print_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Fitting&quot;</span><span class="p">)</span>
 
         <span class="k">with</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
                                 <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">as</span> <span class="n">manager</span><span class="p">:</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
             <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:&lt;35}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Fit complete&quot;</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
@@ -493,7 +489,25 @@
             <span class="k">return</span> <span class="bp">self</span>
         <span class="k">return</span> <span class="n">out</span></div>
 
-<div class="viewcode-block" id="Sequential.predict"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.Sequential.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Sequential.fit_transform"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.Sequential.fit_transform">[docs]</a>    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fit instance and return cross-validated predictions.</span>
+
+<span class="sd">        Equivalent to ``Sequential().fit(X, y, return_preds=True)``</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array-like of shape = [n_samples, n_features]</span>
+<span class="sd">            input matrix to be used for fitting and predicting.</span>
+
+<span class="sd">        y : array-like of shape = [n_samples, ]</span>
+<span class="sd">            training labels.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            optional arguments to processor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sequential.predict"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.Sequential.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Predict.</span>
 
 <span class="sd">        Parameters</span>
@@ -509,6 +523,9 @@
 <span class="sd">        X_pred : array-like of shape = [n_samples, n_fitted_estimators]</span>
 <span class="sd">            predictions from final layer.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+            <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Instance not fitted.&quot;</span><span class="p">)</span>
+
         <span class="n">f</span><span class="p">,</span> <span class="n">t0</span> <span class="o">=</span> <span class="n">print_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Predicting&quot;</span><span class="p">)</span>
 
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -518,7 +535,7 @@
                        <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">out</span></div>
 
-<div class="viewcode-block" id="Sequential.transform"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.Sequential.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Sequential.transform"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.Sequential.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Predict using sub-learners as is done during the ``fit`` call.</span>
 
 <span class="sd">        Parameters</span>
@@ -537,6 +554,9 @@
 <span class="sd">        X_pred : array-like of shape = [n_test_samples, n_fitted_estimators]</span>
 <span class="sd">            predictions from ``fit`` call to final layer.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+            <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Instance not fitted.&quot;</span><span class="p">)</span>
+
         <span class="n">f</span><span class="p">,</span> <span class="n">t0</span> <span class="o">=</span> <span class="n">print_job</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;Transforming&quot;</span><span class="p">)</span>
 
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -568,7 +588,7 @@
         <span class="n">r</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;return_preds&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span>
                                 <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">as</span> <span class="n">manager</span><span class="p">:</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">out</span> <span class="o">=</span> <span class="p">[</span><span class="n">out</span><span class="p">]</span>
@@ -577,51 +597,11 @@
             <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">out</span>
 
-    <span class="k">def</span> <span class="nf">_init_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layers</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize layers&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">layers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">layers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-        <span class="k">elif</span> <span class="n">layers</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;layer&#39;</span><span class="p">:</span>
-            <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">layers</span><span class="p">]</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">layers</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span>
-
-<div class="viewcode-block" id="Sequential.get_params"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.Sequential.get_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get parameters for this estimator.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        deep : boolean, optional</span>
-<span class="sd">            whether to return nested parameters.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Sequential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="n">deep</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">deep</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">out</span>
-
-        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-            <span class="n">out</span><span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">layer</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">out</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">key</span><span class="p">)]</span> <span class="o">=</span> <span class="n">val</span>
-        <span class="k">return</span> <span class="n">out</span></div>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Adjust the level of verbosity.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span>
-
-    <span class="nd">@verbose</span><span class="o">.</span><span class="n">setter</span>
-    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Ensemble data&quot;&quot;&quot;</span>
         <span class="n">out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">:</span>
             <span class="n">d</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">raw_data</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="p">:</span>
                 <span class="k">continue</span>
@@ -630,7 +610,7 @@
 
 
 <span class="c1">###############################################################################</span>
-<div class="viewcode-block" id="BaseEnsemble"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.BaseEnsemble">[docs]</a><span class="k">class</span> <span class="nc">BaseEnsemble</span><span class="p">(</span><span class="n">Sequential</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseEnsemble"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble">[docs]</a><span class="k">class</span> <span class="nc">BaseEnsemble</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;BaseEnsemble class.</span>
 
@@ -681,8 +661,6 @@
             <span class="bp">self</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">model_selection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="o">=</span> <span class="n">scorer</span>
@@ -690,8 +668,17 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_selection</span> <span class="o">=</span> <span class="n">model_selection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">model_selection</span> <span class="o">=</span> <span class="n">model_selection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sample_size</span> <span class="o">=</span> <span class="n">sample_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">layers</span> <span class="k">if</span> <span class="n">layers</span> <span class="k">else</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id_train</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">model_selection</span> <span class="k">else</span> <span class="n">IdTrain</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BaseEnsemble.add"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.BaseEnsemble.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">raise_on_exception</span>
+        <span class="k">if</span> <span class="n">layers</span><span class="p">:</span>
+            <span class="n">layers_</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="o">*</span><span class="n">layers_</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseEnsemble.add"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method for adding a layer.</span>
 
 <span class="sd">        Parameters</span>
@@ -755,46 +742,78 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        ----------</span>
-<span class="sd">        self : instance, optional</span>
-<span class="sd">            if ``in_place = True``, returns ``self`` with the layer</span>
-<span class="sd">            instantiated.</span>
+<span class="sd">        self : instance</span>
+<span class="sd">            Modified instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">estimators</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;layer&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+        <span class="n">lyr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_layer</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="c1"># --- check args ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clone</span><span class="p">(</span><span class="n">lyr</span><span class="p">))</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lyr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span> <span class="n">lyr</span><span class="p">)</span>
 
-        <span class="c1"># Arguments that cannot be very between layers</span>
-        <span class="n">check_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">,</span> <span class="s1">&#39;n_jobs&#39;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
-        <span class="c1"># Pop layer kwargs and override Sequential args</span>
-        <span class="n">verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">dtype</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-        <span class="n">propagate</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;propagate_features&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="n">raise_</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;raise_on_exception&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
-        <span class="n">shuffle</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span><span class="p">)</span>
-        <span class="n">random_state</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;random_state&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">random_state</span><span class="p">:</span>
-            <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<div class="viewcode-block" id="BaseEnsemble.replace"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Replace a layer.</span>
 
-        <span class="c1"># Set learner kwargs</span>
-        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;scorer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;scorer&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">)</span>
+<span class="sd">        Replace a layer in the stack with a new layer.</span>
+<span class="sd">        See :func:`add` for full parameter documentation.</span>
 
-        <span class="c1"># Check estimator and preprocessing formatting</span>
-        <span class="n">group</span> <span class="o">=</span> <span class="n">make_learners</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        idx: int</span>
+<span class="sd">            Position in stack of layer to replace. Indexing is 0-based.</span>
 
-        <span class="c1"># --- layer ---</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer-</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_layers</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Start count at 1</span>
-        <span class="n">lyr</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>
-            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
-            <span class="n">raise_on_exception</span><span class="o">=</span><span class="n">raise_</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="n">propagate</span><span class="p">)</span>
+<span class="sd">        estimators: dict of lists or list of estimators, or `:class:`Layer`.</span>
+<span class="sd">            Pre-made layer or estimators to construct layer with.</span>
 
-        <span class="n">lyr</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span></div>
+<span class="sd">        indexer : instance or None (default = None)</span>
+<span class="sd">            Indexer instance to use. Defaults to the layer class</span>
+<span class="sd">            indexer with default settings. See :mod:`mlens.base` for details.</span>
 
-<div class="viewcode-block" id="BaseEnsemble.fit"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.BaseEnsemble.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="sd">        preprocessing: dict of lists or list, optional (default = None)</span>
+<span class="sd">            preprocessing pipelines for given layer.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            keyword arguments to be passed onto the layer at instantiation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self : instance</span>
+<span class="sd">            Modified instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lyr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_layer</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lyr</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span> <span class="n">lyr</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">lyr</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseEnsemble.remove"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.remove">[docs]</a>    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Remove a layer from stack</span>
+
+<span class="sd">        Remove a layer at a given position from stack.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        idx: int</span>
+<span class="sd">            Position in stack. Indexing is 0-based.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self: instance</span>
+<span class="sd">            Modified instance</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="nb">delattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="BaseEnsemble.fit"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fit ensemble.</span>
 
 <span class="sd">        Parameters</span>
@@ -810,18 +829,23 @@
 <span class="sd">        self : instance</span>
 <span class="sd">            class instance with fitted estimators.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
             <span class="c1"># No layers instantiated, but raise_on_exception is False</span>
             <span class="k">return</span> <span class="bp">self</span>
 
         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_check</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_selection</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">id_train</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id_train</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">:</span>
+            <span class="c1"># fit_transform</span>
+            <span class="k">return</span> <span class="n">out</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="BaseEnsemble.transform"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.BaseEnsemble.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseEnsemble.transform"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Transform with fitted ensemble.</span>
 
 <span class="sd">        Replicates cross-validated prediction process from training.</span>
@@ -843,7 +867,7 @@
 <span class="sd">            return a tuple ``(X_trans, y_trans)`` where ``y_trans`` is either</span>
 <span class="sd">            ``y``, or a trunctated version to match the samples in ``X_trans``.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
             <span class="c1"># No layers instantiated, but raise_on_exception is False</span>
             <span class="k">return</span>
 
@@ -856,21 +880,47 @@
 
             <span class="c1"># Need to modify the transform method to account for blending</span>
             <span class="c1"># cutting X in size, so y needs to be cut too</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">id_train</span><span class="o">.</span><span class="n">is_train</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id_train</span><span class="o">.</span><span class="n">is_train</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">y</span>
 
             <span class="c1"># Asked to reproduce predictions during fit, here we need to</span>
             <span class="c1"># account for that in model selection mode,</span>
             <span class="c1"># blend ensemble will cut X in observation size so need to adjust y</span>
-            <span class="n">X</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
                 <span class="n">r</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">r</span><span class="p">:]</span>
             <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BaseEnsemble.predict"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.BaseEnsemble.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseEnsemble.fit_transform"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.fit_transform">[docs]</a>    <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Fit ensemble and return cross-validated predictions.</span>
+
+<span class="sd">        Equivalent to ``ensemble.fit(X, y).transform(X)``, but more efficient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        X : array-like of shape = [n_samples, n_features]</span>
+<span class="sd">            input matrix to be used for fitting and predicting.</span>
+
+<span class="sd">        y : array-like of shape = [n_samples, ]</span>
+<span class="sd">            training labels.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            optional arguments to processor</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pred : array-like or tuple, shape=[n_samples, n_features]</span>
+<span class="sd">            predictions for provided input array. If in model selection mode,</span>
+<span class="sd">            return a tuple ``(X_trans, y_trans)`` where ``y_trans`` is either</span>
+<span class="sd">            ``y``, or a trunctated version to match the samples in ``X_trans``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;return_preds&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseEnsemble.predict"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Predict with fitted ensemble.</span>
 
 <span class="sd">        Parameters</span>
@@ -880,17 +930,16 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        y_pred : array-like, shape=[n_samples, ]</span>
+<span class="sd">        pred : array-like or tuple, shape=[n_samples, n_features]</span>
 <span class="sd">            predictions for provided input array.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
             <span class="c1"># No layers instantiated, but raise_on_exception is False</span>
             <span class="k">return</span>
         <span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">check_level</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_check</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-
-<div class="viewcode-block" id="BaseEnsemble.predict_proba"><a class="viewcode-back" href="../../../module/mlens.ensemble.base.html#mlens.ensemble.BaseEnsemble.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="BaseEnsemble.predict_proba"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Predict class probabilities with fitted ensemble.</span>
 
 <span class="sd">        Compatibility method for Scikit-learn. This method checks that the</span>
@@ -904,14 +953,44 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        y_pred : array-like, shape=[n_samples, n_classes]</span>
-<span class="sd">            predicted class membership probabilities for provided input array.</span>
+<span class="sd">        pred : array-like or tuple, shape=[n_samples, n_features]</span>
+<span class="sd">            predictions for provided input array.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">lyr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">lyr</span><span class="p">,</span> <span class="s1">&#39;proba&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot use &#39;predict_proba&#39; if final layer&quot;</span>
-                             <span class="s2">&quot;does not have &#39;proba=True&#39;.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;proba&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_build_layer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Build a layer from estimators and preprocessing pipelines&quot;&quot;&quot;</span>
+        <span class="c1"># --- check args ---</span>
+
+        <span class="c1"># Arguments that cannot be very between layers</span>
+        <span class="n">check_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;backend&#39;</span><span class="p">,</span> <span class="s1">&#39;n_jobs&#39;</span><span class="p">])</span>
+
+        <span class="c1"># Pop layer kwargs and override Sequential args</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;verbose&#39;</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="n">dtype</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">propagate</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;propagate_features&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">shuffle</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span><span class="p">)</span>
+        <span class="n">random_state</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;random_state&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="n">rs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;raise_on_exception&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">random_state</span><span class="p">:</span>
+            <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+
+        <span class="c1"># Set learner kwargs</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;verbose&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;scorer&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;scorer&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">)</span>
+
+        <span class="c1"># Check estimator and preprocessing formatting</span>
+        <span class="n">group</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># --- layer ---</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;layer-</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">stack</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Start count at 1</span>
+        <span class="n">lyr</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span>
+            <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="n">raise_on_exception</span><span class="o">=</span><span class="n">rs</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="n">propagate</span><span class="p">)</span>
+        <span class="n">lyr</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lyr</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -923,9 +1002,14 @@
         <span class="sd">&quot;&quot;&quot;Turn model selection on or off&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_selection</span> <span class="o">=</span> <span class="n">model_selection</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_selection</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">id_train</span> <span class="o">=</span> <span class="n">IdTrain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_size</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id_train</span> <span class="o">=</span> <span class="n">IdTrain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sample_size</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">id_train</span> <span class="o">=</span> <span class="kc">None</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_id_train</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit data&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">data</span></div>
 </pre></div>
 
            </div>
@@ -962,7 +1046,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.2.0.dev0',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

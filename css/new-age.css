@@ -49,8 +49,8 @@ section {
     font-size: 50px; }
 
 #mainNav {
-  border-color: rgba(34, 34, 34, 0.05);
-  background-color: white;
+  border-color: transparent;
+  background-color: #fdcc52;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
   transition: all .35s;
@@ -99,7 +99,7 @@ section {
         #mainNav .navbar-nav > li > a:focus:hover {
           color: white; }
       #mainNav.navbar-shrink {
-        border-color: rgba(34, 34, 34, 0.1);
+        border-color: transparent;
         background-color: #a33964; }
         #mainNav.navbar-shrink .navbar-brand {
           color: #222222; }

@@ -1,0 +1,1096 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.model_selection.model_selection &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.model_selection.model_selection</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.model_selection.model_selection</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-ENSEMBLE</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Model selection suite for tuning and benchmarking a set of estimators.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=too-many-instance-attributes</span>
+<span class="c1"># pylint: disable=too-many-arguments</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">with_statement</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">._base_functions</span> <span class="k">import</span> <span class="p">(</span><span class="n">parse_key</span><span class="p">,</span> <span class="n">set_job</span><span class="p">,</span> <span class="n">cat</span><span class="p">,</span> <span class="n">check_scorer</span><span class="p">,</span>
+                              <span class="n">make_learners</span><span class="p">,</span> <span class="n">make_tansformers</span><span class="p">,</span> <span class="n">check_instances</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..index</span> <span class="k">import</span> <span class="n">FoldIndex</span>
+<span class="kn">from</span> <span class="nn">..parallel</span> <span class="k">import</span> <span class="n">ParallelEvaluation</span>
+<span class="kn">from</span> <span class="nn">..parallel.base</span> <span class="k">import</span> <span class="n">BaseBackend</span><span class="p">,</span> <span class="n">IndexMixin</span>
+<span class="kn">from</span> <span class="nn">..metrics</span> <span class="k">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">assemble_data</span>
+<span class="kn">from</span> <span class="nn">..utils.formatting</span> <span class="k">import</span> <span class="n">_flatten</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">print_time</span><span class="p">,</span> <span class="n">safe_print</span><span class="p">,</span>
+                     <span class="n">assert_correct_format</span><span class="p">,</span> <span class="n">check_inputs</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..externals.joblib</span> <span class="k">import</span> <span class="n">delayed</span>
+<span class="kn">from</span> <span class="nn">..externals.sklearn.base</span> <span class="k">import</span> <span class="n">clone</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">perf_counter</span> <span class="k">as</span> <span class="n">time</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span> <span class="k">as</span> <span class="n">_dict</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">_dict</span> <span class="o">=</span> <span class="nb">dict</span>
+
+
+<div class="viewcode-block" id="benchmark"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.benchmark">[docs]</a><span class="k">def</span> <span class="nf">benchmark</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">cv</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span>
+              <span class="n">preprocessing</span><span class="p">,</span> <span class="n">error_score</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Benchmark estimators across preprocessing pipelines.</span>
+
+<span class="sd">    :func:`benchmark` runs cross validation scoring of a set of estimators,</span>
+<span class="sd">    possible against a set of preprocessing pipelines. Equivalent to ::</span>
+
+<span class="sd">            evl = Benchmark(**kwargs)</span>
+<span class="sd">            evl.fit(X, y, scorer, ...)</span>
+
+
+<span class="sd">    .. versionadded:: 0.2.0</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : array-like, shape=[n_samples, n_features]</span>
+<span class="sd">       input data to preprocess and create folds from.</span>
+
+<span class="sd">    y : array-like, shape=[n_samples, ]</span>
+<span class="sd">       training labels.</span>
+
+<span class="sd">    scorer : function</span>
+<span class="sd">        a scoring function that follows the Scikit-learn API::</span>
+
+<span class="sd">            score = scorer(estimator, y_true, y_pred)</span>
+
+<span class="sd">        A user defines scoring function, ``score = f(y_true, y_pred)`` can be</span>
+<span class="sd">        made into a scorer by calling on the ML-Ensemble implementation of</span>
+<span class="sd">        Scikit-learn&#39;s ``make_scorer``. NOTE: do **not** use Scikit-learn&#39;s</span>
+<span class="sd">        ``make_scorer`` if the Evaluator is to be pickled. ::</span>
+
+<span class="sd">            from mlens.metrics import make_scorer</span>
+<span class="sd">            scorer = make_scorer(scoring_function, **kwargs)</span>
+
+<span class="sd">    error_score : int, optional</span>
+<span class="sd">        score to assign when fitting an estimator fails. If ``None``, the</span>
+<span class="sd">        evaluator will raise an error.</span>
+
+<span class="sd">    cv : int or obj (default = 2)</span>
+<span class="sd">        cross validation folds to use. Either pass a ``KFold`` class</span>
+<span class="sd">        that obeys the Scikit-learn API.</span>
+
+<span class="sd">    estimators : list or dict, optional</span>
+<span class="sd">        set of estimators to use. If no preprocessing is desired or if</span>
+<span class="sd">        only on preprocessing pipeline should apply to all, pass a list of</span>
+<span class="sd">        estimators. The list can contain elements of named tuples</span>
+<span class="sd">        (i.e. ``(&#39;my_name&#39;, my_est)``).</span>
+
+<span class="sd">        If different estimators should be mapped to preprocessing cases,</span>
+<span class="sd">        a dictionary that maps estimators to each case should</span>
+<span class="sd">        be passed: ``{&#39;case_a&#39;: list_of_est, ...}``.</span>
+
+<span class="sd">    preprocessing : dict, optional</span>
+<span class="sd">        preprocessing cases to consider. Pass a dictionary mapping a</span>
+<span class="sd">        case name to a preprocessing pipeline. ::</span>
+
+<span class="sd">            preprocessing = {&#39;case_name&#39;: transformer_list,}</span>
+
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Optional arguments to :class:`~mlens.parallel.base.BaseBackend`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    results : dict</span>
+<span class="sd">        Summary output that shows data for best mean test scores, such as</span>
+<span class="sd">        test and train scores, std, fit times, and params.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">evl</span> <span class="o">=</span> <span class="n">Benchmark</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">evl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">cv</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">error_score</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">evl</span><span class="o">.</span><span class="n">results</span></div>
+
+
+<div class="viewcode-block" id="BaseEval"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.BaseEval">[docs]</a><span class="k">class</span> <span class="nc">BaseEval</span><span class="p">(</span><span class="n">IndexMixin</span><span class="p">,</span> <span class="n">BaseBackend</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Base Evaluation class.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_check</span> <span class="o">=</span> <span class="n">array_check</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BaseEval</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Provide jobs for ParallelEvaluation manager&quot;&quot;&quot;</span>
+        <span class="k">yield</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">case</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process eval&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">20</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">safe_print</span><span class="p">(</span><span class="s1">&#39;Launching job&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s1">&#39;preprocess&#39;</span> <span class="ow">in</span> <span class="n">case</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span><span class="p">:</span>
+            <span class="c1"># Second test is for already fitted pipes - need to be cached</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">safe_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_prep_start</span><span class="p">(),</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s1">&#39;transformers&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s1">&#39;preprocess&#39;</span> <span class="ow">in</span> <span class="n">case</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">],</span> <span class="s1">&#39;transformers&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">print_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:&lt;13}</span><span class="s1"> done&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Preprocessing&#39;</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;evaluate&#39;</span> <span class="ow">in</span> <span class="n">case</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">safe_print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_print_eval_start</span><span class="p">(),</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="s1">&#39;estimators&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">],</span> <span class="s1">&#39;estimators&#39;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">print_time</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:&lt;13}</span><span class="s1"> done&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Evaluation&#39;</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:&lt;13}</span><span class="s1"> done&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Job&#39;</span><span class="p">),</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process eval&quot;&quot;&quot;</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]</span>
+        <span class="n">_threading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s1">&#39;threading&#39;</span>
+
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;transformers&#39;</span><span class="p">:</span>
+            <span class="n">generator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span>
+            <span class="n">inp</span> <span class="o">=</span> <span class="s1">&#39;auxiliary&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">generator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span>
+            <span class="n">inp</span> <span class="o">=</span> <span class="s1">&#39;main&#39;</span>
+
+        <span class="n">parallel</span><span class="p">(</span><span class="n">delayed</span><span class="p">(</span><span class="n">subtask</span><span class="p">,</span> <span class="ow">not</span> <span class="n">_threading</span><span class="p">)(</span><span class="n">path</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">generator</span> <span class="k">for</span> <span class="n">subtask</span> <span class="ow">in</span> <span class="n">task</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">inp</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">job</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_check</span><span class="p">)</span>
+        <span class="n">verbose</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">15</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="k">with</span> <span class="n">ParallelEvaluation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span> <span class="k">as</span> <span class="n">manager</span><span class="p">:</span>
+            <span class="n">manager</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseEval.collect"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.BaseEval.collect">[docs]</a>    <span class="k">def</span> <span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">case</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Collect cache estimators&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;transformers&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">transformer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span><span class="p">:</span>
+                <span class="n">transformer</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="s1">&#39;estimators&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span><span class="p">:</span>
+                <span class="n">learner</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Cross validated scores&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">learner</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">learner</span><span class="o">.</span><span class="n">raw_data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">assemble_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_prep_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Message at start of preprocessing&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Preprocessing&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_print_eval_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Message at start of preprocessing&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Evaluating&quot;</span></div>
+
+
+<div class="viewcode-block" id="Benchmark"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.Benchmark">[docs]</a><span class="k">class</span> <span class="nc">Benchmark</span><span class="p">(</span><span class="n">BaseEval</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Benchmark engine without hyper-parameter grid search.</span>
+
+<span class="sd">    A simplified version of the :class:`Evaluator` that performs a single</span>
+<span class="sd">    pass over a set of estimators and preprocessing pipelines for</span>
+<span class="sd">    benchmarking purposes.</span>
+
+<span class="sd">    .. versionadded:: 0.2.0</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    verbose : bool, int, optional</span>
+<span class="sd">        Verbosity during estimation.</span>
+
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Optional keyword argument to :class:`~mlens.parallel.base.BaseBackend`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Benchmark</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Benchmark.fit"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.Benchmark.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">cv</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span>
+            <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">error_score</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run benchmarking job on given data with given estimators.</span>
+
+<span class="sd">        Fit preprocessing if applicable and evaluate estimators if applicable.</span>
+<span class="sd">        The method automatically determines whether to only run preprocessing,</span>
+<span class="sd">        only evaluation (possibly on previously fitted preprocessing), or both.</span>
+<span class="sd">        Calling ``fit`` will overwrite previously stored data where applicable.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like, shape=[n_samples, n_features]</span>
+<span class="sd">           input data to preprocess and create folds from.</span>
+
+<span class="sd">        y : array-like, shape=[n_samples, ]</span>
+<span class="sd">           training labels.</span>
+
+<span class="sd">        scorer : function</span>
+<span class="sd">            a scoring function that follows the Scikit-learn API::</span>
+
+<span class="sd">                score = scorer(estimator, y_true, y_pred)</span>
+
+<span class="sd">            A user defines scoring function, ``score = f(y_true, y_pred)`` can be</span>
+<span class="sd">            made into a scorer by calling on the ML-Ensemble implementation of</span>
+<span class="sd">            Scikit-learn&#39;s ``make_scorer``. NOTE: do **not** use Scikit-learn&#39;s</span>
+<span class="sd">            ``make_scorer`` if the Evaluator is to be pickled. ::</span>
+
+<span class="sd">                from mlens.metrics import make_scorer</span>
+<span class="sd">                scorer = make_scorer(scoring_function, **kwargs)</span>
+
+<span class="sd">        error_score : int, optional</span>
+<span class="sd">            score to assign when fitting an estimator fails. If ``None``, the</span>
+<span class="sd">            evaluator will raise an error.</span>
+
+<span class="sd">        cv : int or obj (default = 2)</span>
+<span class="sd">            cross validation folds to use. Either pass a ``KFold`` class</span>
+<span class="sd">            that obeys the Scikit-learn API.</span>
+
+<span class="sd">        estimators : list or dict, optional</span>
+<span class="sd">            set of estimators to use. If no preprocessing is desired or if</span>
+<span class="sd">            only on preprocessing pipeline should apply to all, pass a list of</span>
+<span class="sd">            estimators. The list can contain elements of named tuples</span>
+<span class="sd">            (i.e. ``(&#39;my_name&#39;, my_est)``).</span>
+
+<span class="sd">            If different estimators should be mapped to preprocessing cases,</span>
+<span class="sd">            a dictionary that maps estimators to each case should</span>
+<span class="sd">            be passed: ``{&#39;case_a&#39;: list_of_est, ...}``.</span>
+
+<span class="sd">        preprocessing : dict, optional</span>
+<span class="sd">            preprocessing cases to consider. Pass a dictionary mapping a</span>
+<span class="sd">            case name to a preprocessing pipeline. ::</span>
+
+<span class="sd">                preprocessing = {&#39;case_name&#39;: transformer_list,}</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : inst</span>
+<span class="sd">            Fitted Benchmark instance. Results available in the</span>
+<span class="sd">            ``results`` attribute.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="n">FoldIndex</span><span class="p">(</span><span class="n">folds</span><span class="o">=</span><span class="n">cv</span><span class="p">)</span>
+        <span class="n">assert_correct_format</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">preprocessing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span> <span class="o">=</span> <span class="n">make_tansformers</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="n">check_instances</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">,</span>
+                <span class="n">verbose</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">14</span><span class="p">))</span>
+
+        <span class="n">generator</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">p_name</span><span class="p">,</span> <span class="n">l_name</span><span class="p">,</span> <span class="n">est</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{})</span>
+            <span class="k">for</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">l_name</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">_flatten</span><span class="p">(</span><span class="n">check_instances</span><span class="p">(</span><span class="n">estimators</span><span class="p">))]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span> <span class="o">=</span> <span class="n">make_learners</span><span class="p">(</span>
+            <span class="n">generator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">error_score</span><span class="p">,</span>
+            <span class="n">verbose</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">14</span><span class="p">))</span>
+
+        <span class="n">job</span> <span class="o">=</span> <span class="n">set_job</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">job</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+
+
+<div class="viewcode-block" id="Evaluator"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.Evaluator">[docs]</a><span class="k">class</span> <span class="nc">Evaluator</span><span class="p">(</span><span class="n">BaseEval</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Model selection across several estimators and preprocessing pipelines.</span>
+
+<span class="sd">    The :class:`Evaluator` allows users to evaluate several models in one call</span>
+<span class="sd">    across a set preprocessing pipelines. The class is useful for comparing</span>
+<span class="sd">    a set of estimators, especially when several preprocessing pipelines is to</span>
+<span class="sd">    be evaluated. By pre-making all folds and iteratively fitting estimators</span>
+<span class="sd">    with different parameter settings, array slicing and preprocessing is kept</span>
+<span class="sd">    to a minimum. This can greatly reduced fit time compared to</span>
+<span class="sd">    creating pipeline classes for each estimator and pipeline and fitting them</span>
+<span class="sd">    one at a time in an Scikit-learn</span>
+<span class="sd">    :class:`sklearn.model_selection.GridSearch` class.</span>
+
+<span class="sd">    Preprocessing can be done before making any evaluation, and several</span>
+<span class="sd">    evaluations can be made on the pre-made folds. Current implementation</span>
+<span class="sd">    relies on a randomized grid search, so parameter grids must be specified as</span>
+<span class="sd">    SciPy distributions (or a class that accepts an ``rvs`` method).</span>
+
+<span class="sd">    .. versionchanged:: 0.2.0</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scorer : function</span>
+<span class="sd">        a scoring function that follows the Scikit-learn API::</span>
+
+<span class="sd">            score = scorer(estimator, y_true, y_pred)</span>
+
+<span class="sd">        A user defines scoring function, ``score = f(y_true, y_pred)`` can be</span>
+<span class="sd">        made into a scorer by calling on the ML-Ensemble implementation of</span>
+<span class="sd">        Scikit-learn&#39;s ``make_scorer``. NOTE: do **not** use Scikit-learn&#39;s</span>
+<span class="sd">        ``make_scorer`` if the Evaluator is to be pickled. ::</span>
+
+<span class="sd">            from mlens.metrics import make_scorer</span>
+<span class="sd">            scorer = make_scorer(scoring_function, **kwargs)</span>
+
+<span class="sd">    error_score : int, optional</span>
+<span class="sd">        score to assign when fitting an estimator fails. If ``None``, the</span>
+<span class="sd">        evaluator will raise an error.</span>
+
+<span class="sd">    cv : int or obj, default = 2</span>
+<span class="sd">        cross validation folds to use. Either pass a ``KFold`` class</span>
+<span class="sd">        that obeys the Scikit-learn API.</span>
+
+<span class="sd">    metrics : list, optional</span>
+<span class="sd">        list of aggregation metrics to calculate on scores. Default is</span>
+<span class="sd">        mean and standard deviation.</span>
+
+<span class="sd">    shuffle : bool, default = True</span>
+<span class="sd">        whether to shuffle input data before creating cv folds.</span>
+
+<span class="sd">    random_state : int, optional</span>
+<span class="sd">        seed for creating folds (if shuffled) and parameter draws</span>
+
+<span class="sd">    array_check : int, default = 2</span>
+<span class="sd">        level of strictness in checking input arrays.</span>
+
+<span class="sd">            - ``array_check = 0`` will not check ``X`` or ``y``</span>
+
+<span class="sd">            - ``array_check = 1`` will check ``X`` and ``y`` for</span>
+<span class="sd">              inconsistencies and warn when format looks suspicious,</span>
+<span class="sd">              but retain original format.</span>
+
+<span class="sd">            - ``array_check = 2`` will impose Scikit-learn array checks,</span>
+<span class="sd">              which converts ``X`` and ``y`` to numpy arrays and raises</span>
+<span class="sd">              an error if conversion fails.</span>
+
+<span class="sd">    n_jobs: int, default = -1</span>
+<span class="sd">        number of CPU cores to use.</span>
+
+<span class="sd">    verbose : bool or int, default = False</span>
+<span class="sd">        level of printed messages. Levels:</span>
+
+<span class="sd">            #. ``verbose=1``: Message at start and end with total time</span>
+<span class="sd">            #. ``verbose=2``: Additional messages for each sub-job \</span>
+<span class="sd">               (preprocess and evaluation)</span>
+<span class="sd">            #. ``verbose in [3, 14]``: Additional messages with job \</span>
+<span class="sd">               completion status at increasing increasing frequency</span>
+<span class="sd">            #. ``Verbose &gt;= 15``: prints each job completed as \</span>
+<span class="sd">               [case].[est].[draw].[fold]</span>
+
+<span class="sd">        If ``verbose&gt;=20``, prints to ``sys.stderr``, else ``sys.stdout``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">error_score</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Evaluator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">check_scorer</span><span class="p">(</span><span class="n">scorer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="o">=</span> <span class="n">scorer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scores_</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># TODO: Need to make this accept more than just FoldIndex</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cv</span> <span class="o">=</span> <span class="n">cv</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="n">FoldIndex</span><span class="p">(</span><span class="n">cv</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span> <span class="o">=</span> <span class="n">error_score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">]</span> <span class="k">if</span> <span class="n">metrics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">metrics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">array_check</span> <span class="o">=</span> <span class="n">array_check</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Evaluator.fit"><a class="viewcode-back" href="../../../module/mlens.model_selection.model_selection.html#mlens.model_selection.Evaluator.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">estimators</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">param_dicts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">n_iter</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit</span>
+
+<span class="sd">        Fit preprocessing if applicable and evaluate estimators if applicable.</span>
+<span class="sd">        The method automatically determines whether to only run preprocessing,</span>
+<span class="sd">        only evaluation (possibly on previously fitted preprocessing), or both.</span>
+<span class="sd">        Calling ``fit`` will overwrite previously stored data where applicable.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X : array-like, shape=[n_samples, n_features]</span>
+<span class="sd">            input data to preprocess and create folds from.</span>
+
+<span class="sd">        y : array-like, shape=[n_samples, ]</span>
+<span class="sd">            training labels.</span>
+
+<span class="sd">        estimators : list or dict, optional</span>
+<span class="sd">            set of estimators to use. If no preprocessing is desired or if</span>
+<span class="sd">            only on preprocessing pipeline should apply to all, pass a list of</span>
+<span class="sd">            estimators. The list can contain elements of named tuples</span>
+<span class="sd">            (i.e. ``(&#39;my_name&#39;, my_est)``).</span>
+
+<span class="sd">            If different estimators should be mapped to preprocessing cases,</span>
+<span class="sd">            a dictionary that maps estimators to each case should</span>
+<span class="sd">            be passed: ``{&#39;case_a&#39;: list_of_est, ...}``.</span>
+
+<span class="sd">        param_dicts : dict, optional</span>
+<span class="sd">            parameter distribution mapping for estimators. Current</span>
+<span class="sd">            implementation only supports randomized grid search. Passed</span>
+<span class="sd">            distribution object must have an ``rvs`` method.</span>
+<span class="sd">            See :mod:`scipy.stats` for details.</span>
+
+<span class="sd">            There is quite some flexibility in specifying ``param_dicts``. If</span>
+<span class="sd">            there is no preprocessing, or if all estimators are fitted on all</span>
+<span class="sd">            preprocessing cases, the ``param_dict`` should have keys matching</span>
+<span class="sd">            the names of the estimators. ::</span>
+
+<span class="sd">                estimators = [(&#39;name&#39;, est), est]</span>
+
+<span class="sd">                param_dicts = {&#39;name&#39;: {&#39;param-1&#39;: some_distribution},</span>
+<span class="sd">                               &#39;est&#39;: {&#39;param-1&#39;: some_distribution}</span>
+<span class="sd">                              }</span>
+
+<span class="sd">            It is possible to specify different distributions for some or all</span>
+<span class="sd">            preprocessing cases::</span>
+
+<span class="sd">                preprocessing = {&#39;case-1&#39;: transformer_list,</span>
+<span class="sd">                                 &#39;case-2&#39;: transformer_list}</span>
+
+<span class="sd">                estimators = [(&#39;name&#39;, est), est]</span>
+
+<span class="sd">                param_dicts = {&#39;name&#39;:</span>
+<span class="sd">                                   {&#39;param-1&#39;: some_distribution},</span>
+<span class="sd">                               (&#39;case-1&#39;, &#39;est&#39;):</span>
+<span class="sd">                                   {&#39;param-1&#39;: some_distribution}</span>
+<span class="sd">                               (&#39;case-2&#39;, &#39;est&#39;):</span>
+<span class="sd">                                   {&#39;param-1&#39;: some_distribution,</span>
+<span class="sd">                                    &#39;param-2&#39;: some_distribution}</span>
+<span class="sd">                              }</span>
+
+<span class="sd">            If estimators are mapped on a per-preprocessing case basis as a</span>
+<span class="sd">            dictionary, ``param_dict`` must have key entries of the form</span>
+<span class="sd">            ``(case_name, est_name)``.</span>
+
+<span class="sd">        n_iter : int</span>
+<span class="sd">            number of parameter draws to evaluate.</span>
+
+<span class="sd">        preprocessing : dict, optional</span>
+<span class="sd">            preprocessing cases to consider. Pass a dictionary mapping a</span>
+<span class="sd">            case name to a preprocessing pipeline. ::</span>
+
+<span class="sd">                preprocessing = {&#39;case_name&#39;: transformer_list,}</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : instance</span>
+<span class="sd">            class instance with stored estimator evaluation results in</span>
+<span class="sd">            the ``results`` attribute.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">set_job</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">param_dicts</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">job</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_results</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="k">def</span> <span class="nf">_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span> <span class="n">param_dicts</span><span class="p">,</span> <span class="n">n_iter</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set up generators for the job to be performed&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">preprocessing</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pr&#39;</span><span class="p">:</span> <span class="n">preprocessing</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="s1">&#39;preprocess&#39;</span> <span class="ow">in</span> <span class="n">job</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span> <span class="o">=</span> <span class="n">check_instances</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transformers</span> <span class="o">=</span> <span class="n">make_tansformers</span><span class="p">(</span>
+                <span class="nb">sorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">,</span>
+                <span class="n">verbose</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">14</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="s1">&#39;evaluate&#39;</span> <span class="ow">in</span> <span class="n">job</span><span class="p">:</span>
+            <span class="n">estimators</span><span class="p">,</span> <span class="n">param_dicts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">param_dicts</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span> <span class="o">=</span> <span class="n">check_instances</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span> <span class="o">=</span> <span class="n">n_iter</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_draw_param_dicts</span><span class="p">(</span><span class="n">param_dicts</span><span class="p">)</span>
+
+            <span class="n">generator</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">p_name</span><span class="p">,</span> <span class="n">l_name</span><span class="p">,</span> <span class="n">est</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">p_name</span><span class="p">,</span> <span class="n">l_name</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">_flatten</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">cat</span><span class="p">(</span><span class="n">p_name</span><span class="p">,</span> <span class="n">l_name</span><span class="p">)])]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_learners</span> <span class="o">=</span> <span class="n">make_learners</span><span class="p">(</span>
+                <span class="n">generator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">-</span> <span class="mi">14</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">param_dicts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Ensure estimator object and param_dict object have right format.&quot;&quot;&quot;</span>
+        <span class="n">preprocessing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span>
+
+        <span class="k">if</span> <span class="n">preprocessing</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="c1"># Set all estimators in list as ests for each case</span>
+            <span class="n">ests_</span> <span class="o">=</span> <span class="n">estimators</span>
+            <span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="n">case</span><span class="p">:</span> <span class="n">clone</span><span class="p">(</span><span class="n">ests_</span><span class="p">)</span> <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+
+        <span class="c1"># Set parameter draws for each case</span>
+        <span class="k">if</span> <span class="n">preprocessing</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">pars</span> <span class="ow">in</span> <span class="n">param_dicts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">splitted</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splitted</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">splitted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preprocessing</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                            <span class="s2">&quot;invalid param_dict . Valid keys are &quot;</span>
+                            <span class="s2">&quot;&#39;case_name.est_name&#39; or &#39;est_name&#39;. &quot;</span>
+                            <span class="s2">&quot;Failed on key entry </span><span class="si">{}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                            <span class="s2">&quot;All keys: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">)))</span>
+                    <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">pars</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># have an est_name key entry. Need to generate</span>
+                    <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                        <span class="n">key_</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">key_</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                            <span class="c1"># We do not want to overwrite user-specified dists</span>
+                            <span class="k">continue</span>
+                        <span class="n">params</span><span class="p">[</span><span class="n">key_</span><span class="p">]</span> <span class="o">=</span> <span class="n">pars</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">param_dicts</span>
+
+        <span class="c1"># Finally, check that estimators and preprocessing are correctly</span>
+        <span class="c1"># formatted for estimation</span>
+        <span class="n">assert_correct_format</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">params</span>
+
+    <span class="k">def</span> <span class="nf">_draw_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_dists</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Draw a list of param dictionaries for estimator.&quot;&quot;&quot;</span>
+        <span class="c1"># Set up empty list of parameter setting</span>
+        <span class="n">param_draws</span> <span class="o">=</span> <span class="p">[{}</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span><span class="p">)]</span>
+
+        <span class="c1"># Fill list of parameter settings by param</span>
+        <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">param_dists</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">draws</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">draw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">draws</span><span class="p">):</span>
+                <span class="n">param_draws</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="n">draw</span>
+
+        <span class="k">return</span> <span class="n">param_draws</span>
+
+    <span class="k">def</span> <span class="nf">_set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_dicts</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Try to set params, and if failure set an empty list.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">_draw_params</span><span class="p">(</span><span class="n">param_dicts</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="c1"># No param draws desired. Set empty dict.</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;No valid parameters found for </span><span class="si">{}</span><span class="s2">. Will fit and &quot;</span>
+                          <span class="s2">&quot;score once with given parameter &quot;</span>
+                          <span class="s2">&quot;settings.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[{}]</span>
+
+    <span class="k">def</span> <span class="nf">_draw_param_dicts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param_dicts</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For each estimator, create a mapping of parameter draws.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span><span class="p">:</span>
+            <span class="c1"># No preprocessing</span>
+            <span class="c1"># the expected param_dicts key is &#39;est_name&#39;</span>
+            <span class="k">for</span> <span class="n">est_name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="p">(</span><span class="n">param_dicts</span><span class="p">,</span> <span class="n">est_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Preprocessing</span>
+            <span class="c1"># Iterate over cases, expected param_dicts key is</span>
+            <span class="c1"># &#39;case_name__est_name&#39;</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">case</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocessing</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">est_name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">[</span><span class="n">case</span><span class="p">]:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="p">(</span>
+                            <span class="n">param_dicts</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">case</span><span class="p">,</span> <span class="n">est_name</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">est_name</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_set_params</span><span class="p">(</span><span class="n">param_dicts</span><span class="p">,</span> <span class="n">est_name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;For each case-estimator, return best param draw from cv results.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span>
+        <span class="n">best</span> <span class="o">=</span> <span class="n">_dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">best</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_dict</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">val</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">case_est</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_key</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+                <span class="n">best</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="n">case_est</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">best</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_dict</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;test_score-m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">case_est</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">parse_key</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">best</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="n">case_est</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;test_score-m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">case_est</span><span class="p">,</span> <span class="n">draw</span> <span class="o">=</span> <span class="n">parse_key</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+            <span class="n">old_score</span> <span class="o">=</span> <span class="n">best</span><span class="p">[</span><span class="s1">&#39;test_score-m&#39;</span><span class="p">][</span><span class="n">case_est</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">old_score</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="n">old_score</span><span class="p">:</span>
+                <span class="n">best</span><span class="p">[</span><span class="s1">&#39;test_score-m&#39;</span><span class="p">][</span><span class="n">case_est</span><span class="p">]</span> <span class="o">=</span> <span class="n">score</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">best</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">case_est</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+                <span class="n">best</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="n">case_est</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">case_est</span><span class="p">][</span><span class="nb">int</span><span class="p">(</span><span class="n">draw</span><span class="p">)]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_prep_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print preprocessing start and return timer.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Preprocessing </span><span class="si">%i</span><span class="s1"> preprocessing pipelines over </span><span class="si">%i</span><span class="s1"> CV folds&#39;</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_preprocessing&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="o">.</span><span class="n">folds</span>
+        <span class="k">return</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_print_eval_start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Print initiation message and return timer.&quot;&quot;&quot;</span>
+        <span class="n">preprocessing</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_preprocessing&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">preprocessing</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Evaluating </span><span class="si">%i</span><span class="s1"> models for </span><span class="si">%i</span><span class="s1"> parameter draws over </span><span class="si">%i</span><span class="s1"> &#39;</span>
+                   <span class="s1">&#39;CV folds, totalling </span><span class="si">%i</span><span class="s1"> fits&#39;</span><span class="p">)</span>
+
+            <span class="n">e</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_count</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">tot</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Evaluating </span><span class="si">%i</span><span class="s1"> models for </span><span class="si">%i</span><span class="s1"> parameter draws over </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">+</span>
+                   <span class="s1">&#39; preprocessing pipelines and </span><span class="si">%i</span><span class="s1"> CV folds, &#39;</span>
+                   <span class="s1">&#39;totalling </span><span class="si">%i</span><span class="s1"> fits&#39;</span><span class="p">)</span>
+
+            <span class="n">e</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">tot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_count</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">msg</span> <span class="o">%</span> <span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">tot</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Utility for counting number of fits to make.&quot;&quot;&quot;</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv</span>
+
+        <span class="k">if</span> <span class="n">preprocessing</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Simply grab length of estimator list</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">)</span>
+            <span class="n">tot</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">tot</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Need to consider cases</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">preprocessing</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="c1"># If all estimators are applied to all cases, just grab</span>
+                <span class="c1"># length of list and multiply by cases</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Sum over cases</span>
+                <span class="n">e</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimators</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                    <span class="n">e</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+            <span class="n">tot</span> <span class="o">=</span> <span class="n">e</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_iter</span> <span class="o">*</span> <span class="n">c</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">tot</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

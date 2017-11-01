@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.ensemble.sequential &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.ensemble.sequential</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.ensemble.sequential</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-ENSEMBLE</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:licence: MIT</span>
+
+<span class="sd">Sequential Ensemble class. Fully integrable with Scikit-learn.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseEnsemble</span>
+<span class="kn">from</span> <span class="nn">..index</span> <span class="k">import</span> <span class="n">INDEXERS</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">kwarg_parser</span>
+
+
+<div class="viewcode-block" id="SequentialEnsemble"><a class="viewcode-back" href="../../../module/mlens.ensemble.sequential.html#mlens.ensemble.SequentialEnsemble">[docs]</a><span class="k">class</span> <span class="nc">SequentialEnsemble</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sequential Ensemble class.</span>
+
+<span class="sd">    The Sequential Ensemble class allows users to build ensembles with</span>
+<span class="sd">    different classes of layers. The type of layer and its parameters are</span>
+<span class="sd">    specified when added to the ensemble. See respective ensemble class for</span>
+<span class="sd">    details on parameters.</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`BlendEnsemble`, :class:`Subsemble`, :class:`SuperLearner`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    shuffle : bool (default = False)</span>
+<span class="sd">        whether to shuffle data before before processing each layer.</span>
+<span class="sd">        For greater control, specify ``shuffle`` when adding the layer.</span>
+
+<span class="sd">    random_state : int (default = None)</span>
+<span class="sd">        random seed if shuffling inputs.</span>
+
+<span class="sd">    scorer : object (default = None)</span>
+<span class="sd">        scoring function. If a function is provided, base estimators will be</span>
+<span class="sd">        scored on the training set assembled for fitting the meta estimator.</span>
+<span class="sd">        Since those predictions are out-of-sample, the scores represent valid</span>
+<span class="sd">        test scores. The scorer should be a function that accepts an array of</span>
+<span class="sd">        true values and an array of predictions: ``score = f(y_true, y_pred)``.</span>
+
+<span class="sd">    raise_on_exception : bool (default = True)</span>
+<span class="sd">        whether to issue warnings on soft exceptions or raise error.</span>
+<span class="sd">        Examples include lack of layers, bad inputs, and failed fit of an</span>
+<span class="sd">        estimator in a layer. If set to ``False``, warnings are issued instead</span>
+<span class="sd">        but estimation continues unless exception is fatal. Note that this</span>
+<span class="sd">        can result in unexpected behavior unless the exception is anticipated.</span>
+
+<span class="sd">    array_check : int (default = 2)</span>
+<span class="sd">        level of strictness in checking input arrays.</span>
+
+<span class="sd">            - ``array_check = 0`` will not check ``X`` or ``y``</span>
+
+<span class="sd">            - ``array_check = 1`` will check ``X`` and ``y`` for</span>
+<span class="sd">              inconsistencies and warn when format looks suspicious,</span>
+<span class="sd">              but retain original format.</span>
+
+<span class="sd">            - ``array_check = 2`` will impose Scikit-learn array checks,</span>
+<span class="sd">              which converts ``X`` and ``y`` to numpy arrays and raises</span>
+<span class="sd">              an error if conversion fails.</span>
+
+<span class="sd">    verbose : int or bool (default = False)</span>
+<span class="sd">        level of verbosity.</span>
+
+<span class="sd">            * ``verbose = 0`` silent (same as ``verbose = False``)</span>
+
+<span class="sd">            * ``verbose = 1`` messages at start and finish (same as</span>
+<span class="sd">              ``verbose = True``)</span>
+
+<span class="sd">            * ``verbose = 2`` messages for each layer</span>
+
+<span class="sd">        If ``verbose &gt;= 50`` prints to ``sys.stdout``, else ``sys.stderr``.</span>
+<span class="sd">        For verbosity in the layers themselves, use ``fit_params``.</span>
+
+<span class="sd">    n_jobs : int (default = -1)</span>
+<span class="sd">        number of CPU cores to use for fitting and prediction.</span>
+
+<span class="sd">    backend : str or object (default = &#39;threading&#39;)</span>
+<span class="sd">        backend infrastructure to use during call to</span>
+<span class="sd">        :class:`mlens.externals.joblib.Parallel`. See Joblib for further</span>
+<span class="sd">        documentation. To change global backend, set</span>
+<span class="sd">        ``mlens.config._BACKEND``</span>
+
+<span class="sd">    model_selection: bool (default=False)</span>
+<span class="sd">        Whether to use the ensemble in model selection mode. If ``True``,</span>
+<span class="sd">        this will alter the ``transform`` method. When calling ``transform``</span>
+<span class="sd">        on new data, the ensemble will call ``predict``, while calling</span>
+<span class="sd">        ``transform`` with the training data reproduces predictions from the</span>
+<span class="sd">        ``fit`` call. Hence the ensemble can be used as a pure transformer</span>
+<span class="sd">        in a preprocessing pipeline passed to the :class:`Evaluator`, as</span>
+<span class="sd">        training folds are faithfully reproduced as during a ``fit``call and</span>
+<span class="sd">        test folds are transformed with the ``predict`` method.</span>
+
+<span class="sd">    sample_size: int (default=20)</span>
+<span class="sd">        size of training set sample</span>
+<span class="sd">        (``[min(sample_size, X.size[0]), min(X.size[1], sample_size)]``)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.ensemble import SequentialEnsemble</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.metrics.metrics import rmse</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.datasets import load_boston</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.linear_model import Lasso</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.svm import SVR</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; X, y = load_boston(True)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; ensemble = SequentialEnsemble()</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Add a subsemble with 5 partitions as first layer</span>
+<span class="sd">    &gt;&gt;&gt; ensemble.add(&#39;subsemble&#39;, [SVR(), Lasso()], partitions=10, folds=10)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Add a super learner as second layer</span>
+<span class="sd">    &gt;&gt;&gt; ensemble.add(&#39;stack&#39;, [SVR(), Lasso()], folds=20)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; # Specify a meta estimator</span>
+<span class="sd">    &gt;&gt;&gt; ensemble.add_meta(SVR())</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &gt;&gt;&gt; ensemble.fit(X, y)</span>
+<span class="sd">    &gt;&gt;&gt; preds = ensemble.predict(X)</span>
+<span class="sd">    &gt;&gt;&gt; rmse(y, preds)</span>
+<span class="sd">    6.5628...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">raise_on_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_selection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SequentialEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="n">scorer</span><span class="p">,</span>
+            <span class="n">raise_on_exception</span><span class="o">=</span><span class="n">raise_on_exception</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="n">array_check</span><span class="p">,</span>
+            <span class="n">model_selection</span><span class="o">=</span><span class="n">model_selection</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">,</span>
+            <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SequentialEnsemble.add_meta"><a class="viewcode-back" href="../../../module/mlens.ensemble.sequential.html#mlens.ensemble.SequentialEnsemble.add_meta">[docs]</a>    <span class="k">def</span> <span class="nf">add_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Meta Learner.</span>
+
+<span class="sd">        Meta learner to be used for final predictions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        estimator : instance</span>
+<span class="sd">            estimator instance.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            optional keyword arguments.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">cls</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">estimators</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SequentialEnsemble.add"><a class="viewcode-back" href="../../../module/mlens.ensemble.sequential.html#mlens.ensemble.SequentialEnsemble.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">cls</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add layer to ensemble.</span>
+
+<span class="sd">        For full set of optional arguments, see the ensemble API for the</span>
+<span class="sd">        specified type.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cls : str</span>
+<span class="sd">            layer class. Accepted types are:</span>
+
+<span class="sd">                * &#39;blend&#39; : blend ensemble</span>
+<span class="sd">                * &#39;subsemble&#39; : subsemble</span>
+<span class="sd">                * &#39;stack&#39; : super learner</span>
+
+<span class="sd">        estimators: dict of lists or list or instance</span>
+<span class="sd">            estimators constituting the layer. If preprocessing is none and the</span>
+<span class="sd">            layer is meant to be the meta estimator, it is permissible to pass</span>
+<span class="sd">            a single instantiated estimator. If ``preprocessing`` is</span>
+<span class="sd">            ``None`` or ``list``, ``estimators`` should be a ``list``.</span>
+<span class="sd">            The list can either contain estimator instances,</span>
+<span class="sd">            named tuples of estimator instances, or a combination of both. ::</span>
+
+<span class="sd">                option_1 = [estimator_1, estimator_2]</span>
+<span class="sd">                option_2 = [(&quot;est-1&quot;, estimator_1), (&quot;est-2&quot;, estimator_2)]</span>
+<span class="sd">                option_3 = [estimator_1, (&quot;est-2&quot;, estimator_2)]</span>
+
+<span class="sd">            If different preprocessing pipelines are desired, a dictionary</span>
+<span class="sd">            that maps estimators to preprocessing pipelines must be passed.</span>
+<span class="sd">            The names of the estimator dictionary must correspond to the</span>
+<span class="sd">            names of the estimator dictionary. ::</span>
+
+<span class="sd">                preprocessing_cases = {&quot;case-1&quot;: [trans_1, trans_2],</span>
+<span class="sd">                                       &quot;case-2&quot;: [alt_trans_1, alt_trans_2]}</span>
+
+<span class="sd">                estimators = {&quot;case-1&quot;: [est_a, est_b],</span>
+<span class="sd">                              &quot;case-2&quot;: [est_c, est_d]}</span>
+
+<span class="sd">            The lists for each dictionary entry can be any of ``option_1``,</span>
+<span class="sd">            ``option_2`` and ``option_3``.</span>
+
+<span class="sd">        preprocessing: dict of lists or list, optional (default = None)</span>
+<span class="sd">            preprocessing pipelines for given layer. If</span>
+<span class="sd">            the same preprocessing applies to all estimators, ``preprocessing``</span>
+<span class="sd">            should be a list of transformer instances. The list can contain the</span>
+<span class="sd">            instances directly, named tuples of transformers,</span>
+<span class="sd">            or a combination of both. ::</span>
+
+<span class="sd">                option_1 = [transformer_1, transformer_2]</span>
+<span class="sd">                option_2 = [(&quot;trans-1&quot;, transformer_1),</span>
+<span class="sd">                            (&quot;trans-2&quot;, transformer_2)]</span>
+<span class="sd">                option_3 = [transformer_1, (&quot;trans-2&quot;, transformer_2)]</span>
+
+<span class="sd">            If different preprocessing pipelines are desired, a dictionary</span>
+<span class="sd">            that maps preprocessing pipelines must be passed. The names of the</span>
+<span class="sd">            preprocessing dictionary must correspond to the names of the</span>
+<span class="sd">            estimator dictionary. ::</span>
+
+<span class="sd">                preprocessing_cases = {&quot;case-1&quot;: [trans_1, trans_2],</span>
+<span class="sd">                                       &quot;case-2&quot;: [alt_trans_1, alt_trans_2]}</span>
+
+<span class="sd">                estimators = {&quot;case-1&quot;: [est_a, est_b],</span>
+<span class="sd">                              &quot;case-2&quot;: [est_c, est_d]}</span>
+
+<span class="sd">            The lists for each dictionary entry can be any of ``option_1``,</span>
+<span class="sd">            ``option_2`` and ``option_3``.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            optional keyword arguments to instantiate layer with. See</span>
+<span class="sd">            respective ensemble for further details.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : instance</span>
+<span class="sd">            ensemble instance with layer instantiated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">cls</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">INDEXERS</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Layer class not implemented. Select &quot;</span>
+                                      <span class="s2">&quot;one of </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">INDEXERS</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">cls</span> <span class="o">==</span> <span class="s1">&#39;subsemble&#39;</span> <span class="ow">and</span> <span class="s1">&#39;partition_estimator&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">cls</span> <span class="o">=</span> <span class="s1">&#39;clusteredsubsemble&#39;</span>
+
+        <span class="c1"># instantiate the indexer</span>
+        <span class="n">indexer</span> <span class="o">=</span> <span class="n">INDEXERS</span><span class="p">[</span><span class="bp">cls</span><span class="p">]</span>
+        <span class="n">kwargs_idx</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwarg_parser</span><span class="p">(</span><span class="n">indexer</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">indexer</span> <span class="o">=</span> <span class="n">indexer</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs_idx</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">SequentialEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">estimators</span><span class="o">=</span><span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+            <span class="n">preprocessing</span><span class="o">=</span><span class="n">preprocessing</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

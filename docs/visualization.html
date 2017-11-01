@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.visualization &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="index.html"/>
+        <link rel="prev" title="mlens.metrics" href="metrics.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="config.html">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config.html#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-backend"><span class="hidden-section">set_backend</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="config.html#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config.html#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#run"><span class="hidden-section">run</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="metrics.html#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>mlens.visualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/visualization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-mlens.visualization"></span><p>ML-ENSEMBLE</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
+</tr>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="mlens-visualization">
+<h1>mlens.visualization<a class="headerlink" href="#mlens-visualization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="corrmat">
+<h2><span class="hidden-section">corrmat</span><a class="headerlink" href="#corrmat" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.visualization.corrmat">
+<code class="descclassname">mlens.visualization.</code><code class="descname">corrmat</code><span class="sig-paren">(</span><em>corr</em>, <em>figsize=(11</em>, <em>9)</em>, <em>annotate=True</em>, <em>inflate=True</em>, <em>linewidths=0.5</em>, <em>cbar_kws='default'</em>, <em>show=True</em>, <em>ax=None</em>, <em>title='Correlation Matrix'</em>, <em>title_font_size=14</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/visualization/correlations.html#corrmat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.visualization.corrmat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for generating color-coded correlation triangle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>corr</strong> (<em>array-like of shape =</em><em> [</em><em>n_features</em><em>, </em><em>n_features</em><em>]</em>) – Input correlation matrix. Pass a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code> for axis labels.</li>
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>11</em><em>, </em><em>9</em><em>)</em><em>)</em>) – Size of printed figure.</li>
+<li><strong>annotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – Whether to print the correlation coefficients.</li>
+<li><strong>inflate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – Whether to inflate correlation coefficients to a 0-100 scale.
+Avoids decimal points in the figure, which often appears very cluttered
+otherwise.</li>
+<li><strong>linewidths</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a>) – with of line separating each coordinate square.</li>
+<li><strong>cbar_kws</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default = 'default'</em><em>)</em>) – Optional arguments to color bar. The default options, ‘default’,
+passes the <code class="docutils literal"><span class="pre">shrink</span></code> parameter to fit colorbar standard figure frame.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – figure title if shown.</li>
+<li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – title font size.</li>
+<li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Other optional arguments to sns heatmap.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ax</strong> – axis object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)">object</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.visualization.clustered_corrmap" title="mlens.visualization.clustered_corrmap"><code class="xref py py-class docutils literal"><span class="pre">mlens.visualization.clustered_corrmap</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="clustered-corrmap">
+<h2><span class="hidden-section">clustered_corrmap</span><a class="headerlink" href="#clustered-corrmap" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.visualization.clustered_corrmap">
+<code class="descclassname">mlens.visualization.</code><code class="descname">clustered_corrmap</code><span class="sig-paren">(</span><em>corr</em>, <em>cls</em>, <em>label_attr_name='labels_'</em>, <em>figsize=(10</em>, <em>8)</em>, <em>annotate=False</em>, <em>inflate=False</em>, <em>linewidths=0.5</em>, <em>cbar_kws='default'</em>, <em>show=True</em>, <em>title_fontsize=14</em>, <em>title_name='Clustered correlation heatmap'</em>, <em>ax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/visualization/correlations.html#clustered_corrmap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.visualization.clustered_corrmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for plotting a clustered correlation heatmap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>corr</strong> (<em>array-like of shape =</em><em> [</em><em>n_features</em><em>, </em><em>n_features</em><em>]</em>) – Input correlation matrix. Pass a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code> for axis labels.</li>
+<li><strong>cls</strong> (<em>instance</em>) – cluster estimator with a <code class="docutils literal"><span class="pre">fit</span></code> method and cluster labels stored as an
+attribute as specified by the <code class="docutils literal"><span class="pre">label_attr_name</span></code> parameter.</li>
+<li><strong>label_attr_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – name of attribute that contains cluster labels.</li>
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
+<li><strong>annotate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – Whether to print the correlation coefficients.</li>
+<li><strong>inflate</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – Whether to inflate correlation coefficients to a 0-100 scale.
+Avoids decimal points in the figure, which often appears very cluttered
+otherwise.</li>
+<li><strong>linewidths</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default = .5</em><em>)</em>) – with of line separating each coordinate square.</li>
+<li><strong>cbar_kws</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default = 'default'</em><em>)</em>) – Optional arguments to color bar.</li>
+<li><strong>title_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Figure title.</li>
+<li><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – size of title.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – Other optional arguments to sns heatmap.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.visualization.corrmat" title="mlens.visualization.corrmat"><code class="xref py py-class docutils literal"><span class="pre">mlens.visualization.corrmat</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="corr-x-y">
+<h2><span class="hidden-section">corr_X_y</span><a class="headerlink" href="#corr-x-y" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.visualization.corr_X_y">
+<code class="descclassname">mlens.visualization.</code><code class="descname">corr_X_y</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>top=5</em>, <em>figsize=(10</em>, <em>8)</em>, <em>fontsize=12</em>, <em>hspace=None</em>, <em>no_ticks=True</em>, <em>label_rotation=0</em>, <em>show=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/visualization/correlations.html#corr_X_y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.visualization.corr_X_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for plotting input feature correlations with output.</p>
+<p>Output figure shows all correlations as well as top pos and neg.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>pandas DataFrame of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – Input data.</li>
+<li><strong>y</strong> (<em>pandas Series of shape =</em><em> [</em><em>n_samples</em><em>,</em><em>]</em>) – training labels.</li>
+<li><strong>top</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of features to show in top pos and neg graphs.</li>
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
+<li><strong>hspace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – whitespace between top row of figures and bottom figure.</li>
+<li><strong>fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – font size of subplot titles.</li>
+<li><strong>no_ticks</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to remove ticklabels from full correlation plot.</li>
+<li><strong>label_rotation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default = 0</em><em>)</em>) – rotation of labels</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ax</strong> – axis object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)">object</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="pca-plot">
+<h2><span class="hidden-section">pca_plot</span><a class="headerlink" href="#pca-plot" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.visualization.pca_plot">
+<code class="descclassname">mlens.visualization.</code><code class="descname">pca_plot</code><span class="sig-paren">(</span><em>X</em>, <em>estimator</em>, <em>y=None</em>, <em>cmap=None</em>, <em>figsize=(10</em>, <em>8)</em>, <em>title='Principal Components Analysis'</em>, <em>title_font_size=14</em>, <em>show=True</em>, <em>ax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/visualization/var_analysis.html#pca_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.visualization.pca_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to plot a PCA analysis of 1, 2, or 3 dims.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – matrix to perform PCA analysis on.</li>
+<li><strong>estimator</strong> (<em>instance</em>) – PCA estimator. Assumes a Scikit-learn API.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – training labels to be used for color highlighting.</li>
+<li><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em>, </em><em>optional</em>) – cmap object to pass to <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.scatter</span></code></a>.</li>
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
+<li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – figure title if shown.</li>
+<li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – title font size.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – arguments to pass to <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.scatter</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ax</strong> – if <code class="docutils literal"><span class="pre">ax</span></code> was specified, returns <code class="docutils literal"><span class="pre">ax</span></code> with plot attached.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">optional</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="pca-comp-plot">
+<h2><span class="hidden-section">pca_comp_plot</span><a class="headerlink" href="#pca-comp-plot" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.visualization.pca_comp_plot">
+<code class="descclassname">mlens.visualization.</code><code class="descname">pca_comp_plot</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>figsize=(10</em>, <em>8)</em>, <em>title='Principal Components Comparison'</em>, <em>title_font_size=14</em>, <em>show=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/visualization/var_analysis.html#pca_comp_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.visualization.pca_comp_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function for comparing PCA analysis.</p>
+<p>Function compares across 2 and 3 dimensions and
+linear and rbf kernels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – training labels to be used for color highlighting.</li>
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
+<li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – figure title if shown.</li>
+<li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – title font size.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional arguments to pass to <a class="reference internal" href="#mlens.visualization.pca_plot" title="mlens.visualization.pca_plot"><code class="xref py py-class docutils literal"><span class="pre">mlens.visualization.pca_plot</span></code></a>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">axis object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ax</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.visualization.pca_plot" title="mlens.visualization.pca_plot"><code class="xref py py-class docutils literal"><span class="pre">mlens.visualization.pca_plot</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="exp-var-plot">
+<h2><span class="hidden-section">exp_var_plot</span><a class="headerlink" href="#exp-var-plot" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="mlens.visualization.exp_var_plot">
+<code class="descclassname">mlens.visualization.</code><code class="descname">exp_var_plot</code><span class="sig-paren">(</span><em>X</em>, <em>estimator</em>, <em>figsize=(10</em>, <em>8)</em>, <em>buffer=0.01</em>, <em>set_labels=True</em>, <em>title='Explained variance ratio'</em>, <em>title_font_size=14</em>, <em>show=True</em>, <em>ax=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/visualization/var_analysis.html#exp_var_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.visualization.exp_var_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function to plot the explained variance using PCA.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input matrix to be used for prediction.</li>
+<li><strong>estimator</strong> (<em>class</em>) – PCA estimator, not initiated, assumes a Scikit-learn API.</li>
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
+<li><strong>buffer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default = 0.01</em><em>)</em>) – For creating a buffer around the edges of the graph. The buffer
+added is calculated as <code class="docutils literal"><span class="pre">num_components</span></code> * <code class="docutils literal"><span class="pre">buffer</span></code>,
+where <code class="docutils literal"><span class="pre">num_components</span></code> determine the length of the x-axis.</li>
+<li><strong>set_labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – whether to set axis labels.</li>
+<li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – figure title if shown.</li>
+<li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – title font size.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional arguments passed to the <a class="reference external" href="http://matplotlib.org/api/_as_gen/matplotlib.pyplot.step.html#matplotlib.pyplot.step" title="(in Matplotlib v2.1.0)"><code class="xref py py-obj docutils literal"><span class="pre">matplotlib.pyplot.step</span></code></a>
+function.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ax</strong> – if <code class="docutils literal"><span class="pre">ax</span></code> was specified, returns <code class="docutils literal"><span class="pre">ax</span></code> with plot attached.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">optional</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

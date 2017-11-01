@@ -1,0 +1,1401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.parallel.learner &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.parallel.learner</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.parallel.learner</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-Ensemble</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Learner classes</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="c1"># pylint: disable=too-many-arguments</span>
+<span class="c1"># pylint: disable=too-many-instance-attributes</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="k">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="k">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="kn">from</span> <span class="nn">._base_functions</span> <span class="k">import</span> <span class="p">(</span>
+    <span class="n">slice_array</span><span class="p">,</span> <span class="n">set_output_columns</span><span class="p">,</span> <span class="n">assign_predictions</span><span class="p">,</span> <span class="n">score_predictions</span><span class="p">,</span>
+    <span class="n">replace</span><span class="p">,</span> <span class="n">save</span><span class="p">,</span> <span class="n">load</span><span class="p">,</span> <span class="n">prune_files</span><span class="p">,</span> <span class="n">check_params</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">OutputMixin</span><span class="p">,</span> <span class="n">ProbaMixin</span><span class="p">,</span> <span class="n">IndexMixin</span><span class="p">,</span> <span class="n">BaseEstimator</span>
+
+<span class="kn">from</span> <span class="nn">..metrics</span> <span class="k">import</span> <span class="n">Data</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">safe_print</span><span class="p">,</span> <span class="n">print_time</span><span class="p">,</span> <span class="n">format_name</span><span class="p">,</span> <span class="n">assert_valid_pipeline</span>
+<span class="kn">from</span> <span class="nn">..utils.exceptions</span> <span class="k">import</span> <span class="p">(</span><span class="n">NotFittedError</span><span class="p">,</span> <span class="n">FitFailedWarning</span><span class="p">,</span>
+                                <span class="n">ParallelProcessingError</span><span class="p">,</span> <span class="n">NotInitializedError</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">..externals.sklearn.base</span> <span class="k">import</span> <span class="n">clone</span>
+<span class="kn">from</span> <span class="nn">..externals.joblib.parallel</span> <span class="k">import</span> <span class="n">delayed</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">perf_counter</span> <span class="k">as</span> <span class="n">time</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
+
+
+<span class="c1"># Types of indexers that require fits only on subsets or only on the full data</span>
+<span class="n">ONLY_SUB</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">ONLY_ALL</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fullindex&#39;</span><span class="p">,</span> <span class="s1">&#39;nonetype&#39;</span><span class="p">]</span>
+<span class="n">GLOBAL_LEARNER_NAMES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">GLOBAL_TRANSFORMER_NAMES</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="IndexedEstimator"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.IndexedEstimator">[docs]</a><span class="k">class</span> <span class="nc">IndexedEstimator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Indexed Estimator</span>
+
+<span class="sd">    Lightweight wrapper around estimator dumps during fitting.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;_estimator&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="s1">&#39;in_index&#39;</span><span class="p">,</span> <span class="s1">&#39;out_index&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">in_index</span><span class="p">,</span> <span class="n">out_index</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span> <span class="o">=</span> <span class="n">in_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span> <span class="o">=</span> <span class="n">out_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">estimator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Deep copy of estimator&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimator</span><span class="p">)</span>
+
+    <span class="nd">@estimator</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">estimator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return pickable object&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load tuple into instance&quot;&quot;&quot;</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_estimator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">,</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span></div>
+
+
+<div class="viewcode-block" id="SubLearner"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubLearner">[docs]</a><span class="k">class</span> <span class="nc">SubLearner</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Estimation task</span>
+
+<span class="sd">    Wrapper around a sub_learner job.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">in_index</span><span class="p">,</span> <span class="n">out_index</span><span class="p">,</span>
+                 <span class="n">in_array</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">out_array</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span> <span class="o">=</span> <span class="n">in_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span> <span class="o">=</span> <span class="n">out_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_array</span> <span class="o">=</span> <span class="n">in_array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_array</span> <span class="o">=</span> <span class="n">out_array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">score_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">attr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">preprocess</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">scorer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">raise_on_exception</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">verbose</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="o">.</span><span class="n">__no_output__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">output_columns</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">score_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_time_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred_time_</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">cache_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_index</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_index</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">processing_index</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Launch job&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="p">)(</span><span class="n">path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SubLearner.fit"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubLearner.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit sub-learner&quot;&quot;&quot;</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">transformers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_preprocess</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">transformers</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_array</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">transformers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">o</span> <span class="o">=</span> <span class="n">IndexedEstimator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span>
+                             <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                             <span class="n">in_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">,</span>
+                             <span class="n">out_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span>
+                             <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;30}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">3</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SubLearner.predict"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubLearner.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict with sublearner&quot;&quot;&quot;</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">transformers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_preprocess</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">transformers</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;30}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">3</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SubLearner.transform"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubLearner.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Predict with sublearner&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformers</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sub-routine to fit sub-learner&quot;&quot;&quot;</span>
+        <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">slice_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">)</span>
+
+        <span class="c1"># Transform input (triggers copying)</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">transformers</span><span class="p">:</span>
+            <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+
+        <span class="c1"># Fit estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit_time_</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+    <span class="k">def</span> <span class="nf">_load_preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load preprocessing pipeline&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">estimator</span>
+        <span class="k">return</span>
+
+    <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformers</span><span class="p">,</span> <span class="n">score_preds</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sub-routine to with sublearner&quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># For training, use ytemp to score predictions</span>
+        <span class="c1"># During test time, ytemp is None</span>
+        <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">slice_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">)</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">transformers</span><span class="p">:</span>
+            <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr</span><span class="p">)(</span><span class="n">xtemp</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pred_time_</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+        <span class="c1"># Assign predictions to matrix</span>
+        <span class="n">assign_predictions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_array</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="c1"># Score predictions if applicable</span>
+        <span class="k">if</span> <span class="n">score_preds</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">score_</span> <span class="o">=</span> <span class="n">score_predictions</span><span class="p">(</span>
+                <span class="n">ytemp</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;fit data&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;score&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">score_</span><span class="p">,</span>
+               <span class="s1">&#39;ft&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_time_</span><span class="p">,</span>
+               <span class="s1">&#39;pt&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">pred_time_</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="SubTransformer"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubTransformer">[docs]</a><span class="k">class</span> <span class="nc">SubTransformer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Sub-routine for fitting a pipeline</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">in_index</span><span class="p">,</span> <span class="n">in_array</span><span class="p">,</span>
+                 <span class="n">targets</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">out_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out_array</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span> <span class="o">=</span> <span class="n">in_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span> <span class="o">=</span> <span class="n">out_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">in_array</span> <span class="o">=</span> <span class="n">in_array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out_array</span> <span class="o">=</span> <span class="n">out_array</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform_time_</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">cache_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name_index</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">index</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">parent</span><span class="o">.</span><span class="n">__no_output__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">output_columns</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Launch job&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="p">)(</span><span class="n">path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SubTransformer.predict"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubTransformer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dump transformers for prediction&quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=unused-argument</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SubTransformer.transform"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubTransformer.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dump transformers for prediction&quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=unused-argument</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run a transformation&quot;&quot;&quot;</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">slice_array</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">)</span>
+
+        <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+
+        <span class="n">assign_predictions</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">out_array</span><span class="p">,</span> <span class="n">xtemp</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;30}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">3</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SubTransformer.fit"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.SubTransformer.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit transformers&quot;&quot;&quot;</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">slice_array</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">)</span>
+
+        <span class="n">t0_f</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform_time_</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0_f</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_array</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transform</span><span class="p">()</span>
+
+        <span class="n">o</span> <span class="o">=</span> <span class="n">IndexedEstimator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span>
+                             <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                             <span class="n">in_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">,</span>
+                             <span class="n">out_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span>
+                             <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;30}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">)</span>
+            <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;fit data&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;ft&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_time_</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="EvalSubLearner"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.EvalSubLearner">[docs]</a><span class="k">class</span> <span class="nc">EvalSubLearner</span><span class="p">(</span><span class="n">SubLearner</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;EvalSubLearner</span>
+
+<span class="sd">    sub-routine for cross-validated evaluation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">parent</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">in_index</span><span class="p">,</span> <span class="n">out_index</span><span class="p">,</span>
+                 <span class="n">in_array</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">EvalSubLearner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+            <span class="n">in_index</span><span class="o">=</span><span class="n">in_index</span><span class="p">,</span> <span class="n">out_index</span><span class="o">=</span><span class="n">out_index</span><span class="p">,</span>
+            <span class="n">in_array</span><span class="o">=</span><span class="n">in_array</span><span class="p">,</span> <span class="n">out_array</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">targets</span><span class="o">=</span><span class="n">targets</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">error_score</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_score_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_score_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_pred_time_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_pred_time_</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="EvalSubLearner.fit"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.EvalSubLearner.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Evaluate sub-learner&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot generate CV-scores without a scorer&quot;</span><span class="p">)</span>
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">transformers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_preprocess</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">transformers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_predict</span><span class="p">(</span><span class="n">transformers</span><span class="p">)</span>
+
+        <span class="n">o</span> <span class="o">=</span> <span class="n">IndexedEstimator</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span>
+                             <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                             <span class="n">in_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">,</span>
+                             <span class="n">out_index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span>
+                             <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;30}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name_index</span><span class="p">,</span> <span class="s2">&quot;done&quot;</span><span class="p">)</span>
+            <span class="n">print_time</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformers</span><span class="p">,</span> <span class="n">score_preds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sub-routine to with sublearner&quot;&quot;&quot;</span>
+        <span class="c1"># Train set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">train_score_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_pred_time_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_score_preds</span><span class="p">(</span>
+            <span class="n">transformers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_index</span><span class="p">)</span>
+
+        <span class="c1"># Validation set</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_score_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_pred_time_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_score_preds</span><span class="p">(</span>
+            <span class="n">transformers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">out_index</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_score_preds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformers</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="c1"># Train scores</span>
+        <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">slice_array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">in_array</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">transformers</span><span class="p">:</span>
+            <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span> <span class="o">=</span> <span class="n">transformers</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+
+        <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span> <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>  <span class="c1"># pylint: disable=broad-except</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;Scoring failed. Setting error score </span><span class="si">%r</span><span class="s2">.&quot;</span>
+                    <span class="s2">&quot;Details:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">error_score</span><span class="p">,</span> <span class="n">exc</span><span class="p">),</span>
+                    <span class="n">FitFailedWarning</span><span class="p">)</span>
+                <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span> <span class="n">xtemp</span><span class="p">,</span> <span class="n">ytemp</span><span class="p">)</span>
+        <span class="n">pred_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+
+        <span class="k">return</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pred_time</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Score data&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;test_score&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_score_</span><span class="p">,</span>
+               <span class="s1">&#39;train_score&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_score_</span><span class="p">,</span>
+               <span class="s1">&#39;fit_time&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit_time_</span><span class="p">,</span>
+               <span class="s1">&#39;pred_time&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_pred_time_</span><span class="p">,</span>
+               <span class="c1"># &#39;test_pred_time&#39;: self.train_pred_time_,</span>
+               <span class="p">}</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="Cache"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.Cache">[docs]</a><span class="k">class</span> <span class="nc">Cache</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Cache wrapper for IndexedEstimator</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Cache estimator to path&quot;&quot;&quot;</span>
+        <span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;30}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;cached&quot;</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="s2">&quot;stdout&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">-</span> <span class="mi">3</span> <span class="k">else</span> <span class="s2">&quot;stderr&quot;</span>
+            <span class="n">safe_print</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">f</span><span class="p">)</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="k">class</span> <span class="nc">_BaseEstimator</span><span class="p">(</span><span class="n">OutputMixin</span><span class="p">,</span> <span class="n">IndexMixin</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Base estimator class</span>
+
+<span class="sd">    Common API for job generators. A class that inherits the base</span>
+<span class="sd">    need to set a ``__subtype__`` in the constructor. The sub-type should be</span>
+<span class="sd">    the class that runs estimations and must implement a ``__call__``,</span>
+<span class="sd">    ``fit``, ``transform`` and ``predict`` method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__meta_class__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
+
+    <span class="c1"># Reset subtype class attribute in any class that inherits the base</span>
+    <span class="n">__subtype__</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_BaseEstimator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="c1"># Variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_times_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_learner_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sublearners_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collect__</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_sub__</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="n">indexer</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_indexer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_span</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__static__</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;estimator&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;indexer&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">arg_type</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">,</span> <span class="n">parallel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Caller for producing jobs&quot;&quot;&quot;</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]</span>
+        <span class="n">_threading</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s1">&#39;threading&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__indexer__</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotInitializedError</span><span class="p">(</span>
+                <span class="s2">&quot;Instance has no indexer attached. Call set_indexer first.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">job</span> <span class="o">!=</span> <span class="s1">&#39;fit&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span>
+                <span class="s2">&quot;Instance not fitted with current params. Call &#39;fit&#39; first.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">job</span> <span class="o">==</span> <span class="s1">&#39;fit&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span> <span class="ow">and</span> <span class="n">args</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;refit&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="c1"># Check refit</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__no_output__</span><span class="p">:</span>
+                    <span class="k">return</span>
+                <span class="n">args</span><span class="p">[</span><span class="s1">&#39;job&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;transform&#39;</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">arg_type</span><span class="p">,</span> <span class="n">parallel</span><span class="p">)</span>
+
+            <span class="c1"># Record static params</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_store_static_params</span><span class="p">()</span>
+
+        <span class="n">generator</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;gen_</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">job</span><span class="p">)(</span><span class="o">**</span><span class="n">args</span><span class="p">[</span><span class="n">arg_type</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">parallel</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">generator</span>
+
+        <span class="n">parallel</span><span class="p">(</span><span class="n">delayed</span><span class="p">(</span><span class="n">subtask</span><span class="p">,</span> <span class="ow">not</span> <span class="n">_threading</span><span class="p">)(</span><span class="n">path</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">subtask</span> <span class="ow">in</span> <span class="n">generator</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collect__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_gen_pred</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">generator</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generator for predicting with fitted learner</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        job: str</span>
+<span class="sd">            type of job</span>
+
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            input array</span>
+
+<span class="sd">        P : array-like of shape [n_samples, n_prediction_features]</span>
+<span class="sd">            output array to populate. Must be writeable.</span>
+
+<span class="sd">        generator : iterable</span>
+<span class="sd">            iterator of learners of sub-learners to predict with.</span>
+<span class="sd">            One of ``self.learner_`` and ``self.sublearners_``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="n">generator</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtype__</span><span class="p">(</span>
+                <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span>
+                <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="o">.</span><span class="n">estimator</span><span class="p">,</span>
+                <span class="n">in_index</span><span class="o">=</span><span class="n">estimator</span><span class="o">.</span><span class="n">in_index</span><span class="p">,</span>
+                <span class="n">out_index</span><span class="o">=</span><span class="n">estimator</span><span class="o">.</span><span class="n">out_index</span><span class="p">,</span>
+                <span class="n">in_array</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                <span class="n">out_array</span><span class="o">=</span><span class="n">P</span><span class="p">,</span>
+                <span class="n">index</span><span class="o">=</span><span class="n">estimator</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">gen_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Routine for generating fit jobs conditional on refit</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array-like of shape [n_samples, n_features]</span>
+<span class="sd">            input array</span>
+
+<span class="sd">        y: array-like of shape [n_samples,]</span>
+<span class="sd">            targets</span>
+
+<span class="sd">        P: array-like of shape [n_samples, n_prediction_features], optional</span>
+<span class="sd">            output array to populate. Must be writeable. Only pass if</span>
+<span class="sd">            predictions are desired.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># We use a derived cache_name during estimation: if the name of the</span>
+        <span class="c1"># instance or the name of the preprocessing dependency changes, this</span>
+        <span class="c1"># allows us to pick up on that.</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;preprocess&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtype__</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ParallelProcessingError</span><span class="p">(</span>
+                <span class="s2">&quot;Class incorrectly constructed. Need to set class attribute &quot;</span>
+                <span class="s2">&quot;__subtype__&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collect__</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># We use an index to keep track of partition and fold</span>
+        <span class="c1"># For single-partition estimations, index[0] is constant</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__only_sub__</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">P</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="k">for</span> <span class="n">partition_index</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">partition</span><span class="p">():</span>
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtype__</span><span class="p">(</span>
+                    <span class="n">job</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span>
+                    <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                    <span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cloned_estimator</span><span class="p">,</span>
+                    <span class="n">in_index</span><span class="o">=</span><span class="n">partition_index</span><span class="p">,</span>
+                    <span class="n">out_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">in_array</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                    <span class="n">targets</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                    <span class="n">out_array</span><span class="o">=</span><span class="n">out</span><span class="p">,</span>
+                    <span class="n">index</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span><span class="p">:</span>
+            <span class="c1"># Fit sub-learners on cv folds</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">generate</span><span class="p">()):</span>
+                <span class="c1"># Note that we bump index[1] by 1 to have index[1] start at 1</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">splits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">folds</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="n">splits</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="n">splits</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+                <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">__subtype__</span><span class="p">(</span>
+                    <span class="n">job</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span>
+                    <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                    <span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cloned_estimator</span><span class="p">,</span>
+                    <span class="n">in_index</span><span class="o">=</span><span class="n">train_index</span><span class="p">,</span>
+                    <span class="n">out_index</span><span class="o">=</span><span class="n">test_index</span><span class="p">,</span>
+                    <span class="n">in_array</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                    <span class="n">targets</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                    <span class="n">out_array</span><span class="o">=</span><span class="n">P</span><span class="p">,</span>
+                    <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">gen_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate cross-validated predict jobs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array-like of shape [n_samples, n_features]</span>
+<span class="sd">            input array</span>
+
+<span class="sd">        y: array-like of shape [n_samples,]</span>
+<span class="sd">            targets</span>
+
+<span class="sd">        P: array-like of shape [n_samples, n_prediction_features], optional</span>
+<span class="sd">            output array to populate. Must be writeable. Only pass if</span>
+<span class="sd">            predictions are desired.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gen_pred</span><span class="p">(</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sublearners</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">gen_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate predicting jobs</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        X: array-like of shape [n_samples, n_features]</span>
+<span class="sd">            input array</span>
+
+<span class="sd">        y: array-like of shape [n_samples,]</span>
+<span class="sd">            targets</span>
+
+<span class="sd">        P: array-like of shape [n_samples, n_prediction_features], optional</span>
+<span class="sd">            output array to populate. Must be writeable. Only pass if</span>
+<span class="sd">            predictions are desired.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gen_pred</span><span class="p">(</span><span class="s1">&#39;predict&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">learner</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Load fitted estimator from cache</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path: str, list</span>
+<span class="sd">            path to cache.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__collect__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="p">(</span><span class="n">learner_files</span><span class="p">,</span>
+             <span class="n">learner_data</span><span class="p">,</span>
+             <span class="n">sublearner_files</span><span class="p">,</span>
+             <span class="n">sublearner_data</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_collect</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_learner_</span> <span class="o">=</span> <span class="n">learner_files</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sublearners_</span> <span class="o">=</span> <span class="n">sublearner_files</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data_</span> <span class="o">=</span> <span class="n">sublearner_data</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_times_</span> <span class="o">=</span> <span class="n">learner_data</span>
+
+            <span class="c1"># Collection complete, turn off</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__collect__</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clear load&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sublearners_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_learner_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_times_</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">set_indexer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indexer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set indexer and auxiliary attributes</span>
+
+<span class="sd">        Paramters</span>
+<span class="sd">        ---------</span>
+<span class="sd">        indexer: obj</span>
+<span class="sd">            indexer to build instance with.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="o">=</span> <span class="n">indexer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">=</span> <span class="n">indexer</span><span class="o">.</span><span class="n">partitions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span> <span class="o">=</span> <span class="n">indexer</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">ONLY_ALL</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_sub__</span> <span class="o">=</span> <span class="n">indexer</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">ONLY_SUB</span>
+
+    <span class="k">def</span> <span class="nf">_collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Collect files from cache&quot;&quot;&quot;</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">prune_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache_name</span><span class="p">)</span>
+        <span class="n">learner_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">learner_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">sublearner_files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="n">sublearner_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ParallelProcessingError</span><span class="p">(</span>
+                    <span class="s2">&quot;Corrupt cache: duplicate cache entry found.</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">f</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">learner_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">learner_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sublearner_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">sublearner_data</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__only_sub__</span><span class="p">:</span>
+            <span class="c1"># Full learners are the same as the sub-learners</span>
+            <span class="n">learner_files</span><span class="p">,</span> <span class="n">learner_data</span> <span class="o">=</span> <span class="n">replace</span><span class="p">(</span><span class="n">sublearner_files</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span><span class="p">:</span>
+            <span class="c1"># Sub learners are the same as the sub-learners</span>
+            <span class="n">sublearner_files</span><span class="p">,</span> <span class="n">sublearner_data</span> <span class="o">=</span> <span class="n">replace</span><span class="p">(</span><span class="n">learner_files</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">learner_files</span><span class="p">,</span> <span class="n">learner_data</span><span class="p">,</span> <span class="n">sublearner_files</span><span class="p">,</span> <span class="n">sublearner_data</span>
+
+    <span class="k">def</span> <span class="nf">_return_attr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotFittedError</span><span class="p">(</span><span class="s2">&quot;Instance not fitted.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_output_columns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">job</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_left_concats</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set the output_columns attribute&quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=unused-argument</span>
+        <span class="n">multiplier</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_multiplier</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">*</span> <span class="n">multiplier</span> <span class="o">+</span> <span class="n">n_left_concats</span>
+        <span class="n">set_output_columns</span><span class="p">(</span>
+            <span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">,</span> <span class="n">n_left_concats</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+        <span class="n">mi</span> <span class="o">=</span> <span class="n">n_left_concats</span>
+        <span class="n">mx</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span> <span class="o">+</span> <span class="n">multiplier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature_span</span> <span class="o">=</span> <span class="p">(</span><span class="n">mi</span><span class="p">,</span> <span class="n">mx</span><span class="p">)</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">_get_multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the prediction multiplier given input (X, y)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">1</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">__fitted__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit status&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_learner_</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sublearners_</span> <span class="ow">or</span>
+                <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># Check estimator param overlap</span>
+        <span class="n">fitted</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_learner_</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sublearners_</span>
+        <span class="n">fitted_params</span> <span class="o">=</span> <span class="n">fitted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">model_estimator_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">check_params</span><span class="p">(</span><span class="n">fitted_params</span><span class="p">,</span> <span class="n">model_estimator_params</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>  <span class="c1"># Release obsolete estimators</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># Check that hyper-params hasn&#39;t changed</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_static_params</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cloned_estimator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Copy of estimator&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">clone</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">learner</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generator for learner fitted on full data&quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=not-an-iterable</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_attr</span><span class="p">(</span><span class="s1">&#39;_learner_&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sublearners</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generator for learner fitted on folds&quot;&quot;&quot;</span>
+        <span class="c1"># pylint: disable=not-an-iterable</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_attr</span><span class="p">(</span><span class="s1">&#39;_sublearners_&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">raw_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;List of data collected from each sub-learner during fitting.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_attr</span><span class="p">(</span><span class="s1">&#39;_data_&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Dictionary with aggregated data from fitting sub-learners.&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_attr</span><span class="p">(</span><span class="s1">&#39;_data_&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">times</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Fit and predict times for the final learners&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_attr</span><span class="p">(</span><span class="s1">&#39;_times_&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Learner"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.Learner">[docs]</a><span class="k">class</span> <span class="nc">Learner</span><span class="p">(</span><span class="n">ProbaMixin</span><span class="p">,</span> <span class="n">_BaseEstimator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Learner</span>
+
+<span class="sd">    Wrapper for base learners.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    __________</span>
+<span class="sd">    estimator : obj</span>
+<span class="sd">        estimator to construct learner from</span>
+
+<span class="sd">    preprocess : str, obj</span>
+<span class="sd">        preprocess transformer. Pass either the string</span>
+<span class="sd">        cache reference or the transformer instance. If the latter,</span>
+<span class="sd">        the :attr:`preprocess` will refer to the transformer name.</span>
+
+<span class="sd">    name : str</span>
+<span class="sd">        name of learner. If ``preprocess`` is not ``None``,</span>
+<span class="sd">        the name will be prepended to ``preprocess__name``.</span>
+
+<span class="sd">    attr : str (default=&#39;predict&#39;)</span>
+<span class="sd">        predict attribute, typically one of &#39;predict&#39; and &#39;predict_proba&#39;</span>
+
+<span class="sd">    scorer : func</span>
+<span class="sd">        function to use for scoring predictions during cross-validated</span>
+<span class="sd">        fitting.</span>
+
+<span class="sd">    output_columns : dict, optional</span>
+<span class="sd">        mapping of prediction feature columns from learner to columns in</span>
+<span class="sd">        output array. Normally, this map is ``{0: x}``, but if the ``indexer``</span>
+<span class="sd">        creates partitions, each partition needs to be mapped:</span>
+<span class="sd">        ``{0: x, 1: x + 1}``. Note that if ``output_columns`` are not given at</span>
+<span class="sd">        initialization, the ``set_output_columns`` method must be called before</span>
+<span class="sd">        running estimations.</span>
+
+<span class="sd">    verbose : bool, int (default = False)</span>
+<span class="sd">        whether to report completed fits.</span>
+
+<span class="sd">    **kwargs : bool (default=True)</span>
+<span class="sd">        Optional ParallelProcessing arguments. See :class:`BaseParallel`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__subtype__</span> <span class="o">=</span> <span class="n">SubLearner</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preprocess</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">attr</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Learner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">format_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;learner&#39;</span><span class="p">,</span> <span class="n">GLOBAL_LEARNER_NAMES</span><span class="p">),</span>
+            <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_classes</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">proba</span> <span class="o">=</span> <span class="n">proba</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scorer</span> <span class="o">=</span> <span class="n">scorer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span> <span class="o">=</span> <span class="n">preprocess</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr</span> <span class="o">=</span> <span class="n">attr</span> <span class="k">if</span> <span class="n">attr</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_predict_attr</span>
+
+        <span class="c1"># Protect preprocess against later changes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__static__</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;preprocess&#39;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scorer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Copy of scorer&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_scorer</span><span class="p">)</span>
+
+    <span class="nd">@scorer</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">scorer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scorer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Copy of scorer&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scorer</span> <span class="o">=</span> <span class="n">scorer</span></div>
+
+
+<div class="viewcode-block" id="Transformer"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.Transformer">[docs]</a><span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">_BaseEstimator</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Preprocessing handler.</span>
+
+<span class="sd">    Wrapper for transformation pipeline.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    __________</span>
+<span class="sd">    indexer : obj, None</span>
+<span class="sd">        indexer to use for generating fits.</span>
+<span class="sd">        Set to ``None`` to fit only on all data.</span>
+
+<span class="sd">    estimator : obj</span>
+<span class="sd">        transformation pipeline to construct learner from</span>
+
+<span class="sd">    name : str</span>
+<span class="sd">        name of learner. If ``preprocess`` is not ``None``,</span>
+<span class="sd">        the name will be prepended to ``preprocess__name``.</span>
+
+<span class="sd">    output_columns : dict, optional</span>
+<span class="sd">        If transformer is to be used to output data, need to</span>
+<span class="sd">        set ``output_columns``. Normally, this map is</span>
+<span class="sd">        ``{0: x}``, but if the ``indexer``</span>
+<span class="sd">        creates partitions, each partition needs to be mapped:</span>
+<span class="sd">        ``{0: x, 1: x + 1}``.</span>
+
+<span class="sd">    verbose : bool, int (default = False)</span>
+<span class="sd">        whether to report completed fits.</span>
+
+<span class="sd">    raise_on_exception : bool (default=True)</span>
+<span class="sd">        whether to warn on non-fatal exceptions or raise an error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__subtype__</span> <span class="o">=</span> <span class="n">SubTransformer</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">assert_valid_pipeline</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">format_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;transformer&#39;</span><span class="p">,</span> <span class="n">GLOBAL_TRANSFORMER_NAMES</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__no_output__</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_get_multiplier</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alt</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Number of cols produced in prediction&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_gen_pred</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">generator</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__no_output__</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">gen</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">generator</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="n">Cache</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">gen</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">_gen_pred</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">generator</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EvalTransformer"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.EvalTransformer">[docs]</a><span class="k">class</span> <span class="nc">EvalTransformer</span><span class="p">(</span><span class="n">Transformer</span><span class="p">):</span>
+
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Evaluator version of the Transformer.</span>
+
+<span class="sd">    Derived class from Transformer adapted to cross\-validated grid-search.</span>
+<span class="sd">    See :class:`Transformer` for more details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EvalTransformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">estimator</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>  <span class="c1"># For compatibility with SubTransformer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_sub__</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="EvalLearner"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.EvalLearner">[docs]</a><span class="k">class</span> <span class="nc">EvalLearner</span><span class="p">(</span><span class="n">Learner</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;EvalLearner</span>
+
+<span class="sd">    EvalLearner is a derived class from Learner used for cross-validated</span>
+<span class="sd">    scoring of an estimator.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    __________</span>
+<span class="sd">    estimator : obj</span>
+<span class="sd">        estimator to construct learner from</span>
+
+<span class="sd">    preprocess : str</span>
+<span class="sd">        preprocess cache refernce</span>
+
+<span class="sd">    indexer : obj, None</span>
+<span class="sd">        indexer to use for generating fits.</span>
+<span class="sd">        Set to ``None`` to fit only on all data.</span>
+
+<span class="sd">    name : str</span>
+<span class="sd">        name of learner. If ``preprocess`` is not ``None``,</span>
+<span class="sd">        the name will be prepended to ``preprocess__name``.</span>
+
+<span class="sd">    attr : str (default=&#39;predict&#39;)</span>
+<span class="sd">        predict attribute, typically one of &#39;predict&#39; and &#39;predict_proba&#39;</span>
+
+<span class="sd">    scorer : func</span>
+<span class="sd">        function to use for scoring predictions during cross-validated</span>
+<span class="sd">        fitting.</span>
+
+<span class="sd">    error_score : int, float, None (default = None)</span>
+<span class="sd">        score to set if cross-validation fails. Set to ``None`` to raise error.</span>
+
+<span class="sd">    verbose : bool, int (default = False)</span>
+<span class="sd">        whether to report completed fits.</span>
+
+<span class="sd">    raise_on_exception : bool (default=True)</span>
+<span class="sd">        whether to warn on non-fatal exceptions or raise an error.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__subtype__</span> <span class="o">=</span> <span class="n">EvalSubLearner</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">preprocess</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">scorer</span><span class="p">,</span>
+                 <span class="n">error_score</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EvalLearner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span> <span class="n">preprocess</span><span class="o">=</span><span class="n">preprocess</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">attr</span><span class="o">=</span><span class="n">attr</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="n">scorer</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_sub__</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__only_all__</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_columns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>     <span class="c1"># For compatibility with SubLearner</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_score</span> <span class="o">=</span> <span class="n">error_score</span>
+
+<div class="viewcode-block" id="EvalLearner.gen_fit"><a class="viewcode-back" href="../../../module/mlens.parallel.learner.html#mlens.parallel.EvalLearner.gen_fit">[docs]</a>    <span class="k">def</span> <span class="nf">gen_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generator for fitting learner on given data&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache_name</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">refit</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">__fitted__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gen_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+
+        <span class="c1"># We use an index to keep track of partition and fold</span>
+        <span class="c1"># For single-partition estimations, index[0] is constant</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot run cross-validation without an indexer&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__collect__</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">generate</span><span class="p">()):</span>
+            <span class="c1"># Note that we bump index[1] by 1 to have index[1] start at 1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">EvalSubLearner</span><span class="p">(</span>
+                <span class="n">job</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span>
+                <span class="n">parent</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">estimator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cloned_estimator</span><span class="p">,</span>
+                <span class="n">in_index</span><span class="o">=</span><span class="n">train_index</span><span class="p">,</span>
+                <span class="n">out_index</span><span class="o">=</span><span class="n">test_index</span><span class="p">,</span>
+                <span class="n">in_array</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+                <span class="n">targets</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span>
+            <span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

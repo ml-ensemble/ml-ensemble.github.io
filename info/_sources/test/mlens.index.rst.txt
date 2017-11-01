@@ -1,0 +1,46 @@
+mlens\.index package
+====================
+
+Submodules
+----------
+
+mlens\.index\.base module
+-------------------------
+
+.. automodule:: mlens.index.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.index\.blend module
+--------------------------
+
+.. automodule:: mlens.index.blend
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.index\.fold module
+-------------------------
+
+.. automodule:: mlens.index.fold
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.index\.subsemble module
+------------------------------
+
+.. automodule:: mlens.index.subsemble
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.index
+    :members:
+    :undoc-members:
+    :show-inheritance:

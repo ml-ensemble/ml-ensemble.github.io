@@ -1,0 +1,1228 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.parallel.backend &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../config.html">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-backend"><span class="hidden-section">set_backend</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../config.html#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../config.html#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#run"><span class="hidden-section">run</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metrics.html">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../metrics.html#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization.html">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../visualization.html#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.parallel.backend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.parallel.backend</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;ML-Ensemble</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:copyright: 2017</span>
+<span class="sd">:license: MIT</span>
+
+<span class="sd">Parallel processing backend classes. Manages memory-mapping of data, estimation</span>
+<span class="sd">caching and job scheduling.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="c1"># pylint: disable=too-many-arguments</span>
+<span class="c1"># pylint: disable=too-many-instance-attributes</span>
+<span class="c1"># pylint: disable=useless-super-delegation</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">with_statement</span><span class="p">,</span> <span class="n">division</span>
+
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="k">import</span> <span class="n">ABCMeta</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">issparse</span><span class="p">,</span> <span class="n">hstack</span>
+
+<span class="kn">from</span> <span class="nn">..</span> <span class="k">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">..externals.joblib</span> <span class="k">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="n">check_initialized</span>
+<span class="kn">from</span> <span class="nn">..utils.exceptions</span> <span class="k">import</span> <span class="p">(</span><span class="n">ParallelProcessingError</span><span class="p">,</span>
+                                <span class="n">ParallelProcessingWarning</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..externals.sklearn.validation</span> <span class="k">import</span> <span class="n">check_random_state</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="k">def</span> <span class="nf">_dtype</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility for getting a dtype&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;dtype&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="dump_array"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.dump_array">[docs]</a><span class="k">def</span> <span class="nf">dump_array</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Dump array for memmapping.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    array : array-like</span>
+<span class="sd">        Array to be persisted</span>
+
+<span class="sd">    name : str</span>
+<span class="sd">        Name of file</span>
+
+<span class="sd">    path : str</span>
+<span class="sd">        Path to cache.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f: array-like</span>
+<span class="sd">        memory-mapped array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># First check if the array is on file</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># Load file from disk. Need to dump if not memmaped already</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">array</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;mmap&#39;</span><span class="p">,</span> <span class="s1">&#39;npy&#39;</span><span class="p">,</span> <span class="s1">&#39;npz&#39;</span><span class="p">]:</span>
+            <span class="c1"># Try loading the file assuming a csv-like format</span>
+            <span class="n">array</span> <span class="o">=</span> <span class="n">_load</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># If arr remains a string, it&#39;s pointing to an mmap file</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">array</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Dump ndarray on disk</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">.mmap&#39;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">dump</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span></div>
+
+
+<span class="k">def</span> <span class="nf">_load</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load array from file using default settings.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">arr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;npy&#39;</span><span class="p">,</span> <span class="s1">&#39;npz&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Could not load X from </span><span class="si">%s</span><span class="s2">, does not &quot;</span>
+                          <span class="s2">&quot;appear to be a valid ndarray. &quot;</span>
+                          <span class="s2">&quot;Details:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_load_mmap</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load a mmap presumably dumped by joblib, otherwise try numpy.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">):</span>
+        <span class="c1"># Joblib&#39;s &#39;load&#39; func fails on npy and npz: use numpy.load</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_set_path</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">threading</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Build path as a cache or list depending on whether using threading&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">threading</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Path must be a str with backend=multiprocessing.&quot;</span>
+                             <span class="s2">&quot; Got </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid path format. Should be one of &quot;</span>
+                             <span class="s2">&quot;str, dict. Got </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">path</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="n">path</span>
+        <span class="k">return</span> <span class="n">job</span>
+
+    <span class="k">if</span> <span class="n">threading</span><span class="p">:</span>
+        <span class="c1"># No need to pickle</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">job</span>
+
+    <span class="c1"># Else, need a directory</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_tmpdir</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span>
+            <span class="n">prefix</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">(),</span> <span class="nb">dir</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">tmp</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># Fails on python 2</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">get_prefix</span><span class="p">(),</span> <span class="nb">dir</span><span class="o">=</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">job</span>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="Job"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job">[docs]</a><span class="k">class</span> <span class="nc">Job</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Container class for holding and managing job data.</span>
+
+<span class="sd">    :class:`Job` is intended as a on-the-fly job handler that keeps track</span>
+<span class="sd">    of input data, predictions, and manages estimation caches.</span>
+
+<span class="sd">    .. versionchanged:: 0.2.0</span>
+
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :class:`ParallelProcessing`, :class:`ParallelEvaluation`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    job : str</span>
+<span class="sd">        Type of job to run. One of ``&#39;fit&#39;``, ``&#39;transform&#39;``, ``&#39;predict&#39;``.</span>
+
+<span class="sd">    stack : bool</span>
+<span class="sd">        Whether to stack outputs when calls to</span>
+<span class="sd">        :func:`~mlens.parallel.backend.Job.update` are made. This will make</span>
+<span class="sd">        the ``predict_out`` array become ``predict_in``.</span>
+
+<span class="sd">    split : bool</span>
+<span class="sd">        Whether to create a new sub-cache when the</span>
+<span class="sd">        :attr:`~mlens.parallel.backend.Job.args` property is called.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;predict_in&#39;</span><span class="p">,</span> <span class="s1">&#39;predict_out&#39;</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;_n_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;kwargs&#39;</span><span class="p">,</span> <span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="s1">&#39;split&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">split</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">stack</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="n">split</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_n_dir</span> <span class="o">=</span> <span class="mi">0</span>
+
+<div class="viewcode-block" id="Job.clear"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Clear output data for new task&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Job.update"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Updated output array and shift to input if stacked.</span>
+
+<span class="sd">        If stacking is en force, the output array will replace the input</span>
+<span class="sd">        array, and used as input for subsequent jobs. Sparse matrices are</span>
+<span class="sd">        force-converted to ``csr`` format.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">issparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;csr&#39;</span><span class="p">)):</span>
+            <span class="c1"># Enforce csr on spare matrices</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rebase</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Job.rebase"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.rebase">[docs]</a>    <span class="k">def</span> <span class="nf">rebase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Rebase output labels to input indexing.</span>
+
+<span class="sd">        Some indexers that only generate predictions for subsets of the</span>
+<span class="sd">        training data require the targets to be rebased. Since indexers</span>
+<span class="sd">        operate in a strictly sequential manner, rebase simply drop the first</span>
+<span class="sd">        ``n`` observations in the target vector until number of observations</span>
+<span class="sd">        remaining coincide.</span>
+
+<span class="sd">        .. seealso::</span>
+<span class="sd">            :class:`~mlens.index.blend.BlendIndex`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="c1"># This is legal if X is a prediction matrix generated by predicting</span>
+            <span class="c1"># only a subset of the original training set.</span>
+            <span class="c1"># Since indexing is strictly monotonic, we can simply discard</span>
+            <span class="c1"># the first observations in y to get the corresponding labels.</span>
+            <span class="n">rebase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">rebase</span><span class="p">:]</span></div>
+
+<div class="viewcode-block" id="Job.shuffle"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.shuffle">[docs]</a>    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Shuffle inputs.</span>
+
+<span class="sd">        Permutes the indexing of ``predict_in`` and ``y`` arrays.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        random_state : int, obj</span>
+<span class="sd">            Random seed number or generator to use.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Job.subdir"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.subdir">[docs]</a>    <span class="k">def</span> <span class="nf">subdir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a cache subdirectory</span>
+
+<span class="sd">        If ``split`` is en force, a new sub-cache will be created in the</span>
+<span class="sd">        main cache. Otherwise the same sub-cache as used in previous call</span>
+<span class="sd">        will be returned.</span>
+
+<span class="sd">        .. versionadded:: 0.2.0</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        cache : str, list</span>
+<span class="sd">            Either a string pointing to a cache persisted to disk, or an</span>
+<span class="sd">            in-memory cache in the form of a list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">path_name</span> <span class="o">=</span> <span class="s2">&quot;task_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_n_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">:</span>
+            <span class="c1"># Increment sub-cache counter</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_n_dir</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="n">path_name</span><span class="p">)</span>
+            <span class="n">cache_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="c1"># Persist cache to disk</span>
+            <span class="k">if</span> <span class="n">cache_exists</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ParallelProcessingError</span><span class="p">(</span>
+                    <span class="s2">&quot;Subdirectory </span><span class="si">%s</span><span class="s2"> exist. Clear cache.&quot;</span> <span class="o">%</span> <span class="n">path_name</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">cache_exists</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">path</span>
+
+        <span class="c1"># Keep in memory</span>
+        <span class="k">if</span> <span class="n">path_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">split</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ParallelProcessingError</span><span class="p">(</span>
+                <span class="s2">&quot;Subdirectory </span><span class="si">%s</span><span class="s2"> exist. Clear cache.&quot;</span> <span class="o">%</span> <span class="n">path_name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">path_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="p">[</span><span class="n">path_name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="p">[</span><span class="n">path_name</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Job.args"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.args">[docs]</a>    <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Produce args dict</span>
+
+<span class="sd">        .. versionadded:: 0.2.0</span>
+
+<span class="sd">        Returns the arguments dictionary passed to a task of a parallel</span>
+<span class="sd">        processing manager. Output dictionary has the following form::</span>
+
+<span class="sd">            out = {&#39;auxiliary&#39;:</span>
+<span class="sd">                       {&#39;X&#39;: self.predict_in, &#39;P&#39;: self.predict_out},</span>
+<span class="sd">                   &#39;main&#39;:</span>
+<span class="sd">                       {&#39;X&#39;: self.predict_in, &#39;P&#39;: self.predict_out},</span>
+<span class="sd">                   &#39;dir&#39;:</span>
+<span class="sd">                       self.subdir(),</span>
+<span class="sd">                   &#39;job&#39;:</span>
+<span class="sd">                        self.job</span>
+<span class="sd">                    }</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            Optional keyword arguments to pass to the task.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        args : dict</span>
+<span class="sd">            Arguments dictionary</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">aux_feed</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+        <span class="n">main_feed</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="s1">&#39;evaluate&#39;</span><span class="p">]:</span>
+            <span class="n">main_feed</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+            <span class="n">aux_feed</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;auxiliary&#39;</span><span class="p">:</span> <span class="n">aux_feed</span><span class="p">,</span>
+               <span class="s1">&#39;main&#39;</span><span class="p">:</span> <span class="n">main_feed</span><span class="p">,</span>
+               <span class="s1">&#39;dir&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="p">(),</span>
+               <span class="s1">&#39;job&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">out</span></div></div>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="BaseProcessor"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.BaseProcessor">[docs]</a><span class="k">class</span> <span class="nc">BaseProcessor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Parallel processing base class.</span>
+
+<span class="sd">    Base class for parallel processing engines.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    backend: str, optional</span>
+<span class="sd">        Type of backend. One of ``&#39;threading&#39;``, ``&#39;multiprocessing&#39;``,</span>
+<span class="sd">        ``&#39;sequential&#39;``.</span>
+
+<span class="sd">    n_jobs : int, optional</span>
+<span class="sd">        Degree of concurrency.</span>
+
+<span class="sd">    verbose: bool, int, optional</span>
+<span class="sd">        Level of verbosity of the</span>
+<span class="sd">        :class:`~mlens.externals.joblib.parallel.Parallel` instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">__meta_class__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;caller&#39;</span><span class="p">,</span> <span class="s1">&#39;__initialized__&#39;</span><span class="p">,</span> <span class="s1">&#39;__threading__&#39;</span><span class="p">,</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;n_jobs&#39;</span><span class="p">,</span> <span class="s1">&#39;backend&#39;</span><span class="p">,</span> <span class="s1">&#39;verbose&#39;</span><span class="p">]</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__initialized__</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">backend</span> <span class="k">else</span> <span class="n">backend</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">n_jobs</span> <span class="k">else</span> <span class="n">n_jobs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">verbose</span> <span class="k">else</span> <span class="n">verbose</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s1">&#39;threading&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+<div class="viewcode-block" id="BaseProcessor.initialize"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.BaseProcessor.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
+                   <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize processing engine.</span>
+
+<span class="sd">        Set up the job parameters before an estimation call. Calling</span>
+<span class="sd">        :func:`~mlens.parallel.backend.BaseProcessor.clear`</span>
+<span class="sd">        undoes initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        job : str</span>
+<span class="sd">            type of job to complete with each task. One of ``&#39;fit&#39;``,</span>
+<span class="sd">            ``&#39;predict&#39;`` and ``&#39;transform&#39;``.</span>
+
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples,], optional.</span>
+<span class="sd">            targets. Required for fit, should not be passed to predict or</span>
+<span class="sd">            transform jobs.</span>
+
+<span class="sd">        path : str or dict, optional</span>
+<span class="sd">            Custom estimation cache. Pass a string to force use of persistent</span>
+<span class="sd">            cache on disk. Pass a ``dict`` for in-memory cache (requires</span>
+<span class="sd">            ``backend != &#39;multiprocessing&#39;``.</span>
+
+<span class="sd">        return_preds : bool or list, optional</span>
+<span class="sd">            whether to return prediction ouput. If ``True``, final prediction</span>
+<span class="sd">            is returned. Alternatively, pass a list of task names for which</span>
+<span class="sd">            output should be returned.</span>
+
+<span class="sd">        warm_start : bool, optional</span>
+<span class="sd">            whether to re-use previous input data initialization. Useful if</span>
+<span class="sd">            repeated jobs are made on the same input arrays.</span>
+
+<span class="sd">        **kwargs  : optional</span>
+<span class="sd">            optional keyword arguments to pass onto the task&#39;s call method.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out : dict</span>
+<span class="sd">            An output parameter dictionary to pass to pass to an estimation</span>
+<span class="sd">            method. Either ``None`` (no output), or</span>
+<span class="sd">            ``{&#39;final&#39;:True}`` for only final prediction, or</span>
+<span class="sd">            ``{&#39;final&#39;: False, &#39;return_names&#39;: return_preds}`` if a list of</span>
+<span class="sd">            task-specific output was passed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">warm_start</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_initialize</span><span class="p">(</span><span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">return_preds</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;return_final&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">return_preds</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;return_final&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;return_names&#39;</span><span class="p">:</span> <span class="n">return_preds</span><span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="nf">_initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a job instance for estimation.</span>
+
+<span class="sd">        See :func:`~mlens.parallel.backend.BaseProcess.initialize` for</span>
+<span class="sd">        further details.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">Job</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">_set_path</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span><span class="p">)</span>
+
+        <span class="c1"># --- Prepare inputs</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">arr</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">((</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">arr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Dump data in cache</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span><span class="p">:</span>
+                <span class="c1"># No need to memmap</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">arr</span> <span class="o">=</span> <span class="n">_load</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">dump_array</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">dir</span><span class="p">)</span>
+
+            <span class="c1"># Store data for processing</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span> <span class="ow">and</span> <span class="n">arr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">job</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">arr</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span> <span class="k">else</span> <span class="n">_load_mmap</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+                <span class="n">job</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="n">arr</span> \
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span> <span class="k">else</span> <span class="n">_load_mmap</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__initialized__</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BaseProcessor.clear"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.BaseProcessor.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Destroy cache and reset instance job parameters.&quot;&quot;&quot;</span>
+        <span class="c1"># Detach Job instance</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__initialized__</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="n">job</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">dir</span>
+            <span class="n">path_handle</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">tmp</span>
+
+            <span class="c1"># Release shared memory references</span>
+            <span class="k">del</span> <span class="n">job</span>
+            <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+            <span class="c1"># Destroy cache</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># If the cache has been persisted to disk, remove it</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">path_handle</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">):</span>
+                <span class="c1"># Python 2 has no handler, can also fail on windows</span>
+                <span class="c1"># Use explicit shutil process, or fall back on subprocess</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                    <span class="c1"># Can fail on windows, need to use the shell</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span>
+                            <span class="s1">&#39;rmdir /S /Q </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">path</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                            <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span><span class="o">.</span><span class="n">kill</span><span class="p">()</span>
+                    <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+                        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                            <span class="s2">&quot;Failed to delete cache at </span><span class="si">%s</span><span class="s2">.&quot;</span>
+                            <span class="s2">&quot;If created with default settings, will be &quot;</span>
+                            <span class="s2">&quot;removed on reboot. For immediate &quot;</span>
+                            <span class="s2">&quot;removal, manual removal is required.&quot;</span> <span class="o">%</span>
+                            <span class="n">path</span><span class="p">,</span> <span class="n">ParallelProcessingWarning</span><span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">path</span><span class="p">,</span> <span class="n">path_handle</span>
+                <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">gc</span><span class="o">.</span><span class="n">garbage</span><span class="p">:</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="s2">&quot;Clearing cache failed, uncollected:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span>
+                        <span class="n">gc</span><span class="o">.</span><span class="n">garbage</span><span class="p">,</span> <span class="n">ParallelProcessingWarning</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="ParallelProcessing"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelProcessing">[docs]</a><span class="k">class</span> <span class="nc">ParallelProcessing</span><span class="p">(</span><span class="n">BaseProcessor</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Parallel processing engine.</span>
+
+<span class="sd">    Engine for running computational graph.</span>
+
+<span class="sd">    :class:`ParallelProcessing` is a manager for executing a sequence of tasks</span>
+<span class="sd">    in a given caller, where each task is run sequentially, but assumed to be</span>
+<span class="sd">    parallelized internally. The main responsibility of</span>
+<span class="sd">    :class:`ParallelProcessing` is to handle memory-mapping, estimation</span>
+<span class="sd">    cache updates, input and output array updates and output collection.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    caller :  obj</span>
+<span class="sd">        the caller of the job. Either a Layer or a meta layer class</span>
+<span class="sd">        such as Sequential.</span>
+
+<span class="sd">    *args : optional</span>
+<span class="sd">        Optional arguments to :class:`~mlens.parallel.backend.BaseProcessor`</span>
+
+<span class="sd">    **kwargs : optional</span>
+<span class="sd">        Optional keyword arguments to</span>
+<span class="sd">        :class:`~mlens.parallel.backend.BaseProcessor`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ParallelProcessing</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParallelProcessing.map"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelProcessing.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">return_preds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">wart_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parallel task mapping.</span>
+
+<span class="sd">        Run independent tasks in caller in parallel.</span>
+
+<span class="sd">        Warning</span>
+<span class="sd">        -------</span>
+<span class="sd">        By default, the :~mlens.parallel.backend.ParallelProcessing.map` runs</span>
+<span class="sd">        on a shallow cache, where all tasks share the same cache. As such, the</span>
+<span class="sd">        user must ensure that each task has a unique name, or cache retrieval</span>
+<span class="sd">        will be corrupted. To commit a seperate sub-cache to each task, set</span>
+<span class="sd">        ``split=True``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        caller : iterable</span>
+<span class="sd">            Iterable that generates accepted task instances. Caller should be</span>
+<span class="sd">            a child of the :class:`~mlens.parallel.base.BaseBackend` class,</span>
+<span class="sd">            and tasks need to implement an appropriate call method.</span>
+
+<span class="sd">        job : str</span>
+<span class="sd">            type of job to complete with each task. One of ``&#39;fit&#39;``,</span>
+<span class="sd">            ``&#39;predict&#39;`` and ``&#39;transform&#39;``.</span>
+
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples,], optional.</span>
+<span class="sd">            targets. Required for fit, should not be passed to predict or</span>
+<span class="sd">            transform jobs.</span>
+
+<span class="sd">        path : str or dict, optional</span>
+<span class="sd">            Custom estimation cache. Pass a string to force use of persistent</span>
+<span class="sd">            cache on disk. Pass a ``dict`` for in-memory cache (requires</span>
+<span class="sd">            ``backend != &#39;multiprocessing&#39;``.</span>
+
+<span class="sd">        return_preds : bool or list, optional</span>
+<span class="sd">            whether to return prediction ouput. If ``True``, final prediction</span>
+<span class="sd">            is returned. Alternatively, pass a list of task names for which</span>
+<span class="sd">            output should be returned.</span>
+
+<span class="sd">        warm_start : bool, optional</span>
+<span class="sd">            whether to re-use previous input data initialization. Useful if</span>
+<span class="sd">            repeated jobs are made on the same input arrays.</span>
+
+<span class="sd">        split : bool, default = False</span>
+<span class="sd">            whether to commit a separate sub-cache to each task.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            optional keyword arguments to pass onto each task.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out: array-like, list, optional</span>
+<span class="sd">            Prediction array(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+            <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">wart_start</span><span class="p">,</span>
+            <span class="n">return_preds</span><span class="o">=</span><span class="n">return_preds</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">caller</span><span class="o">=</span><span class="n">caller</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ParallelProcessing.stack"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelProcessing.stack">[docs]</a>    <span class="k">def</span> <span class="nf">stack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">wart_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stacked parallel task mapping.</span>
+
+<span class="sd">        Run stacked tasks in caller in parallel.</span>
+
+<span class="sd">        This method runs a stack of tasks as a stack, where the output of</span>
+<span class="sd">        each task is the input to the next.</span>
+
+<span class="sd">        Warning</span>
+<span class="sd">        -------</span>
+<span class="sd">        By default, the :func:`~mlens.parallel.backend.ParallelProcessing.stack`</span>
+<span class="sd">        method runs on a deep cache, where each tasks has a separate cache.</span>
+<span class="sd">        As such, the user must ensure that tasks don&#39;t depend on data cached</span>
+<span class="sd">        by previous tasks. To run all tasks in a single sub-cache, set</span>
+<span class="sd">        ``split=False``.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        caller : iterable</span>
+<span class="sd">            Iterable that generates accepted task instances. Caller should be</span>
+<span class="sd">            a child of the :class:`~mlens.parallel.base.BaseBackend` class,</span>
+<span class="sd">            and tasks need to implement an appropriate call method.</span>
+
+<span class="sd">        job : str</span>
+<span class="sd">            type of job to complete with each task. One of ``&#39;fit&#39;``,</span>
+<span class="sd">            ``&#39;predict&#39;`` and ``&#39;transform&#39;``.</span>
+
+<span class="sd">        X : array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y : array-like of shape [n_samples,], optional.</span>
+<span class="sd">            targets. Required for fit, should not be passed to predict or</span>
+<span class="sd">            transform jobs.</span>
+
+<span class="sd">        path : str or dict, optional</span>
+<span class="sd">            Custom estimation cache. Pass a string to force use of persistent</span>
+<span class="sd">            cache on disk. Pass a ``dict`` for in-memory cache (requires</span>
+<span class="sd">            ``backend != &#39;multiprocessing&#39;``.</span>
+
+<span class="sd">        return_preds : bool or list, optional</span>
+<span class="sd">            whether to return prediction output. If ``True``, final prediction</span>
+<span class="sd">            is returned. Alternatively, pass a list of task names for which</span>
+<span class="sd">            output should be returned.</span>
+
+<span class="sd">        warm_start : bool, optional</span>
+<span class="sd">            whether to re-use previous input data initialization. Useful if</span>
+<span class="sd">            repeated jobs are made on the same input arrays.</span>
+
+<span class="sd">        split : bool, default = True</span>
+<span class="sd">            whether to commit a separate sub-cache to each task.</span>
+
+<span class="sd">        **kwargs : optional</span>
+<span class="sd">            optional keyword arguments to pass onto each task.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out: array-like, list, optional</span>
+<span class="sd">            Prediction array(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+            <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">wart_start</span><span class="p">,</span>
+            <span class="n">return_preds</span><span class="o">=</span><span class="n">return_preds</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">caller</span><span class="o">=</span><span class="n">caller</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ParallelProcessing.process"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelProcessing.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process job.</span>
+
+<span class="sd">        Main method for processing a caller. Requires the instance to be</span>
+<span class="sd">        setup by a prior call to</span>
+<span class="sd">        :func:`~mlens.parallel.backend.BaseProcessor.initialize`.</span>
+
+<span class="sd">        .. seealso::</span>
+<span class="sd">            :func:`~mlens.parallel.backend.ParallelProcessing.map`,</span>
+<span class="sd">            :func:`~mlens.parallel.backend.ParallelProcessing.stack`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        caller : iterable</span>
+<span class="sd">            Iterable that generates accepted task instances. Caller should be</span>
+<span class="sd">            a child of the :class:`~mlens.parallel.base.BaseBackend` class,</span>
+<span class="sd">            and tasks need to implement an appropriate call method.</span>
+
+<span class="sd">        out : dict</span>
+<span class="sd">            A dictionary with output parameters. Pass an empty dict for no</span>
+<span class="sd">            output. See</span>
+<span class="sd">            :func:`~mlens.parallel.backend.BaseProcessor.initialize` for more</span>
+<span class="sd">            details.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        out: array-like, list, optional</span>
+<span class="sd">            Prediction array(s).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">check_initialized</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="n">return_names</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;return_names&#39;</span><span class="p">,</span> <span class="p">[])</span>
+        <span class="n">return_final</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;return_final&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span> <span class="k">if</span> <span class="n">return_names</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="n">tf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">dir</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">with</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">temp_folder</span><span class="o">=</span><span class="n">tf</span><span class="p">,</span> <span class="n">max_nbytes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+                      <span class="n">backend</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span> <span class="k">as</span> <span class="n">parallel</span><span class="p">:</span>
+
+            <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">caller</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_partial_process</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">return_names</span><span class="p">:</span>
+                    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_preds</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">_dtype</span><span class="p">(</span><span class="n">task</span><span class="p">)))</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">return_final</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_preds</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">_dtype</span><span class="p">(</span><span class="n">task</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+    <span class="k">def</span> <span class="nf">_partial_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">parallel</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process given task&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span> <span class="o">==</span> <span class="s1">&#39;fit&#39;</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+        <span class="n">task</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="o">.</span><span class="n">__no_output__</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_gen_prediction_array</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span><span class="p">)</span>
+
+        <span class="n">task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">parallel</span><span class="o">=</span><span class="n">parallel</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="o">.</span><span class="n">__no_output__</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="s1">&#39;n_feature_prop&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_propagate_features</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_propagate_features</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Propagate features from input array to output array.&quot;&quot;&quot;</span>
+        <span class="n">p_out</span><span class="p">,</span> <span class="n">p_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span>
+
+        <span class="c1"># Check for loss of obs between layers (i.e. with blendindex)</span>
+        <span class="n">n_in</span><span class="p">,</span> <span class="n">n_out</span> <span class="o">=</span> <span class="n">p_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p_out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_in</span> <span class="o">-</span> <span class="n">n_out</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">issparse</span><span class="p">(</span><span class="n">p_in</span><span class="p">):</span>
+            <span class="c1"># Simple item setting</span>
+            <span class="n">p_out</span><span class="p">[:,</span> <span class="p">:</span><span class="n">task</span><span class="o">.</span><span class="n">n_feature_prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_in</span><span class="p">[</span><span class="n">r</span><span class="p">:,</span> <span class="n">task</span><span class="o">.</span><span class="n">propagate_features</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Need to populate propagated features using scipy sparse hstack</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="n">hstack</span><span class="p">([</span><span class="n">p_in</span><span class="p">[</span><span class="n">r</span><span class="p">:,</span> <span class="n">task</span><span class="o">.</span><span class="n">propagate_features</span><span class="p">],</span>
+                                           <span class="n">p_out</span><span class="p">[:,</span> <span class="n">task</span><span class="o">.</span><span class="n">n_feature_prop</span><span class="p">:]]</span>
+                                          <span class="p">)</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_gen_prediction_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">threading</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate prediction array either in-memory or persist to disk.&quot;&quot;&quot;</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">task</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">threading</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">_dtype</span><span class="p">(</span><span class="n">task</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">_out_array.mmap&#39;</span> <span class="o">%</span> <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">(</span>
+                    <span class="n">filename</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">_dtype</span><span class="p">(</span><span class="n">task</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">OSError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot create prediction matrix of shape (&quot;</span>
+                    <span class="s2">&quot;</span><span class="si">%i</span><span class="s2">, </span><span class="si">%i</span><span class="s2">), size </span><span class="si">%i</span><span class="s2"> MBs, for </span><span class="si">%s</span><span class="s2">.</span><span class="se">\n</span><span class="s2"> Details:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span>
+                    <span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span>
+                     <span class="n">task</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">exc</span><span class="p">))</span>
+
+<div class="viewcode-block" id="ParallelProcessing.get_preds"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelProcessing.get_preds">[docs]</a>    <span class="k">def</span> <span class="nf">get_preds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return prediction matrix.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dtype : numpy dtype object, optional</span>
+<span class="sd">            data type to return</span>
+
+<span class="sd">        order : str (default = &#39;C&#39;)</span>
+<span class="sd">            data order. See :class:`numpy.asarray` for details.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        P: array-like</span>
+<span class="sd">            Prediction array</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;job&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ParallelProcessingError</span><span class="p">(</span>
+                <span class="s2">&quot;Processor has been terminated:</span><span class="se">\n</span><span class="s2">cannot retrieve final &quot;</span>
+                <span class="s2">&quot;prediction array from cache.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dtype</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get_dtype</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span></div></div>
+
+
+<span class="c1">###############################################################################</span>
+<div class="viewcode-block" id="ParallelEvaluation"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelEvaluation">[docs]</a><span class="k">class</span> <span class="nc">ParallelEvaluation</span><span class="p">(</span><span class="n">BaseProcessor</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Parallel cross-validation engine.</span>
+
+<span class="sd">    Minimal parallel processing engine. Similar to :class:`ParallelProcessing`,</span>
+<span class="sd">    but offers less features, only fits the *callers* indexer, and excepts</span>
+<span class="sd">    no task output.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ParallelEvaluation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParallelEvaluation.process"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelEvaluation.process">[docs]</a>    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">case</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Process caller.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        caller: iterable</span>
+<span class="sd">            Iterable for evaluation job.s Expected caller is a</span>
+<span class="sd">            :class:`Evaluator` instance.</span>
+
+<span class="sd">        case: str</span>
+<span class="sd">            evaluation case to run on the evaluator. One of</span>
+<span class="sd">            ``&#39;preprocess&#39;`` and ``&#39;evaluate&#39;``.</span>
+
+<span class="sd">        X: array-like of shape [n_samples, n_features]</span>
+<span class="sd">            Input data</span>
+
+<span class="sd">        y: array-like of shape [n_samples,], optional.</span>
+<span class="sd">            targets. Required for fit, should not be passed to predict or</span>
+<span class="sd">            transform jobs.</span>
+
+<span class="sd">        path: str or dict, optional</span>
+<span class="sd">            Custom estimation cache. Pass a string to force use of persistent</span>
+<span class="sd">            cache on disk. Pass a ``dict`` for in-memory cache (requires</span>
+<span class="sd">            ``backend != &#39;multiprocessing&#39;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initialize</span><span class="p">(</span>
+            <span class="n">job</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">check_initialized</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Use context manager to ensure same parallel job during entire process</span>
+        <span class="n">tf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">dir</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">with</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">temp_folder</span><span class="o">=</span><span class="n">tf</span><span class="p">,</span> <span class="n">max_nbytes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                      <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
+                      <span class="n">backend</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span> <span class="k">as</span> <span class="n">parallel</span><span class="p">:</span>
+
+            <span class="n">caller</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>
+            <span class="n">caller</span><span class="p">(</span><span class="n">parallel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">case</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

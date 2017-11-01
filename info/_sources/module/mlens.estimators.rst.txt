@@ -1,0 +1,17 @@
+mlens\.estimators package
+=========================
+
+Submodules
+----------
+
+.. toctree::
+
+   mlens.estimators.estimators
+
+Module contents
+---------------
+
+.. automodule:: mlens.estimators
+    :members:
+    :undoc-members:
+    :show-inheritance:

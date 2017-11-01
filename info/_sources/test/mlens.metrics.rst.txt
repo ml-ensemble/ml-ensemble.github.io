@@ -1,0 +1,30 @@
+mlens\.metrics package
+======================
+
+Submodules
+----------
+
+mlens\.metrics\.metrics module
+------------------------------
+
+.. automodule:: mlens.metrics.metrics
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+mlens\.metrics\.utils module
+----------------------------
+
+.. automodule:: mlens.metrics.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: mlens.metrics
+    :members:
+    :undoc-members:
+    :show-inheritance:

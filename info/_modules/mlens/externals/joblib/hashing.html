@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.joblib.hashing &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.externals.joblib.hashing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.externals.joblib.hashing</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Fast cryptographic hash of Python objects, with a special case for fast</span>
+<span class="sd">hashing of numpy arrays.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Author: Gael Varoquaux &lt;gael dot varoquaux at normalesup dot org&gt;</span>
+<span class="c1"># Copyright (c) 2009 Gael Varoquaux</span>
+<span class="c1"># License: BSD Style, 3 clauses.</span>
+
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">types</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">decimal</span>
+
+<span class="kn">from</span> <span class="nn">._compat</span> <span class="k">import</span> <span class="n">_bytes_or_unicode</span><span class="p">,</span> <span class="n">PY3_OR_LATER</span>
+
+
+<span class="k">if</span> <span class="n">PY3_OR_LATER</span><span class="p">:</span>
+    <span class="n">Pickler</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">_Pickler</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">Pickler</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">Pickler</span>
+
+
+<span class="k">class</span> <span class="nc">_ConsistentSet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Class used to ensure the hash of Sets is preserved</span>
+<span class="sd">        whatever the order of its items.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_sequence</span><span class="p">):</span>
+        <span class="c1"># Forces order of elements in set to ensure consistent hash.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Trying first to order the set assuming the type of elements is</span>
+            <span class="c1"># consistent and orderable.</span>
+            <span class="c1"># This fails on python 3 when elements are unorderable</span>
+            <span class="c1"># but we keep it in a try as it&#39;s faster.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">set_sequence</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">decimal</span><span class="o">.</span><span class="n">InvalidOperation</span><span class="p">):</span>
+            <span class="c1"># If elements are unorderable, sorting them using their hash.</span>
+            <span class="c1"># This is slower but works in any case.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_sequence</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">((</span><span class="nb">hash</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">set_sequence</span><span class="p">))</span>
+
+
+<span class="k">class</span> <span class="nc">_MyHash</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Class used to hash objects that won&#39;t normally pickle &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+
+
+<div class="viewcode-block" id="Hasher"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.Hasher">[docs]</a><span class="k">class</span> <span class="nc">Hasher</span><span class="p">(</span><span class="n">Pickler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; A subclass of pickler, to do cryptographic hashing, rather than</span>
+<span class="sd">        pickling.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hash_name</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stream</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+        <span class="c1"># By default we want a pickle protocol that only changes with</span>
+        <span class="c1"># the major python version and not the minor one</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">DEFAULT_PROTOCOL</span> <span class="k">if</span> <span class="n">PY3_OR_LATER</span>
+                    <span class="k">else</span> <span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+        <span class="n">Pickler</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">)</span>
+        <span class="c1"># Initialise the hash obj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">hash_name</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Hasher.hash"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.Hasher.hash">[docs]</a>    <span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">return_digest</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">pickle</span><span class="o">.</span><span class="n">PicklingError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">args</span> <span class="o">+=</span> <span class="p">(</span><span class="s1">&#39;PicklingError while hashing </span><span class="si">%r</span><span class="s1">: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">e</span><span class="p">),)</span>
+            <span class="k">raise</span>
+        <span class="n">dumps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dumps</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">return_digest</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Hasher.save"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.Hasher.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">,</span> <span class="nb">type</span><span class="p">({}</span><span class="o">.</span><span class="n">pop</span><span class="p">))):</span>
+            <span class="c1"># the Pickler cannot pickle instance methods; here we decompose</span>
+            <span class="c1"># them into components that make them uniquely identifiable</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;__func__&#39;</span><span class="p">):</span>
+                <span class="n">func_name</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__func__</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func_name</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="n">inst</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__self__</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span> <span class="o">==</span> <span class="nb">type</span><span class="p">(</span><span class="n">pickle</span><span class="p">):</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">_MyHash</span><span class="p">(</span><span class="n">func_name</span><span class="p">,</span> <span class="n">inst</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">inst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># type(None) or type(module) do not pickle</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">_MyHash</span><span class="p">(</span><span class="n">func_name</span><span class="p">,</span> <span class="n">inst</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">cls</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__self__</span><span class="o">.</span><span class="vm">__class__</span>
+                <span class="n">obj</span> <span class="o">=</span> <span class="n">_MyHash</span><span class="p">(</span><span class="n">func_name</span><span class="p">,</span> <span class="n">inst</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
+        <span class="n">Pickler</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Hasher.memoize"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.Hasher.memoize">[docs]</a>    <span class="k">def</span> <span class="nf">memoize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="c1"># We want hashing to be sensitive to value instead of reference.</span>
+        <span class="c1"># For example we want [&#39;aa&#39;, &#39;aa&#39;] and [&#39;aa&#39;, &#39;aaZ&#39;[:2]]</span>
+        <span class="c1"># to hash to the same value and that&#39;s why we disable memoization</span>
+        <span class="c1"># for strings</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">_bytes_or_unicode</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="n">Pickler</span><span class="o">.</span><span class="n">memoize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span></div>
+
+    <span class="c1"># The dispatch table of the pickler is not accessible in Python</span>
+    <span class="c1"># 3, as these lines are only bugware for IPython, we skip them.</span>
+<div class="viewcode-block" id="Hasher.save_global"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.Hasher.save_global">[docs]</a>    <span class="k">def</span> <span class="nf">save_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pack</span><span class="o">=</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">):</span>
+        <span class="c1"># We have to override this method in order to deal with objects</span>
+        <span class="c1"># defined interactively in IPython that are not injected in</span>
+        <span class="c1"># __main__</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">pack</span><span class="o">=</span><span class="n">pack</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="k">del</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;pack&#39;</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">Pickler</span><span class="o">.</span><span class="n">save_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">pickle</span><span class="o">.</span><span class="n">PicklingError</span><span class="p">:</span>
+            <span class="n">Pickler</span><span class="o">.</span><span class="n">save_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;__module__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">module</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+                <span class="n">my_name</span> <span class="o">=</span> <span class="n">name</span>
+                <span class="k">if</span> <span class="n">my_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">my_name</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__name__</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">my_name</span><span class="p">):</span>
+                    <span class="c1"># IPython doesn&#39;t inject the variables define</span>
+                    <span class="c1"># interactively in __main__</span>
+                    <span class="nb">setattr</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span> <span class="n">my_name</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span></div>
+
+    <span class="n">dispatch</span> <span class="o">=</span> <span class="n">Pickler</span><span class="o">.</span><span class="n">dispatch</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># builtin</span>
+    <span class="n">dispatch</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="nb">len</span><span class="p">)]</span> <span class="o">=</span> <span class="n">save_global</span>
+    <span class="c1"># type</span>
+    <span class="n">dispatch</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">)]</span> <span class="o">=</span> <span class="n">save_global</span>
+    <span class="c1"># classobj</span>
+    <span class="n">dispatch</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">Pickler</span><span class="p">)]</span> <span class="o">=</span> <span class="n">save_global</span>
+    <span class="c1"># function</span>
+    <span class="n">dispatch</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">)]</span> <span class="o">=</span> <span class="n">save_global</span>
+
+    <span class="k">def</span> <span class="nf">_batch_setitems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">items</span><span class="p">):</span>
+        <span class="c1"># forces order of keys in dict to ensure consistent hash.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Trying first to compare dict assuming the type of keys is</span>
+            <span class="c1"># consistent and orderable.</span>
+            <span class="c1"># This fails on python 3 when keys are unorderable</span>
+            <span class="c1"># but we keep it in a try as it&#39;s faster.</span>
+            <span class="n">Pickler</span><span class="o">.</span><span class="n">_batch_setitems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">)))</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c1"># If keys are unorderable, sorting them using their hash. This is</span>
+            <span class="c1"># slower but works in any case.</span>
+            <span class="n">Pickler</span><span class="o">.</span><span class="n">_batch_setitems</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">iter</span><span class="p">(</span><span class="nb">sorted</span><span class="p">((</span><span class="nb">hash</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">v</span><span class="p">)</span>
+                                                      <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">items</span><span class="p">)))</span>
+
+<div class="viewcode-block" id="Hasher.save_set"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.Hasher.save_set">[docs]</a>    <span class="k">def</span> <span class="nf">save_set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_items</span><span class="p">):</span>
+        <span class="c1"># forces order of items in Set to ensure consistent hash</span>
+        <span class="n">Pickler</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_ConsistentSet</span><span class="p">(</span><span class="n">set_items</span><span class="p">))</span></div>
+
+    <span class="n">dispatch</span><span class="p">[</span><span class="nb">type</span><span class="p">(</span><span class="nb">set</span><span class="p">())]</span> <span class="o">=</span> <span class="n">save_set</span></div>
+
+
+<div class="viewcode-block" id="NumpyHasher"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.NumpyHasher">[docs]</a><span class="k">class</span> <span class="nc">NumpyHasher</span><span class="p">(</span><span class="n">Hasher</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Special case the hasher for when numpy is loaded.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hash_name</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span> <span class="n">coerce_mmap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Parameters</span>
+<span class="sd">            ----------</span>
+<span class="sd">            hash_name: string</span>
+<span class="sd">                The hash algorithm to be used</span>
+<span class="sd">            coerce_mmap: boolean</span>
+<span class="sd">                Make no difference between np.memmap and np.ndarray</span>
+<span class="sd">                objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coerce_mmap</span> <span class="o">=</span> <span class="n">coerce_mmap</span>
+        <span class="n">Hasher</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hash_name</span><span class="o">=</span><span class="n">hash_name</span><span class="p">)</span>
+        <span class="c1"># delayed import of numpy, to avoid tight coupling</span>
+        <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">np</span> <span class="o">=</span> <span class="n">np</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">np</span><span class="p">,</span> <span class="s1">&#39;getbuffer&#39;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_getbuffer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">getbuffer</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_getbuffer</span> <span class="o">=</span> <span class="nb">memoryview</span>
+
+<div class="viewcode-block" id="NumpyHasher.save"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.NumpyHasher.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Subclass the save method, to hash ndarray subclass, rather</span>
+<span class="sd">            than pickling them. Off course, this is a total abuse of</span>
+<span class="sd">            the Pickler class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">hasobject</span><span class="p">:</span>
+            <span class="c1"># Compute a hash of the object</span>
+            <span class="c1"># The update function of the hash requires a c_contiguous buffer.</span>
+            <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">():</span>
+                <span class="c1"># 0d arrays need to be flattened because viewing them as bytes</span>
+                <span class="c1"># raises a ValueError exception.</span>
+                <span class="n">obj_c_contiguous</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="n">obj</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">c_contiguous</span><span class="p">:</span>
+                <span class="n">obj_c_contiguous</span> <span class="o">=</span> <span class="n">obj</span>
+            <span class="k">elif</span> <span class="n">obj</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">f_contiguous</span><span class="p">:</span>
+                <span class="n">obj_c_contiguous</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">T</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Cater for non-single-segment arrays: this creates a</span>
+                <span class="c1"># copy, and thus aleviates this issue.</span>
+                <span class="c1"># XXX: There might be a more efficient way of doing this</span>
+                <span class="n">obj_c_contiguous</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+            <span class="c1"># memoryview is not supported for some dtypes, e.g. datetime64, see</span>
+            <span class="c1"># https://github.com/numpy/numpy/issues/4983. The</span>
+            <span class="c1"># workaround is to view the array as bytes before</span>
+            <span class="c1"># taking the memoryview.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_getbuffer</span><span class="p">(</span><span class="n">obj_c_contiguous</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)))</span>
+
+            <span class="c1"># We store the class, to be able to distinguish between</span>
+            <span class="c1"># Objects with the same binary content, but different</span>
+            <span class="c1"># classes.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">coerce_mmap</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">):</span>
+                <span class="c1"># We don&#39;t make the difference between memmap and</span>
+                <span class="c1"># normal ndarrays, to be able to reload previously</span>
+                <span class="c1"># computed results with memmap.</span>
+                <span class="n">klass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">klass</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span>
+            <span class="c1"># We also return the dtype and the shape, to distinguish</span>
+            <span class="c1"># different views on the same data with different dtypes.</span>
+
+            <span class="c1"># The object will be pickled by the pickler hashed at the end.</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;HASHED&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">strides</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+            <span class="c1"># Atomic dtype objects are interned by their default constructor:</span>
+            <span class="c1"># np.dtype(&#39;f8&#39;) is np.dtype(&#39;f8&#39;)</span>
+            <span class="c1"># This interning is not maintained by a</span>
+            <span class="c1"># pickle.loads + pickle.dumps cycle, because __reduce__</span>
+            <span class="c1"># uses copy=True in the dtype constructor. This</span>
+            <span class="c1"># non-deterministic behavior causes the internal memoizer</span>
+            <span class="c1"># of the hasher to generate different hash values</span>
+            <span class="c1"># depending on the history of the dtype object.</span>
+            <span class="c1"># To prevent the hash from being sensitive to this, we use</span>
+            <span class="c1"># .descr which is a full (and never interned) description of</span>
+            <span class="c1"># the array dtype according to the numpy doc.</span>
+            <span class="n">klass</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__class__</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="p">(</span><span class="n">klass</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;HASHED&#39;</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">descr</span><span class="p">))</span>
+        <span class="n">Hasher</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="hash"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.hashing.hash">[docs]</a><span class="k">def</span> <span class="nf">hash</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">hash_name</span><span class="o">=</span><span class="s1">&#39;md5&#39;</span><span class="p">,</span> <span class="n">coerce_mmap</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Quick calculation of a hash to identify uniquely Python objects</span>
+<span class="sd">        containing numpy arrays.</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        -----------</span>
+<span class="sd">        hash_name: &#39;md5&#39; or &#39;sha1&#39;</span>
+<span class="sd">            Hashing algorithm used. sha1 is supposedly safer, but md5 is</span>
+<span class="sd">            faster.</span>
+<span class="sd">        coerce_mmap: boolean</span>
+<span class="sd">            Make no difference between np.memmap and np.ndarray</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="s1">&#39;numpy&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+        <span class="n">hasher</span> <span class="o">=</span> <span class="n">NumpyHasher</span><span class="p">(</span><span class="n">hash_name</span><span class="o">=</span><span class="n">hash_name</span><span class="p">,</span> <span class="n">coerce_mmap</span><span class="o">=</span><span class="n">coerce_mmap</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hasher</span> <span class="o">=</span> <span class="n">Hasher</span><span class="p">(</span><span class="n">hash_name</span><span class="o">=</span><span class="n">hash_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hasher</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

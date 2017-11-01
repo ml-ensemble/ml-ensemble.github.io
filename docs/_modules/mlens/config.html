@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.config &mdash; mlens 0.2.0.dev0 documentation</title>
+  <title>mlens.config &mdash; mlens 0.2.0 documentation</title>
   
 
   
@@ -32,9 +32,9 @@
   
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
   
-    <link rel="stylesheet" href="../../_static/css/mlens-theme.css" type="text/css" />
-  
     <link rel="stylesheet" href="../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/mlens-theme.css" type="text/css" />
   
     <link rel="stylesheet" href="../../_static/css/sphinx-glr.css" type="text/css" />
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="mlens 0.2.0.dev0 documentation" href="../../index.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../index.html"/>
         <link rel="up" title="Module code" href="../index.html"/> 
 
   
@@ -100,162 +100,163 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../start/install.html">Install</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../start/install.html#bleeding-edge">Bleeding edge</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../start/install.html#dependencies">Dependencies</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../config.html">mlens.config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#dtype">dtype</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#get-dtype"><span class="hidden-section">get_dtype</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#set-dtype"><span class="hidden-section">set_dtype</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../start/install.html#test-build">Test build</a></li>
-</ul>
-<p class="caption"><span class="caption-text">High-level API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/start.html">Getting started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/start.html#preliminaries">Preliminaries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#tmpdir">tmpdir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#get-tmpdir"><span class="hidden-section">get_tmpdir</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#set-tmpdir"><span class="hidden-section">set_tmpdir</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/start.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#backend">backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#get-backend"><span class="hidden-section">get_backend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#set-backend"><span class="hidden-section">set_backend</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#start-method">start_method</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#get-start-method"><span class="hidden-section">get_start_method</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#set-start-method"><span class="hidden-section">set_start_method</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/advanced.html">Advanced features tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#prefix">prefix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#get-prefix"><span class="hidden-section">get_prefix</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#set-prefix"><span class="hidden-section">set_prefix</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../start/ensembles.html">Ready-made ensemble classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../start/ensembles.html#super-learner">Super Learner</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../start/ensembles.html#references">References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../start/ensembles.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#ivals">ivals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#get-ivals"><span class="hidden-section">get_ivals</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#set-ivals"><span class="hidden-section">set_ivals</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../start/ensembles.html#subsemble">Subsemble</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../start/ensembles.html#id8">References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../start/ensembles.html#id10">Notes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Mechanics</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/learner.html">Learner Mechanics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/learner.html#basics">Basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/learner.html#partitioning">Partitioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../config.html#utility">Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../config.html#clear-cache"><span class="hidden-section">clear_cache</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/layer.html">Layer Mechanics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ensemble.html">mlens.ensemble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ensemble.html#base-ensemble-classes">Base ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ensemble.html#sequential"><span class="hidden-section">Sequential</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ensemble.html#baseensemble"><span class="hidden-section">BaseEnsemble</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ensemble.html#ready-made-ensemble-classes">Ready-made ensemble classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/parallel.html">Parallel Mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/sequential.html">Sequential Mechanics</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Details</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../benchmarks/memory.html">Memory consumption</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../estimators.html">mlens.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../estimators.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../estimators.html#learnerestimator"><span class="hidden-section">LearnerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../estimators.html#transformerestimator"><span class="hidden-section">TransformerEstimator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../estimators.html#layerensemble"><span class="hidden-section">LayerEnsemble</span></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model_selection.html">mlens.model_selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../model_selection.html#baseeval"><span class="hidden-section">BaseEval</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_selection.html#evaluator"><span class="hidden-section">Evaluator</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_selection.html#benchmark"><span class="hidden-section">Benchmark</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_selection.html#id1"><span class="hidden-section">benchmark</span></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../benchmarks/benchmarks.html#references">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mod_index.html">mlens.index</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../mod_index.html#indexers">Indexers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#baseindex"><span class="hidden-section">BaseIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#foldindex"><span class="hidden-section">FoldIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#blendindex"><span class="hidden-section">BlendIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#subsetindex"><span class="hidden-section">SubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#clusteredsubsetindex"><span class="hidden-section">ClusteredSubsetIndex</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#fullindex"><span class="hidden-section">FullIndex</span></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../benchmarks/scaling.html">Scale benchmarks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../deep/dev.html">Hacking ML-Ensemble</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../deep/troubleshooting.html">Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../deep/api.html">API</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../deep/api.html#front-end-api">Front-end API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#model-selection">Model Selection</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#preprocessing">Preprocessing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#visualization">Visualization</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../deep/api.html#low-level-api">Low-level API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../deep/api.html#indexers">Indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../mod_index.html#utilities">Utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#prune-train"><span class="hidden-section">prune_train</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#partition"><span class="hidden-section">partition</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../mod_index.html#make-tuple"><span class="hidden-section">make_tuple</span></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../deep/mlens_configs.html">Global configurations</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Additional Information</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/license.html">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../misc/updates.html">Change log</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Package index</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../module/modules.html">mlens</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../module/mlens.html">mlens package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../module/mlens.html#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.index.html">mlens.index package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.metrics.html">mlens.metrics package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.parallel.html">mlens.parallel package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.testing.html">mlens.testing package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.utils.html">mlens.utils package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.visualization.html">mlens.visualization package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parallel.html">mlens.parallel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../parallel.html#graph-nodes">Graph Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#layer"><span class="hidden-section">Layer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#learner"><span class="hidden-section">Learner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#transformer"><span class="hidden-section">Transformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#evallearner"><span class="hidden-section">EvalLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#evaltransformer"><span class="hidden-section">EvalTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#basenode"><span class="hidden-section">BaseNode</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#sublearner"><span class="hidden-section">SubLearner</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#subtransformer"><span class="hidden-section">SubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#evalsubtransformer"><span class="hidden-section">EvalSubTransformer</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#indexedestimator"><span class="hidden-section">IndexedEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#cache"><span class="hidden-section">Cache</span></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../module/mlens.html#submodules">Submodules</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../module/mlens.config.html">mlens.config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../parallel.html#handles">Handles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#group"><span class="hidden-section">Group</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#pipeline"><span class="hidden-section">Pipeline</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#make-group"><span class="hidden-section">make_group</span></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../module/mlens.html#module-mlens">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../parallel.html#wrappers">Wrappers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#estimatormixin"><span class="hidden-section">EstimatorMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#run"><span class="hidden-section">run</span></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../parallel.html#backend">Backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#baseprocessor"><span class="hidden-section">BaseProcessor</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#parallelprocessing"><span class="hidden-section">ParallelProcessing</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#parallelevaluation"><span class="hidden-section">ParallelEvaluation</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#job"><span class="hidden-section">Job</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#dump-array"><span class="hidden-section">dump_array</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../parallel.html#base-classes">Base classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#basebackend"><span class="hidden-section">BaseBackend</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#baseparallel"><span class="hidden-section">BaseParallel</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#baseestimator"><span class="hidden-section">BaseEstimator</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#basestacker"><span class="hidden-section">BaseStacker</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../parallel.html#mixins">Mixins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#parammixin"><span class="hidden-section">ParamMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#indexmixin"><span class="hidden-section">IndexMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#outputmixin"><span class="hidden-section">OutputMixin</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../parallel.html#probamixin"><span class="hidden-section">ProbaMixin</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">mlens.preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#subset"><span class="hidden-section">Subset</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preprocessing.html#shift"><span class="hidden-section">Shift</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metrics.html">mlens.metrics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#data"><span class="hidden-section">Data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#assemble-data"><span class="hidden-section">assemble_data</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#assemble-table"><span class="hidden-section">assemble_table</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#make-scorer"><span class="hidden-section">make_scorer</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#rmse"><span class="hidden-section">rmse</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#mape"><span class="hidden-section">mape</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../metrics.html#wape"><span class="hidden-section">wape</span></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../visualization.html">mlens.visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html#corrmat"><span class="hidden-section">corrmat</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html#clustered-corrmap"><span class="hidden-section">clustered_corrmap</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html#corr-x-y"><span class="hidden-section">corr_X_y</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html#pca-plot"><span class="hidden-section">pca_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html#pca-comp-plot"><span class="hidden-section">pca_comp_plot</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualization.html#exp-var-plot"><span class="hidden-section">exp_var_plot</span></a></li>
 </ul>
 </li>
 </ul>
@@ -322,8 +323,44 @@
            <div itemprop="articleBody">
             
   <h1>Source code for mlens.config</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Global configurations.</span>
+<span></span><span class="sd">&quot;&quot;&quot;ML-Ensemble</span>
+
+<span class="sd">:author: Sebastian Flennerhag</span>
+<span class="sd">:license: MIT</span>
+<span class="sd">:copyright: 2017</span>
+
+<span class="sd">Global backend configurations.</span>
+
+<span class="sd">Variables</span>
+
+<span class="sd">1. ``DTYPE``: data type of prediction arrays. Must be a numpy dtype.</span>
+<span class="sd">   Default is ``float32``.</span>
+
+<span class="sd">2. ``TMPDIR``: path to directory where temprorary caches will be hosted.</span>
+<span class="sd">   Default is to use system ``tmp`` structure.</span>
+
+<span class="sd">3. ``PREFIX``: cache prefix. Default is ``&#39;.mlens_tmp_cache_&#39;``</span>
+
+<span class="sd">4. ``BACKEND``: global default backend. Default is ``&#39;threading&#39;``</span>
+
+<span class="sd">5. ``START_METHOD``: global start method (if ``backend=&#39;multiprocessing&#39;``)</span>
+<span class="sd">   Default is ``&#39;fork&#39;``</span>
+
+<span class="sd">6. ``VERBOSE``: verbose import. Set to ``Y`` for verbose. Needs to be</span>
+<span class="sd">   set before import (i.e. ``export MLENS_VERBOSE=0``).</span>
+
+<span class="sd">7. ``IVALS``: load exception handling interval. Default is ``(0.01, 120)``.</span>
+
+<span class="sd">Environmental variables can be set by ::</span>
+
+<span class="sd">    export MLENS_[VARIABLE]=VALUE</span>
+
+<span class="sd">For changing defaults during a session, use</span>
+<span class="sd">``set_[variable]`` and ``get_[variable]``, where ``[variable]`` is replaced</span>
+<span class="sd">with the lower case name of the environmental variable to change.</span>
+
+<span class="sd">Changing global configurations in-session is experimental: Please report any</span>
+<span class="sd">unexpected behavior.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># pylint: disable=protected-access</span>
 <span class="c1"># pylint: disable=global-statement</span>
@@ -345,23 +382,56 @@
 <span class="c1">###############################################################################</span>
 <span class="c1"># Variables</span>
 
-<span class="n">DTYPE</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">numpy</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_DTYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">))</span>
-<span class="n">TMPDIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_TMPDIR&#39;</span><span class="p">,</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
-<span class="n">PREFIX</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_PREFIX&#39;</span><span class="p">,</span> <span class="s2">&quot;.mlens_tmp_cache_&quot;</span><span class="p">)</span>
-<span class="n">BACKEND</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_BACKEND&#39;</span><span class="p">,</span> <span class="s1">&#39;threading&#39;</span><span class="p">)</span>
-<span class="n">START_METHOD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_START_METHOD&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">VERBOSE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">_DTYPE</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">numpy</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_DTYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">))</span>
+<span class="n">_TMPDIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_TMPDIR&#39;</span><span class="p">,</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">())</span>
+<span class="n">_PREFIX</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_PREFIX&#39;</span><span class="p">,</span> <span class="s2">&quot;.mlens_tmp_cache_&quot;</span><span class="p">)</span>
+<span class="n">_BACKEND</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_BACKEND&#39;</span><span class="p">,</span> <span class="s1">&#39;threading&#39;</span><span class="p">)</span>
+<span class="n">_START_METHOD</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_START_METHOD&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">_VERBOSE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_VERBOSE&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 
-<span class="n">IVALS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_IVALS&#39;</span><span class="p">,</span> <span class="s1">&#39;0.01_120&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
-<span class="n">IVALS</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">IVALS</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">IVALS</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">_IVALS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MLENS_IVALS&#39;</span><span class="p">,</span> <span class="s1">&#39;0.01_120&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
+<span class="n">_IVALS</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">_IVALS</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">_IVALS</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
 <span class="n">_PY_VERSION</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">sysconfig</span><span class="o">.</span><span class="n">_PY_VERSION_SHORT</span><span class="p">)</span>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># dispatcjh configs</span>
+
+<div class="viewcode-block" id="get_ivals"><a class="viewcode-back" href="../../config.html#mlens.config.get_ivals">[docs]</a><span class="k">def</span> <span class="nf">get_ivals</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return _IVALS&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_IVALS</span></div>
+
+
+<div class="viewcode-block" id="get_dtype"><a class="viewcode-back" href="../../config.html#mlens.config.get_dtype">[docs]</a><span class="k">def</span> <span class="nf">get_dtype</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return dtype&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_DTYPE</span></div>
+
+
+<div class="viewcode-block" id="get_prefix"><a class="viewcode-back" href="../../config.html#mlens.config.get_prefix">[docs]</a><span class="k">def</span> <span class="nf">get_prefix</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return cache prefix&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_PREFIX</span></div>
+
+
+<div class="viewcode-block" id="get_backend"><a class="viewcode-back" href="../../config.html#mlens.config.get_backend">[docs]</a><span class="k">def</span> <span class="nf">get_backend</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return backend&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_BACKEND</span></div>
+
+
+<div class="viewcode-block" id="get_start_method"><a class="viewcode-back" href="../../config.html#mlens.config.get_start_method">[docs]</a><span class="k">def</span> <span class="nf">get_start_method</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return start method&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_START_METHOD</span></div>
+
+
+<div class="viewcode-block" id="get_tmpdir"><a class="viewcode-back" href="../../config.html#mlens.config.get_tmpdir">[docs]</a><span class="k">def</span> <span class="nf">get_tmpdir</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Return start method&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_TMPDIR</span></div>
 
 <span class="c1">###############################################################################</span>
 <span class="c1"># Configuration calls</span>
 
 
-<div class="viewcode-block" id="set_tmpdir"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.set_tmpdir">[docs]</a><span class="k">def</span> <span class="nf">set_tmpdir</span><span class="p">(</span><span class="n">tmp</span><span class="p">):</span>
+<div class="viewcode-block" id="set_tmpdir"><a class="viewcode-back" href="../../config.html#mlens.config.set_tmpdir">[docs]</a><span class="k">def</span> <span class="nf">set_tmpdir</span><span class="p">(</span><span class="n">tmp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Set the root directory for temporary caches during estimation.</span>
 
 <span class="sd">    Parameters</span>
@@ -369,11 +439,11 @@
 <span class="sd">    tmp : str</span>
 <span class="sd">        directory path</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">TMPDIR</span>
-    <span class="n">TMPDIR</span> <span class="o">=</span> <span class="n">tmp</span></div>
+    <span class="k">global</span> <span class="n">_TMPDIR</span>
+    <span class="n">_TMPDIR</span> <span class="o">=</span> <span class="n">tmp</span></div>
 
 
-<div class="viewcode-block" id="set_prefix"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.set_prefix">[docs]</a><span class="k">def</span> <span class="nf">set_prefix</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+<div class="viewcode-block" id="set_prefix"><a class="viewcode-back" href="../../config.html#mlens.config.set_prefix">[docs]</a><span class="k">def</span> <span class="nf">set_prefix</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Set the prefix assigned to temporary directories during estimation.</span>
 
 <span class="sd">    Parameters</span>
@@ -381,11 +451,11 @@
 <span class="sd">    prefix : str</span>
 <span class="sd">        cache file name prefix</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">PREFIX</span>
-    <span class="n">PREFIX</span> <span class="o">=</span> <span class="n">prefix</span></div>
+    <span class="k">global</span> <span class="n">_PREFIX</span>
+    <span class="n">_PREFIX</span> <span class="o">=</span> <span class="n">prefix</span></div>
 
 
-<div class="viewcode-block" id="set_dtype"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.set_dtype">[docs]</a><span class="k">def</span> <span class="nf">set_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+<div class="viewcode-block" id="set_dtype"><a class="viewcode-back" href="../../config.html#mlens.config.set_dtype">[docs]</a><span class="k">def</span> <span class="nf">set_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Set the  dtype to use during estimation.</span>
 
 <span class="sd">    Parameters</span>
@@ -393,11 +463,11 @@
 <span class="sd">    dtype : object</span>
 <span class="sd">        numpy dtype</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">DTYPE</span>
-    <span class="n">DTYPE</span> <span class="o">=</span> <span class="n">dtype</span></div>
+    <span class="k">global</span> <span class="n">_DTYPE</span>
+    <span class="n">_DTYPE</span> <span class="o">=</span> <span class="n">dtype</span></div>
 
 
-<div class="viewcode-block" id="set_backend"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.set_backend">[docs]</a><span class="k">def</span> <span class="nf">set_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
+<div class="viewcode-block" id="set_backend"><a class="viewcode-back" href="../../config.html#mlens.config.set_backend">[docs]</a><span class="k">def</span> <span class="nf">set_backend</span><span class="p">(</span><span class="n">backend</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Set the parallel backend to use during estimation.</span>
 
 <span class="sd">    Parameters</span>
@@ -405,11 +475,11 @@
 <span class="sd">    backend : str</span>
 <span class="sd">        backend type, one of &#39;multiprocessing&#39;, &#39;threading&#39;, &#39;sequential&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">BACKEND</span>
-    <span class="n">BACKEND</span> <span class="o">=</span> <span class="n">backend</span></div>
+    <span class="k">global</span> <span class="n">_BACKEND</span>
+    <span class="n">_BACKEND</span> <span class="o">=</span> <span class="n">backend</span></div>
 
 
-<div class="viewcode-block" id="set_start_method"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.set_start_method">[docs]</a><span class="k">def</span> <span class="nf">set_start_method</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+<div class="viewcode-block" id="set_start_method"><a class="viewcode-back" href="../../config.html#mlens.config.set_start_method">[docs]</a><span class="k">def</span> <span class="nf">set_start_method</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Set the method for starting multiprocess worker pool.</span>
 
 <span class="sd">    Parameters</span>
@@ -417,9 +487,24 @@
 <span class="sd">    method : str</span>
 <span class="sd">        Methods available: &#39;fork&#39;, &#39;spawn&#39;, &#39;forkserver&#39;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">START_METHOD</span>
-    <span class="n">START_METHOD</span> <span class="o">=</span> <span class="n">method</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JOBLIB_START_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">START_METHOD</span></div>
+    <span class="k">global</span> <span class="n">_START_METHOD</span>
+    <span class="n">_START_METHOD</span> <span class="o">=</span> <span class="n">method</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;JOBLIB_START_METHOD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_START_METHOD</span></div>
+
+
+<div class="viewcode-block" id="set_ivals"><a class="viewcode-back" href="../../config.html#mlens.config.set_ivals">[docs]</a><span class="k">def</span> <span class="nf">set_ivals</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Set the parallel backend to use during estimation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    interval : int</span>
+<span class="sd">        number of seconds between each check</span>
+
+<span class="sd">    limit : int</span>
+<span class="sd">        number of seconds to wait.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">_IVALS</span>
+    <span class="n">_IVALS</span> <span class="o">=</span> <span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">__get_default_start_method</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
@@ -434,7 +519,7 @@
 <span class="c1"># Handlers</span>
 
 
-<div class="viewcode-block" id="clear_cache"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.clear_cache">[docs]</a><span class="k">def</span> <span class="nf">clear_cache</span><span class="p">(</span><span class="n">tmp</span><span class="p">):</span>
+<div class="viewcode-block" id="clear_cache"><a class="viewcode-back" href="../../config.html#mlens.config.clear_cache">[docs]</a><span class="k">def</span> <span class="nf">clear_cache</span><span class="p">(</span><span class="n">tmp</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Check that cache directory is empty.</span>
 
 <span class="sd">    Checks that a specified directory do not contain any directories with</span>
@@ -446,9 +531,9 @@
 <span class="sd">    tmp : str</span>
 <span class="sd">        the directory to check for residual caches in.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">global</span> <span class="n">PREFIX</span>
+    <span class="k">global</span> <span class="n">_PREFIX</span>
     <span class="n">residuals</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-                 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">PREFIX</span><span class="p">)]</span>
+                 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">_PREFIX</span><span class="p">)]</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
@@ -481,27 +566,27 @@
 <span class="c1"># Set up</span>
 
 
-<div class="viewcode-block" id="print_settings"><a class="viewcode-back" href="../../module/mlens.config.html#mlens.config.print_settings">[docs]</a><span class="k">def</span> <span class="nf">print_settings</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">print_settings</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Print package settings on system.&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">VERBOSE</span> <span class="o">!=</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">_VERBOSE</span> <span class="o">!=</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
         <span class="k">return</span>
-    <span class="k">if</span> <span class="n">BACKEND</span> <span class="o">==</span> <span class="s1">&#39;threading&#39;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">_BACKEND</span> <span class="o">==</span> <span class="s1">&#39;threading&#39;</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;[MLENS] backend: </span><span class="si">%s</span><span class="s2">&quot;</span>
-        <span class="n">arg</span> <span class="o">=</span> <span class="n">BACKEND</span><span class="p">,</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="n">_BACKEND</span><span class="p">,</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;[MLENS] backend: </span><span class="si">%s</span><span class="s2"> | start method: </span><span class="si">%s</span><span class="s2">&quot;</span>
-        <span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="n">BACKEND</span><span class="p">,</span> <span class="n">START_METHOD</span><span class="p">)</span>
+        <span class="n">arg</span> <span class="o">=</span> <span class="p">(</span><span class="n">_BACKEND</span><span class="p">,</span> <span class="n">_START_METHOD</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="n">arg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span></div>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span> <span class="o">%</span> <span class="n">arg</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="n">current_process</span><span class="p">()</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;MainProcess&#39;</span><span class="p">:</span>
-    <span class="n">START_METHOD</span> <span class="o">=</span> <span class="n">__get_default_start_method</span><span class="p">(</span><span class="n">START_METHOD</span><span class="p">)</span>
-    <span class="n">set_start_method</span><span class="p">(</span><span class="n">START_METHOD</span><span class="p">)</span>
+    <span class="n">_START_METHOD</span> <span class="o">=</span> <span class="n">__get_default_start_method</span><span class="p">(</span><span class="n">_START_METHOD</span><span class="p">)</span>
+    <span class="n">set_start_method</span><span class="p">(</span><span class="n">_START_METHOD</span><span class="p">)</span>
 
     <span class="n">print_settings</span><span class="p">()</span>
 
-    <span class="n">clear_cache</span><span class="p">(</span><span class="n">TMPDIR</span><span class="p">)</span>
+    <span class="n">clear_cache</span><span class="p">(</span><span class="n">_TMPDIR</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -538,7 +623,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.2.0.dev0',
+            VERSION:'0.2.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

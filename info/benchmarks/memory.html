@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Memory consumption &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+        <link rel="next" title="Performance benchmarks" href="benchmarks.html"/>
+        <link rel="prev" title="Sequential Mechanics" href="../tutorials/sequential.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../misc/updates.html">Change log</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Memory consumption</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/benchmarks/memory.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="memory-consumption">
+<span id="memory"></span><h1>Memory consumption<a class="headerlink" href="#memory-consumption" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="memory-mapping">
+<h2>Memory mapping<a class="headerlink" href="#memory-mapping" title="Permalink to this headline">¶</a></h2>
+<p>When training data is stored in-memory in the parent process, training a
+ensemble in parallel entails sending the array from the parent process to
+the subprocess through serialization of the data. Even for moderately sized
+datasets, this is a time consuming task. Moreover, it creates replicas of the
+same dataset to be stored in-memory, and so the effective size of the data
+kept in memory scales with the number of processes used in parallel. For
+large datasets, this can be catastrophic.</p>
+<p>ML-Ensemble overcomes this issue by using <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.memmap.html">memmapping</a>, which allows
+sub-processes to share memory of the underlying data. Hence, input data need
+not be serialized and sent to the subprocesses, and as long as no copying
+takes place in the sub-process, memory consumption remains constant as the
+number of sub-processes grows. Hence, ML-Ensemble can remain memory neutral as
+the number of CPU’s in use increase. This last point relies critically on
+avoiding copying, which may not be possible, see <a class="reference internal" href="#gotchas"><span class="std std-ref">Gotcha’s</span></a> for further
+information.</p>
+<p>We can easily illustrate this issue by running a dummy function in parallel
+that merely holds whatever data it receives from a few seconds before closing.
+Here, we make use of the <code class="xref py py-class docutils literal"><span class="pre">CMLog</span></code> monitor that
+logs the memory (and cpu) usage of the process that instantiated it.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">perf_counter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.utils</span> <span class="k">import</span> <span class="n">CMLog</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">hold</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+<span class="gp">... </span>   <span class="sd">&quot;&quot;&quot;Hold an array ``arr`` in memory for ``s`` seconds.&quot;&quot;&quot;</span>
+<span class="gp">... </span>   <span class="n">sleep</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Monitor memory usage</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span> <span class="o">=</span> <span class="n">CMLog</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">monitor</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load an approx. 800MB array into memory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e8</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e3</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Launch 4 sub-process, each holding a copy of the array in memory.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_nbytes</span><span class="o">=</span><span class="kc">None</span><span class="p">)(</span>
+<span class="gp">... </span>        <span class="n">delayed</span><span class="p">(</span><span class="n">hold</span><span class="p">)(</span><span class="n">array</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Job done</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cm</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="go">Pickling array (shape=(100000, 1000), dtype=int64).</span>
+<span class="go">Pickling array (shape=(100000, 1000), dtype=int64).</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   1 tasks      | elapsed:   17.1s</span>
+<span class="go">Pickling array (shape=(100000, 1000), dtype=int64).</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   5 out of   4 | elapsed:   26.3s remaining:   -5.3s</span>
+<span class="go">Pickling array (shape=(100000, 1000), dtype=int64).</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   5 out of   4 | elapsed:   36.4s remaining:   -7.3s</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   5 out of   4 | elapsed:   43.8s remaining:   -8.8s</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   4 out of   4 | elapsed:   43.8s finished</span>
+</pre></div>
+</div>
+<p>Notice that the parallel job seems to be doing an awful lot of data
+serialization. The memory log of the <code class="docutils literal"><span class="pre">cm</span></code> reveals that peak memory usage is
+over some three times larger than the original array when 4 cpu’s are in use.
+With such a memory profile, an ensemble would not be very scalable.</p>
+<img alt="../_images/mem_profile_copy.png" class="align-center" src="../_images/mem_profile_copy.png" />
+<p>Memmapping allows us to overcome these issues for two reaons. First, it entirely
+overcomes serialization of the input data as processes share memory and hence
+the subprocesses can access the input arrays directly from the parent process.
+Second, insofar no copying of the input data takes place, memmapping avoids
+scaling the data size requirement by the number of processes running.
+To see this first hand, we can modify the above example to convert the toy array to
+a memmap and again monitor memory usage.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">dump</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmpdir</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">f</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s1">&#39;arr.mmap&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span> <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cm</span> <span class="o">=</span> <span class="n">CMLog</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">cm</span><span class="o">.</span><span class="n">monitor</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e8</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">t1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># Now, we dump the array into a memmap in the temporary directory</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">dump</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">array</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">t1_d</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">t2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_nbytes</span><span class="o">=</span><span class="kc">None</span><span class="p">)(</span>
+<span class="gp">... </span>             <span class="n">delayed</span><span class="p">(</span><span class="n">hold</span><span class="p">)(</span><span class="n">array</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">... </span>             <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">t3</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">cm</span><span class="o">.</span><span class="n">_t0</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span>     <span class="n">cm</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   1 tasks      | elapsed:    3.0s</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   5 out of   4 | elapsed:    3.0s remaining:   -0.6s</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   5 out of   4 | elapsed:    3.0s remaining:   -0.6s</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   5 out of   4 | elapsed:    3.0s remaining:   -0.6s</span>
+<span class="go">[Parallel(n_jobs=-1)]: Done   4 out of   4 | elapsed:    3.0s finished</span>
+</pre></div>
+</div>
+<p>Notice first that no pickling is reported in the parallel job; second, the time
+to completion is no more than the 3 seconds we asked the <code class="docutils literal"><span class="pre">hold</span></code> function to
+sleep. In other words, memmaping causes <em>no</em> process time overhead. This stands
+in stark contrast to the previous example, which needed over 40 seconds to
+complete - an order of magnitude slower. Moreover, inspecting the memory
+profile, note that memmapping is completely memory neutral. In fact, if we
+replace the original array with the memmap (as in this example),
+the memory required to hold the original file can be released and so there
+is <em>no</em> copy of the array kept in the process memory.</p>
+<img alt="../_images/mem_profile_mmap.png" class="align-center" src="../_images/mem_profile_mmap.png" />
+<p>For further details on memmapping in parallel processing,
+see the <a class="reference external" href="https://pythonhosted.org/joblib/parallel.html#working-with-numerical-data-in-shared-memory-memmaping">joblib</a> package’s documentation.</p>
+</div>
+<div class="section" id="ml-ensemble-memory-profiling">
+<h2>ML-Ensemble memory profiling<a class="headerlink" href="#ml-ensemble-memory-profiling" title="Permalink to this headline">¶</a></h2>
+<p>By leveraging memmapping, ML-Ensemble estimators are able to achieve
+memory neutral parallel processing. In the following example, an ensemble of
+three linear regression estimators with different preprocessing pipelines are
+fitted on data comprising 6 million observations and ten features. The
+following profiling can be run from the package root with the below command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">benchmarks</span><span class="o">/</span><span class="n">memory_cpu_profile</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Note that the ensemble leveraged the full capacity of the CPU to fit the
+ensemble.</p>
+<img alt="../_images/cpu_profile.png" class="align-center" src="../_images/cpu_profile.png" />
+<p>And while doing so, memory consumption remained neutral. Note here that becase
+the input data was first loaded into memory, then passed to the ensemble,
+the original data stays in memory (the ensemble instance cannot
+delete objects outside it’s scope). To make the ensemble even more memory
+efficient, a user can specify a path to a csv file or stored numpy array or
+numpy memmap, in which case no memory will be committed to keeping the original
+data in memory. See the <a class="reference internal" href="../tutorials/advanced.html#memory-tutorial"><span class="std std-ref">Passing file paths as data input</span></a> tutorial for more information.</p>
+<img alt="../_images/memory_profile.png" class="align-center" src="../_images/memory_profile.png" />
+</div>
+<div class="section" id="memory-performance-benchmark">
+<h2>Memory performance benchmark<a class="headerlink" href="#memory-performance-benchmark" title="Permalink to this headline">¶</a></h2>
+<p>Finally, we consider how a <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code> compares in terms of memory
+consumption against a set of Scikit-learn estimators. This benchmark
+relies on the <a class="reference external" href="https://pypi.python.org/pypi/memory_profiler">mprof</a> package, which can be installed with <code class="docutils literal"><span class="pre">pip</span></code>. The
+benchmark compares the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.linear_model.Lasso</span></code></a>,
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> and the
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.neighbors.KNeighborsRegressor</span></code></a> against an ensemble that
+uses the former two as the first layer and the latter as a final meta
+estimator.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mprof</span> <span class="n">run</span> <span class="n">friedman_memory</span><span class="o">.</span><span class="n">py</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mprof</span> <span class="n">plot</span> <span class="n">friedman_memory</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="s2">&quot;Memory Consumption Benchmark&quot;</span>
+<span class="go">mprof: Sampling memory every 0.1s</span>
+<span class="go">running as a Python program...</span>
+
+<span class="go">ML-ENSEMBLE</span>
+
+<span class="go">Benchmark of ML-ENSEMBLE memory profile against Scikit-learn estimators.</span>
+
+<span class="go">Data shape: (1000000, 50)</span>
+
+<span class="go">Data size: 400 MB</span>
+
+<span class="go">Fitting LAS... Done | 00:00:01</span>
+
+<span class="go">Fitting KNN... Done | 00:00:08</span>
+
+<span class="go">Fitting ENS... Done | 00:00:21</span>
+
+<span class="go">Fitting ELN... Done | 00:00:01</span>
+
+<span class="go">Profiling complete. | 00:01:13</span>
+
+<span class="go">Using last profile data.</span>
+</pre></div>
+</div>
+<img alt="../_images/memory.png" src="../_images/memory.png" />
+</div>
+<div class="section" id="gotcha-s">
+<span id="gotchas"></span><h2>Gotcha’s<a class="headerlink" href="#gotcha-s" title="Permalink to this headline">¶</a></h2>
+<p>The above analysis holds under two conditions: (1) no copying of the input
+data is triggered during slicing the K-folds and (2) the base estimators
+do not copy the data internally. However memmapping always avoids array
+serialization between sub-processes which can be significant burden on time
+consumption.</p>
+<p><strong>(1)</strong>
+Because of the structure of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/internals.html">numpy’s memory model</a>, slicing an array returns
+a <a class="reference external" href="http://scipy-cookbook.readthedocs.io/items/ViewsVsCopies.html">view</a> only if the slice contiguous. In particular, this means that we
+<strong>cannot</strong> slice a numpy array to retrieve two partitions separated by one or
+more partitions. Technically, this limitation arises since it breaks the
+stride patterns numpy arrays relies on to know where find a row. ML-Ensemble
+can therefore <strong>only</strong> avoid copying training data when the number of folds
+is 2, in which case the first half is used for training and the latter for
+predictions. For 3 of more folds, the training set is no longer contiguous and
+hence slicing the original array triggers <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html">advanced indexing</a>, in turn
+causing a copy of the underlying data to be returned. Being a limitation within
+numpy, this issue is beyond the control of ML-Ensemble.</p>
+<p>Also note that if the data is preprocessed within ML-Ensemble, transformers
+automatically return copies of the input data (i.e. breaks the link with the
+memory buffer) and will therefore <strong>always</strong> trigger a copying. In fact, if
+it does not, transforming the memmapped original data will raise an <code class="docutils literal"><span class="pre">OSError</span></code>
+since the memory map of the original data is read-only to avoid corrupting the
+input.</p>
+<p><strong>(2)</strong>
+The user must take not what input requirements are necessary for a Scikit-learn
+estimator to not copy the data, and ensuring the input array is in the given
+format. Note that prediction arrays are always dense C-ordered float64 arrays.
+For instance, several Scikit-learn linear models defaults to copying the input
+data, Scikit-learn random forests estimators copy the data if it is not
+Fortran contiguous. Similarly, Scikit-learn SVM models copy data that does not
+satisfy its particular requirements.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

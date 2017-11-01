@@ -1,0 +1,1041 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mlens.externals.joblib.pool &mdash; mlens 0.2.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="mlens 0.2.0 documentation" href="../../../../index.html"/>
+        <link rel="up" title="Module code" href="../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#bleeding-edge">Bleeding edge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/install.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/install.html#test-build">Test build</a></li>
+</ul>
+<p class="caption"><span class="caption-text">High-level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/start.html">Getting started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#preliminaries">Preliminaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#ensemble-guide">Ensemble guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#building-an-ensemble">Building an ensemble</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#multi-layer-ensembles">Multi-layer ensembles</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-guide">Model selection guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#the-scoring-function">The scoring function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#a-simple-evaluation">A simple evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/start.html#model-selection-across-preprocessing-pipelines">Model Selection across preprocessing pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/start.html#visualization-guide">Visualization guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/advanced.html">Advanced features tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#propagating-input-features">Propagating input features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#probabilistic-ensemble-learning">Probabilistic ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#advanced-subsemble-techniques">Advanced Subsemble techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#general-multi-layer-ensemble-learning">General multi-layer ensemble learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#passing-file-paths-as-data-input">Passing file paths as data input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/advanced.html#ensemble-model-selection">Ensemble model selection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../start/ensembles.html">Ready-made ensemble classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#super-learner">Super Learner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#references">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#subsemble">Subsemble</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id8">References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../start/ensembles.html#id10">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mechanics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/learner.html">Learner Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#partitioning">Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/learner.html#parallel-estimation">Parallel estimation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/layer.html">Layer Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorials/layer.html#basics">Basics</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/sequential.html">Sequential Mechanics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Details</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/memory.html">Memory consumption</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-mapping">Memory mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#ml-ensemble-memory-profiling">ML-Ensemble memory profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#memory-performance-benchmark">Memory performance benchmark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/memory.html#gotcha-s">Gotcha’s</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/benchmarks.html">Performance benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#mnist">MNIST</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#benchmark">Benchmark</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#the-friedman-regression-problem-1">The Friedman Regression Problem 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#id5">Benchmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../benchmarks/benchmarks.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../benchmarks/scaling.html">Scale benchmarks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#single-process-vs-multi-process">Single process vs multi-process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/dev.html">Hacking ML-Ensemble</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/api.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#front-end-api">Front-end API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-estimators">Ensemble estimators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#model-selection">Model Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#preprocessing">Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#visualization">Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../deep/api.html#low-level-api">Low-level API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#parallel-estimation-api">Parallel estimation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#ensemble-base-classes">Ensemble Base classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../deep/api.html#indexers">Indexers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deep/mlens_configs.html">Global configurations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../misc/updates.html">Change log</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Package index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../module/modules.html">mlens</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../module/mlens.html">mlens package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.ensemble.html">mlens.ensemble package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.estimators.html">mlens.estimators package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.index.html">mlens.index package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.metrics.html">mlens.metrics package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.model_selection.html">mlens.model_selection package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.parallel.html">mlens.parallel package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.preprocessing.html">mlens.preprocessing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.testing.html">mlens.testing package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.utils.html">mlens.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.visualization.html">mlens.visualization package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#submodules">Submodules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../module/mlens.config.html">mlens.config module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../module/mlens.html#module-mlens">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">mlens</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>mlens.externals.joblib.pool</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for mlens.externals.joblib.pool</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Custom implementation of multiprocessing.Pool with custom pickler.</span>
+
+<span class="sd">This module provides efficient ways of working with data stored in</span>
+<span class="sd">shared memory with numpy.memmap arrays without inducing any memory</span>
+<span class="sd">copy between the parent and child processes.</span>
+
+<span class="sd">This module should not be imported if multiprocessing is not</span>
+<span class="sd">available as it implements subclasses of multiprocessing Pool</span>
+<span class="sd">that uses a custom alternative to SimpleQueue.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Olivier Grisel &lt;olivier.grisel@ensta.org&gt;</span>
+<span class="c1"># Copyright: 2012, Olivier Grisel</span>
+<span class="c1"># License: BSD 3 clause</span>
+
+<span class="kn">from</span> <span class="nn">mmap</span> <span class="k">import</span> <span class="n">mmap</span>
+<span class="kn">import</span> <span class="nn">errno</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">stat</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="ne">WindowsError</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="ne">WindowsError</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">whichmodule</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Python 2 compat</span>
+    <span class="kn">from</span> <span class="nn">cPickle</span> <span class="k">import</span> <span class="n">loads</span>
+    <span class="kn">from</span> <span class="nn">cPickle</span> <span class="k">import</span> <span class="n">dumps</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">loads</span>
+    <span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">dumps</span>
+    <span class="kn">import</span> <span class="nn">copyreg</span>
+
+<span class="c1"># Customizable pure Python pickler in Python 2</span>
+<span class="c1"># customizable C-optimized pickler under Python 3.3+</span>
+<span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">Pickler</span>
+
+<span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">HIGHEST_PROTOCOL</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">BytesIO</span>
+
+<span class="kn">from</span> <span class="nn">._multiprocessing_helpers</span> <span class="k">import</span> <span class="n">mp</span><span class="p">,</span> <span class="n">assert_spawning</span>
+<span class="c1"># We need the class definition to derive from it not the multiprocessing.Pool</span>
+<span class="c1"># factory function</span>
+<span class="kn">from</span> <span class="nn">multiprocessing.pool</span> <span class="k">import</span> <span class="n">Pool</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">from</span> <span class="nn">numpy.lib.stride_tricks</span> <span class="k">import</span> <span class="n">as_strided</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">np</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="kn">from</span> <span class="nn">.numpy_pickle</span> <span class="k">import</span> <span class="n">load</span>
+<span class="kn">from</span> <span class="nn">.numpy_pickle</span> <span class="k">import</span> <span class="n">dump</span>
+<span class="kn">from</span> <span class="nn">.hashing</span> <span class="k">import</span> <span class="nb">hash</span>
+<span class="kn">from</span> <span class="nn">.backports</span> <span class="k">import</span> <span class="n">make_memmap</span>
+<span class="c1"># Some system have a ramdisk mounted by default, we can use it instead of /tmp</span>
+<span class="c1"># as the default folder to dump big arrays to share with subprocesses</span>
+<span class="n">SYSTEM_SHARED_MEM_FS</span> <span class="o">=</span> <span class="s1">&#39;/dev/shm&#39;</span>
+
+<span class="c1"># Folder and file permissions to chmod temporary files generated by the</span>
+<span class="c1"># memmaping pool. Only the owner of the Python process can access the</span>
+<span class="c1"># temporary files and folder.</span>
+<span class="n">FOLDER_PERMISSIONS</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IWUSR</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IXUSR</span>
+<span class="n">FILE_PERMISSIONS</span> <span class="o">=</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IRUSR</span> <span class="o">|</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IWUSR</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Support for efficient transient pickling of numpy data structures</span>
+
+
+<span class="k">def</span> <span class="nf">_get_backing_memmap</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Recursively look up the original np.memmap instance base if any.&quot;&quot;&quot;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;base&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># TODO: check scipy sparse datastructure if scipy is installed</span>
+        <span class="c1"># a nor its descendants do not have a memmap base</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">mmap</span><span class="p">):</span>
+        <span class="c1"># a is already a real memmap instance.</span>
+        <span class="k">return</span> <span class="n">a</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Recursive exploration of the base ancestry</span>
+        <span class="k">return</span> <span class="n">_get_backing_memmap</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_temp_dir</span><span class="p">(</span><span class="n">pool_folder_name</span><span class="p">,</span> <span class="n">temp_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the full path to a subfolder inside the temporary folder.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pool_folder_name : str</span>
+<span class="sd">        Sub-folder name used for the serialization of a pool instance.</span>
+
+<span class="sd">    temp_folder: str, optional</span>
+<span class="sd">        Folder to be used by the pool for memmaping large arrays</span>
+<span class="sd">        for sharing memory with worker processes. If None, this will try in</span>
+<span class="sd">        order:</span>
+
+<span class="sd">        - a folder pointed by the JOBLIB_TEMP_FOLDER environment</span>
+<span class="sd">          variable,</span>
+<span class="sd">        - /dev/shm if the folder exists and is writable: this is a</span>
+<span class="sd">          RAMdisk filesystem available by default on modern Linux</span>
+<span class="sd">          distributions,</span>
+<span class="sd">        - the default system temporary folder that can be</span>
+<span class="sd">          overridden with TMP, _TMPDIR or TEMP environment</span>
+<span class="sd">          variables, typically /tmp under Unix operating systems.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pool_folder : str</span>
+<span class="sd">       full path to the temporary folder</span>
+<span class="sd">    use_shared_mem : bool</span>
+<span class="sd">       whether the temporary folder is written to tmpfs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">use_shared_mem</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">temp_folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">temp_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;JOBLIB_TEMP_FOLDER&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">temp_folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">SYSTEM_SHARED_MEM_FS</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">temp_folder</span> <span class="o">=</span> <span class="n">SYSTEM_SHARED_MEM_FS</span>
+                <span class="n">pool_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_folder</span><span class="p">,</span> <span class="n">pool_folder_name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pool_folder</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">pool_folder</span><span class="p">)</span>
+                <span class="n">use_shared_mem</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+                <span class="c1"># Missing rights in the the /dev/shm partition,</span>
+                <span class="c1"># fallback to regular temp folder.</span>
+                <span class="n">temp_folder</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">temp_folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Fallback to the default tmp folder, typically /tmp</span>
+        <span class="n">temp_folder</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">()</span>
+    <span class="n">temp_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">temp_folder</span><span class="p">))</span>
+    <span class="n">pool_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp_folder</span><span class="p">,</span> <span class="n">pool_folder_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pool_folder</span><span class="p">,</span> <span class="n">use_shared_mem</span>
+
+
+<div class="viewcode-block" id="has_shareable_memory"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.has_shareable_memory">[docs]</a><span class="k">def</span> <span class="nf">has_shareable_memory</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return True if a is backed by some mmap buffer directly or not.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_get_backing_memmap</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
+
+
+<span class="k">def</span> <span class="nf">_strided_from_memmap</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span>
+                         <span class="n">total_buffer_len</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reconstruct an array view on a memory mapped file.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;w+&#39;</span><span class="p">:</span>
+        <span class="c1"># Do not zero the original data when unpickling</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r+&#39;</span>
+
+    <span class="k">if</span> <span class="n">strides</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Simple, contiguous memmap</span>
+        <span class="k">return</span> <span class="n">make_memmap</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+                           <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># For non-contiguous data, memmap the total enclosing buffer and then</span>
+        <span class="c1"># extract the non-contiguous view with the stride-tricks API</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">make_memmap</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">total_buffer_len</span><span class="p">,</span>
+                           <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">as_strided</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="o">=</span><span class="n">strides</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_reduce_memmap_backed</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pickling reduction for memmap backed arrays.</span>
+
+<span class="sd">    a is expected to be an instance of np.ndarray (or np.memmap)</span>
+<span class="sd">    m is expected to be an instance of np.memmap on the top of the ``base``</span>
+<span class="sd">    attribute ancestry of a. ``m.base`` should be the real python mmap object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># offset that comes from the striding differences between a and m</span>
+    <span class="n">a_start</span><span class="p">,</span> <span class="n">a_end</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">byte_bounds</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">m_start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">byte_bounds</span><span class="p">(</span><span class="n">m</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">a_start</span> <span class="o">-</span> <span class="n">m_start</span>
+
+    <span class="c1"># offset from the backing memmap</span>
+    <span class="n">offset</span> <span class="o">+=</span> <span class="n">m</span><span class="o">.</span><span class="n">offset</span>
+
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s1">&#39;F_CONTIGUOUS&#39;</span><span class="p">]:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># The backing memmap buffer is necessarily contiguous hence C if not</span>
+        <span class="c1"># Fortran</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+
+    <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s1">&#39;F_CONTIGUOUS&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">a</span><span class="o">.</span><span class="n">flags</span><span class="p">[</span><span class="s1">&#39;C_CONTIGUOUS&#39;</span><span class="p">]:</span>
+        <span class="c1"># If the array is a contiguous view, no need to pass the strides</span>
+        <span class="n">strides</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">total_buffer_len</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Compute the total number of items to map from which the strided</span>
+        <span class="c1"># view will be extracted.</span>
+        <span class="n">strides</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">strides</span>
+        <span class="n">total_buffer_len</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_end</span> <span class="o">-</span> <span class="n">a_start</span><span class="p">)</span> <span class="o">//</span> <span class="n">a</span><span class="o">.</span><span class="n">itemsize</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">_strided_from_memmap</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">filename</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">offset</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">strides</span><span class="p">,</span>
+             <span class="n">total_buffer_len</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="reduce_memmap"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.reduce_memmap">[docs]</a><span class="k">def</span> <span class="nf">reduce_memmap</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pickle the descriptors of a memmap instance to reopen on same file.&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">_get_backing_memmap</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># m is a real mmap backed memmap instance, reduce a preserving striding</span>
+        <span class="c1"># information</span>
+        <span class="k">return</span> <span class="n">_reduce_memmap_backed</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># This memmap instance is actually backed by a regular in-memory</span>
+        <span class="c1"># buffer: this can happen when using binary operators on numpy.memmap</span>
+        <span class="c1"># instances</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">loads</span><span class="p">,</span> <span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">protocol</span><span class="o">=</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">),))</span></div>
+
+
+<div class="viewcode-block" id="ArrayMemmapReducer"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.ArrayMemmapReducer">[docs]</a><span class="k">class</span> <span class="nc">ArrayMemmapReducer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reducer callable to dump large arrays to memmap files.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    max_nbytes: int</span>
+<span class="sd">        Threshold to trigger memmaping of large arrays to files created</span>
+<span class="sd">        a folder.</span>
+<span class="sd">    temp_folder: str</span>
+<span class="sd">        Path of a folder where files for backing memmaped arrays are created.</span>
+<span class="sd">    mmap_mode: &#39;r&#39;, &#39;r+&#39; or &#39;c&#39;</span>
+<span class="sd">        Mode for the created memmap datastructure. See the documentation of</span>
+<span class="sd">        numpy.memmap for more details. Note: &#39;w+&#39; is coerced to &#39;r+&#39;</span>
+<span class="sd">        automatically to avoid zeroing the data on unpickling.</span>
+<span class="sd">    verbose: int, optional, 0 by default</span>
+<span class="sd">        If verbose &gt; 0, memmap creations are logged.</span>
+<span class="sd">        If verbose &gt; 1, both memmap creations, reuse and array pickling are</span>
+<span class="sd">        logged.</span>
+<span class="sd">    prewarm: bool, optional, False by default.</span>
+<span class="sd">        Force a read on newly memmaped array to make sure that OS pre-cache it</span>
+<span class="sd">        memory. This can be useful to avoid concurrent disk access when the</span>
+<span class="sd">        same data array is passed to different worker processes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_nbytes</span><span class="p">,</span> <span class="n">temp_folder</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">context_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prewarm</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_nbytes</span> <span class="o">=</span> <span class="n">max_nbytes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span> <span class="o">=</span> <span class="n">temp_folder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mmap_mode</span> <span class="o">=</span> <span class="n">mmap_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_prewarm</span> <span class="o">=</span> <span class="n">prewarm</span>
+        <span class="k">if</span> <span class="n">context_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;context_id is deprecated and ignored in joblib&#39;</span>
+                          <span class="s1">&#39; 0.9.4 and will be removed in 0.11&#39;</span><span class="p">,</span>
+                          <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">_get_backing_memmap</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># a is already backed by a memmap file, let&#39;s reuse it directly</span>
+            <span class="k">return</span> <span class="n">_reduce_memmap_backed</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">hasobject</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_nbytes</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="ow">and</span> <span class="n">a</span><span class="o">.</span><span class="n">nbytes</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_nbytes</span><span class="p">):</span>
+            <span class="c1"># check that the folder exists (lazily create the pool temp folder</span>
+            <span class="c1"># if required)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span><span class="p">,</span> <span class="n">FOLDER_PERMISSIONS</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">e</span><span class="o">.</span><span class="n">errno</span> <span class="o">!=</span> <span class="n">errno</span><span class="o">.</span><span class="n">EEXIST</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">e</span>
+
+            <span class="c1"># Find a unique, concurrent safe filename for writing the</span>
+            <span class="c1"># content of this array only once.</span>
+            <span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-</span><span class="si">%d</span><span class="s2">-</span><span class="si">%s</span><span class="s2">.pkl&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="nb">id</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">current_thread</span><span class="p">()),</span> <span class="nb">hash</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span><span class="p">,</span> <span class="n">basename</span><span class="p">)</span>
+
+            <span class="c1"># In case the same array with the same content is passed several</span>
+            <span class="c1"># times to the pool subprocess children, serialize it only once</span>
+
+            <span class="c1"># XXX: implement an explicit reference counting scheme to make it</span>
+            <span class="c1"># possible to delete temporary files as soon as the workers are</span>
+            <span class="c1"># done processing this data.</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memmaping (shape=</span><span class="si">%r</span><span class="s2">, dtype=</span><span class="si">%s</span><span class="s2">) to new file </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                        <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+                <span class="k">for</span> <span class="n">dumped_filename</span> <span class="ow">in</span> <span class="n">dump</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">dumped_filename</span><span class="p">,</span> <span class="n">FILE_PERMISSIONS</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prewarm</span><span class="p">:</span>
+                    <span class="c1"># Warm up the data to avoid concurrent disk access in</span>
+                    <span class="c1"># multiple children processes</span>
+                    <span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_mmap_mode</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memmaping (shape=</span><span class="si">%s</span><span class="s2">, dtype=</span><span class="si">%s</span><span class="s2">) to old file </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+
+            <span class="c1"># The worker process will use joblib.load to memmap the data</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">load</span><span class="p">,</span> <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mmap_mode</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># do not convert a into memmap, let pickler do its usual copy with</span>
+            <span class="c1"># the default system pickler</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pickling array (shape=</span><span class="si">%r</span><span class="s2">, dtype=</span><span class="si">%s</span><span class="s2">).&quot;</span> <span class="o">%</span> <span class="p">(</span>
+                    <span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">loads</span><span class="p">,</span> <span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">),))</span></div>
+
+
+<span class="c1">###############################################################################</span>
+<span class="c1"># Enable custom pickling in Pool queues</span>
+
+<div class="viewcode-block" id="CustomizablePickler"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.CustomizablePickler">[docs]</a><span class="k">class</span> <span class="nc">CustomizablePickler</span><span class="p">(</span><span class="n">Pickler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pickler that accepts custom reducers.</span>
+
+<span class="sd">    HIGHEST_PROTOCOL is selected by default as this pickler is used</span>
+<span class="sd">    to pickle ephemeral datastructures for interprocess communication</span>
+<span class="sd">    hence no backward compatibility is required.</span>
+
+<span class="sd">    `reducers` is expected to be a dictionary with key/values</span>
+<span class="sd">    being `(type, callable)` pairs where `callable` is a function that</span>
+<span class="sd">    give an instance of `type` will return a tuple `(constructor,</span>
+<span class="sd">    tuple_of_objects)` to rebuild an instance out of the pickled</span>
+<span class="sd">    `tuple_of_objects` as would return a `__reduce__` method. See the</span>
+<span class="sd">    standard library documentation on pickling for more details.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># We override the pure Python pickler as its the only way to be able to</span>
+    <span class="c1"># customize the dispatch table without side effects in Python 2.7</span>
+    <span class="c1"># to 3.2. For Python 3.3+ leverage the new dispatch_table</span>
+    <span class="c1"># feature from http://bugs.python.org/issue14166 that makes it possible</span>
+    <span class="c1"># to use the C implementation of the Pickler which is faster.</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span> <span class="n">reducers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">):</span>
+        <span class="n">Pickler</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">reducers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">reducers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">Pickler</span><span class="p">,</span> <span class="s1">&#39;dispatch&#39;</span><span class="p">):</span>
+            <span class="c1"># Make the dispatch registry an instance level attribute instead of</span>
+            <span class="c1"># a reference to the class dictionary under Python 2</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dispatch</span> <span class="o">=</span> <span class="n">Pickler</span><span class="o">.</span><span class="n">dispatch</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Under Python 3 initialize the dispatch table with a copy of the</span>
+            <span class="c1"># default registry</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dispatch_table</span> <span class="o">=</span> <span class="n">copyreg</span><span class="o">.</span><span class="n">dispatch_table</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="nb">type</span><span class="p">,</span> <span class="n">reduce_func</span> <span class="ow">in</span> <span class="n">reducers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">reduce_func</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CustomizablePickler.register"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.CustomizablePickler.register">[docs]</a>    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">reduce_func</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Attach a reducer function to a given type in the dispatch table.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">Pickler</span><span class="p">,</span> <span class="s1">&#39;dispatch&#39;</span><span class="p">):</span>
+            <span class="c1"># Python 2 pickler dispatching is not explicitly customizable.</span>
+            <span class="c1"># Let us use a closure to workaround this limitation.</span>
+            <span class="k">def</span> <span class="nf">dispatcher</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+                <span class="n">reduced</span> <span class="o">=</span> <span class="n">reduce_func</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">save_reduce</span><span class="p">(</span><span class="n">obj</span><span class="o">=</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">reduced</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dispatch</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="o">=</span> <span class="n">dispatcher</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dispatch_table</span><span class="p">[</span><span class="nb">type</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduce_func</span></div></div>
+
+
+<div class="viewcode-block" id="CustomizablePicklingQueue"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.CustomizablePicklingQueue">[docs]</a><span class="k">class</span> <span class="nc">CustomizablePicklingQueue</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Locked Pipe implementation that uses a customizable pickler.</span>
+
+<span class="sd">    This class is an alternative to the multiprocessing implementation</span>
+<span class="sd">    of SimpleQueue in order to make it possible to pass custom</span>
+<span class="sd">    pickling reducers, for instance to avoid memory copy when passing</span>
+<span class="sd">    memory mapped datastructures.</span>
+
+<span class="sd">    `reducers` is expected to be a dict with key / values being</span>
+<span class="sd">    `(type, callable)` pairs where `callable` is a function that, given an</span>
+<span class="sd">    instance of `type`, will return a tuple `(constructor, tuple_of_objects)`</span>
+<span class="sd">    to rebuild an instance out of the pickled `tuple_of_objects` as would</span>
+<span class="sd">    return a `__reduce__` method.</span>
+
+<span class="sd">    See the standard library documentation on pickling for more details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">reducers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reducers</span> <span class="o">=</span> <span class="n">reducers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">Pipe</span><span class="p">(</span><span class="n">duplex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_rlock</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_make_methods</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">assert_spawning</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rlock</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_reducers</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rlock</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span><span class="p">,</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">_reducers</span><span class="p">)</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_make_methods</span><span class="p">()</span>
+
+<div class="viewcode-block" id="CustomizablePicklingQueue.empty"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.CustomizablePicklingQueue.empty">[docs]</a>    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_make_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_recv</span> <span class="o">=</span> <span class="n">recv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span><span class="o">.</span><span class="n">recv</span>
+        <span class="n">racquire</span><span class="p">,</span> <span class="n">rrelease</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rlock</span><span class="o">.</span><span class="n">acquire</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rlock</span><span class="o">.</span><span class="n">release</span>
+
+        <span class="k">def</span> <span class="nf">get</span><span class="p">():</span>
+            <span class="n">racquire</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">recv</span><span class="p">()</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">rrelease</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get</span> <span class="o">=</span> <span class="n">get</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reducers</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                <span class="n">buffer</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+                <span class="n">CustomizablePickler</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reducers</span><span class="p">)</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span><span class="o">.</span><span class="n">send_bytes</span><span class="p">(</span><span class="n">buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send</span> <span class="o">=</span> <span class="n">send</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_send</span> <span class="o">=</span> <span class="n">send</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_writer</span><span class="o">.</span><span class="n">send</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># writes to a message oriented win32 pipe are atomic</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">put</span> <span class="o">=</span> <span class="n">send</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wlock_acquire</span><span class="p">,</span> <span class="n">wlock_release</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span><span class="o">.</span><span class="n">acquire</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wlock</span><span class="o">.</span><span class="n">release</span><span class="p">)</span>
+
+            <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+                <span class="n">wlock_acquire</span><span class="p">()</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">send</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+                <span class="k">finally</span><span class="p">:</span>
+                    <span class="n">wlock_release</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">put</span> <span class="o">=</span> <span class="n">put</span></div>
+
+
+<div class="viewcode-block" id="PicklingPool"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.PicklingPool">[docs]</a><span class="k">class</span> <span class="nc">PicklingPool</span><span class="p">(</span><span class="n">Pool</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Pool implementation with customizable pickling reducers.</span>
+
+<span class="sd">    This is useful to control how data is shipped between processes</span>
+<span class="sd">    and makes it possible to use shared memory without useless</span>
+<span class="sd">    copies induces by the default pickling methods of the original</span>
+<span class="sd">    objects passed as arguments to dispatch.</span>
+
+<span class="sd">    `forward_reducers` and `backward_reducers` are expected to be</span>
+<span class="sd">    dictionaries with key/values being `(type, callable)` pairs where</span>
+<span class="sd">    `callable` is a function that, given an instance of `type`, will return a</span>
+<span class="sd">    tuple `(constructor, tuple_of_objects)` to rebuild an instance out of the</span>
+<span class="sd">    pickled `tuple_of_objects` as would return a `__reduce__` method.</span>
+<span class="sd">    See the standard library documentation about pickling for more details.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">forward_reducers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">backward_reducers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">forward_reducers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">forward_reducers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">backward_reducers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">backward_reducers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_forward_reducers</span> <span class="o">=</span> <span class="n">forward_reducers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_backward_reducers</span> <span class="o">=</span> <span class="n">backward_reducers</span>
+        <span class="n">poolargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span>
+        <span class="n">poolargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PicklingPool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">poolargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_setup_queues</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_ctx&#39;</span><span class="p">,</span> <span class="n">mp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_inqueue</span> <span class="o">=</span> <span class="n">CustomizablePicklingQueue</span><span class="p">(</span><span class="n">context</span><span class="p">,</span>
+                                                  <span class="bp">self</span><span class="o">.</span><span class="n">_forward_reducers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_outqueue</span> <span class="o">=</span> <span class="n">CustomizablePicklingQueue</span><span class="p">(</span><span class="n">context</span><span class="p">,</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">_backward_reducers</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_quick_put</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_inqueue</span><span class="o">.</span><span class="n">_send</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_quick_get</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_outqueue</span><span class="o">.</span><span class="n">_recv</span></div>
+
+
+<div class="viewcode-block" id="delete_folder"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.delete_folder">[docs]</a><span class="k">def</span> <span class="nf">delete_folder</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Utility function to cleanup a temporary folder if still existing.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder_path</span><span class="p">):</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">folder_path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">WindowsError</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Failed to clean temporary folder: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">folder_path</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MemmapingPool"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.MemmapingPool">[docs]</a><span class="k">class</span> <span class="nc">MemmapingPool</span><span class="p">(</span><span class="n">PicklingPool</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Process pool that shares large arrays to avoid memory copy.</span>
+
+<span class="sd">    This drop-in replacement for `multiprocessing.pool.Pool` makes</span>
+<span class="sd">    it possible to work efficiently with shared memory in a numpy</span>
+<span class="sd">    context.</span>
+
+<span class="sd">    Existing instances of numpy.memmap are preserved: the child</span>
+<span class="sd">    suprocesses will have access to the same shared memory in the</span>
+<span class="sd">    original mode except for the &#39;w+&#39; mode that is automatically</span>
+<span class="sd">    transformed as &#39;r+&#39; to avoid zeroing the original data upon</span>
+<span class="sd">    instantiation.</span>
+
+<span class="sd">    Furthermore large arrays from the parent process are automatically</span>
+<span class="sd">    dumped to a temporary folder on the filesystem such as child</span>
+<span class="sd">    processes to access their content via memmaping (file system</span>
+<span class="sd">    backed shared memory).</span>
+
+<span class="sd">    Note: it is important to call the terminate method to collect</span>
+<span class="sd">    the temporary folder used by the pool.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    processes: int, optional</span>
+<span class="sd">        Number of worker processes running concurrently in the pool.</span>
+<span class="sd">    initializer: callable, optional</span>
+<span class="sd">        Callable executed on worker process creation.</span>
+<span class="sd">    initargs: tuple, optional</span>
+<span class="sd">        Arguments passed to the initializer callable.</span>
+<span class="sd">    temp_folder: str, optional</span>
+<span class="sd">        Folder to be used by the pool for memmaping large arrays</span>
+<span class="sd">        for sharing memory with worker processes. If None, this will try in</span>
+<span class="sd">        order:</span>
+<span class="sd">        - a folder pointed by the JOBLIB_TEMP_FOLDER environment variable,</span>
+<span class="sd">        - /dev/shm if the folder exists and is writable: this is a RAMdisk</span>
+<span class="sd">          filesystem available by default on modern Linux distributions,</span>
+<span class="sd">        - the default system temporary folder that can be overridden</span>
+<span class="sd">          with TMP, _TMPDIR or TEMP environment variables, typically /tmp</span>
+<span class="sd">          under Unix operating systems.</span>
+<span class="sd">    max_nbytes int or None, optional, 1e6 by default</span>
+<span class="sd">        Threshold on the size of arrays passed to the workers that</span>
+<span class="sd">        triggers automated memory mapping in temp_folder.</span>
+<span class="sd">        Use None to disable memmaping of large arrays.</span>
+<span class="sd">    mmap_mode: {&#39;r+&#39;, &#39;r&#39;, &#39;w+&#39;, &#39;c&#39;}</span>
+<span class="sd">        Memmapping mode for numpy arrays passed to workers.</span>
+<span class="sd">        See &#39;max_nbytes&#39; parameter documentation for more details.</span>
+<span class="sd">    forward_reducers: dictionary, optional</span>
+<span class="sd">        Reducers used to pickle objects passed from master to worker</span>
+<span class="sd">        processes: see below.</span>
+<span class="sd">    backward_reducers: dictionary, optional</span>
+<span class="sd">        Reducers used to pickle return values from workers back to the</span>
+<span class="sd">        master process.</span>
+<span class="sd">    verbose: int, optional</span>
+<span class="sd">        Make it possible to monitor how the communication of numpy arrays</span>
+<span class="sd">        with the subprocess is handled (pickling or memmaping)</span>
+<span class="sd">    prewarm: bool or str, optional, &quot;auto&quot; by default.</span>
+<span class="sd">        If True, force a read on newly memmaped array to make sure that OS pre-</span>
+<span class="sd">        cache it in memory. This can be useful to avoid concurrent disk access</span>
+<span class="sd">        when the same data array is passed to different worker processes.</span>
+<span class="sd">        If &quot;auto&quot; (by default), prewarm is set to True, unless the Linux shared</span>
+<span class="sd">        memory partition /dev/shm is available and used as temp_folder.</span>
+
+<span class="sd">    `forward_reducers` and `backward_reducers` are expected to be</span>
+<span class="sd">    dictionaries with key/values being `(type, callable)` pairs where</span>
+<span class="sd">    `callable` is a function that give an instance of `type` will return</span>
+<span class="sd">    a tuple `(constructor, tuple_of_objects)` to rebuild an instance out</span>
+<span class="sd">    of the pickled `tuple_of_objects` as would return a `__reduce__`</span>
+<span class="sd">    method. See the standard library documentation on pickling for more</span>
+<span class="sd">    details.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">temp_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_nbytes</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span>
+                 <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">forward_reducers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backward_reducers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">context_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prewarm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">forward_reducers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">forward_reducers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">backward_reducers</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">backward_reducers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">context_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;context_id is deprecated and ignored in joblib&#39;</span>
+                          <span class="s1">&#39; 0.9.4 and will be removed in 0.11&#39;</span><span class="p">,</span>
+                          <span class="ne">DeprecationWarning</span><span class="p">)</span>
+
+        <span class="c1"># Prepare a sub-folder name for the serialization of this particular</span>
+        <span class="c1"># pool instance (do not create in advance to spare FS write access if</span>
+        <span class="c1"># no array is to be dumped):</span>
+        <span class="n">pool_folder_name</span> <span class="o">=</span> <span class="s2">&quot;joblib_memmaping_pool_</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(),</span> <span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+        <span class="n">pool_folder</span><span class="p">,</span> <span class="n">use_shared_mem</span> <span class="o">=</span> <span class="n">_get_temp_dir</span><span class="p">(</span><span class="n">pool_folder_name</span><span class="p">,</span>
+                                                    <span class="n">temp_folder</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span> <span class="o">=</span> <span class="n">pool_folder</span>
+
+        <span class="c1"># Register the garbage collector at program exit in case caller forgets</span>
+        <span class="c1"># to call terminate explicitly: note we do not pass any reference to</span>
+        <span class="c1"># self to ensure that this callback won&#39;t prevent garbage collection of</span>
+        <span class="c1"># the pool instance and related file handler resources such as POSIX</span>
+        <span class="c1"># semaphores and pipes</span>
+        <span class="n">pool_module_name</span> <span class="o">=</span> <span class="n">whichmodule</span><span class="p">(</span><span class="n">delete_folder</span><span class="p">,</span> <span class="s1">&#39;delete_folder&#39;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">_cleanup</span><span class="p">():</span>
+            <span class="c1"># In some cases the Python runtime seems to set delete_folder to</span>
+            <span class="c1"># None just before exiting when accessing the delete_folder</span>
+            <span class="c1"># function from the closure namespace. So instead we reimport</span>
+            <span class="c1"># the delete_folder function explicitly.</span>
+            <span class="c1"># https://github.com/joblib/joblib/issues/328</span>
+            <span class="c1"># We cannot just use from &#39;joblib.pool import delete_folder&#39;</span>
+            <span class="c1"># because joblib should only use relative imports to allow</span>
+            <span class="c1"># easy vendoring.</span>
+            <span class="n">delete_folder</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span>
+                <span class="n">pool_module_name</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;delete_folder&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">delete_folder</span>
+            <span class="n">delete_folder</span><span class="p">(</span><span class="n">pool_folder</span><span class="p">)</span>
+
+        <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">_cleanup</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">np</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Register smart numpy.ndarray reducers that detects memmap backed</span>
+            <span class="c1"># arrays and that is alse able to dump to memmap large in-memory</span>
+            <span class="c1"># arrays over the max_nbytes threshold</span>
+            <span class="k">if</span> <span class="n">prewarm</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+                <span class="n">prewarm</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">use_shared_mem</span>
+            <span class="n">forward_reduce_ndarray</span> <span class="o">=</span> <span class="n">ArrayMemmapReducer</span><span class="p">(</span>
+                <span class="n">max_nbytes</span><span class="p">,</span> <span class="n">pool_folder</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span>
+                <span class="n">prewarm</span><span class="o">=</span><span class="n">prewarm</span><span class="p">)</span>
+            <span class="n">forward_reducers</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="n">forward_reduce_ndarray</span>
+            <span class="n">forward_reducers</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduce_memmap</span>
+
+            <span class="c1"># Communication from child process to the parent process always</span>
+            <span class="c1"># pickles in-memory numpy.ndarray without dumping them as memmap</span>
+            <span class="c1"># to avoid confusing the caller and make it tricky to collect the</span>
+            <span class="c1"># temporary folder</span>
+            <span class="n">backward_reduce_ndarray</span> <span class="o">=</span> <span class="n">ArrayMemmapReducer</span><span class="p">(</span>
+                <span class="kc">None</span><span class="p">,</span> <span class="n">pool_folder</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">,</span> <span class="n">verbose</span><span class="p">)</span>
+            <span class="n">backward_reducers</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="n">backward_reduce_ndarray</span>
+            <span class="n">backward_reducers</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">memmap</span><span class="p">]</span> <span class="o">=</span> <span class="n">reduce_memmap</span>
+
+        <span class="n">poolargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">,</span>
+            <span class="n">forward_reducers</span><span class="o">=</span><span class="n">forward_reducers</span><span class="p">,</span>
+            <span class="n">backward_reducers</span><span class="o">=</span><span class="n">backward_reducers</span><span class="p">)</span>
+        <span class="n">poolargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MemmapingPool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">poolargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="MemmapingPool.terminate"><a class="viewcode-back" href="../../../../test/mlens.externals.joblib.html#mlens.externals.joblib.pool.MemmapingPool.terminate">[docs]</a>    <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n_retries</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_retries</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">super</span><span class="p">(</span><span class="n">MemmapingPool</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+                <span class="k">break</span>
+            <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="ne">WindowsError</span><span class="p">):</span>
+                    <span class="c1"># Workaround  occasional &quot;[Error 5] Access is denied&quot; issue</span>
+                    <span class="c1"># when trying to terminate a process under windows.</span>
+                    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">n_retries</span><span class="p">:</span>
+                        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Failed to terminate worker processes in&quot;</span>
+                                      <span class="s2">&quot; multiprocessing pool: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+        <span class="n">delete_folder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temp_folder</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Sebastian Flennerhag.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
