@@ -1,7 +1,7 @@
 // Styling for the navbar
 #mainNav {
     border-color: transparent;
-    background-color: $theme-primary;
+    background-color: $theme-nav-shrink;
     @include transition-all;
     @include heading-font;
     .navbar-brand {
