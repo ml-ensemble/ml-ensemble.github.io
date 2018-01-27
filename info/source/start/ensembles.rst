@@ -21,7 +21,7 @@ is a generic ensemble class that allows the user to mix types between layers,
 for instance by setting the first layer to a Subsemble and the second layer
 to a Super Learner. Here, we will briefly introduce ensemble specific
 parameters and usage. For full documentation, see the :ref:`API` section.
-However, by accessing the :ref:`low-level API <low-level-api>` it is possible 
+However, by accessing the low-level API it is possible 
 to build virtually any type of ensemble. Further ready-made classes will be 
 introduced on demand. Feel free to raise a feature issue at Github_.
 

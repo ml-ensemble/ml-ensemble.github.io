@@ -67,7 +67,9 @@ intersphinx_mapping = {'http://scikit-learn.org/stable/': None,
                        'http://matplotlib.org/': None,
                        'https://pythonhosted.org/joblib/': None,
                        'https://docs.python.org/3/': None,
-                       'http://pandas.pydata.org/pandas-docs/stable/': None}
+                       'http://pandas.pydata.org/pandas-docs/stable/': None,
+                       'http://ml-ensemble.com/docs/': None,
+                       }
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

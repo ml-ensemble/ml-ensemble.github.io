@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started &mdash; mlens 0.2.0 documentation</title>
+  <title>Getting started &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
         <link rel="next" title="Advanced features tutorial" href="advanced.html"/>
         <link rel="prev" title="Install" href="../start/install.html"/> 
 
@@ -77,7 +77,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
             
           
@@ -156,6 +156,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Mechanics</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="learner.html">Learner Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="learner.html#the-learner-api">The Learner API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="learner.html#basics">Basics</a></li>
@@ -202,7 +203,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
@@ -370,7 +370,7 @@ and finally the meta estimator.</p>
 </pre></div>
 </div>
 <p>To check the performance of estimator in the layers, call the <code class="docutils literal"><span class="pre">data</span></code>
-attribute. The attribute can be wrapped in a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.21.0)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>,
+attribute. The attribute can be wrapped in a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>,
 but prints in a tabular format as is.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Fit data:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
@@ -378,8 +378,8 @@ but prints in a tabular format as is.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fit</span> <span class="n">data</span><span class="p">:</span>
                                    <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">randomforestclassifier</span>       <span class="mf">0.84</span>     <span class="mf">0.06</span>  <span class="mf">0.04</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">svc</span>                          <span class="mf">0.89</span>     <span class="mf">0.05</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">randomforestclassifier</span>       <span class="mf">0.84</span>     <span class="mf">0.06</span>  <span class="mf">0.05</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">svc</span>                          <span class="mf">0.89</span>     <span class="mf">0.05</span>  <span class="mf">0.01</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
 </pre></div>
 </div>
 <p>To round off, let’s see how the ensemble as a whole fared.</p>
@@ -417,9 +417,9 @@ instance, in the above example, we could add a second layer as follows.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fit</span> <span class="n">data</span><span class="p">:</span>
                                    <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">logisticregression</span>           <span class="mf">0.74</span>     <span class="mf">0.16</span>  <span class="mf">0.02</span>  <span class="mf">0.02</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">randomforestclassifier</span>       <span class="mf">0.84</span>     <span class="mf">0.06</span>  <span class="mf">0.04</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">2</span>  <span class="n">logisticregression</span>           <span class="mf">0.67</span>     <span class="mf">0.12</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">logisticregression</span>           <span class="mf">0.74</span>     <span class="mf">0.16</span>  <span class="mf">0.04</span>  <span class="mf">0.00</span>  <span class="mf">0.01</span>  <span class="mf">0.01</span>
+<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">randomforestclassifier</span>       <span class="mf">0.84</span>     <span class="mf">0.06</span>  <span class="mf">0.05</span>  <span class="mf">0.00</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>
+<span class="n">layer</span><span class="o">-</span><span class="mi">2</span>  <span class="n">logisticregression</span>           <span class="mf">0.67</span>     <span class="mf">0.12</span>  <span class="mf">0.01</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
 <span class="n">layer</span><span class="o">-</span><span class="mi">2</span>  <span class="n">svc</span>                          <span class="mf">0.89</span>     <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
 </pre></div>
 </div>
@@ -427,7 +427,7 @@ instance, in the above example, we could add a second layer as follows.</p>
 </div>
 <div class="section" id="model-selection-guide">
 <span id="id3"></span><h2>Model selection guide<a class="headerlink" href="#model-selection-guide" title="Permalink to this headline">¶</a></h2>
-<p>The work horse class is the <code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code>, which allows you to
+<p>The work horse class is the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a>, which allows you to
 grid search several models in one go across several preprocessing pipelines.
 The evaluator class pre-fits transformers, thus avoiding fitting the same
 preprocessing pipelines on the same data repeatedly. Also, by fitting all
@@ -441,7 +441,7 @@ features.</p>
 <div class="section" id="the-scoring-function">
 <h3>The scoring function<a class="headerlink" href="#the-scoring-function" title="Permalink to this headline">¶</a></h3>
 <p>An important note is that the scoring function must be wrapped by
-<code class="xref py py-func docutils literal"><span class="pre">make_scorer()</span></code>, to ensure all scoring functions behave similarly regardless
+<a class="reference external" href="http://ml-ensemble.com/docs/metrics.html#mlens.metrics.make_scorer" title="(in mlens v0.2.0)"><code class="xref py py-func docutils literal"><span class="pre">make_scorer()</span></code></a>, to ensure all scoring functions behave similarly regardless
 of whether they measure accuracy or errors. To wrap a function, simple do:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 <span class="n">accuracy_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -450,7 +450,7 @@ of whether they measure accuracy or errors. To wrap a function, simple do:</p>
 <p>The <code class="docutils literal"><span class="pre">make_scorer</span></code> wrapper
 is a copy of the Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="(in scikit-learn v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.make_scorer()</span></code></a>, and you
 can import the Scikit-learn version as well.
-Note however that to pickle the <code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code>, you <strong>must</strong> import
+Note however that to pickle the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a>, you <strong>must</strong> import
 <code class="docutils literal"><span class="pre">make_scorer</span></code> from <code class="docutils literal"><span class="pre">mlens</span></code>.</p>
 </div>
 <div class="section" id="a-simple-evaluation">
@@ -459,7 +459,7 @@ Note however that to pickle the <code class="xref py py-class docutils literal">
 estimator. First, we need a list of estimator and a dictionary of parameter
 distributions that maps to each estimator. The estimators should be put in a
 list, either as is or as a named tuple (<code class="docutils literal"><span class="pre">(name,</span> <span class="pre">est)</span></code>). If you don’t name
-the estimator, the <code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code> will automatically name the model as the
+the estimator, the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> will automatically name the model as the
 class name in lower case. This name must be the key in the parameter
 dictionary.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span>
@@ -489,7 +489,7 @@ by calling the <code class="docutils literal"><span class="pre">fit</span></code
 </div>
 <p>The full history of the evaluation can be found in <code class="docutils literal"><span class="pre">cv_results</span></code>. To compare
 models with their best parameters, we can pass the <code class="docutils literal"><span class="pre">results</span></code> attribute to
-a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.21.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a> or print it as a table. We use <code class="docutils literal"><span class="pre">m</span></code> to denote
+a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a> or print it as a table. We use <code class="docutils literal"><span class="pre">m</span></code> to denote
 mean values and <code class="docutils literal"><span class="pre">s</span></code> to denote standard deviation across folds for brevity.
 Note that the timed prediction is for the training set, for comparability with
 training time.</p>
@@ -500,8 +500,8 @@ training time.</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Score</span> <span class="n">comparison</span> <span class="k">with</span> <span class="n">best</span> <span class="n">params</span> <span class="n">founds</span><span class="p">:</span>
 
        <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>               <span class="n">params</span>
-<span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.006</span>       <span class="mf">0.003</span>        <span class="mf">0.003</span>        <span class="mf">0.002</span>
-<span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.033</span>          <span class="mf">0.980</span>          <span class="mf">0.005</span>       <span class="mf">0.002</span>       <span class="mf">0.000</span>        <span class="mf">0.006</span>        <span class="mf">0.002</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
+<span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.007</span>       <span class="mf">0.004</span>        <span class="mf">0.006</span>        <span class="mf">0.003</span>
+<span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.033</span>          <span class="mf">0.980</span>          <span class="mf">0.005</span>       <span class="mf">0.003</span>       <span class="mf">0.003</span>        <span class="mf">0.007</span>        <span class="mf">0.001</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -562,12 +562,12 @@ pipeline, just carry on as in the simple case:</p>
 <span class="n">Comparison</span> <span class="n">across</span> <span class="n">preprocessing</span> <span class="n">pipelines</span><span class="p">:</span>
 
              <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>               <span class="n">params</span>
-<span class="n">none</span>  <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.005</span>       <span class="mf">0.003</span>        <span class="mf">0.005</span>        <span class="mf">0.003</span>
-<span class="n">none</span>  <span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.033</span>          <span class="mf">0.980</span>          <span class="mf">0.005</span>       <span class="mf">0.003</span>       <span class="mf">0.001</span>        <span class="mf">0.010</span>        <span class="mf">0.003</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
-<span class="n">sc</span>    <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.004</span>       <span class="mf">0.001</span>        <span class="mf">0.003</span>        <span class="mf">0.001</span>
-<span class="n">sc</span>    <span class="n">knn</span>           <span class="mf">0.960</span>         <span class="mf">0.044</span>          <span class="mf">0.965</span>          <span class="mf">0.003</span>       <span class="mf">0.002</span>       <span class="mf">0.001</span>        <span class="mf">0.006</span>        <span class="mf">0.001</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
-<span class="n">sub</span>   <span class="n">gnb</span>           <span class="mf">0.780</span>         <span class="mf">0.133</span>          <span class="mf">0.791</span>          <span class="mf">0.020</span>       <span class="mf">0.005</span>       <span class="mf">0.002</span>        <span class="mf">0.002</span>        <span class="mf">0.001</span>
-<span class="n">sub</span>   <span class="n">knn</span>           <span class="mf">0.800</span>         <span class="mf">0.126</span>          <span class="mf">0.837</span>          <span class="mf">0.015</span>       <span class="mf">0.003</span>       <span class="mf">0.002</span>        <span class="mf">0.008</span>        <span class="mf">0.004</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">none</span>  <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.003</span>       <span class="mf">0.001</span>        <span class="mf">0.003</span>        <span class="mf">0.001</span>
+<span class="n">none</span>  <span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.033</span>          <span class="mf">0.980</span>          <span class="mf">0.005</span>       <span class="mf">0.001</span>       <span class="mf">0.000</span>        <span class="mf">0.006</span>        <span class="mf">0.002</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
+<span class="n">sc</span>    <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.005</span>       <span class="mf">0.002</span>        <span class="mf">0.004</span>        <span class="mf">0.003</span>
+<span class="n">sc</span>    <span class="n">knn</span>           <span class="mf">0.960</span>         <span class="mf">0.044</span>          <span class="mf">0.965</span>          <span class="mf">0.003</span>       <span class="mf">0.002</span>       <span class="mf">0.001</span>        <span class="mf">0.005</span>        <span class="mf">0.001</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
+<span class="n">sub</span>   <span class="n">gnb</span>           <span class="mf">0.780</span>         <span class="mf">0.133</span>          <span class="mf">0.791</span>          <span class="mf">0.020</span>       <span class="mf">0.004</span>       <span class="mf">0.002</span>        <span class="mf">0.003</span>        <span class="mf">0.001</span>
+<span class="n">sub</span>   <span class="n">knn</span>           <span class="mf">0.800</span>         <span class="mf">0.126</span>          <span class="mf">0.837</span>          <span class="mf">0.015</span>       <span class="mf">0.002</span>       <span class="mf">0.001</span>        <span class="mf">0.007</span>        <span class="mf">0.004</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
 </pre></div>
 </div>
 <p>You can also map different estimators to different preprocessing folds, and
@@ -597,11 +597,11 @@ parameter distributions</p>
 <span class="n">Comparison</span> <span class="k">with</span> <span class="n">different</span> <span class="n">parameter</span> <span class="n">dists</span><span class="p">:</span>
 
              <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>               <span class="n">params</span>
-<span class="n">none</span>  <span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.045</span>          <span class="mf">0.961</span>          <span class="mf">0.007</span>       <span class="mf">0.003</span>       <span class="mf">0.001</span>        <span class="mf">0.005</span>        <span class="mf">0.003</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="n">sc</span>    <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.005</span>       <span class="mf">0.001</span>        <span class="mf">0.004</span>        <span class="mf">0.001</span>
-<span class="n">sc</span>    <span class="n">knn</span>           <span class="mf">0.940</span>         <span class="mf">0.055</span>          <span class="mf">0.963</span>          <span class="mf">0.006</span>       <span class="mf">0.001</span>       <span class="mf">0.001</span>        <span class="mf">0.006</span>        <span class="mf">0.001</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="n">sub</span>   <span class="n">gnb</span>           <span class="mf">0.780</span>         <span class="mf">0.133</span>          <span class="mf">0.791</span>          <span class="mf">0.020</span>       <span class="mf">0.005</span>       <span class="mf">0.001</span>        <span class="mf">0.002</span>        <span class="mf">0.001</span>
-<span class="n">sub</span>   <span class="n">knn</span>           <span class="mf">0.800</span>         <span class="mf">0.126</span>          <span class="mf">0.837</span>          <span class="mf">0.015</span>       <span class="mf">0.002</span>       <span class="mf">0.001</span>        <span class="mf">0.005</span>        <span class="mf">0.002</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+<span class="n">none</span>  <span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.045</span>          <span class="mf">0.961</span>          <span class="mf">0.007</span>       <span class="mf">0.004</span>       <span class="mf">0.002</span>        <span class="mf">0.007</span>        <span class="mf">0.004</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">sc</span>    <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.006</span>       <span class="mf">0.003</span>        <span class="mf">0.003</span>        <span class="mf">0.002</span>
+<span class="n">sc</span>    <span class="n">knn</span>           <span class="mf">0.940</span>         <span class="mf">0.055</span>          <span class="mf">0.963</span>          <span class="mf">0.006</span>       <span class="mf">0.001</span>       <span class="mf">0.001</span>        <span class="mf">0.007</span>        <span class="mf">0.001</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">sub</span>   <span class="n">gnb</span>           <span class="mf">0.780</span>         <span class="mf">0.133</span>          <span class="mf">0.791</span>          <span class="mf">0.020</span>       <span class="mf">0.004</span>       <span class="mf">0.001</span>        <span class="mf">0.002</span>        <span class="mf">0.001</span>
+<span class="n">sub</span>   <span class="n">knn</span>           <span class="mf">0.800</span>         <span class="mf">0.126</span>          <span class="mf">0.837</span>          <span class="mf">0.015</span>       <span class="mf">0.002</span>       <span class="mf">0.000</span>        <span class="mf">0.005</span>        <span class="mf">0.002</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -683,7 +683,7 @@ as duplicate pairs, and thus fully pick up on this duplication.</p>
 pairwise correlations between the input data (<code class="docutils literal"><span class="pre">X</span></code>) and the labels to be
 predicted (<code class="docutils literal"><span class="pre">y</span></code>). If the number of features is large, it is advised to set
 the <code class="docutils literal"><span class="pre">no_ticks</span></code> parameter to <code class="docutils literal"><span class="pre">True</span></code>, to avoid rendering an illegible
-x-axis. Note that <code class="docutils literal"><span class="pre">X</span></code> must be a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.21.0)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>.</p>
+x-axis. Note that <code class="docutils literal"><span class="pre">X</span></code> must be a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">corr_X_y</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feature_</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
 <span class="n">corr_X_y</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">no_ticks</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -691,7 +691,7 @@ x-axis. Note that <code class="docutils literal"><span class="pre">X</span></cod
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_start_006.png" class="align-center" src="../_images/sphx_glr_start_006.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  7.281 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  7.345 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/start.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">start.py</span></code></a></div>
@@ -737,7 +737,7 @@ x-axis. Note that <code class="docutils literal"><span class="pre">X</span></cod
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

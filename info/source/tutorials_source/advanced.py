@@ -126,7 +126,7 @@ print("Test set score no feature propagation  : %.3f" % score_no_prep)
 print("Test set score with feature propagation: %.3f" % score_prep)
 
 ##############################################################################
-
+#
 # .. py:currentmodule:: mlens.preprocessing
 #
 # By combining feature propagation with the :class:`Subset` transformer, you can
@@ -366,8 +366,12 @@ class MyClass(LinearRegression):
         p = super(MyClass, self).predict(X)
         return 1 * (p > p.mean())
 
+
 ##############################################################################
-# Finally, to summarize the functionality in one example,
+# Importantly, your partition estimator should implement a ``get_params``
+# method to avoid unexpected errors. If you don't, you may encounter
+# a ``NotFittedError`` when calling ``predict``.
+# To summarize the functionality in one example,
 # let's implement a simple (but rather useless) partition estimator that splits
 # the data in half based on the sum of the features.
 
@@ -381,9 +385,11 @@ class SimplePartitioner():
         # Labels should be numerical
         return 1 * (X.sum(axis=1) > X.sum(axis=1).mean())
 
+    def get_params(self, deep=False):
+        return {}
+
 # Note that the number of partitions the estimator creates *must* match the
-# ``partitions`` argument passed to the Subsemble.
-# The ``folds`` option is completely independent.
+# ``partitions`` argument passed to the subsemble.
 
 sub = Subsemble(partitions=2, folds=3, verbose=1)
 sub.add([SVC(), LogisticRegression()],
@@ -411,15 +417,12 @@ sub.fit(X, y)
 #
 # .. currentmodule:: mlens.ensemble
 #
-# The modular ``add`` API of ML-Ensembles allow users to build arbitrarily
-# deep ensembles. If you would like to alternate between the *type* of each layer
+# To alternate between the *type* of layer with each ``add`` call,
 # the :class:`SequentialEnsemble` class can be used to specify what type of
-# layer (i.e. stacked, blended, subsamle-style) to add. This can be particularly
+# layer (i.e. stacked, blended, subsamle-style) to add. This is particularly
 # powerful if facing a large dataset, as the first layer can use a fast approach
 # such as blending, while subsequent layers fitted on the remaining data can
-# use more computationally intensive approaches. The type of layer, along with
-# any parameter settings pertaining to that layer, are specified in the
-# ``add`` method.
+# use more computationally intensive approaches.
 
 from mlens.ensemble import SequentialEnsemble
 
@@ -442,7 +445,7 @@ ensemble.add_meta(SVC())
 # The below table maps the types of layers available in the :class:`SequentialEnsemble` with the corresponding ensemble.
 #
 # ===================  ============================
-# front-end parameter  SequentialEnsemble parameter
+# Ensemble equivalent  SequentialEnsemble parameter
 # ===================  ============================
 # 'SuperLearner'       'stack'
 # 'BlendEnsemble'      'blend'
@@ -547,27 +550,19 @@ except OSError:
 #
 # .. py:currentmodule:: mlens.preprocessing
 #
-# You can either use the ensemble as-is as a preprocessing pipeline. But do note
-# that the ``transform`` method on an ensemble used the prediction strategy from
-# the ``fit`` call, so this will not be entirely consistent with the ensemble's
-# behavior on a test set.
 
 ##############################################################################
-# Alternatively, to get an exact emulator of how the ensemble would behave, use
-# the dedicated :class:`EnsembleTransformer` class, which faithfully replicated
-# the ensemble's behavior on both training and test folds.
+# The task can be made considerably easier by treating the lower layers of an
+# ensemble as preprocessing pipeline, and performing model selection on
+# higher-order layers or meta learners. To use an ensemble for this purpose,
+# set the ``model_selection`` parameter to ``True`` before fitting. This will
+# modify how the ``transform`` method behaves, to ensure ``predict`` is called
+# on test folds.
 #
-# .. py:currentmodule:: mlens.ensemble
-#
-# The transformer follows the same API as the :class:`SequentialEnsemble`, but
-# does not implement a meta estimator and the transform method will
-# determine whether the passed input data is the same as during training,
-# in which case it recovers the predictions from the ``fit`` call. In the following example,
-# we run model selection on the meta learner of a blend ensemble, and try
-# two configurations of the blend ensemble: learning from class predictions or
-# from probability distributions over classes.
+# .. warning::
+#    Remember to turn model selection off when done.
 
-from mlens.model_selection import Evaluator, EnsembleTransformer
+from mlens.model_selection import Evaluator
 
 from mlens.metrics import make_scorer
 from scipy.stats import uniform, randint
@@ -577,8 +572,12 @@ from scipy.stats import uniform, randint
 base_learners = [RandomForestClassifier(random_state=seed),
                  SVC(probability=True)]
 
-proba_transformer = EnsembleTransformer(random_state=seed).add('blend', base_learners, proba=True)
-class_transformer = EnsembleTransformer(random_state=seed).add('blend', base_learners, proba=False)
+proba_transformer = SequentialEnsemble(
+                        model_selection=True, random_state=seed).add(
+                            'blend', base_learners, proba=True)
+class_transformer = SequentialEnsemble(
+                        model_selection=True, random_state=seed).add(
+                            'blend', base_learners, proba=False)
 
 # Set up a preprocessing mapping
 # Each pipeline in this map is fitted once on each fold before

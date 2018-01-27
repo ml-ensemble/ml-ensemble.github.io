@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.parallel &mdash; mlens 0.2.0 documentation</title>
+  <title>mlens.parallel &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.0 documentation" href="index.html"/>
+    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
         <link rel="next" title="mlens.preprocessing" href="preprocessing.html"/>
         <link rel="prev" title="mlens.index" href="mod_index.html"/> 
 
@@ -77,7 +77,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
             
           
@@ -1467,7 +1467,7 @@ details.</li>
 
 <dl class="method">
 <dt id="mlens.parallel.backend.ParallelProcessing.stack">
-<code class="descname">stack</code><span class="sig-paren">(</span><em>caller</em>, <em>job</em>, <em>X</em>, <em>y=None</em>, <em>path=None</em>, <em>return_preds=False</em>, <em>wart_start=False</em>, <em>split=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/parallel/backend.html#ParallelProcessing.stack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing.stack" title="Permalink to this definition">¶</a></dt>
+<code class="descname">stack</code><span class="sig-paren">(</span><em>caller</em>, <em>job</em>, <em>X</em>, <em>y=None</em>, <em>path=None</em>, <em>return_preds=False</em>, <em>warm_start=False</em>, <em>split=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/parallel/backend.html#ParallelProcessing.stack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.ParallelProcessing.stack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stacked parallel task mapping.</p>
 <p>Run stacked tasks in caller in parallel.</p>
 <p>This method runs a stack of tasks as a stack, where the output of
@@ -1562,7 +1562,7 @@ cache on disk. Pass a <code class="docutils literal"><span class="pre">dict</spa
 <h3><span class="hidden-section">Job</span><a class="headerlink" href="#job" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="mlens.parallel.backend.Job">
-<em class="property">class </em><code class="descclassname">mlens.parallel.backend.</code><code class="descname">Job</code><span class="sig-paren">(</span><em>job</em>, <em>stack</em>, <em>split</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/parallel/backend.html#Job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">mlens.parallel.backend.</code><code class="descname">Job</code><span class="sig-paren">(</span><em>job</em>, <em>stack</em>, <em>split</em>, <em>dir=None</em>, <em>tmp=None</em>, <em>predict_in=None</em>, <em>targets=None</em>, <em>predict_out=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/parallel/backend.html#Job"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.parallel.backend.Job" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Container class for holding and managing job data.</p>
 <p><a class="reference internal" href="#mlens.parallel.backend.Job" title="mlens.parallel.backend.Job"><code class="xref py py-class docutils literal"><span class="pre">Job</span></code></a> is intended as a on-the-fly job handler that keeps track
@@ -1585,6 +1585,12 @@ of input data, predictions, and manages estimation caches.</p>
 the <code class="docutils literal"><span class="pre">predict_out</span></code> array become <code class="docutils literal"><span class="pre">predict_in</span></code>.</li>
 <li><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) – Whether to create a new sub-cache when the
 <a class="reference internal" href="#mlens.parallel.backend.Job.args" title="mlens.parallel.backend.Job.args"><code class="xref py py-attr docutils literal"><span class="pre">args</span></code></a> property is called.</li>
+<li><strong>dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a><em>, </em><em>optional</em>) – estimation cache. Pass dictionary for use with multiprocessing or a
+string pointing to the disk directory to create the cache in</li>
+<li><strong>tmp</strong> (<em>obj</em><em>, </em><em>optional</em>) – a Tempfile object for temporary directories</li>
+<li><strong>targets</strong> (<em>array-like of shape</em><em> [</em><em>n_in_samples</em><em>,</em><em>]</em><em>, </em><em>optional</em>) – input targets</li>
+<li><strong>predict_in</strong> (<em>array-like of shape</em><em> [</em><em>n_in_samples</em><em>, </em><em>n_in_features</em><em>]</em><em>, </em><em>optional</em>) – input data</li>
+<li><strong>predict_out</strong> (<em>array_like of shape</em><em> [</em><em>n_out_samples</em><em>, </em><em>n_out_features</em><em>]</em><em>, </em><em>optional</em>) – prediction output array</li>
 </ul>
 </td>
 </tr>
@@ -2095,7 +2101,7 @@ and the <code class="docutils literal"><span class="pre">_classes(=None)``attrib
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.0',
+            VERSION:'0.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
