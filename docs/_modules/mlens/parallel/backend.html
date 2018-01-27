@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.parallel.backend &mdash; mlens 0.2.0 documentation</title>
+  <title>mlens.parallel.backend &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="mlens 0.2.0 documentation" href="../../../index.html"/>
+    <link rel="top" title="mlens 0.2.1 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -76,7 +76,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
             
           
@@ -481,21 +481,38 @@
 <span class="sd">    split : bool</span>
 <span class="sd">        Whether to create a new sub-cache when the</span>
 <span class="sd">        :attr:`~mlens.parallel.backend.Job.args` property is called.</span>
+
+<span class="sd">    dir : str, dict, optional</span>
+<span class="sd">        estimation cache. Pass dictionary for use with multiprocessing or a</span>
+<span class="sd">        string pointing to the disk directory to create the cache in</span>
+
+<span class="sd">    tmp : obj, optional</span>
+<span class="sd">        a Tempfile object for temporary directories</span>
+
+<span class="sd">    targets : array-like of shape [n_in_samples,], optional</span>
+<span class="sd">        input targets</span>
+
+<span class="sd">    predict_in : array-like of shape [n_in_samples, n_in_features], optional</span>
+<span class="sd">        input data</span>
+
+<span class="sd">    predict_out : array_like of shape [n_out_samples, n_out_features], optional</span>
+<span class="sd">        prediction output array</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;predict_in&#39;</span><span class="p">,</span> <span class="s1">&#39;predict_out&#39;</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">,</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;targets&#39;</span><span class="p">,</span> <span class="s1">&#39;predict_in&#39;</span><span class="p">,</span> <span class="s1">&#39;predict_out&#39;</span><span class="p">,</span> <span class="s1">&#39;dir&#39;</span><span class="p">,</span> <span class="s1">&#39;job&#39;</span><span class="p">,</span> <span class="s1">&#39;tmp&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;_n_dir&#39;</span><span class="p">,</span> <span class="s1">&#39;kwargs&#39;</span><span class="p">,</span> <span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="s1">&#39;split&#39;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">split</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">split</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tmp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">predict_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">predict_out</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="o">=</span> <span class="n">job</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="n">stack</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">split</span> <span class="o">=</span> <span class="n">split</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tmp</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="n">predict_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="n">predict_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="nb">dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_n_dir</span> <span class="o">=</span> <span class="mi">0</span>
 
 <div class="viewcode-block" id="Job.clear"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -533,13 +550,14 @@
 <span class="sd">            :class:`~mlens.index.blend.BlendIndex`</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="c1"># This is legal if X is a prediction matrix generated by predicting</span>
             <span class="c1"># only a subset of the original training set.</span>
             <span class="c1"># Since indexing is strictly monotonic, we can simply discard</span>
             <span class="c1"># the first observations in y to get the corresponding labels.</span>
-            <span class="n">rebase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">rebase</span><span class="p">:]</span></div>
+            <span class="n">rebase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">rebase</span><span class="p">:]</span></div>
 
 <div class="viewcode-block" id="Job.shuffle"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.shuffle">[docs]</a>    <span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Shuffle inputs.</span>
@@ -552,9 +570,9 @@
 <span class="sd">            Random seed number or generator to use.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Job.subdir"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.Job.subdir">[docs]</a>    <span class="k">def</span> <span class="nf">subdir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a cache subdirectory</span>
@@ -628,8 +646,8 @@
         <span class="n">main_feed</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_out</span><span class="p">}</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="s1">&#39;evaluate&#39;</span><span class="p">]:</span>
-            <span class="n">main_feed</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
-            <span class="n">aux_feed</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span>
+            <span class="n">main_feed</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span>
+            <span class="n">aux_feed</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">targets</span>
 
         <span class="n">out</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
@@ -763,7 +781,7 @@
 
             <span class="c1"># Store data for processing</span>
             <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span> <span class="ow">and</span> <span class="n">arr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">job</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">arr</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span> <span class="k">else</span> <span class="n">_load_mmap</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">job</span><span class="o">.</span><span class="n">targets</span> <span class="o">=</span> <span class="n">arr</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span> <span class="k">else</span> <span class="n">_load_mmap</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
                 <span class="n">job</span><span class="o">.</span><span class="n">predict_in</span> <span class="o">=</span> <span class="n">arr</span> \
                     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span> <span class="k">else</span> <span class="n">_load_mmap</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -915,7 +933,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">caller</span><span class="o">=</span><span class="n">caller</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ParallelProcessing.stack"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.backend.ParallelProcessing.stack">[docs]</a>    <span class="k">def</span> <span class="nf">stack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-              <span class="n">wart_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+              <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Stacked parallel task mapping.</span>
 
 <span class="sd">        Run stacked tasks in caller in parallel.</span>
@@ -975,7 +993,7 @@
 <span class="sd">            Prediction array(s).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
-            <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">wart_start</span><span class="p">,</span>
+            <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="n">warm_start</span><span class="p">,</span>
             <span class="n">return_preds</span><span class="o">=</span><span class="n">return_preds</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">,</span> <span class="n">stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">caller</span><span class="o">=</span><span class="n">caller</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -1038,7 +1056,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span> <span class="o">==</span> <span class="s1">&#39;fit&#39;</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="s1">&#39;shuffle&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="s1">&#39;random_state&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 
-        <span class="n">task</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>
+        <span class="n">task</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">task</span><span class="o">.</span><span class="n">__no_output__</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_gen_prediction_array</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__threading__</span><span class="p">)</span>
@@ -1061,9 +1079,10 @@
             <span class="n">p_out</span><span class="p">[:,</span> <span class="p">:</span><span class="n">task</span><span class="o">.</span><span class="n">n_feature_prop</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_in</span><span class="p">[</span><span class="n">r</span><span class="p">:,</span> <span class="n">task</span><span class="o">.</span><span class="n">propagate_features</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Need to populate propagated features using scipy sparse hstack</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="n">hstack</span><span class="p">([</span><span class="n">p_in</span><span class="p">[</span><span class="n">r</span><span class="p">:,</span> <span class="n">task</span><span class="o">.</span><span class="n">propagate_features</span><span class="p">],</span>
-                                           <span class="n">p_out</span><span class="p">[:,</span> <span class="n">task</span><span class="o">.</span><span class="n">n_feature_prop</span><span class="p">:]]</span>
-                                          <span class="p">)</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_out</span> <span class="o">=</span> <span class="n">hstack</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">p_in</span><span class="p">[</span><span class="n">r</span><span class="p">:,</span> <span class="n">task</span><span class="o">.</span><span class="n">propagate_features</span><span class="p">],</span>
+                 <span class="n">p_out</span><span class="p">[:,</span> <span class="n">task</span><span class="o">.</span><span class="n">n_feature_prop</span><span class="p">:]]</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">tolil</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_gen_prediction_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">job</span><span class="p">,</span> <span class="n">threading</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generate prediction array either in-memory or persist to disk.&quot;&quot;&quot;</span>
@@ -1158,7 +1177,7 @@
                       <span class="n">mmap_mode</span><span class="o">=</span><span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">,</span>
                       <span class="n">backend</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span> <span class="k">as</span> <span class="n">parallel</span><span class="p">:</span>
 
-            <span class="n">caller</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>
+            <span class="n">caller</span><span class="o">.</span><span class="n">indexer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">predict_in</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">targets</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">job</span><span class="p">)</span>
             <span class="n">caller</span><span class="p">(</span><span class="n">parallel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">job</span><span class="o">.</span><span class="n">args</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">case</span><span class="p">)</span></div></div>
 </pre></div>
 
@@ -1196,7 +1215,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

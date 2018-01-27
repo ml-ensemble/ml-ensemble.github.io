@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ready-made ensemble classes &mdash; mlens 0.2.0 documentation</title>
+  <title>Ready-made ensemble classes &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -43,8 +43,8 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
-        <link rel="next" title="Learner Mechanics" href="../tutorials/learner.html"/>
+    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
+        <link rel="next" title="Overview" href="../overview.html"/>
         <link rel="prev" title="Advanced features tutorial" href="../tutorials/advanced.html"/> 
 
   
@@ -77,7 +77,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
             
           
@@ -156,6 +156,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Mechanics</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
@@ -202,7 +203,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
@@ -288,17 +288,17 @@
 </ul>
 </div></blockquote>
 <p>Each ensemble class can be built with several layers, and each layer can
-output class probabilities if desired. The <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> class
+output class probabilities if desired. The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> class
 is a generic ensemble class that allows the user to mix types between layers,
 for instance by setting the first layer to a Subsemble and the second layer
 to a Super Learner. Here, we will briefly introduce ensemble specific
-parameters and usage. For full documentation, see the <a class="reference internal" href="../deep/api.html#api"><span class="std std-ref">API</span></a> section.
-However, by accessing the <a class="reference internal" href="../deep/api.html#low-level-api"><span class="std std-ref">low-level API</span></a> it is possible
+parameters and usage. For full documentation, see the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/api.html#api" title="(in pandas v0.22.0)"><span>API Reference</span></a> section.
+However, by accessing the low-level API it is possible
 to build virtually any type of ensemble. Further ready-made classes will be
 introduced on demand. Feel free to raise a feature issue at <a class="reference external" href="https://github.com/flennerhag/mlens/issues">Github</a>.</p>
 <div class="section" id="super-learner">
 <span id="id1"></span><h2>Super Learner<a class="headerlink" href="#super-learner" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code> (also known as a Stacking Ensemble) is an
+<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a> (also known as a Stacking Ensemble) is an
 supervised ensemble algorithm that uses K-fold estimation to map a
 training set <span class="math">\((X, y)\)</span> into a prediction set <span class="math">\((Z, y)\)</span>,
 where the predictions in <span class="math">\(Z\)</span> are constructed using K-Fold splits
@@ -330,7 +330,7 @@ consuming method and can be prohibitively costly for large datasets.
 With large data, other ensembles that fits an ensemble on subsets
 can achieve similar performance at a fraction of the training time.
 However, when data is noisy or of high variance,
-the <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code> ensure all information is
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a> ensure all information is
 used during fitting.</p>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
@@ -363,7 +363,7 @@ the user can specify a linear regression as the meta learner.</p>
 </div>
 <div class="section" id="subsemble">
 <span id="id6"></span><h2>Subsemble<a class="headerlink" href="#subsemble" title="Permalink to this headline">¶</a></h2>
-<p><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code> is a supervised ensemble algorithm that uses subsets of
+<p><a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a> is a supervised ensemble algorithm that uses subsets of
 the full data to fit a layer, and within each subset K-fold estimation
 to map a training set <span class="math">\((X, y)\)</span> into a prediction set <span class="math">\((Z, y)\)</span>,
 where <span class="math">\(Z\)</span> is a matrix of prediction from each estimator on each
@@ -446,8 +446,8 @@ to <code class="docutils literal"><span class="pre">True</span></code>. Supervis
 </div>
 <div class="section" id="blend-ensemble">
 <span id="id11"></span><h2>Blend Ensemble<a class="headerlink" href="#blend-ensemble" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> is a supervised ensemble closely related to
-the <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code>. It differs in that to estimate the prediction
+<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> is a supervised ensemble closely related to
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a>. It differs in that to estimate the prediction
 matrix Z used by the meta learner, it uses a subset of the data to predict
 its complement, and the meta learner is fitted on those predictions.</p>
 <p>The user must specify how much of the data should be used to train the layer,
@@ -455,20 +455,20 @@ its complement, and the meta learner is fitted on those predictions.</p>
 the held-out set are passed to the next layer or meta estimator, so information
 is with each layer.</p>
 <p>By only fitting every base learner once on a subset of the full training data,
-<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> is a fast ensemble that can handle very large datasets
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> is a fast ensemble that can handle very large datasets
 simply by only using portion of it at each stage. The cost of this approach is
 that information is thrown out at each stage, as one layer will not see the
 training data used by the previous layer.</p>
 <p>With large data that can be expected to satisfy an i.i.d. assumption, the
-<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> can achieve similar performance to more
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> can achieve similar performance to more
 sophisticated ensembles at a fraction of the training time. However, with
 data data is not uniformly distributed or exhibits high variance the
-<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> can be a poor choice as information is lost at
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> can be a poor choice as information is lost at
 each stage of fitting.</p>
 </div>
 <div class="section" id="sequential-ensemble">
 <span id="id12"></span><h2>Sequential Ensemble<a class="headerlink" href="#sequential-ensemble" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> allows users to build ensembles with
+<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> allows users to build ensembles with
 different classes of layers. Instead of setting parameters upfront during
 instantiation, the user specified parameters for each layer when calling
 <code class="docutils literal"><span class="pre">add</span></code>. The user must thus specify what type of layer is being added
@@ -563,7 +563,7 @@ through an example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

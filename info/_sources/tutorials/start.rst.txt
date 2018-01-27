@@ -132,8 +132,8 @@ but prints in a tabular format as is.
 
     Fit data:
                                        score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    layer-1  randomforestclassifier       0.84     0.06  0.04  0.00  0.00  0.00
-    layer-1  svc                          0.89     0.05  0.00  0.00  0.00  0.00
+    layer-1  randomforestclassifier       0.84     0.06  0.05  0.00  0.00  0.00
+    layer-1  svc                          0.89     0.05  0.01  0.01  0.00  0.00
 
 
 To round off, let's see how the ensemble as a whole fared.
@@ -205,9 +205,9 @@ We now fit this ensemble in the same manner as before:
 
     Fit data:
                                        score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    layer-1  logisticregression           0.74     0.16  0.02  0.02  0.01  0.00
-    layer-1  randomforestclassifier       0.84     0.06  0.04  0.00  0.00  0.00
-    layer-2  logisticregression           0.67     0.12  0.00  0.00  0.00  0.00
+    layer-1  logisticregression           0.74     0.16  0.04  0.00  0.01  0.01
+    layer-1  randomforestclassifier       0.84     0.06  0.05  0.00  0.01  0.00
+    layer-2  logisticregression           0.67     0.12  0.01  0.01  0.00  0.00
     layer-2  svc                          0.89     0.00  0.00  0.00  0.00  0.00
 
 
@@ -343,8 +343,8 @@ training time.
     Score comparison with best params founds:
 
            test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-    gnb           0.960         0.033          0.957          0.006       0.006       0.003        0.003        0.002                     
-    knn           0.967         0.033          0.980          0.005       0.002       0.000        0.006        0.002  {'n_neighbors': 15}
+    gnb           0.960         0.033          0.957          0.006       0.007       0.004        0.006        0.003                     
+    knn           0.967         0.033          0.980          0.005       0.003       0.003        0.007        0.001  {'n_neighbors': 15}
 
 
 Preprocessing
@@ -443,12 +443,12 @@ pipeline, just carry on as in the simple case:
     Comparison across preprocessing pipelines:
 
                  test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-    none  gnb           0.960         0.033          0.957          0.006       0.005       0.003        0.005        0.003                     
-    none  knn           0.967         0.033          0.980          0.005       0.003       0.001        0.010        0.003  {'n_neighbors': 15}
-    sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.003        0.001                     
-    sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.006        0.001   {'n_neighbors': 8}
-    sub   gnb           0.780         0.133          0.791          0.020       0.005       0.002        0.002        0.001                     
-    sub   knn           0.800         0.126          0.837          0.015       0.003       0.002        0.008        0.004   {'n_neighbors': 9}
+    none  gnb           0.960         0.033          0.957          0.006       0.003       0.001        0.003        0.001                     
+    none  knn           0.967         0.033          0.980          0.005       0.001       0.000        0.006        0.002  {'n_neighbors': 15}
+    sc    gnb           0.960         0.033          0.957          0.006       0.005       0.002        0.004        0.003                     
+    sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.005        0.001   {'n_neighbors': 8}
+    sub   gnb           0.780         0.133          0.791          0.020       0.004       0.002        0.003        0.001                     
+    sub   knn           0.800         0.126          0.837          0.015       0.002       0.001        0.007        0.004   {'n_neighbors': 9}
 
 
 You can also map different estimators to different preprocessing folds, and
@@ -489,11 +489,11 @@ parameter distributions
     Comparison with different parameter dists:
 
                  test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-    none  knn           0.967         0.045          0.961          0.007       0.003       0.001        0.005        0.003   {'n_neighbors': 3}
-    sc    gnb           0.960         0.033          0.957          0.006       0.005       0.001        0.004        0.001                     
-    sc    knn           0.940         0.055          0.963          0.006       0.001       0.001        0.006        0.001  {'n_neighbors': 20}
-    sub   gnb           0.780         0.133          0.791          0.020       0.005       0.001        0.002        0.001                     
-    sub   knn           0.800         0.126          0.837          0.015       0.002       0.001        0.005        0.002   {'n_neighbors': 9}
+    none  knn           0.967         0.045          0.961          0.007       0.004       0.002        0.007        0.004   {'n_neighbors': 3}
+    sc    gnb           0.960         0.033          0.957          0.006       0.006       0.003        0.003        0.002                     
+    sc    knn           0.940         0.055          0.963          0.006       0.001       0.001        0.007        0.001  {'n_neighbors': 20}
+    sub   gnb           0.780         0.133          0.791          0.020       0.004       0.001        0.002        0.001                     
+    sub   knn           0.800         0.126          0.837          0.015       0.002       0.000        0.005        0.002   {'n_neighbors': 9}
 
 
 .. _visualization-guide:
@@ -689,7 +689,7 @@ x-axis. Note that ``X`` must be a :class:`pandas.DataFrame`.
 .. _Seaborn: http://seaborn.pydata.org/examples/many_pairwise_correlations.html
 
 
-**Total running time of the script:** ( 0 minutes  7.281 seconds)
+**Total running time of the script:** ( 0 minutes  7.345 seconds)
 
 
 

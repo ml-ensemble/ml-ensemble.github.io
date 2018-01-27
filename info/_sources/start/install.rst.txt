@@ -6,7 +6,7 @@
 Install
 =======
 
-ML-Ensemble is available through PyPi: 
+ML-Ensemble is available through PyPI: 
 
 .. code-block:: bash
 

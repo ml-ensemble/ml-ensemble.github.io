@@ -205,19 +205,20 @@ set:
     Test set score with feature propagation: 0.987
 
 
+.. py:currentmodule:: mlens.preprocessing
+
+By combining feature propagation with the :class:`Subset` transformer, you can
+propagate the feature through several layers without any of the base estimators
+in those layers seeing the propagated features. This can be desirable if you
+want to propagate the input features to the meta learner without intermediate
+base learners always having access to the original input data. In this case,
+we specify propagation as above, but add a preprocessing pipeline to
+intermediate layers:
+
+
 
 .. code-block:: python
 
-
-    # .. py:currentmodule:: mlens.preprocessing
-    #
-    # By combining feature propagation with the :class:`Subset` transformer, you can
-    # propagate the feature through several layers without any of the base estimators
-    # in those layers seeing the propagated features. This can be desirable if you
-    # want to propagate the input features to the meta learner without intermediate
-    # base learners always having access to the original input data. In this case,
-    # we specify propagation as above, but add a preprocessing pipeline to
-    # intermediate layers:
 
     from mlens.preprocessing import Subset
 
@@ -573,7 +574,11 @@ estimator:
 
 
 
-Finally, to summarize the functionality in one example,
+
+Importantly, your partition estimator should implement a ``get_params``
+method to avoid unexpected errors. If you don't, you may encounter
+a ``NotFittedError`` when calling ``predict``.
+To summarize the functionality in one example,
 let's implement a simple (but rather useless) partition estimator that splits
 the data in half based on the sum of the features.
 
@@ -592,9 +597,11 @@ the data in half based on the sum of the features.
             # Labels should be numerical
             return 1 * (X.sum(axis=1) > X.sum(axis=1).mean())
 
+        def get_params(self, deep=False):
+            return {}
+
     # Note that the number of partitions the estimator creates *must* match the
-    # ``partitions`` argument passed to the Subsemble.
-    # The ``folds`` option is completely independent.
+    # ``partitions`` argument passed to the subsemble.
 
     sub = Subsemble(partitions=2, folds=3, verbose=1)
     sub.add([SVC(), LogisticRegression()],
@@ -633,15 +640,12 @@ General multi-layer ensemble learning
 
 .. currentmodule:: mlens.ensemble
 
-The modular ``add`` API of ML-Ensembles allow users to build arbitrarily
-deep ensembles. If you would like to alternate between the *type* of each layer
+To alternate between the *type* of layer with each ``add`` call,
 the :class:`SequentialEnsemble` class can be used to specify what type of
-layer (i.e. stacked, blended, subsamle-style) to add. This can be particularly
+layer (i.e. stacked, blended, subsamle-style) to add. This is particularly
 powerful if facing a large dataset, as the first layer can use a fast approach
 such as blending, while subsequent layers fitted on the remaining data can
-use more computationally intensive approaches. The type of layer, along with
-any parameter settings pertaining to that layer, are specified in the
-``add`` method.
+use more computationally intensive approaches.
 
 
 
@@ -674,7 +678,7 @@ any parameter settings pertaining to that layer, are specified in the
 The below table maps the types of layers available in the :class:`SequentialEnsemble` with the corresponding ensemble.
 
 ===================  ============================
-front-end parameter  SequentialEnsemble parameter
+Ensemble equivalent  SequentialEnsemble parameter
 ===================  ============================
 'SuperLearner'       'stack'
 'BlendEnsemble'      'blend'
@@ -814,32 +818,24 @@ an ardous task if the entire ensemble has to be evaluated each time.
 
 .. py:currentmodule:: mlens.preprocessing
 
-You can either use the ensemble as-is as a preprocessing pipeline. But do note
-that the ``transform`` method on an ensemble used the prediction strategy from
-the ``fit`` call, so this will not be entirely consistent with the ensemble's
-behavior on a test set.
 
 
-Alternatively, to get an exact emulator of how the ensemble would behave, use
-the dedicated :class:`EnsembleTransformer` class, which faithfully replicated
-the ensemble's behavior on both training and test folds.
+The task can be made considerably easier by treating the lower layers of an
+ensemble as preprocessing pipeline, and performing model selection on
+higher-order layers or meta learners. To use an ensemble for this purpose,
+set the ``model_selection`` parameter to ``True`` before fitting. This will
+modify how the ``transform`` method behaves, to ensure ``predict`` is called
+on test folds.
 
-.. py:currentmodule:: mlens.ensemble
-
-The transformer follows the same API as the :class:`SequentialEnsemble`, but
-does not implement a meta estimator and the transform method will
-determine whether the passed input data is the same as during training,
-in which case it recovers the predictions from the ``fit`` call. In the following example,
-we run model selection on the meta learner of a blend ensemble, and try
-two configurations of the blend ensemble: learning from class predictions or
-from probability distributions over classes.
+.. warning::
+   Remember to turn model selection off when done.
 
 
 
 .. code-block:: python
 
 
-    from mlens.model_selection import Evaluator, EnsembleTransformer
+    from mlens.model_selection import Evaluator
 
     from mlens.metrics import make_scorer
     from scipy.stats import uniform, randint
@@ -849,8 +845,12 @@ from probability distributions over classes.
     base_learners = [RandomForestClassifier(random_state=seed),
                      SVC(probability=True)]
 
-    proba_transformer = EnsembleTransformer(random_state=seed).add('blend', base_learners, proba=True)
-    class_transformer = EnsembleTransformer(random_state=seed).add('blend', base_learners, proba=False)
+    proba_transformer = SequentialEnsemble(
+                            model_selection=True, random_state=seed).add(
+                                'blend', base_learners, proba=True)
+    class_transformer = SequentialEnsemble(
+                            model_selection=True, random_state=seed).add(
+                                'blend', base_learners, proba=False)
 
     # Set up a preprocessing mapping
     # Each pipeline in this map is fitted once on each fold before
@@ -902,13 +902,13 @@ meta learner.
 
     Results:
                   test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s                                                 params
-    class  rf            0.947         0.013          0.946          0.000       0.618       0.030        0.002        0.000                                       {'max_depth': 5}
-    class  svc           0.947         0.013          0.946          0.000       0.593       0.016        0.138        0.137                             {'C': 0.20960225406117416}
-    proba  rf            0.933         0.027          1.000          0.000       0.905       0.151        0.012        0.005  {'max_depth': 5, 'max_features': 0.51048011270305871}
-    proba  svc           0.960         0.000          0.973          0.000       0.439       0.065        0.083        0.082                              {'C': 7.6707016468248774}
+    class  rf            0.947         0.013          0.946          0.000       1.050       0.193        0.091        0.069                                       {'max_depth': 5}
+    class  svc           0.947         0.013          0.946          0.000       0.680       0.194        0.028        0.020                             {'C': 0.20960225406117416}
+    proba  rf            0.933         0.027          1.000          0.000       0.930       0.086        0.028        0.018  {'max_depth': 5, 'max_features': 0.51048011270305871}
+    proba  svc           0.960         0.000          0.973          0.000       0.606       0.089        0.043        0.042                              {'C': 7.6707016468248774}
 
 
-**Total running time of the script:** ( 0 minutes  17.342 seconds)
+**Total running time of the script:** ( 0 minutes  18.291 seconds)
 
 
 

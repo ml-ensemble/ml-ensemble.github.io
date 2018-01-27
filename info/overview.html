@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; mlens 0.2.1 documentation</title>
+  <title>Overview &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -42,9 +41,11 @@
 
   
         <link rel="index" title="Index"
-              href="#"/>
+              href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/> 
+    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
+        <link rel="next" title="Learner Mechanics" href="tutorials/learner.html"/>
+        <link rel="prev" title="Ready-made ensemble classes" href="start/ensembles.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -154,8 +155,8 @@
 </li>
 </ul>
 <p class="caption"><span class="caption-text">Mechanics</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/learner.html">Learner Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/learner.html#the-learner-api">The Learner API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/learner.html#basics">Basics</a></li>
@@ -256,12 +257,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Overview</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -273,11 +276,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>To build computational graphs, you need to specify an <code class="docutils literal"><span class="pre">estimator</span></code>, a (set of) indexer(s), and any preprocessing pipelines wanted.
+The indexer(s) determine the cross validation strategy to use during <code class="docutils literal"><span class="pre">fit</span></code> and <code class="docutils literal"><span class="pre">transform</span></code> calls. The <a class="reference external" href="http://ml-ensemble.com/docs/mod_index.html#mlens.index.FullIndex" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">FullIndex</span></code></a> can
+be used if no cross-validation is wanted.</p>
+<p>The basic node is the <code class="xref py py-class docutils literal"><span class="pre">Learner</span></code>. The learner contains the sub-graph pertaining to a specific indexer-estimator-preprocessing configuration.
+Similarly, the <code class="xref py py-class docutils literal"><span class="pre">Transformer</span></code> contains the sub-graph of a specific indexer-preprocessing configuration. To learn more, see the
+<a class="reference external" href="learner_tutorial">learner mechanics</a> tutorial.</p>
+<p>To build a graph of a set of <code class="xref py py-class docutils literal"><span class="pre">Learner`</span></code> and <code class="xref py py-class docutils literal"><span class="pre">Transformer</span></code> instances, several handles come in handy for ensuring efficient computation.
+The <code class="xref py py-class docutils literal"><span class="pre">Group</span></code> class is a handle for a set of learners and transformers sharing a specific indexer, while the <code class="xref py py-class docutils literal"><span class="pre">Layer</span></code> class is a handle for
+a set of groups. To learn more about how to efficiently parallelize independent estimations, see the <a class="reference external" href="layer_tutorial">layer mechanics</a> tutorial.</p>
+<p>Frequently, we want the output of some set of learners to be feed as input to some other set. The <code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code> engine is a purpose-built
+parallel job-execution engine design to handle these types of scenarios. Together with the <code class="xref py py-class docutils literal"><span class="pre">Sequential</span></code> handle, designing
+deep computational graphs is straightforward. See the <a class="reference external" href="parallel_tutorial">advanced graph mechanics</a> tutorial for more information.</p>
 </div>
 
 

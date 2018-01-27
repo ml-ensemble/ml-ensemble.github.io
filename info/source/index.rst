@@ -13,10 +13,12 @@ ML-Ensemble a Python library for memory efficient parallelized ensemble learning
 
 .. currentmodule:: mlens.parallel
 
-A network approach to multi-layered ensembles
+A computuational graph approach to ensembles 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ensembles are built by constructing a graph of :class:`Learner` nodes that handle computations associated with a specific estimator. Nodes are connected in a :class:`Layer` that optimized computation for maximum parallelization. Ready-made ensemble classes allow you to build computationally optimized ensembles of almost any shape and form in just a few lines of code. The low-level API gives you full control of the ensemble network and the computational procedure to build virtually any type of ensemble, including dynamic and recursive features.  
+Ensembles are built on top of a computational graph, giving maximal design freedom. Graphs are straightforward to optimize for speed, and automatically minimize memory consumption. 
+Ready-made ensemble classes allow you to build optimized ensembles in just a few lines of code. The low-level API gives you full control of the ensemble network and the 
+computational procedure to build virtually any type of ensemble, including dynamic and recursive features.  
 
 
 .. figure:: _static/img/network.png
@@ -28,8 +30,8 @@ Ensembles are built by constructing a graph of :class:`Learner` nodes that handl
    Predictions are concatenated along with any propagated features from the input (:math:`X_{:, s}`) to form the 
    output matrix :math:`P`.
 
-Standard estimator API
-^^^^^^^^^^^^^^^^^^^^^^
+Ease of Use
+^^^^^^^^^^^
 
 Simply call the ``add`` method with a set of estimators to stack a layer on an ensemble. 
 Ensembles are Scikit-learn compatible estimators. No matter how complex the
@@ -55,9 +57,8 @@ Memory Efficient Parallelized Learning
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ML-Ensemble is designed to
 maximize parallelization at minimum memory footprint and is designed to be thread-safe.
-It can fall back on multiprocessing seamlessly and use shared memory to completely avoid array
-copying and serialization. An ensemble will not require more memory when estimated in parallel 
-than what it consumes with sequential processing. For more details, see the :ref:`memory benchmark <memory>`.
+It can fall back on multiprocessing seamlessly and use shared memory to avoid array
+copying and serialization. For more details, see the :ref:`memory benchmark <memory>`.
 
 Differentiated preprocessing pipelines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,6 +115,7 @@ comparison of performance. ::
    :maxdepth: 2
    :caption: Mechanics 
 
+   overview
    tutorials/learner
    tutorials/layer
    tutorials/parallel
@@ -127,7 +129,6 @@ comparison of performance. ::
    benchmarks/memory
    benchmarks/benchmarks
    benchmarks/scaling
-   deep/dev
    deep/troubleshooting
 
 .. toctree::

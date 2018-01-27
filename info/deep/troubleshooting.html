@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Troubleshooting &mdash; mlens 0.2.0 documentation</title>
+  <title>Troubleshooting &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -43,9 +43,9 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
         <link rel="next" title="License" href="../misc/license.html"/>
-        <link rel="prev" title="Hacking ML-Ensemble" href="dev.html"/> 
+        <link rel="prev" title="Scale benchmarks" href="../benchmarks/scaling.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -77,7 +77,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
             
           
@@ -156,6 +156,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Mechanics</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/learner.html">Learner Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/learner.html#the-learner-api">The Learner API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/learner.html#basics">Basics</a></li>
@@ -202,7 +203,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dev.html">Hacking ML-Ensemble</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#array-copying-during-fitting">Array copying during fitting</a></li>
@@ -281,27 +281,35 @@
 <p>Known potential issues. <a class="reference external" href="https://github.com/flennerhag/mlens/issues">Raise an issue</a> if your problem is not addressed here.</p>
 <div class="section" id="bad-interaction-with-third-party-packages">
 <span id="third-party-issues"></span><h2>Bad interaction with third-party packages<a class="headerlink" href="#bad-interaction-with-third-party-packages" title="Permalink to this headline">¶</a></h2>
-<p>Due to how <a class="reference external" href="https://wiki.python.org/moin/ParallelProcessing">Python forks the main process when running multiprocessing</a>,
+<p>ML-Ensemble itself is thread-safe, but third-party packages may not be. A known issue with Scikit-learn
+(resolved as of 0.19.2) is that cloning is not thread-safe, estimators that clones internally
+(e.g. decision trees) can occasionally trigger an error. If</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ne">IndexError</span><span class="p">:</span> <span class="n">Pop</span> <span class="kn">from</span> <span class="nn">empty</span> <span class="nb">list</span>
+</pre></div>
+</div>
+<p>happens, try using <code class="docutils literal"><span class="pre">multiprocessing</span></code> instead.</p>
+<p>With multiprocessing, be mindful of the <code class="docutils literal"><span class="pre">start_method</span></code> used.
+Due to how <a class="reference external" href="https://wiki.python.org/moin/ParallelProcessing">Python forks the main process when running multiprocessing</a>,
 workers can receive corrupted thread states prompting them to acquiring more threads than are available,
 with the resulting of a deadlock. Due to this limitation and the additional overhead of multiprocessing,
-ML-Ensemble seeks to be thread safe and run on multithreading which entirely circumvents the issue.</p>
-<p>If in spite of this race conditions or crashes occurs, raise an issue at the Github repository.
-In the meantime, there are a few things to try that might alleviate the problem:</p>
+If experiencing problems, try:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>ensure that all estimators in the ensemble or the evaluator has <code class="docutils literal"><span class="pre">n_jobs</span></code> or <code class="docutils literal"><span class="pre">nthread</span></code> equal to <code class="docutils literal"><span class="pre">1</span></code>,</li>
-<li>try changing the <code class="docutils literal"><span class="pre">backend</span></code> parameter to either <code class="docutils literal"><span class="pre">threading</span></code> or <code class="docutils literal"><span class="pre">multiprocessing</span></code>,</li>
-<li>if using <code class="docutils literal"><span class="pre">multiprocessing</span></code>, try varying the start method (see <a class="reference internal" href="mlens_configs.html#configs"><span class="std std-ref">Global configurations</span></a>).</li>
+<li>ensure all estimators has <code class="docutils literal"><span class="pre">n_jobs</span></code> or <code class="docutils literal"><span class="pre">nthread</span></code> equal to <code class="docutils literal"><span class="pre">1</span></code>,</li>
+<li>try changing the <code class="docutils literal"><span class="pre">backend</span></code> to either <code class="docutils literal"><span class="pre">threading</span></code> or <code class="docutils literal"><span class="pre">multiprocessing</span></code>,</li>
+<li>if using <code class="docutils literal"><span class="pre">multiprocessing</span></code>, try varying the start method via <a class="reference external" href="http://ml-ensemble.com/docs/config.html#mlens.config.set_start_method" title="(in mlens v0.2.0)"><code class="xref py py-func docutils literal"><span class="pre">set_start_method()</span></code></a>.</li>
 </ol>
 </div></blockquote>
-<p>For more information on this in the multiprocessing case see the <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods">Scikit-learn FAQ</a>.</p>
+<p>Changing the <code class="docutils literal"><span class="pre">start_method</span></code> from the default (<code class="docutils literal"><span class="pre">fork</span></code>) barrs the use of interactively defined
+functions and classes (all functions and classes passed to an <code class="docutils literal"><span class="pre">mlens</span></code> object must be imported, not defined
+the running script). For more information on multiprocessing issues see the <a class="reference external" href="https://docs.python.org/3/library/multiprocessing.html#contexts-and-start-methods">Scikit-learn FAQ</a>.</p>
 </div>
 <div class="section" id="array-copying-during-fitting">
 <h2>Array copying during fitting<a class="headerlink" href="#array-copying-during-fitting" title="Permalink to this headline">¶</a></h2>
 <p>When the number of folds is greater than 2, it is not possible to slice the
 full data in such a way as to return a <a class="reference external" href="http://scipy-cookbook.readthedocs.io/items/ViewsVsCopies.html">view</a> of that array (i.e. without
 copying any data). Hence for fold numbers larger than 2, each worker
-will in fact trigger a copy of the training data. If you experience memory-bound
+copies a subset of the training data at estimation. If you experience memory-bound
 issues, please consider using fewer folds during fitting. For further information on
 avoiding copying data during estimation, see <a class="reference internal" href="../benchmarks/memory.html#memory"><span class="std std-ref">Memory consumption</span></a>.</p>
 </div>
@@ -342,7 +350,7 @@ avoiding copying data during estimation, see <a class="reference internal" href=
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

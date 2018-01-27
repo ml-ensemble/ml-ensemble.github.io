@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Advanced features tutorial &mdash; mlens 0.2.0 documentation</title>
+  <title>Advanced features tutorial &mdash; mlens 0.2.1 documentation</title>
   
 
   
@@ -43,7 +43,7 @@
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.0 documentation" href="../index.html"/>
+    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
         <link rel="next" title="Ready-made ensemble classes" href="../start/ensembles.html"/>
         <link rel="prev" title="Getting started" href="start.html"/> 
 
@@ -77,7 +77,7 @@
             
             
               <div class="version">
-                0.2.0
+                0.2.1
               </div>
             
           
@@ -156,6 +156,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Mechanics</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="learner.html">Learner Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="learner.html#the-learner-api">The Learner API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="learner.html#basics">Basics</a></li>
@@ -202,7 +203,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../benchmarks/scaling.html#ensemble-comparison">Ensemble comparison</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../deep/dev.html">Hacking ML-Ensemble</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep/troubleshooting.html">Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#bad-interaction-with-third-party-packages">Bad interaction with third-party packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../deep/troubleshooting.html#array-copying-during-fitting">Array copying during fitting</a></li>
@@ -449,17 +449,14 @@ set:</p>
 <span class="n">Test</span> <span class="nb">set</span> <span class="n">score</span> <span class="k">with</span> <span class="n">feature</span> <span class="n">propagation</span><span class="p">:</span> <span class="mf">0.987</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># .. py:currentmodule:: mlens.preprocessing</span>
-<span class="c1">#</span>
-<span class="c1"># By combining feature propagation with the :class:`Subset` transformer, you can</span>
-<span class="c1"># propagate the feature through several layers without any of the base estimators</span>
-<span class="c1"># in those layers seeing the propagated features. This can be desirable if you</span>
-<span class="c1"># want to propagate the input features to the meta learner without intermediate</span>
-<span class="c1"># base learners always having access to the original input data. In this case,</span>
-<span class="c1"># we specify propagation as above, but add a preprocessing pipeline to</span>
-<span class="c1"># intermediate layers:</span>
-
-<span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
+<p>By combining feature propagation with the <a class="reference external" href="http://ml-ensemble.com/docs/preprocessing.html#mlens.preprocessing.Subset" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subset</span></code></a> transformer, you can
+propagate the feature through several layers without any of the base estimators
+in those layers seeing the propagated features. This can be desirable if you
+want to propagate the input features to the meta learner without intermediate
+base learners always having access to the original input data. In this case,
+we specify propagation as above, but add a preprocessing pipeline to
+intermediate layers:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
 
 <span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span> <span class="n">SVC</span><span class="p">()]</span>
 <span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span>
@@ -569,13 +566,13 @@ ill equipped to solve this problem. Subsembles can overcome this issue allowing
 base estimators to fit one mode of the distribution at a time, which yields a
 better representation of the distribution and greatly facilitates the learning
 problem of the meta learner.</p>
-<p>By default, the <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code> class partitioning the dataset randomly.
+<p>By default, the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a> class partitioning the dataset randomly.
 Note however that partitions are created on the data “as is”, so if the ordering
 of observations is not random, neither will the partitioning be. For this
 reason, it is recommended to shuffle the data (e.g. via the <code class="docutils literal"><span class="pre">shuffle</span></code>
 option at initialization). To build a subsemble with random partitions, the
 only parameter needed is the number of <code class="docutils literal"><span class="pre">partitions</span></code> when instantiating
-the <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code>.</p>
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">Subsemble</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -601,7 +598,7 @@ so the output of each layer gets multiplied by the number of partitions. In this
 case, we have 2 base learners for 3 partitions, giving 6 prediction features.</p>
 <p>By creating partitions, subsembles <a class="reference internal" href="../benchmarks/scaling.html#bench"><span class="std std-ref">scale significantly better</span></a>
 than the
-<code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code>, but in contrast to <code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code>,
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a>, but in contrast to <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a>,
 the full training data is leveraged during training. But randomly partitioning
 the data does however not exploit the full advantage of locality, since it is
 only by luck that we happen to create such partitions. A better way is to
@@ -613,7 +610,7 @@ can differ between layers.</p>
 <p>Very few limitation are imposed on the estimator: you can specify whether
 you want to fit it before generating partitions, whether to use
 labels in the partitioning, and what method to call to generate the
-partitions. See <code class="xref py py-class docutils literal"><span class="pre">ClusteredSubsetIndex</span></code> for the full documentation.
+partitions. See <a class="reference external" href="http://ml-ensemble.com/docs/mod_index.html#mlens.index.ClusteredSubsetIndex" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">ClusteredSubsetIndex</span></code></a> for the full documentation.
 This level of generality does impose some
 responsibility on the user. In particular, it is up to the user to ensure that
 sensible partitions are created. Problems to watch out for is too small
@@ -655,7 +652,7 @@ partitioning estimator to make the subset selection itself. For instance,
 we can use Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.pipeline.Pipeline</span></code></a>
 class to put a dimensionality reduction transformer before the partitioning
 estimator, such as a <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.decomposition.PCA</span></code></a>, or the
-<code class="xref py py-class docutils literal"><span class="pre">mlens.preprocessing.Subset</span></code> transformer to drop some features before
+<a class="reference external" href="http://ml-ensemble.com/docs/preprocessing.html#mlens.preprocessing.Subset" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">mlens.preprocessing.Subset</span></code></a> transformer to drop some features before
 estimation. We then use this pipeline as a our partition estimator and fit
 the subsemble on all features.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
@@ -698,7 +695,10 @@ estimator:</p>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Finally, to summarize the functionality in one example,
+<p>Importantly, your partition estimator should implement a <code class="docutils literal"><span class="pre">get_params</span></code>
+method to avoid unexpected errors. If you don’t, you may encounter
+a <code class="docutils literal"><span class="pre">NotFittedError</span></code> when calling <code class="docutils literal"><span class="pre">predict</span></code>.
+To summarize the functionality in one example,
 let’s implement a simple (but rather useless) partition estimator that splits
 the data in half based on the sum of the features.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimplePartitioner</span><span class="p">():</span>
@@ -711,9 +711,11 @@ the data in half based on the sum of the features.</p>
         <span class="c1"># Labels should be numerical</span>
         <span class="k">return</span> <span class="mi">1</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
+    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
 <span class="c1"># Note that the number of partitions the estimator creates *must* match the</span>
-<span class="c1"># ``partitions`` argument passed to the Subsemble.</span>
-<span class="c1"># The ``folds`` option is completely independent.</span>
+<span class="c1"># ``partitions`` argument passed to the subsemble.</span>
 
 <span class="n">sub</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">sub</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">()],</span>
@@ -733,22 +735,19 @@ the data in half based on the sum of the features.</p>
 care needs to be taken if you plan on copying the Subsemble. It is advised that
 the estimator inherits the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html#sklearn.base.BaseEstimator" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.base.BaseEstimator</span></code></a> class to
 provide a Scikit-learn compatible interface. For further information,
-see the <a class="reference internal" href="../deep/api.html#api"><span class="std std-ref">API</span></a> documentation of the <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code>
+see the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/api.html#api" title="(in pandas v0.22.0)"><span>API Reference</span></a> documentation of the <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code>
 and <code class="xref py py-class docutils literal"><span class="pre">mlens.base.indexer.ClusteredSubsetIndex</span></code>.</p>
 <p>For an example of using clustered subsemble, see the subsemble
 used to beat the Scikit-learn <a class="reference internal" href="../benchmarks/benchmarks.html#mnist"><span class="std std-ref">MNIST</span></a> benchmark.</p>
 </div>
 <div class="section" id="general-multi-layer-ensemble-learning">
 <span id="sequential-tutorial"></span><h2>General multi-layer ensemble learning<a class="headerlink" href="#general-multi-layer-ensemble-learning" title="Permalink to this headline">¶</a></h2>
-<p>The modular <code class="docutils literal"><span class="pre">add</span></code> API of ML-Ensembles allow users to build arbitrarily
-deep ensembles. If you would like to alternate between the <em>type</em> of each layer
-the <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> class can be used to specify what type of
-layer (i.e. stacked, blended, subsamle-style) to add. This can be particularly
+<p>To alternate between the <em>type</em> of layer with each <code class="docutils literal"><span class="pre">add</span></code> call,
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> class can be used to specify what type of
+layer (i.e. stacked, blended, subsamle-style) to add. This is particularly
 powerful if facing a large dataset, as the first layer can use a fast approach
 such as blending, while subsequent layers fitted on the remaining data can
-use more computationally intensive approaches. The type of layer, along with
-any parameter settings pertaining to that layer, are specified in the
-<code class="docutils literal"><span class="pre">add</span></code> method.</p>
+use more computationally intensive approaches.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">SequentialEnsemble</span>
 
 <span class="n">ensemble</span> <span class="o">=</span> <span class="n">SequentialEnsemble</span><span class="p">()</span>
@@ -767,14 +766,14 @@ any parameter settings pertaining to that layer, are specified in the
 <span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">SVC</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>The below table maps the types of layers available in the <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> with the corresponding ensemble.</p>
+<p>The below table maps the types of layers available in the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> with the corresponding ensemble.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="40%" />
 <col width="60%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">front-end parameter</th>
+<tr class="row-odd"><th class="head">Ensemble equivalent</th>
 <th class="head">SequentialEnsemble parameter</th>
 </tr>
 </thead>
@@ -795,9 +794,9 @@ any parameter settings pertaining to that layer, are specified in the
 <span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
 </pre></div>
 </div>
-<p>In this case, the multi-layer <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code> with an initial
+<p>In this case, the multi-layer <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> with an initial
 blended layer and second stacked layer achieves similar performance as the
-<code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code> with probabilistic learning. Note that we could have
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> with probabilistic learning. Note that we could have
 made any of the layers probabilistic by setting <code class="docutils literal"><span class="pre">Proba=True</span></code>.</p>
 </div>
 <div class="section" id="passing-file-paths-as-data-input">
@@ -822,7 +821,7 @@ an <code class="docutils literal"><span class="pre">npy</span></code> or <code c
 the file into memory, then dump it into the cache, before discarding the
 file from memory by replacing it with a pointer to the memmaped file.
 The loading module used for the <code class="docutils literal"><span class="pre">csv</span></code>
-file is the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.13)"><code class="xref py py-func docutils literal"><span class="pre">numpy.loadtxt()</span></code></a> function.</li>
+file is the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html#numpy.loadtxt" title="(in NumPy v1.14)"><code class="xref py py-func docutils literal"><span class="pre">numpy.loadtxt()</span></code></a> function.</li>
 <li>If a path to a <code class="docutils literal"><span class="pre">npy</span></code> file is passed, a memmaped pointer to it will be
 loaded.</li>
 <li>If a path to a <code class="docutils literal"><span class="pre">mmap</span></code> file is passed, it will be used as the memmaped
@@ -878,21 +877,17 @@ conduct careful hyper parameter tuning, treating the base learner’s parameters
 as the parameters of the ensemble. By far the most critical part of the
 ensemble is the meta learner, but selecting an appropriate meta learner can be
 an ardous task if the entire ensemble has to be evaluated each time.</p>
-<p>You can either use the ensemble as-is as a preprocessing pipeline. But do note
-that the <code class="docutils literal"><span class="pre">transform</span></code> method on an ensemble used the prediction strategy from
-the <code class="docutils literal"><span class="pre">fit</span></code> call, so this will not be entirely consistent with the ensemble’s
-behavior on a test set.</p>
-<p>Alternatively, to get an exact emulator of how the ensemble would behave, use
-the dedicated <code class="xref py py-class docutils literal"><span class="pre">EnsembleTransformer</span></code> class, which faithfully replicated
-the ensemble’s behavior on both training and test folds.</p>
-<p>The transformer follows the same API as the <code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code>, but
-does not implement a meta estimator and the transform method will
-determine whether the passed input data is the same as during training,
-in which case it recovers the predictions from the <code class="docutils literal"><span class="pre">fit</span></code> call. In the following example,
-we run model selection on the meta learner of a blend ensemble, and try
-two configurations of the blend ensemble: learning from class predictions or
-from probability distributions over classes.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span><span class="p">,</span> <span class="n">EnsembleTransformer</span>
+<p>The task can be made considerably easier by treating the lower layers of an
+ensemble as preprocessing pipeline, and performing model selection on
+higher-order layers or meta learners. To use an ensemble for this purpose,
+set the <code class="docutils literal"><span class="pre">model_selection</span></code> parameter to <code class="docutils literal"><span class="pre">True</span></code> before fitting. This will
+modify how the <code class="docutils literal"><span class="pre">transform</span></code> method behaves, to ensure <code class="docutils literal"><span class="pre">predict</span></code> is called
+on test folds.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Remember to turn model selection off when done.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span>
 
 <span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">uniform</span><span class="p">,</span> <span class="n">randint</span>
@@ -902,8 +897,12 @@ from probability distributions over classes.</p>
 <span class="n">base_learners</span> <span class="o">=</span> <span class="p">[</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span>
                  <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">)]</span>
 
-<span class="n">proba_transformer</span> <span class="o">=</span> <span class="n">EnsembleTransformer</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;blend&#39;</span><span class="p">,</span> <span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">class_transformer</span> <span class="o">=</span> <span class="n">EnsembleTransformer</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;blend&#39;</span><span class="p">,</span> <span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">proba_transformer</span> <span class="o">=</span> <span class="n">SequentialEnsemble</span><span class="p">(</span>
+                        <span class="n">model_selection</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+                            <span class="s1">&#39;blend&#39;</span><span class="p">,</span> <span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">class_transformer</span> <span class="o">=</span> <span class="n">SequentialEnsemble</span><span class="p">(</span>
+                        <span class="n">model_selection</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+                            <span class="s1">&#39;blend&#39;</span><span class="p">,</span> <span class="n">base_learners</span><span class="p">,</span> <span class="n">proba</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c1"># Set up a preprocessing mapping</span>
 <span class="c1"># Each pipeline in this map is fitted once on each fold before</span>
@@ -939,13 +938,13 @@ meta learner.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Results</span><span class="p">:</span>
               <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>                                                 <span class="n">params</span>
-<span class="k">class</span>  <span class="nc">rf</span>            <span class="mf">0.947</span>         <span class="mf">0.013</span>          <span class="mf">0.946</span>          <span class="mf">0.000</span>       <span class="mf">0.618</span>       <span class="mf">0.030</span>        <span class="mf">0.002</span>        <span class="mf">0.000</span>                                       <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
-<span class="k">class</span>  <span class="nc">svc</span>           <span class="mf">0.947</span>         <span class="mf">0.013</span>          <span class="mf">0.946</span>          <span class="mf">0.000</span>       <span class="mf">0.593</span>       <span class="mf">0.016</span>        <span class="mf">0.138</span>        <span class="mf">0.137</span>                             <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">0.20960225406117416</span><span class="p">}</span>
-<span class="n">proba</span>  <span class="n">rf</span>            <span class="mf">0.933</span>         <span class="mf">0.027</span>          <span class="mf">1.000</span>          <span class="mf">0.000</span>       <span class="mf">0.905</span>       <span class="mf">0.151</span>        <span class="mf">0.012</span>        <span class="mf">0.005</span>  <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mf">0.51048011270305871</span><span class="p">}</span>
-<span class="n">proba</span>  <span class="n">svc</span>           <span class="mf">0.960</span>         <span class="mf">0.000</span>          <span class="mf">0.973</span>          <span class="mf">0.000</span>       <span class="mf">0.439</span>       <span class="mf">0.065</span>        <span class="mf">0.083</span>        <span class="mf">0.082</span>                              <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">7.6707016468248774</span><span class="p">}</span>
+<span class="k">class</span>  <span class="nc">rf</span>            <span class="mf">0.947</span>         <span class="mf">0.013</span>          <span class="mf">0.946</span>          <span class="mf">0.000</span>       <span class="mf">1.050</span>       <span class="mf">0.193</span>        <span class="mf">0.091</span>        <span class="mf">0.069</span>                                       <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="k">class</span>  <span class="nc">svc</span>           <span class="mf">0.947</span>         <span class="mf">0.013</span>          <span class="mf">0.946</span>          <span class="mf">0.000</span>       <span class="mf">0.680</span>       <span class="mf">0.194</span>        <span class="mf">0.028</span>        <span class="mf">0.020</span>                             <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">0.20960225406117416</span><span class="p">}</span>
+<span class="n">proba</span>  <span class="n">rf</span>            <span class="mf">0.933</span>         <span class="mf">0.027</span>          <span class="mf">1.000</span>          <span class="mf">0.000</span>       <span class="mf">0.930</span>       <span class="mf">0.086</span>        <span class="mf">0.028</span>        <span class="mf">0.018</span>  <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="mf">0.51048011270305871</span><span class="p">}</span>
+<span class="n">proba</span>  <span class="n">svc</span>           <span class="mf">0.960</span>         <span class="mf">0.000</span>          <span class="mf">0.973</span>          <span class="mf">0.000</span>       <span class="mf">0.606</span>       <span class="mf">0.089</span>        <span class="mf">0.043</span>        <span class="mf">0.042</span>                              <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">7.6707016468248774</span><span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  17.342 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  18.291 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/advanced.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">advanced.py</span></code></a></div>
@@ -991,7 +990,7 @@ meta learner.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.0',
+            VERSION:'0.2.1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
