@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.index &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.index &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
-        <link rel="next" title="mlens.parallel" href="parallel.html"/>
-        <link rel="prev" title="mlens.model_selection" href="model_selection.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mlens.parallel" href="parallel.html" />
+    <link rel="prev" title="mlens.model_selection" href="model_selection.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -271,7 +259,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -279,9 +267,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -330,7 +319,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
 </tr>
-<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017-2018</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
 </tr>
@@ -348,7 +337,7 @@ to avoid serialization during multiprocessing.</p>
 <dl class="class">
 <dt id="mlens.index.BaseIndex">
 <em class="property">class </em><code class="descclassname">mlens.index.</code><code class="descname">BaseIndex</code><a class="reference internal" href="_modules/mlens/index/base.html#BaseIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.BaseIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></p>
 <p>Base Index class.</p>
 <p>Specification of indexer-wide methods and attributes that we can always
 expect to find in any indexer. Helps to provide a uniform interface
@@ -364,7 +353,7 @@ during parallel estimation.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>optional</em><em>]</em>) – array to _collect dimension data from.</li>
 <li><strong>y</strong> (<em>array-like</em><em>, </em><em>optional</em>) – label data</li>
-<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – optional job type data</li>
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – optional job type data</li>
 </ul>
 </td>
 </tr>
@@ -378,7 +367,7 @@ during parallel estimation.</p>
 </table>
 <p class="rubric">Notes</p>
 <p>Fitting an indexer stores nothing that points to the array
-or memmap <code class="docutils literal"><span class="pre">X</span></code>. Only the <code class="docutils literal"><span class="pre">shape</span></code> attribute of <code class="docutils literal"><span class="pre">X</span></code> is called.</p>
+or memmap <code class="docutils literal notranslate"><span class="pre">X</span></code>. Only the <code class="docutils literal notranslate"><span class="pre">shape</span></code> attribute of <code class="docutils literal notranslate"><span class="pre">X</span></code> is called.</p>
 </dd></dl>
 
 <dl class="method">
@@ -386,23 +375,23 @@ or memmap <code class="docutils literal"><span class="pre">X</span></code>. Only
 <code class="descname">generate</code><span class="sig-paren">(</span><em>X=None</em>, <em>as_array=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/base.html#BaseIndex.generate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.BaseIndex.generate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Front-end generator method.</p>
 <p>Generator for training and test set indices based on the
-generator specification in <code class="docutils literal"><span class="pre">_gen_indicies</span></code>.</p>
+generator specification in <code class="docutils literal notranslate"><span class="pre">_gen_indicies</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>X</strong> (<em>array-like</em><em>, </em><em>optional</em>) – If instance has not been fitted, the training set <code class="docutils literal"><span class="pre">X</span></code> must be
-passed to the <code class="docutils literal"><span class="pre">generate</span></code> method, which will call <code class="docutils literal"><span class="pre">fit</span></code> before
-proceeding. If already fitted, <code class="docutils literal"><span class="pre">X</span></code> can be omitted.</li>
-<li><strong>as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – <p>whether to return train and test indices as a pair of tuple(s)
+<li><strong>X</strong> (<em>array-like</em><em>, </em><em>optional</em>) – If instance has not been fitted, the training set <code class="docutils literal notranslate"><span class="pre">X</span></code> must be
+passed to the <code class="docutils literal notranslate"><span class="pre">generate</span></code> method, which will call <code class="docutils literal notranslate"><span class="pre">fit</span></code> before
+proceeding. If already fitted, <code class="docutils literal notranslate"><span class="pre">X</span></code> can be omitted.</li>
+<li><strong>as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – <p>whether to return train and test indices as a pair of tuple(s)
 or numpy arrays. If the returned tuples are singular they can be
 used on an array X with standard slicing syntax
-(<code class="docutils literal"><span class="pre">X[start:stop]</span></code>), but if a list of tuples is returned
-slicing <code class="docutils literal"><span class="pre">X</span></code> properly requires first building a list or array
+(<code class="docutils literal notranslate"><span class="pre">X[start:stop]</span></code>), but if a list of tuples is returned
+slicing <code class="docutils literal notranslate"><span class="pre">X</span></code> properly requires first building a list or array
 of index numbers from the list of tuples. This can be achieved
-either by setting <code class="docutils literal"><span class="pre">as_array</span></code> to <code class="docutils literal"><span class="pre">True</span></code>, or running</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_tup</span><span class="p">,</span> <span class="n">test_tup</span> <span class="ow">in</span> <span class="n">indexer</span><span class="o">.</span><span class="n">generate</span><span class="p">():</span>
+either by setting <code class="docutils literal notranslate"><span class="pre">as_array</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>, or running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_tup</span><span class="p">,</span> <span class="n">test_tup</span> <span class="ow">in</span> <span class="n">indexer</span><span class="o">.</span><span class="n">generate</span><span class="p">():</span>
     <span class="n">train_idx</span> <span class="o">=</span> \
         <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="k">for</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="ow">in</span> <span class="n">train_tup</span><span class="p">])</span>
 </pre></div>
@@ -420,10 +409,22 @@ either by setting <code class="docutils literal"><span class="pre">as_array</spa
 <dt id="mlens.index.BaseIndex.partition">
 <code class="descname">partition</code><span class="sig-paren">(</span><em>X=None</em>, <em>as_array=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/base.html#BaseIndex.partition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.BaseIndex.partition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Partition generator method.</p>
-<p>Default behavior is to yield <code class="docutils literal"><span class="pre">None</span></code>
+<p>Default behavior is to yield <code class="docutils literal notranslate"><span class="pre">None</span></code>
 for fitting on full data. Overridden in
-<a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">SubsetIndex</span></code></a> and <a class="reference internal" href="#mlens.index.ClusteredSubsetIndex" title="mlens.index.ClusteredSubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">ClusteredSubsetIndex</span></code></a>
+<a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a> and <a class="reference internal" href="#mlens.index.ClusteredSubsetIndex" title="mlens.index.ClusteredSubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteredSubsetIndex</span></code></a>
 to produce partition indexes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.index.BaseIndex.set_params">
+<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/base.html#BaseIndex.set_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.BaseIndex.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the parameters of this estimator.
+The method works on simple estimators as well as on nested objects
+(such as pipelines). The latter have parameters of the form
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+component of a nested object.
+:returns:
+:rtype: self</p>
 </dd></dl>
 
 </dd></dl>
@@ -434,8 +435,8 @@ to produce partition indexes.</p>
 <dl class="class">
 <dt id="mlens.index.FoldIndex">
 <em class="property">class </em><code class="descclassname">mlens.index.</code><code class="descname">FoldIndex</code><span class="sig-paren">(</span><em>folds=2</em>, <em>X=None</em>, <em>raise_on_exception=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/fold.html#FoldIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.FoldIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
-<p>Indexer that generates the full size of <code class="docutils literal"><span class="pre">X</span></code>.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
+<p>Indexer that generates the full size of <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
 <p>K-Fold iterator that generates fold index tuples.</p>
 <p>FoldIndex creates a generator that returns a tuple of stop and start
 positions to be used for numpy array slicing [stop:start]. Note that
@@ -443,7 +444,7 @@ slicing works well for the test set, but for the training set it is
 recommended to concatenate the index for training data that comes before
 the current test set with the index for the training data that comes after.
 This can easily be achieved with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_tup</span><span class="p">,</span> <span class="n">test_tup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_tup</span><span class="p">,</span> <span class="n">test_tup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">():</span>
     <span class="n">train_slice</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="k">for</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="ow">in</span>
                               <span class="n">train_tup</span><span class="p">])</span>
 
@@ -452,21 +453,21 @@ This can easily be achieved with:</p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p>Simple clicing (i.e. <code class="docutils literal"><span class="pre">X[start:stop]</span></code> generally does not work for the
+<p>Simple clicing (i.e. <code class="docutils literal notranslate"><span class="pre">X[start:stop]</span></code> generally does not work for the
 train set, which often requires concatenating the train index range
 below the current test set, and the train index range above the current
 test set. To build get a training index, use</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span>``hstack([np.arange(t0, t1) for t0, t1 in train_index_tuples])``.
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span>``hstack([np.arange(t0, t1) for t0, t1 in train_index_tuples])``.
 </pre></div>
 </div>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal"><span class="pre">BlendIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">SubsetIndex</span></code></a></p>
+<p class="last"><a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
 <p>Creating arrays of folds and checking overlap</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">FoldIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data set: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="p">)</span>
@@ -500,8 +501,8 @@ test set. To build get a training index, use</p>
 <span class="go">No overlap between train set and test set.</span>
 </pre></div>
 </div>
-<p>Passing <code class="docutils literal"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code> without raising exception:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<p>Passing <code class="docutils literal notranslate"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code> without raising exception:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">FoldIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data set: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="p">)</span>
@@ -528,8 +529,8 @@ test set. To build get a training index, use</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>optional</em><em>]</em>) – array to _collect dimension data from.</li>
-<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – for compatibility</li>
-<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – for compatibility</li>
+<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – for compatibility</li>
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – for compatibility</li>
 </ul>
 </td>
 </tr>
@@ -551,16 +552,16 @@ test set. To build get a training index, use</p>
 <dl class="class">
 <dt id="mlens.index.BlendIndex">
 <em class="property">class </em><code class="descclassname">mlens.index.</code><code class="descname">BlendIndex</code><span class="sig-paren">(</span><em>test_size=0.5</em>, <em>train_size=None</em>, <em>X=None</em>, <em>raise_on_exception=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/blend.html#BlendIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.BlendIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
-<p>Indexer that generates two non-overlapping subsets of <code class="docutils literal"><span class="pre">X</span></code>.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
+<p>Indexer that generates two non-overlapping subsets of <code class="docutils literal notranslate"><span class="pre">X</span></code>.</p>
 <p>Iterator that generates one training fold and one test fold that are
 non-overlapping and that may or may not partition all of X depending on the
 user’s specification.</p>
 <p>BlendIndex creates a singleton generator (has on iteration) that
-yields two tuples of <code class="docutils literal"><span class="pre">(start,</span> <span class="pre">stop)</span></code> integers that can be used for
-numpy array slicing (i.e. <code class="docutils literal"><span class="pre">X[stop:start]</span></code>). If a full array index
+yields two tuples of <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop)</span></code> integers that can be used for
+numpy array slicing (i.e. <code class="docutils literal notranslate"><span class="pre">X[stop:start]</span></code>). If a full array index
 is desired this can easily be achieved with:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_tup</span><span class="p">,</span> <span class="n">test_tup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">():</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">train_tup</span><span class="p">,</span> <span class="n">test_tup</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate</span><span class="p">():</span>
     <span class="n">train_slice</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="k">for</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="ow">in</span>
                               <span class="n">train_tup</span><span class="p">])</span>
 
@@ -573,20 +574,20 @@ is desired this can easily be achieved with:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>test_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em> (</em><em>default = 0.5</em><em>)</em>) – Size of the test set. If <code class="docutils literal"><span class="pre">float</span></code>, assumed to be proportion of full
+<li><strong>test_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> (</em><em>default = 0.5</em><em>)</em>) – Size of the test set. If <code class="docutils literal notranslate"><span class="pre">float</span></code>, assumed to be proportion of full
 data set.</li>
-<li><strong>train_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)"><em>float</em></a><em>, </em><em>optional</em>) – Size of test set. If not specified (i.e. <code class="docutils literal"><span class="pre">train_size</span> <span class="pre">=</span> <span class="pre">None</span></code>,
-train_size is equal to <code class="docutils literal"><span class="pre">n_samples</span> <span class="pre">-</span> <span class="pre">test_size</span></code>. If <code class="docutils literal"><span class="pre">float</span></code>, assumed
-to be a proportion of full data set. If <code class="docutils literal"><span class="pre">train_size</span></code> + <code class="docutils literal"><span class="pre">test_size</span></code>
+<li><strong>train_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em>, </em><em>optional</em>) – Size of test set. If not specified (i.e. <code class="docutils literal notranslate"><span class="pre">train_size</span> <span class="pre">=</span> <span class="pre">None</span></code>,
+train_size is equal to <code class="docutils literal notranslate"><span class="pre">n_samples</span> <span class="pre">-</span> <span class="pre">test_size</span></code>. If <code class="docutils literal notranslate"><span class="pre">float</span></code>, assumed
+to be a proportion of full data set. If <code class="docutils literal notranslate"><span class="pre">train_size</span></code> + <code class="docutils literal notranslate"><span class="pre">test_size</span></code>
 amount to less than the observations in the full data set, a subset
 of specified size will be used.</li>
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>] </em><em>, </em><em>optional</em>) – the training set to partition. The training label array is also,
-accepted, as only the first dimension is used. If <code class="docutils literal"><span class="pre">X</span></code> is not
+accepted, as only the first dimension is used. If <code class="docutils literal notranslate"><span class="pre">X</span></code> is not
 passed
-at instantiation, the <code class="docutils literal"><span class="pre">fit</span></code> method must be called before
-<code class="docutils literal"><span class="pre">generate</span></code>, or <code class="docutils literal"><span class="pre">X</span></code> must be passed as an argument of
-<code class="docutils literal"><span class="pre">generate</span></code>.</li>
-<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
+at instantiation, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method must be called before
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>, or <code class="docutils literal notranslate"><span class="pre">X</span></code> must be passed as an argument of
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
 </ul>
 </td>
 </tr>
@@ -594,11 +595,11 @@ at instantiation, the <code class="docutils literal"><span class="pre">fit</span
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-class docutils literal"><span class="pre">FoldIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">SubsetIndex</span></code></a></p>
+<p class="last"><a class="reference internal" href="#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">FoldIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
 <p>Selecting an absolute test size, with train size as the remainder</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">BlendIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">BlendIndex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">rebase</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -614,7 +615,7 @@ at instantiation, the <code class="docutils literal"><span class="pre">fit</span
 </pre></div>
 </div>
 <p>Selecting a test and train size less than the total</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">BlendIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">BlendIndex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
@@ -632,7 +633,7 @@ at instantiation, the <code class="docutils literal"><span class="pre">fit</span
 </pre></div>
 </div>
 <p>Selecting a percentage of observations as test and train set</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">BlendIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">BlendIndex</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
@@ -650,7 +651,7 @@ at instantiation, the <code class="docutils literal"><span class="pre">fit</span
 </pre></div>
 </div>
 <p>Rebasing the test set to be 0-indexed</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">BlendIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">BlendIndex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">rebase</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -673,8 +674,8 @@ at instantiation, the <code class="docutils literal"><span class="pre">fit</span
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>optional</em><em>]</em>) – array to _collect dimension data from.</li>
-<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – for compatibility</li>
-<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – for compatibility</li>
+<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – for compatibility</li>
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – for compatibility</li>
 </ul>
 </td>
 </tr>
@@ -696,31 +697,31 @@ at instantiation, the <code class="docutils literal"><span class="pre">fit</span
 <dl class="class">
 <dt id="mlens.index.SubsetIndex">
 <em class="property">class </em><code class="descclassname">mlens.index.</code><code class="descname">SubsetIndex</code><span class="sig-paren">(</span><em>partitions=2</em>, <em>folds=2</em>, <em>X=None</em>, <em>raise_on_exception=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/subsemble.html#SubsetIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.SubsetIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
 <p>Subsample index generator.</p>
-<p>Generates cross-validation folds according used to create <code class="docutils literal"><span class="pre">J</span></code>
-partitions of the data and <code class="docutils literal"><span class="pre">v</span></code> folds on each partition according to as
+<p>Generates cross-validation folds according used to create <code class="docutils literal notranslate"><span class="pre">J</span></code>
+partitions of the data and <code class="docutils literal notranslate"><span class="pre">v</span></code> folds on each partition according to as
 per <a class="footnote-reference" href="#id2" id="id1">[1]</a>:</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Split <code class="docutils literal"><span class="pre">X</span></code> into <code class="docutils literal"><span class="pre">J</span></code> partitions</p>
+<li><p class="first">Split <code class="docutils literal notranslate"><span class="pre">X</span></code> into <code class="docutils literal notranslate"><span class="pre">J</span></code> partitions</p>
 </li>
 <li><p class="first">For each partition:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li>For each fold <code class="docutils literal"><span class="pre">v</span></code>, create train index of all idx not in <code class="docutils literal"><span class="pre">v</span></code></li>
-<li>Concatenate all the fold <code class="docutils literal"><span class="pre">v</span></code> indices into a test index for
-fold <code class="docutils literal"><span class="pre">v</span></code> that spans all partitions</li>
+<li>For each fold <code class="docutils literal notranslate"><span class="pre">v</span></code>, create train index of all idx not in <code class="docutils literal notranslate"><span class="pre">v</span></code></li>
+<li>Concatenate all the fold <code class="docutils literal notranslate"><span class="pre">v</span></code> indices into a test index for
+fold <code class="docutils literal notranslate"><span class="pre">v</span></code> that spans all partitions</li>
 </ol>
 </div></blockquote>
 </li>
 </ol>
 </div></blockquote>
-<p>Setting <code class="docutils literal"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">1</span></code> is equivalent to the <code class="xref py py-class docutils literal"><span class="pre">FullIndexer</span></code>, which returns
+<p>Setting <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">1</span></code> is equivalent to the <code class="xref py py-class docutils literal notranslate"><span class="pre">FullIndexer</span></code>, which returns
 standard K-Fold train and test set indices.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-class docutils literal"><span class="pre">FoldIndex</span></code></a>, <a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal"><span class="pre">BlendIndex</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></p>
+<p class="last"><a class="reference internal" href="#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">FoldIndex</span></code></a>, <a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendIndex</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></p>
 </div>
 <p class="rubric">References</p>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
@@ -737,24 +738,24 @@ of Applied Statistics, 41(6), 1247-1259.
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>partitions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of partitions to split data in. If <code class="docutils literal"><span class="pre">partitions=1</span></code>,
-<a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">SubsetIndex</span></code></a> reduces to standard K-Fold.</li>
-<li><strong>folds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of splits to create in each partition. <code class="docutils literal"><span class="pre">folds</span></code> can
-not be 1 if <code class="docutils literal"><span class="pre">n_partition</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Note that if <code class="docutils literal"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code>,
+<li><strong>partitions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of partitions to split data in. If <code class="docutils literal notranslate"><span class="pre">partitions=1</span></code>,
+<a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a> reduces to standard K-Fold.</li>
+<li><strong>folds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of splits to create in each partition. <code class="docutils literal notranslate"><span class="pre">folds</span></code> can
+not be 1 if <code class="docutils literal notranslate"><span class="pre">n_partition</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Note that if <code class="docutils literal notranslate"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code>,
 both the train and test set will index the full data.</li>
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>] </em><em>, </em><em>optional</em>) – the training set to partition. The training label array is also,
-accepted, as only the first dimension is used. If <code class="docutils literal"><span class="pre">X</span></code> is not
-passed at instantiation, the <code class="docutils literal"><span class="pre">fit</span></code> method must be called before
-<code class="docutils literal"><span class="pre">generate</span></code>, or <code class="docutils literal"><span class="pre">X</span></code> must be passed as an argument of
-<code class="docutils literal"><span class="pre">generate</span></code>.</li>
-<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
+accepted, as only the first dimension is used. If <code class="docutils literal notranslate"><span class="pre">X</span></code> is not
+passed at instantiation, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method must be called before
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>, or <code class="docutils literal notranslate"><span class="pre">X</span></code> must be passed as an argument of
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">SubsetIndex</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">idx</span> <span class="o">=</span> <span class="n">SubsetIndex</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">)</span>
@@ -801,8 +802,8 @@ passed at instantiation, the <code class="docutils literal"><span class="pre">fi
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>optional</em><em>]</em>) – array to _collect dimension data from.</li>
-<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – for compatibility</li>
-<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.6)"><em>None</em></a>) – for compatibility</li>
+<li><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – for compatibility</li>
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a>) – for compatibility</li>
 </ul>
 </td>
 </tr>
@@ -827,12 +828,12 @@ passed at instantiation, the <code class="docutils literal"><span class="pre">fi
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>] </em><em>, </em><em>optional</em>) – the training set to partition. The training label array is also,
-accepted, as only the first dimension is used. If <code class="docutils literal"><span class="pre">X</span></code> is not
-passed at instantiation, the <code class="docutils literal"><span class="pre">fit</span></code> method must be called before
-<code class="docutils literal"><span class="pre">generate</span></code>, or <code class="docutils literal"><span class="pre">X</span></code> must be passed as an argument of
-<code class="docutils literal"><span class="pre">generate</span></code>.</li>
-<li><strong>as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to return partition as an index array. Otherwise tuples
-of <code class="docutils literal"><span class="pre">(start,</span> <span class="pre">stop)</span></code> indices are returned.</li>
+accepted, as only the first dimension is used. If <code class="docutils literal notranslate"><span class="pre">X</span></code> is not
+passed at instantiation, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method must be called before
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>, or <code class="docutils literal notranslate"><span class="pre">X</span></code> must be passed as an argument of
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>.</li>
+<li><strong>as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to return partition as an index array. Otherwise tuples
+of <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop)</span></code> indices are returned.</li>
 </ul>
 </td>
 </tr>
@@ -848,34 +849,34 @@ of <code class="docutils literal"><span class="pre">(start,</span> <span class="
 <dl class="class">
 <dt id="mlens.index.ClusteredSubsetIndex">
 <em class="property">class </em><code class="descclassname">mlens.index.</code><code class="descname">ClusteredSubsetIndex</code><span class="sig-paren">(</span><em>partition_estimator</em>, <em>partitions=2</em>, <em>folds=2</em>, <em>X=None</em>, <em>y=None</em>, <em>fit_estimator=True</em>, <em>attr='predict'</em>, <em>partition_on='X'</em>, <em>raise_on_exception=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/subsemble.html#ClusteredSubsetIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.ClusteredSubsetIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
 <p>Clustered Subsample index generator.</p>
-<p>Generates cross-validation folds according used to create <code class="docutils literal"><span class="pre">J</span></code>
-partitions of the data and <code class="docutils literal"><span class="pre">v</span></code> folds on each partition according to as
+<p>Generates cross-validation folds according used to create <code class="docutils literal notranslate"><span class="pre">J</span></code>
+partitions of the data and <code class="docutils literal notranslate"><span class="pre">v</span></code> folds on each partition according to as
 per <a class="footnote-reference" href="#id4" id="id3">[2]</a>:</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Split <code class="docutils literal"><span class="pre">X</span></code> into <code class="docutils literal"><span class="pre">J</span></code> partitions</p>
+<li><p class="first">Split <code class="docutils literal notranslate"><span class="pre">X</span></code> into <code class="docutils literal notranslate"><span class="pre">J</span></code> partitions</p>
 </li>
 <li><p class="first">For each partition:</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li>For each fold <code class="docutils literal"><span class="pre">v</span></code>, create train index of all idx not in <code class="docutils literal"><span class="pre">v</span></code></li>
-<li>Concatenate all the fold <code class="docutils literal"><span class="pre">v</span></code> indices into a test index for
-fold <code class="docutils literal"><span class="pre">v</span></code> that spans all partitions</li>
+<li>For each fold <code class="docutils literal notranslate"><span class="pre">v</span></code>, create train index of all idx not in <code class="docutils literal notranslate"><span class="pre">v</span></code></li>
+<li>Concatenate all the fold <code class="docutils literal notranslate"><span class="pre">v</span></code> indices into a test index for
+fold <code class="docutils literal notranslate"><span class="pre">v</span></code> that spans all partitions</li>
 </ol>
 </div></blockquote>
 </li>
 </ol>
 </div></blockquote>
-<p>Setting <code class="docutils literal"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">1</span></code> is equivalent to the <code class="xref py py-class docutils literal"><span class="pre">FullIndexer</span></code>, which returns
+<p>Setting <code class="docutils literal notranslate"><span class="pre">J</span> <span class="pre">=</span> <span class="pre">1</span></code> is equivalent to the <code class="xref py py-class docutils literal notranslate"><span class="pre">FullIndexer</span></code>, which returns
 standard K-Fold train and test set indices.</p>
-<p><a class="reference internal" href="#mlens.index.ClusteredSubsetIndex" title="mlens.index.ClusteredSubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">ClusteredSubsetIndex</span></code></a> uses a user-provided estimator to partition
-the data, in contrast to the <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">SubsetIndex</span></code></a> generator, which
+<p><a class="reference internal" href="#mlens.index.ClusteredSubsetIndex" title="mlens.index.ClusteredSubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteredSubsetIndex</span></code></a> uses a user-provided estimator to partition
+the data, in contrast to the <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a> generator, which
 partitions data into randomly into equal sizes.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-class docutils literal"><span class="pre">FoldIndex</span></code></a>, <a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal"><span class="pre">BlendIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal"><span class="pre">SubsetIndex</span></code></a></p>
+<p class="last"><a class="reference internal" href="#mlens.index.FoldIndex" title="mlens.index.FoldIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">FoldIndex</span></code></a>, <a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a></p>
 </div>
 <p class="rubric">References</p>
 <table class="docutils footnote" frame="void" id="id4" rules="none">
@@ -893,25 +894,25 @@ of Applied Statistics, 41(6), 1247-1259.
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>partition_estimator</strong> (<em>instance</em>) – Estimator to use for clustering.</li>
-<li><strong>partitions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – Number of partitions the estimator will create.</li>
-<li><strong>folds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of folds to create in each partition. <code class="docutils literal"><span class="pre">folds</span></code> can
-not be 1 if <code class="docutils literal"><span class="pre">n_partition</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Note that if <code class="docutils literal"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code>,
+<li><strong>partitions</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – Number of partitions the estimator will create.</li>
+<li><strong>folds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of folds to create in each partition. <code class="docutils literal notranslate"><span class="pre">folds</span></code> can
+not be 1 if <code class="docutils literal notranslate"><span class="pre">n_partition</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Note that if <code class="docutils literal notranslate"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code>,
 both the train and test set will index the full data.</li>
-<li><strong>fit_estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to fit the estimator separately before generating labels.</li>
-<li><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default = 'predict'</em><em>)</em>) – the attribute to use for generating cluster membership labels.</li>
+<li><strong>fit_estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to fit the estimator separately before generating labels.</li>
+<li><strong>attr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> (</em><em>default = 'predict'</em><em>)</em>) – the attribute to use for generating cluster membership labels.</li>
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>] </em><em>, </em><em>optional</em>) – the training set to partition. The training label array is also,
-accepted, as only the first dimension is used. If <code class="docutils literal"><span class="pre">X</span></code> is not
-passed at instantiation, the <code class="docutils literal"><span class="pre">fit</span></code> method must be called before
-<code class="docutils literal"><span class="pre">generate</span></code>, or <code class="docutils literal"><span class="pre">X</span></code> must be passed as an argument of
-<code class="docutils literal"><span class="pre">generate</span></code>.</li>
-<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
+accepted, as only the first dimension is used. If <code class="docutils literal notranslate"><span class="pre">X</span></code> is not
+passed at instantiation, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method must be called before
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>, or <code class="docutils literal notranslate"><span class="pre">X</span></code> must be passed as an argument of
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="k">import</span> <span class="n">KMeans</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="k">import</span> <span class="n">ClusteredSubsetIndex</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -954,7 +955,7 @@ passed at instantiation, the <code class="docutils literal"><span class="pre">fi
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – input array.</li>
 <li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>]</em>) – labels.</li>
-<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>[</em><em>'fit'</em><em>, </em><em>'predict'</em><em>] </em><em>(</em><em>default='fit'</em><em>)</em>) – type of estimation job. If ‘fit’, the indexer will be fitted,
+<li><strong>job</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>[</em><em>'fit'</em><em>, </em><em>'predict'</em><em>] </em><em>(</em><em>default='fit'</em><em>)</em>) – type of estimation job. If ‘fit’, the indexer will be fitted,
 which involves fitting the estimator. Otherwise, the indexer will
 not be fitted (since it is not used for prediction).</li>
 </ul>
@@ -981,13 +982,13 @@ not be fitted (since it is not used for prediction).</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>] </em><em>, </em><em>optional</em>) – the set to partition. The training label array is also,
-accepted, as only the first dimension is used. If <code class="docutils literal"><span class="pre">X</span></code> is not
-passed at instantiation, the <code class="docutils literal"><span class="pre">fit</span></code> method must be called before
-<code class="docutils literal"><span class="pre">generate</span></code>, or <code class="docutils literal"><span class="pre">X</span></code> must be passed as an argument of
-<code class="docutils literal"><span class="pre">generate</span></code>.</li>
+accepted, as only the first dimension is used. If <code class="docutils literal notranslate"><span class="pre">X</span></code> is not
+passed at instantiation, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method must be called before
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>, or <code class="docutils literal notranslate"><span class="pre">X</span></code> must be passed as an argument of
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>.</li>
 <li><strong>y</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>]</em><em>, </em><em>optional</em>) – the labels of the set to partition.</li>
-<li><strong>as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to return partition as an index array. Otherwise tuples
-of <code class="docutils literal"><span class="pre">(start,</span> <span class="pre">stop)</span></code> indices are returned.</li>
+<li><strong>as_array</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to return partition as an index array. Otherwise tuples
+of <code class="docutils literal notranslate"><span class="pre">(start,</span> <span class="pre">stop)</span></code> indices are returned.</li>
 </ul>
 </td>
 </tr>
@@ -1003,11 +1004,11 @@ of <code class="docutils literal"><span class="pre">(start,</span> <span class="
 <dl class="class">
 <dt id="mlens.index.FullIndex">
 <em class="property">class </em><code class="descclassname">mlens.index.</code><code class="descname">FullIndex</code><span class="sig-paren">(</span><em>X=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/base.html#FullIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.FullIndex" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.index.base.BaseIndex</span></code></p>
 <p>Vacuous indexer to be used with final layers.</p>
 <p>FullIndex is a compatibility class to be used with meta layers. It stores
 the sample size to be predicted for use with the
-<code class="xref py py-class docutils literal"><span class="pre">ParallelProcessing</span></code> job manager, and yields a <code class="docutils literal"><span class="pre">None,</span> <span class="pre">None</span></code>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelProcessing</span></code> job manager, and yields a <code class="docutils literal notranslate"><span class="pre">None,</span> <span class="pre">None</span></code>
 index when <cite>generate</cite> is called.</p>
 <dl class="method">
 <dt id="mlens.index.FullIndex.fit">
@@ -1036,16 +1037,16 @@ can safely be removed to create a single training set index range.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>start_below</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – <dl class="docutils">
+<li><strong>start_below</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – <dl class="docutils">
 <dt>index number starting below the test set. Should always be the same</dt>
 <dd>for all test sets.</dd>
 <dt>stop_below <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
 <dd>the index number at which the test set is starting on.</dd>
 </dl>
 </li>
-<li><strong>start_above</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – </li>
+<li><strong>start_above</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – </li>
 <li><strong>index number at which the test set ends.</strong> (<em>the</em>) – </li>
-<li><strong>stop_above</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – The end of the data set (n). Should always be the same for all test
+<li><strong>stop_above</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The end of the data set (n). Should always be the same for all test
 sets.</li>
 </ul>
 </td>
@@ -1061,16 +1062,16 @@ sets.</li>
 <dt id="mlens.index.partition">
 <code class="descclassname">mlens.index.</code><code class="descname">partition</code><span class="sig-paren">(</span><em>n</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/index/base.html#partition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.index.partition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get partition sizes for a given number of samples and partitions.</p>
-<p>This method will give an array containing the sizes of <code class="docutils literal"><span class="pre">p</span></code> partitions
-given a total sample size of <code class="docutils literal"><span class="pre">n</span></code>. If there is a remainder from the
+<p>This method will give an array containing the sizes of <code class="docutils literal notranslate"><span class="pre">p</span></code> partitions
+given a total sample size of <code class="docutils literal notranslate"><span class="pre">n</span></code>. If there is a remainder from the
 split, the r first folds will be incremented by 1.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of samples.</li>
-<li><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of partitions.</li>
+<li><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of samples.</li>
+<li><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of partitions.</li>
 </ul>
 </td>
 </tr>
@@ -1078,13 +1079,13 @@ split, the r first folds will be incremented by 1.</p>
 </table>
 <p class="rubric">Examples</p>
 <p>Return sample sizes of 2 partitions given a total of 4 samples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index.base</span> <span class="k">import</span> <span class="n">partition</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index.base</span> <span class="k">import</span> <span class="n">partition</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_partition</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">array([2, 2])</span>
 </pre></div>
 </div>
 <p>Return sample sizes of 3 partitions given a total of 8 samples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index.base</span> <span class="k">import</span> <span class="n">partition</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index.base</span> <span class="k">import</span> <span class="n">partition</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_partition</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="go">array([3, 3, 2])</span>
 </pre></div>
@@ -1102,16 +1103,16 @@ split, the r first folds will be incremented by 1.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arr</strong> (<a class="reference external" href="https://docs.python.org/3/library/array.html#module-array" title="(in Python v3.6)"><em>array</em></a>) – </td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>arr</strong> (<em>array</em>) – </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>out</strong></td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)">list</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.index.base</span> <span class="k">import</span> <span class="n">make_tuple</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_make_tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
 <span class="go">[(0, 3), (5, 7), (8, 11)]</span>
@@ -1125,9 +1126,7 @@ split, the r first folds will be incremented by 1.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1140,7 +1139,7 @@ split, the r first folds will be incremented by 1.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1158,7 +1157,8 @@ split, the r first folds will be incremented by 1.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1172,19 +1172,13 @@ split, the r first folds will be incremented by 1.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting started &mdash; mlens 0.2.1 documentation</title>
+  <title>Getting started &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Advanced features tutorial" href="advanced.html"/>
-        <link rel="prev" title="Install" href="../start/install.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced features tutorial" href="advanced.html" />
+    <link rel="prev" title="Install" href="../start/install.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -276,7 +267,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="getting-started">
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-tutorials-start-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="getting-started">
 <span id="sphx-glr-tutorials-start-py"></span><span id="id1"></span><h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>This tutorial highlights the basics of the
 high-level API for ensemble classes, the model selection suite and
@@ -310,7 +305,7 @@ etc. For tutorials on low-level mechanics, see
 <div class="section" id="preliminaries">
 <h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h2>
 <p>We use the following setup throughout:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
@@ -332,7 +327,7 @@ etc. For tutorials on low-level mechanics, see
 <p>Instantiating a fully specified ensemble is straightforward and requires
 three steps: first create the instance, second add the intermediate layers,
 and finally the meta estimator.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">SuperLearner</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">SuperLearner</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -358,45 +353,45 @@ and finally the meta estimator.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fitting</span> <span class="mi">2</span> <span class="n">layers</span>
-<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">1</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">2</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">Fit</span> <span class="n">complete</span>                        <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fitting 2 layers
+Processing layer-1             done | 00:00:00
+Processing layer-2             done | 00:00:00
+Fit complete                        | 00:00:00
 
-<span class="n">Predicting</span> <span class="mi">2</span> <span class="n">layers</span>
-<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">1</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">Processing</span> <span class="n">layer</span><span class="o">-</span><span class="mi">2</span>             <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">Predict</span> <span class="n">complete</span>                    <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+Predicting 2 layers
+Processing layer-1             done | 00:00:00
+Processing layer-2             done | 00:00:00
+Predict complete                    | 00:00:00
 </pre></div>
 </div>
-<p>To check the performance of estimator in the layers, call the <code class="docutils literal"><span class="pre">data</span></code>
-attribute. The attribute can be wrapped in a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>,
+<p>To check the performance of estimator in the layers, call the <code class="docutils literal notranslate"><span class="pre">data</span></code>
+attribute. The attribute can be wrapped in a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>,
 but prints in a tabular format as is.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Fit data:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Fit data:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fit</span> <span class="n">data</span><span class="p">:</span>
-                                   <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">randomforestclassifier</span>       <span class="mf">0.84</span>     <span class="mf">0.06</span>  <span class="mf">0.05</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">svc</span>                          <span class="mf">0.89</span>     <span class="mf">0.05</span>  <span class="mf">0.01</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fit data:
+                                   score-m  score-s  ft-m  ft-s  pt-m  pt-s
+layer-1  randomforestclassifier       0.84     0.06  0.04  0.00  0.00  0.00
+layer-1  svc                          0.89     0.05  0.00  0.00  0.00  0.00
 </pre></div>
 </div>
 <p>To round off, let’s see how the ensemble as a whole fared.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Prediction score: </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:]))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Prediction score: </span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:]))</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Prediction</span> <span class="n">score</span><span class="p">:</span> <span class="mf">0.960</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Prediction score: 0.960
 </pre></div>
 </div>
 </div>
 <div class="section" id="multi-layer-ensembles">
 <h3>Multi-layer ensembles<a class="headerlink" href="#multi-layer-ensembles" title="Permalink to this headline">¶</a></h3>
-<p>With each call to the <code class="docutils literal"><span class="pre">add</span></code> method, another layer is added to the ensemble.
+<p>With each call to the <code class="docutils literal notranslate"><span class="pre">add</span></code> method, another layer is added to the ensemble.
 Note that all ensembles are <em>sequential</em> in the order layers are added. For
 instance, in the above example, we could add a second layer as follows.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">(</span><span class="n">scorer</span><span class="o">=</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
 <span class="c1"># Build the first layer</span>
 <span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">([</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">),</span> <span class="n">LogisticRegression</span><span class="p">()])</span>
@@ -409,25 +404,25 @@ instance, in the above example, we could add a second layer as follows.</p>
 </pre></div>
 </div>
 <p>We now fit this ensemble in the same manner as before:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">75</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">75</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">75</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="mi">75</span><span class="p">])</span>
 <span class="n">preds</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Fit data:</span><span class="se">\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Fit</span> <span class="n">data</span><span class="p">:</span>
-                                   <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">logisticregression</span>           <span class="mf">0.74</span>     <span class="mf">0.16</span>  <span class="mf">0.04</span>  <span class="mf">0.00</span>  <span class="mf">0.01</span>  <span class="mf">0.01</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">1</span>  <span class="n">randomforestclassifier</span>       <span class="mf">0.84</span>     <span class="mf">0.06</span>  <span class="mf">0.05</span>  <span class="mf">0.00</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">2</span>  <span class="n">logisticregression</span>           <span class="mf">0.67</span>     <span class="mf">0.12</span>  <span class="mf">0.01</span>  <span class="mf">0.01</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
-<span class="n">layer</span><span class="o">-</span><span class="mi">2</span>  <span class="n">svc</span>                          <span class="mf">0.89</span>     <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fit data:
+                                   score-m  score-s  ft-m  ft-s  pt-m  pt-s
+layer-1  logisticregression           0.74     0.16  0.01  0.00  0.00  0.00
+layer-1  randomforestclassifier       0.84     0.06  0.02  0.01  0.00  0.00
+layer-2  logisticregression           0.67     0.12  0.00  0.00  0.00  0.00
+layer-2  svc                          0.89     0.00  0.00  0.00  0.00  0.00
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="model-selection-guide">
 <span id="id3"></span><h2>Model selection guide<a class="headerlink" href="#model-selection-guide" title="Permalink to this headline">¶</a></h2>
-<p>The work horse class is the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a>, which allows you to
+<p>The work horse class is the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a>, which allows you to
 grid search several models in one go across several preprocessing pipelines.
 The evaluator class pre-fits transformers, thus avoiding fitting the same
 preprocessing pipelines on the same data repeatedly. Also, by fitting all
@@ -441,28 +436,28 @@ features.</p>
 <div class="section" id="the-scoring-function">
 <h3>The scoring function<a class="headerlink" href="#the-scoring-function" title="Permalink to this headline">¶</a></h3>
 <p>An important note is that the scoring function must be wrapped by
-<a class="reference external" href="http://ml-ensemble.com/docs/metrics.html#mlens.metrics.make_scorer" title="(in mlens v0.2.0)"><code class="xref py py-func docutils literal"><span class="pre">make_scorer()</span></code></a>, to ensure all scoring functions behave similarly regardless
+<a class="reference external" href="http://ml-ensemble.com/docs/metrics.html#mlens.metrics.make_scorer" title="(in mlens v0.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_scorer()</span></code></a>, to ensure all scoring functions behave similarly regardless
 of whether they measure accuracy or errors. To wrap a function, simple do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 <span class="n">accuracy_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">make_scorer</span></code> wrapper
-is a copy of the Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="(in scikit-learn v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">sklearn.metrics.make_scorer()</span></code></a>, and you
+<p>The <code class="docutils literal notranslate"><span class="pre">make_scorer</span></code> wrapper
+is a copy of the Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="(in scikit-learn v0.19.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.metrics.make_scorer()</span></code></a>, and you
 can import the Scikit-learn version as well.
-Note however that to pickle the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a>, you <strong>must</strong> import
-<code class="docutils literal"><span class="pre">make_scorer</span></code> from <code class="docutils literal"><span class="pre">mlens</span></code>.</p>
+Note however that to pickle the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a>, you <strong>must</strong> import
+<code class="docutils literal notranslate"><span class="pre">make_scorer</span></code> from <code class="docutils literal notranslate"><span class="pre">mlens</span></code>.</p>
 </div>
 <div class="section" id="a-simple-evaluation">
 <h3>A simple evaluation<a class="headerlink" href="#a-simple-evaluation" title="Permalink to this headline">¶</a></h3>
 <p>Before throwing preprocessing into the mix, let’s see how to evaluate a set of
 estimator. First, we need a list of estimator and a dictionary of parameter
 distributions that maps to each estimator. The estimators should be put in a
-list, either as is or as a named tuple (<code class="docutils literal"><span class="pre">(name,</span> <span class="pre">est)</span></code>). If you don’t name
-the estimator, the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Evaluator</span></code></a> will automatically name the model as the
+list, either as is or as a named tuple (<code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">est)</span></code>). If you don’t name
+the estimator, the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a> will automatically name the model as the
 class name in lower case. This name must be the key in the parameter
 dictionary.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">randint</span>
@@ -477,31 +472,31 @@ dictionary.</p>
 </pre></div>
 </div>
 <p>We can now run an evaluation over these estimators and parameter distributions
-by calling the <code class="docutils literal"><span class="pre">fit</span></code> method.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">accuracy_scorer</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+by calling the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">evaluator</span> <span class="o">=</span> <span class="n">Evaluator</span><span class="p">(</span><span class="n">accuracy_scorer</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">evaluator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ests</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Launching</span> <span class="n">job</span>
-<span class="n">Job</span>           <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Launching job
+Job           done | 00:00:00
 </pre></div>
 </div>
-<p>The full history of the evaluation can be found in <code class="docutils literal"><span class="pre">cv_results</span></code>. To compare
-models with their best parameters, we can pass the <code class="docutils literal"><span class="pre">results</span></code> attribute to
-a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-obj docutils literal"><span class="pre">pandas.DataFrame</span></code></a> or print it as a table. We use <code class="docutils literal"><span class="pre">m</span></code> to denote
-mean values and <code class="docutils literal"><span class="pre">s</span></code> to denote standard deviation across folds for brevity.
+<p>The full history of the evaluation can be found in <code class="docutils literal notranslate"><span class="pre">cv_results</span></code>. To compare
+models with their best parameters, we can pass the <code class="docutils literal notranslate"><span class="pre">results</span></code> attribute to
+a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a> or print it as a table. We use <code class="docutils literal notranslate"><span class="pre">m</span></code> to denote
+mean values and <code class="docutils literal notranslate"><span class="pre">s</span></code> to denote standard deviation across folds for brevity.
 Note that the timed prediction is for the training set, for comparability with
 training time.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Score comparison with best params founds:</span><span class="se">\n\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Score comparison with best params founds:</span><span class="se">\n\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Score</span> <span class="n">comparison</span> <span class="k">with</span> <span class="n">best</span> <span class="n">params</span> <span class="n">founds</span><span class="p">:</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Score comparison with best params founds:
 
-       <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>               <span class="n">params</span>
-<span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.007</span>       <span class="mf">0.004</span>        <span class="mf">0.006</span>        <span class="mf">0.003</span>
-<span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.033</span>          <span class="mf">0.980</span>          <span class="mf">0.005</span>       <span class="mf">0.003</span>       <span class="mf">0.003</span>        <span class="mf">0.007</span>        <span class="mf">0.001</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
+       test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
+gnb           0.960         0.033          0.957          0.006       0.004       0.002        0.003        0.001
+knn           0.967         0.033          0.980          0.005       0.002       0.000        0.004        0.001  {&#39;n_neighbors&#39;: 15}
 </pre></div>
 </div>
 </div>
@@ -510,7 +505,7 @@ training time.</p>
 <p>Next, suppose we want to compare the models across a set of preprocessing pipelines.
 To do this, we first need to specify a dictionary of preprocessing pipelines to
 run through. Each entry in the dictionary should be a list of transformers to apply sequentially.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
 
 <span class="c1"># Map preprocessing cases through a dictionary</span>
@@ -520,29 +515,29 @@ run through. Each entry in the dictionary should be a list of transformers to ap
                     <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">fit</span></code> methods determines automatically whether there is any preprocessing
+<p>The <code class="docutils literal notranslate"><span class="pre">fit</span></code> methods determines automatically whether there is any preprocessing
 or any estimator jobs to run, so all we need to do is specify the arguments
 we want to be processed. If a previous preprocessing job was fitted, those
 pipelines are stored and will be used for subsequent estimator fits.</p>
 <p>This can be helpful if the preprocessing is time-consuming, for instance if
 the preprocessing pipeline is an ensemble itself. All ensembles implement
-a <code class="docutils literal"><span class="pre">transform</span></code> method that, in contrast to the <code class="docutils literal"><span class="pre">predict</span></code> method, regenerates
-the predictions made during the <code class="docutils literal"><span class="pre">fit``call.</span> <span class="pre">More</span> <span class="pre">precisely,</span> <span class="pre">the</span> <span class="pre">``transform</span></code>
+a <code class="docutils literal notranslate"><span class="pre">transform</span></code> method that, in contrast to the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method, regenerates
+the predictions made during the <code class="docutils literal notranslate"><span class="pre">fit``call.</span> <span class="pre">More</span> <span class="pre">precisely,</span> <span class="pre">the</span> <span class="pre">``transform</span></code>
 method uses the estimators fitted with cross-validation to construct predictions,
-whereas the <code class="docutils literal"><span class="pre">predict</span></code> method uses the final estimators fitted on all data.
+whereas the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method uses the final estimators fitted on all data.
 This allows us use ensembles as preprocessing steps that mimicks how that ensemble
 would produce predictions for a subsequent meta learner or layer. Since fitting
 large ensembles is highly time-consuming, fixing the lower layers as preprocessing
 input is highly valuable for tuning the higher layers and / or the final meta learner.
 See the <a class="reference internal" href="advanced.html#model-selection-tutorial"><span class="std std-ref">Ensemble model selection</span></a> tutorial for
 an example. To fit only the preprocessing pipelines, we omit any estimators in the
-<code class="docutils literal"><span class="pre">fit</span></code> call.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">evaluator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="n">preprocess_cases</span><span class="p">)</span>
+<code class="docutils literal notranslate"><span class="pre">fit</span></code> call.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">evaluator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="n">preprocess_cases</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Launching</span> <span class="n">job</span>
-<span class="n">Job</span>           <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Launching job
+Job           done | 00:00:00
 </pre></div>
 </div>
 </div>
@@ -551,29 +546,29 @@ an example. To fit only the preprocessing pipelines, we omit any estimators in t
 <p>To evaluate the same set of estimators across all pipelines with the same
 parameter distributions, there is no need to take any heed of the preprocessing
 pipeline, just carry on as in the simple case:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">evaluator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ests</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">evaluator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ests</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Comparison across preprocessing pipelines:</span><span class="se">\n\n</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">evaluator</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Launching</span> <span class="n">job</span>
-<span class="n">Job</span>           <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Launching job
+Job           done | 00:00:00
 
-<span class="n">Comparison</span> <span class="n">across</span> <span class="n">preprocessing</span> <span class="n">pipelines</span><span class="p">:</span>
+Comparison across preprocessing pipelines:
 
-             <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>               <span class="n">params</span>
-<span class="n">none</span>  <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.003</span>       <span class="mf">0.001</span>        <span class="mf">0.003</span>        <span class="mf">0.001</span>
-<span class="n">none</span>  <span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.033</span>          <span class="mf">0.980</span>          <span class="mf">0.005</span>       <span class="mf">0.001</span>       <span class="mf">0.000</span>        <span class="mf">0.006</span>        <span class="mf">0.002</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
-<span class="n">sc</span>    <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.005</span>       <span class="mf">0.002</span>        <span class="mf">0.004</span>        <span class="mf">0.003</span>
-<span class="n">sc</span>    <span class="n">knn</span>           <span class="mf">0.960</span>         <span class="mf">0.044</span>          <span class="mf">0.965</span>          <span class="mf">0.003</span>       <span class="mf">0.002</span>       <span class="mf">0.001</span>        <span class="mf">0.005</span>        <span class="mf">0.001</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">}</span>
-<span class="n">sub</span>   <span class="n">gnb</span>           <span class="mf">0.780</span>         <span class="mf">0.133</span>          <span class="mf">0.791</span>          <span class="mf">0.020</span>       <span class="mf">0.004</span>       <span class="mf">0.002</span>        <span class="mf">0.003</span>        <span class="mf">0.001</span>
-<span class="n">sub</span>   <span class="n">knn</span>           <span class="mf">0.800</span>         <span class="mf">0.126</span>          <span class="mf">0.837</span>          <span class="mf">0.015</span>       <span class="mf">0.002</span>       <span class="mf">0.001</span>        <span class="mf">0.007</span>        <span class="mf">0.004</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+             test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
+none  gnb           0.960         0.033          0.957          0.006       0.005       0.001        0.003        0.001
+none  knn           0.967         0.033          0.980          0.005       0.001       0.000        0.003        0.001  {&#39;n_neighbors&#39;: 15}
+sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.000
+sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.004        0.001   {&#39;n_neighbors&#39;: 8}
+sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.001
+sub   knn           0.800         0.126          0.837          0.015       0.001       0.001        0.003        0.001   {&#39;n_neighbors&#39;: 9}
 </pre></div>
 </div>
 <p>You can also map different estimators to different preprocessing folds, and
 map different parameter distribution to each case. We will map two different
 parameter distributions</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">pars_1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pars_1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">)}</span>
 <span class="n">pars_2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;sc.knn&#39;</span><span class="p">:</span> <span class="n">pars_1</span><span class="p">,</span>
           <span class="s1">&#39;none.knn&#39;</span><span class="p">:</span> <span class="n">pars_2</span><span class="p">,</span>
@@ -591,17 +586,17 @@ parameter distributions</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Launching</span> <span class="n">job</span>
-<span class="n">Job</span>           <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">01</span>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Launching job
+Job           done | 00:00:00
 
-<span class="n">Comparison</span> <span class="k">with</span> <span class="n">different</span> <span class="n">parameter</span> <span class="n">dists</span><span class="p">:</span>
+Comparison with different parameter dists:
 
-             <span class="n">test_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">test_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">m</span>  <span class="n">train_score</span><span class="o">-</span><span class="n">s</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">fit_time</span><span class="o">-</span><span class="n">s</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">m</span>  <span class="n">pred_time</span><span class="o">-</span><span class="n">s</span>               <span class="n">params</span>
-<span class="n">none</span>  <span class="n">knn</span>           <span class="mf">0.967</span>         <span class="mf">0.045</span>          <span class="mf">0.961</span>          <span class="mf">0.007</span>       <span class="mf">0.004</span>       <span class="mf">0.002</span>        <span class="mf">0.007</span>        <span class="mf">0.004</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="n">sc</span>    <span class="n">gnb</span>           <span class="mf">0.960</span>         <span class="mf">0.033</span>          <span class="mf">0.957</span>          <span class="mf">0.006</span>       <span class="mf">0.006</span>       <span class="mf">0.003</span>        <span class="mf">0.003</span>        <span class="mf">0.002</span>
-<span class="n">sc</span>    <span class="n">knn</span>           <span class="mf">0.940</span>         <span class="mf">0.055</span>          <span class="mf">0.963</span>          <span class="mf">0.006</span>       <span class="mf">0.001</span>       <span class="mf">0.001</span>        <span class="mf">0.007</span>        <span class="mf">0.001</span>  <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
-<span class="n">sub</span>   <span class="n">gnb</span>           <span class="mf">0.780</span>         <span class="mf">0.133</span>          <span class="mf">0.791</span>          <span class="mf">0.020</span>       <span class="mf">0.004</span>       <span class="mf">0.001</span>        <span class="mf">0.002</span>        <span class="mf">0.001</span>
-<span class="n">sub</span>   <span class="n">knn</span>           <span class="mf">0.800</span>         <span class="mf">0.126</span>          <span class="mf">0.837</span>          <span class="mf">0.015</span>       <span class="mf">0.002</span>       <span class="mf">0.000</span>        <span class="mf">0.005</span>        <span class="mf">0.002</span>   <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
+             test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
+none  knn           0.967         0.045          0.961          0.007       0.001       0.000        0.002        0.001   {&#39;n_neighbors&#39;: 3}
+sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.001
+sc    knn           0.940         0.055          0.963          0.006       0.001       0.000        0.004        0.001  {&#39;n_neighbors&#39;: 20}
+sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.000
+sub   knn           0.800         0.126          0.837          0.015       0.002       0.001        0.003        0.000   {&#39;n_neighbors&#39;: 9}
 </pre></div>
 </div>
 </div>
@@ -609,43 +604,43 @@ parameter distributions</p>
 <div class="section" id="visualization-guide">
 <span id="id4"></span><h2>Visualization guide<a class="headerlink" href="#visualization-guide" title="Permalink to this headline">¶</a></h2>
 <p><strong>Explained variance plot</strong></p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">exp_var_plot</span></code> function
-plots the explained variance from mapping a matrix <code class="docutils literal"><span class="pre">X</span></code> onto a smaller
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">exp_var_plot</span></code> function
+plots the explained variance from mapping a matrix <code class="docutils literal notranslate"><span class="pre">X</span></code> onto a smaller
 dimension using a user-supplied transformer, such as the Scikit-learn
-<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.decomposition.PCA</span></code></a> transformer for
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.decomposition.PCA</span></code></a> transformer for
 Principal Components Analysis.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">exp_var_plot</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="n">exp_var_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_start_001.png" class="align-center" src="../_images/sphx_glr_start_001.png" />
+<img alt="../_images/sphx_glr_start_001.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_001.png" />
 <p><strong>Principal Components Analysis plot</strong></p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">pca_plot</span></code> function
-plots a PCA analysis or similar if <code class="docutils literal"><span class="pre">n_components</span></code> is one of <code class="docutils literal"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">pca_plot</span></code> function
+plots a PCA analysis or similar if <code class="docutils literal notranslate"><span class="pre">n_components</span></code> is one of <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.
 By passing a class labels, the plot shows how well separated different classes
 are.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">pca_plot</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">pca_plot</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 <span class="n">pca_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_start_002.png" class="align-center" src="../_images/sphx_glr_start_002.png" />
+<img alt="../_images/sphx_glr_start_002.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_002.png" />
 <p><strong>Principal Components Comparison plot</strong></p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">pca_comp_plot</span></code> function
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">pca_comp_plot</span></code> function
 plots a matrix of PCA analyses, one for each combination of
-<code class="docutils literal"><span class="pre">n_components=2,</span> <span class="pre">3</span></code> and <code class="docutils literal"><span class="pre">kernel='linear',</span> <span class="pre">'rbf'</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">pca_comp_plot</span>
+<code class="docutils literal notranslate"><span class="pre">n_components=2,</span> <span class="pre">3</span></code> and <code class="docutils literal notranslate"><span class="pre">kernel='linear',</span> <span class="pre">'rbf'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">pca_comp_plot</span>
 <span class="n">pca_comp_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_start_003.png" class="align-center" src="../_images/sphx_glr_start_003.png" />
+<img alt="../_images/sphx_glr_start_003.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_003.png" />
 <p><strong>Correlation matrix plot</strong></p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">corrmat</span></code> function plots the lower triangle of
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">corrmat</span></code> function plots the lower triangle of
 a correlation matrix and is adapted the <a class="reference external" href="http://seaborn.pydata.org/examples/many_pairwise_correlations.html">Seaborn</a> correlation matrix.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">corrmat</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">corrmat</span>
 <span class="c1"># Generate som different predictions to correlate</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 <span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">150</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -657,56 +652,54 @@ a correlation matrix and is adapted the <a class="reference external" href="http
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_start_004.png" class="align-center" src="../_images/sphx_glr_start_004.png" />
+<img alt="../_images/sphx_glr_start_004.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_004.png" />
 <p><strong>Clustered correlation heatmap plot</strong></p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">clustered_corrmap</span></code> function is similar to <code class="xref py py-class docutils literal"><span class="pre">corrmat</span></code>,
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">clustered_corrmap</span></code> function is similar to <code class="xref py py-class docutils literal notranslate"><span class="pre">corrmat</span></code>,
 but differs in two respects. First, and most importantly, it uses a user
 supplied clustering estimator to cluster the correlation matrix on similar
 features, which can often help visualize whether there are blocks of highly
 correlated features. Secondly, it plots the full matrix (as opposed to the
 lower triangle).</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">clustered_corrmap</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">clustered_corrmap</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;f_</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>We duplicate all features, note that the heatmap orders features
 as duplicate pairs, and thus fully pick up on this duplication.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">lsuffix</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">rsuffix</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">lsuffix</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">rsuffix</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 <span class="n">clustered_corrmap</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">KMeans</span><span class="p">())</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_start_005.png" class="align-center" src="../_images/sphx_glr_start_005.png" />
+<img alt="../_images/sphx_glr_start_005.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_005.png" />
 <p><strong>Input-Output correlations</strong></p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">corr_X_y</span></code> function gives a dashboard of
-pairwise correlations between the input data (<code class="docutils literal"><span class="pre">X</span></code>) and the labels to be
-predicted (<code class="docutils literal"><span class="pre">y</span></code>). If the number of features is large, it is advised to set
-the <code class="docutils literal"><span class="pre">no_ticks</span></code> parameter to <code class="docutils literal"><span class="pre">True</span></code>, to avoid rendering an illegible
-x-axis. Note that <code class="docutils literal"><span class="pre">X</span></code> must be a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.22.0)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">corr_X_y</span>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">corr_X_y</span></code> function gives a dashboard of
+pairwise correlations between the input data (<code class="docutils literal notranslate"><span class="pre">X</span></code>) and the labels to be
+predicted (<code class="docutils literal notranslate"><span class="pre">y</span></code>). If the number of features is large, it is advised to set
+the <code class="docutils literal notranslate"><span class="pre">no_ticks</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code>, to avoid rendering an illegible
+x-axis. Note that <code class="docutils literal notranslate"><span class="pre">X</span></code> must be a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.23.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.visualization</span> <span class="kn">import</span> <span class="n">corr_X_y</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feature_</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
 <span class="n">corr_X_y</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">no_ticks</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_start_006.png" class="align-center" src="../_images/sphx_glr_start_006.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  7.345 seconds)</p>
-<div class="sphx-glr-footer docutils container">
+<img alt="../_images/sphx_glr_start_006.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_006.png" />
+<p><strong>Total running time of the script:</strong> ( 0 minutes  5.224 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-start-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/start.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">start.py</span></code></a></div>
+<a class="reference download internal" href="../_downloads/start.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">start.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/start.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">start.ipynb</span></code></a></div>
+<a class="reference download internal" href="../_downloads/start.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">start.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -719,7 +712,7 @@ x-axis. Note that <code class="docutils literal"><span class="pre">X</span></cod
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -737,7 +730,8 @@ x-axis. Note that <code class="docutils literal"><span class="pre">X</span></cod
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -751,19 +745,13 @@ x-axis. Note that <code class="docutils literal"><span class="pre">X</span></cod
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

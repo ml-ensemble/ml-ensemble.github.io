@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.metrics &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.metrics &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
-        <link rel="next" title="mlens.visualization" href="visualization.html"/>
-        <link rel="prev" title="mlens.preprocessing" href="preprocessing.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mlens.visualization" href="visualization.html" />
+    <link rel="prev" title="mlens.preprocessing" href="preprocessing.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -271,7 +259,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -279,9 +267,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -330,7 +319,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
 </tr>
-<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017-2018</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">license:</th><td class="field-body">MIT</td>
 </tr>
@@ -344,27 +333,27 @@
 <dl class="class">
 <dt id="mlens.metrics.Data">
 <em class="property">class </em><code class="descclassname">mlens.metrics.</code><code class="descname">Data</code><span class="sig-paren">(</span><em>data=None</em>, <em>padding=2</em>, <em>decimals=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/utils.html#Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.Data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">collections.OrderedDict</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></a></p>
 <p>Wrapper class around dict to get pretty prints</p>
-<p><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a> is an ordered dictionary that implements a dedicated
-pretty print method for a nested dictionary. Printing a <a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a>
+<p><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a> is an ordered dictionary that implements a dedicated
+pretty print method for a nested dictionary. Printing a <a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a>
 dictionary provides a human-readable table. The input dictionary is
 expected to have two levels: the first level gives the columns and the
 second level the rows. Rows names are parsed as
-<code class="docutils literal"><span class="pre">[OUTER]/[MIDDLE].[INNER]--[IDX]</span></code>, where IDX has to be an integer. All
+<code class="docutils literal notranslate"><span class="pre">[OUTER]/[MIDDLE].[INNER]--[IDX]</span></code>, where IDX has to be an integer. All
 entries are optional.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a></p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_data()</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_table()</span></code></a></p>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a> is an internal class that expects a particular functions.
+<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a> is an internal class that expects a particular functions.
 This class cannot be used as a general drop-in replacement for the standard
-<code class="docutils literal"><span class="pre">dict</span></code> class.</p>
+<code class="docutils literal notranslate"><span class="pre">dict</span></code> class.</p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">Data</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">Data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;row-idx-1.row-idx-2.0.0&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;column-1&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;column-2&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">})]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -381,16 +370,16 @@ This class cannot be used as a general drop-in replacement for the standard
 <dt id="mlens.metrics.assemble_data">
 <code class="descclassname">mlens.metrics.</code><code class="descname">assemble_data</code><span class="sig-paren">(</span><em>data_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/utils.html#assemble_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.assemble_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build a data dictionary out of a list of entries and data dicts</p>
-<p>Given a list named tuples of dictionaries, <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a>
+<p>Given a list named tuples of dictionaries, <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_data()</span></code></a>
 returns a nested ordered dictionary with data keys as outer keys and
 tuple names as inner keys. The returned dictionary can be printed in
-tabular format by <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a>.</p>
+tabular format by <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_table()</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a></p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_table()</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">assemble_data</span><span class="p">,</span> <span class="n">assemble_table</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">assemble_data</span><span class="p">,</span> <span class="n">assemble_table</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;row-idx-1.row-idx-2.a.b&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;column-1&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;column-2&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">})]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">assemble_table</span><span class="p">(</span><span class="n">assemble_data</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
 <span class="go">                        column-2-m  column-2-s  column-1-m  column-1-s</span>
@@ -406,19 +395,19 @@ tabular format by <a class="reference internal" href="#mlens.metrics.assemble_ta
 <dt id="mlens.metrics.assemble_table">
 <code class="descclassname">mlens.metrics.</code><code class="descname">assemble_table</code><span class="sig-paren">(</span><em>data</em>, <em>padding=2</em>, <em>decimals=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/utils.html#assemble_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.assemble_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct data table from input dict</p>
-<p>Given a nested dictionary formed by <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a>,
-<a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal"><span class="pre">assemble_table()</span></code></a> returns a string that prints the contents of
+<p>Given a nested dictionary formed by <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_data()</span></code></a>,
+<a class="reference internal" href="#mlens.metrics.assemble_table" title="mlens.metrics.assemble_table"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_table()</span></code></a> returns a string that prints the contents of
 the input in tabular format. The input dictionary is
 expected to have two levels: the first level gives the columns and the
 second level the rows. Rows names are parsed as
-<code class="docutils literal"><span class="pre">[OUTER]/[MIDDLE].[INNER]--[IDX]</span></code>, where IDX must be an integer. All
+<code class="docutils literal notranslate"><span class="pre">[OUTER]/[MIDDLE].[INNER]--[IDX]</span></code>, where IDX must be an integer. All
 entries are optional.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal"><span class="pre">Data</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal"><span class="pre">assemble_data()</span></code></a></p>
+<p class="last"><a class="reference internal" href="#mlens.metrics.Data" title="mlens.metrics.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a>, <a class="reference internal" href="#mlens.metrics.assemble_data" title="mlens.metrics.assemble_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">assemble_data()</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">assemble_data</span><span class="p">,</span> <span class="n">assemble_table</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="k">import</span> <span class="n">assemble_data</span><span class="p">,</span> <span class="n">assemble_table</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;row-idx-1.row-idx-2.a.b&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;column-1&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;column-2&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">})]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">assemble_table</span><span class="p">(</span><span class="n">assemble_data</span><span class="p">(</span><span class="n">d</span><span class="p">)))</span>
 <span class="go">                        column-2-m  column-2-s  column-1-m  column-1-s</span>
@@ -435,8 +424,8 @@ entries are optional.</p>
 <code class="descclassname">mlens.metrics.</code><code class="descname">make_scorer</code><span class="sig-paren">(</span><em>score_func</em>, <em>greater_is_better=True</em>, <em>needs_proba=False</em>, <em>needs_threshold=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/externals/sklearn/scorer.html#make_scorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.make_scorer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a scorer from a performance metric or loss function.</p>
 <p>This factory function wraps scoring functions for use in GridSearchCV
-and cross_val_score. It takes a score function, such as <code class="docutils literal"><span class="pre">accuracy_score</span></code>,
-<code class="docutils literal"><span class="pre">mean_squared_error</span></code>, <code class="docutils literal"><span class="pre">adjusted_rand_index</span></code> or <code class="docutils literal"><span class="pre">average_precision</span></code>
+and cross_val_score. It takes a score function, such as <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code>, <code class="docutils literal notranslate"><span class="pre">adjusted_rand_index</span></code> or <code class="docutils literal notranslate"><span class="pre">average_precision</span></code>
 and returns a callable that scores an estimator’s output.</p>
 <p>Read more in the <a class="reference external" href="http://scikit-learn.org/stable/modules/model_evaluation.html#scoring" title="(in scikit-learn v0.19.1)"><span class="xref std std-ref">User Guide</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -444,8 +433,8 @@ and returns a callable that scores an estimator’s output.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>score_func</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)"><em>callable</em></a><em>,</em>) – Score function (or loss function) with signature
-<code class="docutils literal"><span class="pre">score_func(y,</span> <span class="pre">y_pred,</span> <span class="pre">**kwargs)</span></code>.</li>
+<li><strong>score_func</strong> (<em>callable</em><em>,</em>) – Score function (or loss function) with signature
+<code class="docutils literal notranslate"><span class="pre">score_func(y,</span> <span class="pre">y_pred,</span> <span class="pre">**kwargs)</span></code>.</li>
 <li><strong>greater_is_better</strong> (<em>boolean</em><em>, </em><em>default=True</em>) – Whether score_func is a score function (default), meaning high is good,
 or a loss function, meaning low is good. In the latter case, the
 scorer object will sign-flip the outcome of the score_func.</li>
@@ -454,7 +443,7 @@ out of a classifier.</li>
 <li><strong>needs_threshold</strong> (<em>boolean</em><em>, </em><em>default=False</em>) – <p>Whether score_func takes a continuous decision certainty.
 This only works for binary classification using estimators that
 have either a decision_function or predict_proba method.</p>
-<p>For example <code class="docutils literal"><span class="pre">average_precision</span></code> or the area under the roc curve
+<p>For example <code class="docutils literal notranslate"><span class="pre">average_precision</span></code> or the area under the roc curve
 can not be computed using discrete predictions alone.</p>
 </li>
 <li><strong>**kwargs</strong> (<em>additional arguments</em>) – Additional parameters to be passed to score_func.</li>
@@ -464,13 +453,13 @@ can not be computed using discrete predictions alone.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scorer</strong> – Callable object that returns a scalar score; greater is better.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#callable" title="(in Python v3.6)">callable</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">callable</p>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">make_scorer</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">fbeta_score</span><span class="p">,</span> <span class="n">make_scorer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">fbeta_score</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ftwo_scorer</span>
 <span class="go">make_scorer(fbeta_score, beta=2)</span>
@@ -489,10 +478,10 @@ can not be computed using discrete predictions alone.</p>
 <dt id="mlens.metrics.rmse">
 <code class="descclassname">mlens.metrics.</code><code class="descname">rmse</code><span class="sig-paren">(</span><em>y</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/metrics.html#rmse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.rmse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Root Mean Square Error.</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[RMSE(\mathbf{y}, \mathbf{p}) = \sqrt{MSE(\mathbf{y}, \mathbf{p})},\]</div>
 <p>with</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[MSE(\mathbf{y}, \mathbf{p}) = |S| \sum_{i \in S} (y_i - p_i)^2\]</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -507,7 +496,7 @@ can not be computed using discrete predictions alone.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>z</strong> – root mean squared error.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -521,7 +510,7 @@ can not be computed using discrete predictions alone.</p>
 <dt id="mlens.metrics.mape">
 <code class="descclassname">mlens.metrics.</code><code class="descname">mape</code><span class="sig-paren">(</span><em>y</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/metrics.html#mape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.mape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mean Average Percentage Error.</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[MAPE(\mathbf{y}, \mathbf{p}) =
 |S| \sum_{i \in S} | \frac{y_i - p_i}{y_i} |\]</div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -537,7 +526,7 @@ can not be computed using discrete predictions alone.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>z</strong> – mean average percentage error.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -551,7 +540,7 @@ can not be computed using discrete predictions alone.</p>
 <dt id="mlens.metrics.wape">
 <code class="descclassname">mlens.metrics.</code><code class="descname">wape</code><span class="sig-paren">(</span><em>y</em>, <em>p</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/metrics/metrics.html#wape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.metrics.wape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Weighted Mean Average Percentage Error.</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[WAPE(\mathbf{y}, \mathbf{p}) =
 \frac{\sum_{i \in S} | y_i - p_i|}{ \sum_{i \in S} |y_i|}\]</div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -567,7 +556,7 @@ can not be computed using discrete predictions alone.</p>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>z</strong> – weighted mean average percentage error.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.6)">float</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)">float</a></p>
 </td>
 </tr>
 </tbody>
@@ -579,9 +568,7 @@ can not be computed using discrete predictions alone.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -594,7 +581,7 @@ can not be computed using discrete predictions alone.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -612,7 +599,8 @@ can not be computed using discrete predictions alone.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -626,19 +614,13 @@ can not be computed using discrete predictions alone.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

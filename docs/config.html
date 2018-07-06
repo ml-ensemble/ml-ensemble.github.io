@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.config &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.config &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
-        <link rel="next" title="mlens.ensemble" href="ensemble.html"/>
-        <link rel="prev" title="Documentation" href="index.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mlens.ensemble" href="ensemble.html" />
+    <link rel="prev" title="Documentation" href="index.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -271,7 +259,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -279,9 +267,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -332,31 +321,31 @@
 </tr>
 <tr class="field-even field"><th class="field-name">license:</th><td class="field-body">MIT</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+<tr class="field-odd field"><th class="field-name">copyright:</th><td class="field-body">2017-2018</td>
 </tr>
 </tbody>
 </table>
 <p>Global backend configurations.</p>
 <p>Variables</p>
 <ol class="arabic simple">
-<li><code class="docutils literal"><span class="pre">DTYPE</span></code>: data type of prediction arrays. Must be a numpy dtype.
-Default is <code class="docutils literal"><span class="pre">float32</span></code>.</li>
-<li><code class="docutils literal"><span class="pre">TMPDIR</span></code>: path to directory where temprorary caches will be hosted.
-Default is to use system <code class="docutils literal"><span class="pre">tmp</span></code> structure.</li>
-<li><code class="docutils literal"><span class="pre">PREFIX</span></code>: cache prefix. Default is <code class="docutils literal"><span class="pre">'.mlens_tmp_cache_'</span></code></li>
-<li><code class="docutils literal"><span class="pre">BACKEND</span></code>: global default backend. Default is <code class="docutils literal"><span class="pre">'threading'</span></code></li>
-<li><code class="docutils literal"><span class="pre">START_METHOD</span></code>: global start method (if <code class="docutils literal"><span class="pre">backend='multiprocessing'</span></code>)
-Default is <code class="docutils literal"><span class="pre">'fork'</span></code></li>
-<li><code class="docutils literal"><span class="pre">VERBOSE</span></code>: verbose import. Set to <code class="docutils literal"><span class="pre">Y</span></code> for verbose. Needs to be
-set before import (i.e. <code class="docutils literal"><span class="pre">export</span> <span class="pre">MLENS_VERBOSE=0</span></code>).</li>
-<li><code class="docutils literal"><span class="pre">IVALS</span></code>: load exception handling interval. Default is <code class="docutils literal"><span class="pre">(0.01,</span> <span class="pre">120)</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">DTYPE</span></code>: data type of prediction arrays. Must be a numpy dtype.
+Default is <code class="docutils literal notranslate"><span class="pre">float32</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">TMPDIR</span></code>: path to directory where temprorary caches will be hosted.
+Default is to use system <code class="docutils literal notranslate"><span class="pre">tmp</span></code> structure.</li>
+<li><code class="docutils literal notranslate"><span class="pre">PREFIX</span></code>: cache prefix. Default is <code class="docutils literal notranslate"><span class="pre">'.mlens_tmp_cache_'</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">BACKEND</span></code>: global default backend. Default is <code class="docutils literal notranslate"><span class="pre">'threading'</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">START_METHOD</span></code>: global start method (if <code class="docutils literal notranslate"><span class="pre">backend='multiprocessing'</span></code>)
+Default is <code class="docutils literal notranslate"><span class="pre">'fork'</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code>: verbose import. Set to <code class="docutils literal notranslate"><span class="pre">Y</span></code> for verbose. Needs to be
+set before import (i.e. <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">MLENS_VERBOSE=0</span></code>).</li>
+<li><code class="docutils literal notranslate"><span class="pre">IVALS</span></code>: load exception handling interval. Default is <code class="docutils literal notranslate"><span class="pre">(0.01,</span> <span class="pre">120)</span></code>.</li>
 </ol>
 <p>Environmental variables can be set by</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">MLENS_</span><span class="p">[</span><span class="n">VARIABLE</span><span class="p">]</span><span class="o">=</span><span class="n">VALUE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">MLENS_</span><span class="p">[</span><span class="n">VARIABLE</span><span class="p">]</span><span class="o">=</span><span class="n">VALUE</span>
 </pre></div>
 </div>
 <p>For changing defaults during a session, use
-<code class="docutils literal"><span class="pre">set_[variable]</span></code> and <code class="docutils literal"><span class="pre">get_[variable]</span></code>, where <code class="docutils literal"><span class="pre">[variable]</span></code> is replaced
+<code class="docutils literal notranslate"><span class="pre">set_[variable]</span></code> and <code class="docutils literal notranslate"><span class="pre">get_[variable]</span></code>, where <code class="docutils literal notranslate"><span class="pre">[variable]</span></code> is replaced
 with the lower case name of the environmental variable to change.</p>
 <p>Changing global configurations in-session is experimental: Please report any
 unexpected behavior.</p>
@@ -383,7 +372,7 @@ unexpected behavior.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.6)"><em>object</em></a>) – numpy dtype</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dtype</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a>) – numpy dtype</td>
 </tr>
 </tbody>
 </table>
@@ -412,7 +401,7 @@ unexpected behavior.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tmp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – directory path</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tmp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – directory path</td>
 </tr>
 </tbody>
 </table>
@@ -441,7 +430,7 @@ unexpected behavior.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – backend type, one of ‘multiprocessing’, ‘threading’, ‘sequential’</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – backend type, one of ‘multiprocessing’, ‘threading’, ‘sequential’</td>
 </tr>
 </tbody>
 </table>
@@ -470,7 +459,7 @@ unexpected behavior.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Methods available: ‘fork’, ‘spawn’, ‘forkserver’.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Methods available: ‘fork’, ‘spawn’, ‘forkserver’.</td>
 </tr>
 </tbody>
 </table>
@@ -499,7 +488,7 @@ unexpected behavior.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – cache file name prefix</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – cache file name prefix</td>
 </tr>
 </tbody>
 </table>
@@ -529,8 +518,8 @@ unexpected behavior.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of seconds between each check</li>
-<li><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of seconds to wait.</li>
+<li><strong>interval</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of seconds between each check</li>
+<li><strong>limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of seconds to wait.</li>
 </ul>
 </td>
 </tr>
@@ -555,7 +544,7 @@ directories.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tmp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – the directory to check for residual caches in.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tmp</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – the directory to check for residual caches in.</td>
 </tr>
 </tbody>
 </table>
@@ -567,9 +556,7 @@ directories.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -582,7 +569,7 @@ directories.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -600,7 +587,8 @@ directories.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -614,19 +602,13 @@ directories.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

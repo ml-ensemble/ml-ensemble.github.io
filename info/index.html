@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Features &mdash; mlens 0.2.1 documentation</title>
+  <title>Features &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,34 +24,22 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="#"/>
-        <link rel="next" title="Install" href="start/install.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Install" href="start/install.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -68,7 +56,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -76,7 +64,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -169,6 +157,8 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorials/layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorials/layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorials/layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +213,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="#">mlens</a>
@@ -231,9 +221,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -283,7 +274,7 @@
   <div class="section" id="features">
 <h1>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h1>
 <p>ML-Ensemble a Python library for memory efficient parallelized ensemble learning. In particular, ML-Ensemble is a <a class="reference external" href="http://scikit-learn.org/stable/">Scikit-learn</a> compatible library for building deep ensemble networks in just a few lines of code.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
 <span class="n">ensemble</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xtest</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -294,18 +285,18 @@ Ready-made ensemble classes allow you to build optimized ensembles in just a few
 computational procedure to build virtually any type of ensemble, including dynamic and recursive features.</p>
 <div class="figure align-center" id="id1">
 <a class="reference internal image-reference" href="_images/network.png"><img alt="_images/network.png" src="_images/network.png" style="width: 1925.3999999999999px; height: 1417.8px;" /></a>
-<p class="caption"><span class="caption-text">A typical computational graph. An input <span class="math">\(X\)</span> is differentialy preprocessed
-via tranformers <span class="math">\(\textrm{Tr}^{(j)}\)</span> before base learners <span class="math">\(f^{(i)}\)</span> generate predictions <span class="math">\(p^{(i)}_j\)</span>.
-Predictions are concatenated along with any propagated features from the input (<span class="math">\(X_{:, s}\)</span>) to form the
-output matrix <span class="math">\(P\)</span>.</span></p>
+<p class="caption"><span class="caption-text">A typical computational graph. An input <span class="math notranslate nohighlight">\(X\)</span> is differentialy preprocessed
+via tranformers <span class="math notranslate nohighlight">\(\textrm{Tr}^{(j)}\)</span> before base learners <span class="math notranslate nohighlight">\(f^{(i)}\)</span> generate predictions <span class="math notranslate nohighlight">\(p^{(i)}_j\)</span>.
+Predictions are concatenated along with any propagated features from the input (<span class="math notranslate nohighlight">\(X_{:, s}\)</span>) to form the
+output matrix <span class="math notranslate nohighlight">\(P\)</span>.</span></p>
 </div>
 </div>
 <div class="section" id="ease-of-use">
 <h2>Ease of Use<a class="headerlink" href="#ease-of-use" title="Permalink to this headline">¶</a></h2>
-<p>Simply call the <code class="docutils literal"><span class="pre">add</span></code> method with a set of estimators to stack a layer on an ensemble.
+<p>Simply call the <code class="docutils literal notranslate"><span class="pre">add</span></code> method with a set of estimators to stack a layer on an ensemble.
 Ensembles are Scikit-learn compatible estimators. No matter how complex the
-ensemble, to train with the <code class="docutils literal"><span class="pre">fit</span></code> method:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">()</span>
+ensemble, to train with the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">()</span>
 
 <span class="c1"># First layer</span>
 <span class="n">ensemble</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">list_of_estimators</span><span class="p">)</span>
@@ -334,7 +325,7 @@ copying and serialization. For more details, see the <a class="reference interna
 of preprocessing pipelines that map to a specific group of estimators in a layer.
 Implementing differentiated preprocessing is straightforward and simply requires
 a dictionary mapping between preprocessing cases and estimators:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ensemble</span> <span class="o">=</span> <span class="n">SuperLearner</span><span class="p">()</span>
 
 <span class="n">preprocessing</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pipeline-1&#39;</span><span class="p">:</span> <span class="n">list_of_transformers_1</span><span class="p">,</span>
                  <span class="s1">&#39;pipeline-2&#39;</span><span class="p">:</span> <span class="n">list_of_transformers_2</span><span class="p">}</span>
@@ -353,7 +344,7 @@ several models across any number of preprocessing pipelines in one go.
 In fact, you can use an ensemble as a preprocessing input to tune higher levels
 of an ensemble. Output is directly summarized in table format for easy
 comparison of performance.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">evaluator</span><span class="o">.</span><span class="n">results</span>
 <span class="go">           test_score_mean  test_score_std  train_score_mean  train_score_std  fit_time_mean  fit_time_std                                             params</span>
 <span class="go">class rf          0.955357        0.060950          0.972535         0.008303       0.024585      0.014300                                   {&#39;max_depth&#39;: 5}</span>
 <span class="go">      svc         0.961607        0.070818          0.972535         0.008303       0.000800      0.000233                               {&#39;C&#39;: 7.67070164682}</span>
@@ -378,9 +369,7 @@ comparison of performance.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -393,7 +382,7 @@ comparison of performance.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -411,7 +400,8 @@ comparison of performance.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -425,19 +415,13 @@ comparison of performance.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

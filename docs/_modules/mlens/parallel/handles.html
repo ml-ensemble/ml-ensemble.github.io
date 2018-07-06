@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.parallel.handles &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.parallel.handles &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,34 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -68,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo.png" class="logo" />
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -76,7 +63,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -270,7 +257,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">mlens</a>
@@ -278,9 +265,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -310,8 +298,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -326,7 +312,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;ML-Ensemble</span>
 
 <span class="sd">:author: Sebastian Flennerhag</span>
-<span class="sd">:copyright: 2017</span>
+<span class="sd">:copyright: 2017-2018</span>
 <span class="sd">:license: MIT</span>
 
 <span class="sd">Handles for mlens.parallel.</span>
@@ -483,7 +469,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Pipeline.get_params"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.handles.Pipeline.get_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">deep</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">out</span>
@@ -493,7 +479,7 @@
                 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tr</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                     <span class="n">out</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tr_name</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span> <span class="o">=</span> <span class="n">v</span>
                     <span class="n">out</span><span class="p">[</span><span class="n">tr_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tr</span>
-        <span class="k">return</span> <span class="n">out</span></div>
+        <span class="k">return</span> <span class="n">out</span></div></div>
 
 
 <div class="viewcode-block" id="Group"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.handles.Group">[docs]</a><span class="k">class</span> <span class="nc">Group</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">):</span>
@@ -582,7 +568,7 @@
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="nb">all</span><span class="p">([</span><span class="n">o</span><span class="o">.</span><span class="n">__fitted__</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">learners</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">transformers</span><span class="p">])</span>
 
-    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="Group.get_params"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.handles.Group.get_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Group</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">deep</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">out</span>
@@ -590,7 +576,7 @@
             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">get_params</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="n">deep</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="n">out</span><span class="p">[</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">__</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">k</span><span class="p">)]</span> <span class="o">=</span> <span class="n">v</span>
             <span class="n">out</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
-        <span class="k">return</span> <span class="n">out</span></div>
+        <span class="k">return</span> <span class="n">out</span></div></div>
 
 
 <div class="viewcode-block" id="make_group"><a class="viewcode-back" href="../../../parallel.html#mlens.parallel.handles.make_group">[docs]</a><span class="k">def</span> <span class="nf">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="p">,</span>
@@ -689,9 +675,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -704,7 +688,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -722,7 +706,8 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -736,19 +721,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

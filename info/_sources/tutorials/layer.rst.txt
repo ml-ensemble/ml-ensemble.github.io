@@ -1,4 +1,8 @@
+.. note::
+    :class: sphx-glr-download-link-note
 
+    Click :ref:`here <sphx_glr_download_tutorials_layer.py>` to download the full example code
+.. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_tutorials_layer.py:
 
@@ -6,8 +10,7 @@
 
 .. _layer_tutorial:
 
-
-.. currentmodule:: mlens.ensemble.layer
+.. currentmodule:: mlens.parallel
 
 Layer Mechanics
 ===============
@@ -21,33 +24,421 @@ The low-level API introduces a computational graph-like environment that you can
 directly exploit to gain further control over your ensemble. In fact, building
 your ensemble through the low-level API is almost as straight forward as using
 the high-level API. In this tutorial, we will walk through how to use the
-:class:`Layer` class to fit several learners.
+:class:`Group` and :class:`Layer` classes to fit several learners.
 
+Suppose we want to fit several learners. The :ref:` learner tutorial <learner_tutorial`
+showed us how to fit a single learner, and so one approach would be to simple
+iterate over our learners and fit them one at a time. This however is a very slow
+approach since we don't exploit the fact that learners can be trained in parallel.
+Moreover, any type of aggregation, like putting all predictions into an array, would
+have to be done manually.
 
 The Layer API
 ^^^^^^^^^^^^^
 
+To parallelize the implementation, we can use the :class:`Layer` class. A layer is
+a handle that will run any number of :class:`Group`s attached to it in parallel. Each
+group in turn is a wrapper around a ``indexer-transformers-estimators`` triplet.
+
 Basics
 ------
 
-TBD
-
-
-
-
-
+So, to fit our two learners in parallel, we first need a :class:`Group` object to
+handle them.
 
 
 
 .. code-block:: python
 
-    from mlens.parallel import Layer
+    from mlens.parallel import Layer, Group, make_group, run
+    from mlens.utils.dummy import OLS, Scale
+    from mlens.index import FoldIndex
 
-**Total running time of the script:** ( 0 minutes  0.000 seconds)
+
+    indexer = FoldIndex(folds=2)
+    group = make_group(indexer, [OLS(1), OLS(2)], None)
 
 
 
-.. container:: sphx-glr-footer
+
+
+
+
+This ``group`` object is now a complete description of how to fit our two
+learners using the prescribed indexing method.
+
+To train the estimators, we need feed the group to a :class:`Layer` instance:
+
+
+
+.. code-block:: python
+
+
+    import numpy as np
+
+    np.random.seed(2)
+
+    X = np.arange(20).reshape(10, 2)
+    y = np.random.rand(10)
+
+
+
+    layer = Layer(stack=group)
+
+    print(
+        run(layer, 'fit', X, y, return_preds=True)
+    )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [[ 1.3665537  2.3665535]
+     [ 5.363353  10.363353 ]
+     [ 9.360152  18.360151 ]
+     [13.356951  26.35695  ]
+     [17.35375   34.35375  ]
+     [21.486897  42.486897 ]
+     [25.524712  50.52471  ]
+     [29.562525  58.562527 ]
+     [33.60034   66.60034  ]
+     [37.638153  74.63815  ]]
+
+
+To use some preprocessing before fitting the estimators, we can use the
+``transformers`` argument when creating our ``group``:
+
+
+
+.. code-block:: python
+
+
+    group = make_group(indexer, [OLS(1), OLS(2)], [Scale()])
+
+    layer = Layer(stack=group)
+
+    print(
+        run(layer, 'fit', X, y, return_preds=True)
+    )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [[-27.977594 -55.977592]
+     [-23.980795 -47.980793]
+     [-19.983995 -39.983997]
+     [-15.987196 -31.987196]
+     [-11.990397 -23.990396]
+     [ 12.113442  24.113443]
+     [ 16.151257  32.151257]
+     [ 20.189072  40.18907 ]
+     [ 24.226885  48.226887]
+     [ 28.2647    56.264698]]
+
+
+Multitasking
+------------
+
+If we want our estimators two have different preprocessing, we can easily
+achieve this either by specifying different cases when making the group,
+or by making two separate groups. In the first case:
+
+
+
+.. code-block:: python
+
+
+
+    group = make_group(
+        indexer,
+        {'case-1': [OLS(1)], 'case-2': [OLS(2)]},
+        {'case-1': [Scale()], 'case-2': []}
+    )
+
+    layer = Layer(stack=group)
+
+    print(
+        run(layer, 'fit', X, y, return_preds=True)
+    )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [[-27.977594    2.3665535]
+     [-23.980795   10.363353 ]
+     [-19.983995   18.360151 ]
+     [-15.987196   26.35695  ]
+     [-11.990397   34.35375  ]
+     [ 12.113442   42.486897 ]
+     [ 16.151257   50.52471  ]
+     [ 20.189072   58.562527 ]
+     [ 24.226885   66.60034  ]
+     [ 28.2647     74.63815  ]]
+
+
+In the latter case:
+
+
+
+.. code-block:: python
+
+
+    groups = [
+        make_group(indexer, OLS(1), Scale()), make_group(indexer, OLS(2), None)
+    ]
+
+    layer = Layer(stack=groups)
+
+    print(
+        run(layer, 'fit', X, y, return_preds=True)
+    )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [[-27.977594    2.3665535]
+     [-23.980795   10.363353 ]
+     [-19.983995   18.360151 ]
+     [-15.987196   26.35695  ]
+     [-11.990397   34.35375  ]
+     [ 12.113442   42.486897 ]
+     [ 16.151257   50.52471  ]
+     [ 20.189072   58.562527 ]
+     [ 24.226885   66.60034  ]
+     [ 28.2647     74.63815  ]]
+
+
+Which method to prefer depends on the application, but generally, it is
+preferable to put all transformers and all estimators belonging to a
+given indexing strategy into one ``group`` instance as it is easier to
+separate groups based on indexer and using cases to distinguish between
+different preprocessing pipelines.
+
+
+Now, suppose we want to do something more exotic, like using different
+indexing strategies for different estimators. This can easily be achieved
+by creating groups for each indexing strategy we want:
+
+
+
+.. code-block:: python
+
+
+    groups = [
+        make_group(FoldIndex(2), OLS(1), Scale()),
+        make_group(FoldIndex(4), OLS(2), None)
+    ]
+
+    layer = Layer(stack=groups)
+
+    print(
+        run(layer, 'fit', X, y, return_preds=True)
+    )
+
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [[-27.977594    2.4661984]
+     [-23.980795   10.449842 ]
+     [-19.983995   18.433487 ]
+     [-15.987196   26.33962  ]
+     [-11.990397   34.341675 ]
+     [ 12.113442   42.343727 ]
+     [ 16.151257   50.33181  ]
+     [ 20.189072   58.324955 ]
+     [ 24.226885   66.458244 ]
+     [ 28.2647     74.47614  ]]
+
+
+Some care needs to be taken here: if indexing strategies do not return the
+same number of rows, the output array will be zero-padded.
+
+
+
+.. code-block:: python
+
+
+    from mlens.index import BlendIndex
+
+    groups = [
+        make_group(FoldIndex(2), OLS(1), None),
+        make_group(BlendIndex(0.5), OLS(1), None)
+    ]
+
+    layer = Layer(stack=groups)
+    print(
+        run(layer, 'fit', X, y, return_preds=True)
+    )
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    [[ 1.3665537  0.       ]
+     [ 5.363353   0.       ]
+     [ 9.360152   0.       ]
+     [13.356951   0.       ]
+     [17.35375    0.       ]
+     [21.486897  21.486897 ]
+     [25.524712  25.524712 ]
+     [29.562525  29.562525 ]
+     [33.60034   33.60034  ]
+     [37.638153  37.638153 ]]
+
+
+Note that even if ``mlens`` indexer output different shapes, they preserve
+row indexing to ensure predictions are consistently mapped to their respective
+input. If you build a custom indexer, make sure that it uses a strictly
+sequential (with respect to row indexing) partitioning strategy.
+
+
+Layer features
+--------------
+
+A layer does not have to be specified all in one go; you can instantiate
+a layer and ``push`` and ``pop`` to its ``stack``.
+
+
+
+.. code-block:: python
+
+
+    layer = Layer()
+    group = make_group(FoldIndex(4), OLS(), None)
+    layer.push(group)
+
+
+
+
+
+
+
+.. note::
+
+If you push or pop to the stack, you must call ``fit`` before you can
+use the layer for prediction.
+
+
+
+.. code-block:: python
+
+
+    run(layer, 'fit', X, y)
+
+    group = make_group(FoldIndex(2), OLS(1), None)
+    layer.push(group)
+
+    try:
+        run(layer, 'predict', X, y)
+    except Exception as exc:
+        print("Error: %s" % str(exc))
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Error: Layer instance (layer-6) not fitted.
+
+
+The :class:`Layer` class can print the progress of a job, as well as inspect
+data collected during the job. Note that the
+printouts of the layer does not take group membership into account.
+
+
+
+.. code-block:: python
+
+
+    from mlens.metrics import rmse
+
+    layer = Layer()
+    group1 = make_group(
+        indexer,
+        {'case-1': [OLS(1)], 'case-2': [OLS(2)]},
+        {'case-1': [Scale()], 'case-2': []},
+        learner_kwargs={'scorer': rmse}
+    )
+
+    layer.push(group1)
+
+    run(layer, 'fit', X, y, return_preds=True)
+    print()
+    print("Collected data:")
+    print(layer.data)
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    Collected data:
+                     score-m  score-s  ft-m  ft-s  pt-m  pt-s
+    case-1  ols-1      20.88     0.23  0.00  0.00  0.00  0.00
+            ols-2      40.27    19.05  0.00  0.00  0.00  0.00
+
+
+**Total running time of the script:** ( 0 minutes  1.507 seconds)
+
+
+.. _sphx_glr_download_tutorials_layer.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
 
 
   .. container:: sphx-glr-download
@@ -60,6 +451,9 @@ TBD
 
      :download:`Download Jupyter notebook: layer.ipynb <layer.ipynb>`
 
-.. rst-class:: sphx-glr-signature
 
-    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_

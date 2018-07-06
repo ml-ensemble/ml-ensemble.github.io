@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; mlens 0.2.1 documentation</title>
+  <title>Index &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -25,33 +25,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="#"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -68,7 +56,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -76,7 +64,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -270,7 +258,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -278,9 +266,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -357,8 +346,24 @@
       </ul></li>
       <li><a href="parallel.html#mlens.parallel.base.IndexMixin.__indexer__">__indexer__ (mlens.parallel.base.IndexMixin attribute)</a>
 </li>
-      <li><a href="parallel.html#mlens.parallel.base.BaseParallel.__iter__">__iter__() (mlens.parallel.base.BaseParallel method)</a>
+      <li><a href="parallel.html#mlens.parallel.base.BaseBackend.__init__">__init__() (mlens.parallel.base.BaseBackend method)</a>
+
+      <ul>
+        <li><a href="parallel.html#mlens.parallel.base.BaseEstimator.__init__">(mlens.parallel.base.BaseEstimator method)</a>
 </li>
+        <li><a href="parallel.html#mlens.parallel.base.BaseParallel.__init__">(mlens.parallel.base.BaseParallel method)</a>
+</li>
+        <li><a href="parallel.html#mlens.parallel.base.BaseStacker.__init__">(mlens.parallel.base.BaseStacker method)</a>
+</li>
+      </ul></li>
+      <li><a href="parallel.html#mlens.parallel.base.BaseParallel.__iter__">__iter__() (mlens.parallel.base.BaseParallel method)</a>
+
+      <ul>
+        <li><a href="parallel.html#mlens.parallel.base.BaseStacker.__iter__">(mlens.parallel.base.BaseStacker method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="parallel.html#mlens.parallel.base.BaseStacker.__stack__">__stack__ (mlens.parallel.base.BaseStacker attribute)</a>
 </li>
       <li><a href="parallel.html#mlens.parallel.base.BaseBackend.__weakref__">__weakref__ (mlens.parallel.base.BaseBackend attribute)</a>
@@ -369,8 +374,6 @@
         <li><a href="parallel.html#mlens.parallel.base.ProbaMixin.__weakref__">(mlens.parallel.base.ProbaMixin attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="parallel.html#mlens.parallel.base.IndexMixin._check_indexer">_check_indexer() (mlens.parallel.base.IndexMixin method)</a>
 </li>
       <li><a href="parallel.html#mlens.parallel.base.ParamMixin._check_static_params">_check_static_params() (mlens.parallel.base.ParamMixin method)</a>
@@ -625,12 +628,22 @@
 </li>
       <li><a href="config.html#mlens.config.get_dtype">get_dtype() (in module mlens.config)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="config.html#mlens.config.get_ivals">get_ivals() (in module mlens.config)</a>
 </li>
-      <li><a href="parallel.html#mlens.parallel.base.BaseStacker.get_params">get_params() (mlens.parallel.base.BaseStacker method)</a>
+      <li><a href="estimators.html#mlens.estimators.LayerEnsemble.get_params">get_params() (mlens.estimators.LayerEnsemble method)</a>
+
+      <ul>
+        <li><a href="parallel.html#mlens.parallel.base.BaseEstimator.get_params">(mlens.parallel.base.BaseEstimator method)</a>
 </li>
+        <li><a href="parallel.html#mlens.parallel.base.BaseStacker.get_params">(mlens.parallel.base.BaseStacker method)</a>
+</li>
+        <li><a href="parallel.html#mlens.parallel.handles.Group.get_params">(mlens.parallel.handles.Group method)</a>
+</li>
+        <li><a href="parallel.html#mlens.parallel.handles.Pipeline.get_params">(mlens.parallel.handles.Pipeline method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="parallel.html#mlens.parallel.backend.ParallelProcessing.get_preds">get_preds() (mlens.parallel.backend.ParallelProcessing method)</a>
 </li>
       <li><a href="config.html#mlens.config.get_prefix">get_prefix() (in module mlens.config)</a>
@@ -855,6 +868,8 @@
         <li><a href="parallel.html#mlens.parallel.learner.BaseNode.set_output_columns">(mlens.parallel.learner.BaseNode method)</a>
 </li>
       </ul></li>
+      <li><a href="mod_index.html#mlens.index.BaseIndex.set_params">set_params() (mlens.index.BaseIndex method)</a>
+</li>
       <li><a href="config.html#mlens.config.set_prefix">set_prefix() (in module mlens.config)</a>
 </li>
       <li><a href="config.html#mlens.config.set_start_method">set_start_method() (in module mlens.config)</a>
@@ -959,9 +974,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -974,7 +987,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -992,7 +1005,8 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1006,19 +1020,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

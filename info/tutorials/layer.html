@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Layer Mechanics &mdash; mlens 0.2.1 documentation</title>
+  <title>Layer Mechanics &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Parallel Mechanics" href="parallel.html"/>
-        <link rel="prev" title="Learner Mechanics" href="learner.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parallel Mechanics" href="parallel.html" />
+    <link rel="prev" title="Learner Mechanics" href="learner.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -276,7 +267,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="layer-mechanics">
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Click <a class="reference internal" href="#sphx-glr-download-tutorials-layer-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="layer-mechanics">
 <span id="layer-tutorial"></span><span id="sphx-glr-tutorials-layer-py"></span><h1>Layer Mechanics<a class="headerlink" href="#layer-mechanics" title="Permalink to this headline">¶</a></h1>
 <p>ML-Ensemble is designed to provide an easy user interface. But it is also designed
 to be extremely flexible, all the wile providing maximum concurrency at minimal
@@ -286,32 +281,279 @@ computations is constructed in as modular a fashion as possible.</p>
 directly exploit to gain further control over your ensemble. In fact, building
 your ensemble through the low-level API is almost as straight forward as using
 the high-level API. In this tutorial, we will walk through how to use the
-<code class="xref py py-class docutils literal"><span class="pre">Layer</span></code> class to fit several learners.</p>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> classes to fit several learners.</p>
+<p>Suppose we want to fit several learners. The :ref:` learner tutorial &lt;learner_tutorial`
+showed us how to fit a single learner, and so one approach would be to simple
+iterate over our learners and fit them one at a time. This however is a very slow
+approach since we don’t exploit the fact that learners can be trained in parallel.
+Moreover, any type of aggregation, like putting all predictions into an array, would
+have to be done manually.</p>
 <div class="section" id="the-layer-api">
 <h2>The Layer API<a class="headerlink" href="#the-layer-api" title="Permalink to this headline">¶</a></h2>
+<p>To parallelize the implementation, we can use the <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> class. A layer is
+a handle that will run any number of <code class="xref py py-class docutils literal notranslate"><span class="pre">Group`s</span> <span class="pre">attached</span> <span class="pre">to</span> <span class="pre">it</span> <span class="pre">in</span> <span class="pre">parallel.</span> <span class="pre">Each</span>
+<span class="pre">group</span> <span class="pre">in</span> <span class="pre">turn</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">wrapper</span> <span class="pre">around</span> <span class="pre">a</span> <span class="pre">``indexer-transformers-estimators`</span></code> triplet.</p>
 <div class="section" id="basics">
 <h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
-<p>TBD</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">Layer</span>
+<p>So, to fit our two learners in parallel, we first need a <code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code> object to
+handle them.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">Group</span><span class="p">,</span> <span class="n">make_group</span><span class="p">,</span> <span class="n">run</span>
+<span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="kn">import</span> <span class="n">OLS</span><span class="p">,</span> <span class="n">Scale</span>
+<span class="kn">from</span> <span class="nn">mlens.index</span> <span class="kn">import</span> <span class="n">FoldIndex</span>
+
+
+<span class="n">indexer</span> <span class="o">=</span> <span class="n">FoldIndex</span><span class="p">(</span><span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="p">[</span><span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span> <span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
-<div class="sphx-glr-footer docutils container">
-<div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/layer.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">layer.py</span></code></a></div>
-<div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/layer.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">layer.ipynb</span></code></a></div>
+<p>This <code class="docutils literal notranslate"><span class="pre">group</span></code> object is now a complete description of how to fit our two
+learners using the prescribed indexing method.</p>
+<p>To train the estimators, we need feed the group to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[ 1.3665537  2.3665535]
+ [ 5.363353  10.363353 ]
+ [ 9.360152  18.360151 ]
+ [13.356951  26.35695  ]
+ [17.35375   34.35375  ]
+ [21.486897  42.486897 ]
+ [25.524712  50.52471  ]
+ [29.562525  58.562527 ]
+ [33.60034   66.60034  ]
+ [37.638153  74.63815  ]]
+</pre></div>
+</div>
+<p>To use some preprocessing before fitting the estimators, we can use the
+<code class="docutils literal notranslate"><span class="pre">transformers</span></code> argument when creating our <code class="docutils literal notranslate"><span class="pre">group</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="p">[</span><span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span> <span class="p">[</span><span class="n">Scale</span><span class="p">()])</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594 -55.977592]
+ [-23.980795 -47.980793]
+ [-19.983995 -39.983997]
+ [-15.987196 -31.987196]
+ [-11.990397 -23.990396]
+ [ 12.113442  24.113443]
+ [ 16.151257  32.151257]
+ [ 20.189072  40.18907 ]
+ [ 24.226885  48.226887]
+ [ 28.2647    56.264698]]
+</pre></div>
+</div>
+</div>
+<div class="section" id="multitasking">
+<h3>Multitasking<a class="headerlink" href="#multitasking" title="Permalink to this headline">¶</a></h3>
+<p>If we want our estimators two have different preprocessing, we can easily
+achieve this either by specifying different cases when making the group,
+or by making two separate groups. In the first case:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">group</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span>
+    <span class="n">indexer</span><span class="p">,</span>
+    <span class="p">{</span><span class="s1">&#39;case-1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="s1">&#39;case-2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">OLS</span><span class="p">(</span><span class="mi">2</span><span class="p">)]},</span>
+    <span class="p">{</span><span class="s1">&#39;case-1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Scale</span><span class="p">()],</span> <span class="s1">&#39;case-2&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+<span class="p">)</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594    2.3665535]
+ [-23.980795   10.363353 ]
+ [-19.983995   18.360151 ]
+ [-15.987196   26.35695  ]
+ [-11.990397   34.35375  ]
+ [ 12.113442   42.486897 ]
+ [ 16.151257   50.52471  ]
+ [ 20.189072   58.562527 ]
+ [ 24.226885   66.60034  ]
+ [ 28.2647     74.63815  ]]
+</pre></div>
+</div>
+<p>In the latter case:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Scale</span><span class="p">()),</span> <span class="n">make_group</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594    2.3665535]
+ [-23.980795   10.363353 ]
+ [-19.983995   18.360151 ]
+ [-15.987196   26.35695  ]
+ [-11.990397   34.35375  ]
+ [ 12.113442   42.486897 ]
+ [ 16.151257   50.52471  ]
+ [ 20.189072   58.562527 ]
+ [ 24.226885   66.60034  ]
+ [ 28.2647     74.63815  ]]
+</pre></div>
+</div>
+<p>Which method to prefer depends on the application, but generally, it is
+preferable to put all transformers and all estimators belonging to a
+given indexing strategy into one <code class="docutils literal notranslate"><span class="pre">group</span></code> instance as it is easier to
+separate groups based on indexer and using cases to distinguish between
+different preprocessing pipelines.</p>
+<p>Now, suppose we want to do something more exotic, like using different
+indexing strategies for different estimators. This can easily be achieved
+by creating groups for each indexing strategy we want:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">make_group</span><span class="p">(</span><span class="n">FoldIndex</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">Scale</span><span class="p">()),</span>
+    <span class="n">make_group</span><span class="p">(</span><span class="n">FoldIndex</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594    2.4661984]
+ [-23.980795   10.449842 ]
+ [-19.983995   18.433487 ]
+ [-15.987196   26.33962  ]
+ [-11.990397   34.341675 ]
+ [ 12.113442   42.343727 ]
+ [ 16.151257   50.33181  ]
+ [ 20.189072   58.324955 ]
+ [ 24.226885   66.458244 ]
+ [ 28.2647     74.47614  ]]
+</pre></div>
+</div>
+<p>Some care needs to be taken here: if indexing strategies do not return the
+same number of rows, the output array will be zero-padded.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.index</span> <span class="kn">import</span> <span class="n">BlendIndex</span>
+
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">make_group</span><span class="p">(</span><span class="n">FoldIndex</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="bp">None</span><span class="p">),</span>
+    <span class="n">make_group</span><span class="p">(</span><span class="n">BlendIndex</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">groups</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[ 1.3665537  0.       ]
+ [ 5.363353   0.       ]
+ [ 9.360152   0.       ]
+ [13.356951   0.       ]
+ [17.35375    0.       ]
+ [21.486897  21.486897 ]
+ [25.524712  25.524712 ]
+ [29.562525  29.562525 ]
+ [33.60034   33.60034  ]
+ [37.638153  37.638153 ]]
+</pre></div>
+</div>
+<p>Note that even if <code class="docutils literal notranslate"><span class="pre">mlens</span></code> indexer output different shapes, they preserve
+row indexing to ensure predictions are consistently mapped to their respective
+input. If you build a custom indexer, make sure that it uses a strictly
+sequential (with respect to row indexing) partitioning strategy.</p>
+</div>
+<div class="section" id="layer-features">
+<h3>Layer features<a class="headerlink" href="#layer-features" title="Permalink to this headline">¶</a></h3>
+<p>A layer does not have to be specified all in one go; you can instantiate
+a layer and <code class="docutils literal notranslate"><span class="pre">push</span></code> and <code class="docutils literal notranslate"><span class="pre">pop</span></code> to its <code class="docutils literal notranslate"><span class="pre">stack</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">()</span>
+<span class="n">group</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span><span class="n">FoldIndex</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(),</span> <span class="bp">None</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you push or pop to the stack, you must call <code class="docutils literal notranslate"><span class="pre">fit</span></code> before you can
+use the layer for prediction.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">group</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span><span class="n">FoldIndex</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="bp">None</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Error: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Error: Layer instance (layer-6) not fitted.
+</pre></div>
+</div>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> class can print the progress of a job, as well as inspect
+data collected during the job. Note that the
+printouts of the layer does not take group membership into account.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">rmse</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">()</span>
+<span class="n">group1</span> <span class="o">=</span> <span class="n">make_group</span><span class="p">(</span>
+    <span class="n">indexer</span><span class="p">,</span>
+    <span class="p">{</span><span class="s1">&#39;case-1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">OLS</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="s1">&#39;case-2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">OLS</span><span class="p">(</span><span class="mi">2</span><span class="p">)]},</span>
+    <span class="p">{</span><span class="s1">&#39;case-1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">Scale</span><span class="p">()],</span> <span class="s1">&#39;case-2&#39;</span><span class="p">:</span> <span class="p">[]},</span>
+    <span class="n">learner_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;scorer&#39;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">group1</span><span class="p">)</span>
+
+<span class="n">run</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Collected data:&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Collected data:
+                 score-m  score-s  ft-m  ft-s  pt-m  pt-s
+case-1  ols-1      20.88     0.23  0.00  0.00  0.00  0.00
+        ols-2      40.27    19.05  0.00  0.00  0.00  0.00
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.507 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-layer-py">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/layer.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">layer.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/layer.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">layer.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -324,7 +566,7 @@ the high-level API. In this tutorial, we will walk through how to use the
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -342,7 +584,8 @@ the high-level API. In this tutorial, we will walk through how to use the
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -356,19 +599,13 @@ the high-level API. In this tutorial, we will walk through how to use the
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Install &mdash; mlens 0.2.1 documentation</title>
+  <title>Install &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Getting started" href="../tutorials/start.html"/>
-        <link rel="prev" title="Features" href="../index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting started" href="../tutorials/start.html" />
+    <link rel="prev" title="Features" href="../index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -279,21 +270,21 @@
   <div class="section" id="install">
 <span id="id1"></span><h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
 <p>ML-Ensemble is available through PyPI:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install -U mlens
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -U mlens
 </pre></div>
 </div>
 <div class="section" id="bleeding-edge">
 <h2>Bleeding edge<a class="headerlink" href="#bleeding-edge" title="Permalink to this headline">¶</a></h2>
 <p>For the bleeding edge version install via <a class="reference external" href="https://github.com/flennerhag/mlens">Github</a>. You can optionally checkout pending pull requests
 before running the install command.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://github.com/flennerhag/mlens.git<span class="p">;</span> <span class="nb">cd</span> mlens<span class="p">;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/flennerhag/mlens.git<span class="p">;</span> <span class="nb">cd</span> mlens<span class="p">;</span>
 python install setup.py
 </pre></div>
 </div>
 </div>
 <div class="section" id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>To install <code class="xref py py-mod docutils literal"><span class="pre">mlens</span></code> the following dependencies are required:</p>
+<p>To install <code class="xref py py-mod docutils literal notranslate"><span class="pre">mlens</span></code> the following dependencies are required:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="29%" />
@@ -317,7 +308,7 @@ python install setup.py
 </tr>
 </tbody>
 </table>
-<p>Additionally, to use the <code class="xref py py-mod docutils literal"><span class="pre">visualization</span></code> module, the following
+<p>Additionally, to use the <code class="xref py py-mod docutils literal notranslate"><span class="pre">visualization</span></code> module, the following
 libraries are necessary:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -360,27 +351,25 @@ libraries are necessary:</p>
 <div class="section" id="test-build">
 <h1>Test build<a class="headerlink" href="#test-build" title="Permalink to this headline">¶</a></h1>
 <p>To test the installation, run:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">cd</span> mlens<span class="p">;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> mlens<span class="p">;</span>
 python check_build.py
 </pre></div>
 </div>
 <p>Note that this requires the <a class="reference external" href="http://nose.readthedocs.io/en/latest/">Nose</a> unit testing suite: if not found, the test
 script will automatically try to install it using
-<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nose-exclude</span></code>. The expected output should look like:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>&gt;&gt;&gt; python check_build.py
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">nose-exclude</span></code>. The expected output should look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; python check_build.py
 Setting up tests... Ready.
 Checking build... Build ok.
 </pre></div>
 </div>
-<p>If the build fails, a log file will be created named <code class="docutils literal"><span class="pre">check_build_log.txt</span></code>
+<p>If the build fails, a log file will be created named <code class="docutils literal notranslate"><span class="pre">check_build_log.txt</span></code>
 that contains the traceback for the failed test for debugging.</p>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -393,7 +382,7 @@ that contains the traceback for the failed test for debugging.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -411,7 +400,8 @@ that contains the traceback for the failed test for debugging.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -425,19 +415,13 @@ that contains the traceback for the failed test for debugging.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

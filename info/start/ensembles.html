@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ready-made ensemble classes &mdash; mlens 0.2.1 documentation</title>
+  <title>Ready-made ensemble classes &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Overview" href="../overview.html"/>
-        <link rel="prev" title="Advanced features tutorial" href="../tutorials/advanced.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview" href="../overview.html" />
+    <link rel="prev" title="Advanced features tutorial" href="../tutorials/advanced.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -288,39 +279,39 @@
 </ul>
 </div></blockquote>
 <p>Each ensemble class can be built with several layers, and each layer can
-output class probabilities if desired. The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> class
+output class probabilities if desired. The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> class
 is a generic ensemble class that allows the user to mix types between layers,
 for instance by setting the first layer to a Subsemble and the second layer
 to a Super Learner. Here, we will briefly introduce ensemble specific
-parameters and usage. For full documentation, see the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/api.html#api" title="(in pandas v0.22.0)"><span>API Reference</span></a> section.
+parameters and usage. For full documentation, see the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/api.html#api" title="(in pandas v0.23.2)"><span>API Reference</span></a> section.
 However, by accessing the low-level API it is possible
 to build virtually any type of ensemble. Further ready-made classes will be
 introduced on demand. Feel free to raise a feature issue at <a class="reference external" href="https://github.com/flennerhag/mlens/issues">Github</a>.</p>
 <div class="section" id="super-learner">
 <span id="id1"></span><h2>Super Learner<a class="headerlink" href="#super-learner" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a> (also known as a Stacking Ensemble) is an
+<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a> (also known as a Stacking Ensemble) is an
 supervised ensemble algorithm that uses K-fold estimation to map a
-training set <span class="math">\((X, y)\)</span> into a prediction set <span class="math">\((Z, y)\)</span>,
-where the predictions in <span class="math">\(Z\)</span> are constructed using K-Fold splits
-of <span class="math">\(X\)</span> to ensure <span class="math">\(Z\)</span> reflects test errors, and that applies
-a user-specified meta learner to predict <span class="math">\(y\)</span> from <span class="math">\(Z\)</span>.</p>
-<p>The main parameter to specify is the <code class="docutils literal"><span class="pre">folds</span></code> parameter that determines the
+training set <span class="math notranslate nohighlight">\((X, y)\)</span> into a prediction set <span class="math notranslate nohighlight">\((Z, y)\)</span>,
+where the predictions in <span class="math notranslate nohighlight">\(Z\)</span> are constructed using K-Fold splits
+of <span class="math notranslate nohighlight">\(X\)</span> to ensure <span class="math notranslate nohighlight">\(Z\)</span> reflects test errors, and that applies
+a user-specified meta learner to predict <span class="math notranslate nohighlight">\(y\)</span> from <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<p>The main parameter to specify is the <code class="docutils literal notranslate"><span class="pre">folds</span></code> parameter that determines the
 number of folds to use during cross-validation. The algorithm in
 sudo code follows:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>Specify a library <span class="math">\(L\)</span> of base learners</li>
-<li>Fit all base learners on <span class="math">\(X\)</span> and store the fitted estimators.</li>
-<li>Split <span class="math">\(X\)</span> into <span class="math">\(K\)</span> folds, fit every learner in
-<span class="math">\(L\)</span> on the training set and predict test set. Repeat until
+<li>Specify a library <span class="math notranslate nohighlight">\(L\)</span> of base learners</li>
+<li>Fit all base learners on <span class="math notranslate nohighlight">\(X\)</span> and store the fitted estimators.</li>
+<li>Split <span class="math notranslate nohighlight">\(X\)</span> into <span class="math notranslate nohighlight">\(K\)</span> folds, fit every learner in
+<span class="math notranslate nohighlight">\(L\)</span> on the training set and predict test set. Repeat until
 all folds have been predicted.</li>
-<li>Construct a matrix <span class="math">\(Z\)</span> by stacking the predictions per fold.</li>
-<li>Fit the meta learner on <span class="math">\(Z\)</span> and store the learner</li>
+<li>Construct a matrix <span class="math notranslate nohighlight">\(Z\)</span> by stacking the predictions per fold.</li>
+<li>Fit the meta learner on <span class="math notranslate nohighlight">\(Z\)</span> and store the learner</li>
 </ol>
 </div></blockquote>
-<p>The ensemble can be used for prediction by mapping a new test set <span class="math">\(T\)</span>
-into a prediction set <span class="math">\(Z'\)</span> using the learners fitted in (2),
-and then mapping <span class="math">\(Z'\)</span> to <span class="math">\(y'\)</span> using the fitted meta learner
+<p>The ensemble can be used for prediction by mapping a new test set <span class="math notranslate nohighlight">\(T\)</span>
+into a prediction set <span class="math notranslate nohighlight">\(Z'\)</span> using the learners fitted in (2),
+and then mapping <span class="math notranslate nohighlight">\(Z'\)</span> to <span class="math notranslate nohighlight">\(y'\)</span> using the fitted meta learner
 from (5).</p>
 <p>The Super Learner does asymptotically as well as (up to a constant) an
 Oracle selector. For the theory behind the Super Learner, see
@@ -330,7 +321,7 @@ consuming method and can be prohibitively costly for large datasets.
 With large data, other ensembles that fits an ensemble on subsets
 can achieve similar performance at a fraction of the training time.
 However, when data is noisy or of high variance,
-the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a> ensure all information is
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a> ensure all information is
 used during fitting.</p>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
@@ -363,19 +354,19 @@ the user can specify a linear regression as the meta learner.</p>
 </div>
 <div class="section" id="subsemble">
 <span id="id6"></span><h2>Subsemble<a class="headerlink" href="#subsemble" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a> is a supervised ensemble algorithm that uses subsets of
+<p><a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a> is a supervised ensemble algorithm that uses subsets of
 the full data to fit a layer, and within each subset K-fold estimation
-to map a training set <span class="math">\((X, y)\)</span> into a prediction set <span class="math">\((Z, y)\)</span>,
-where <span class="math">\(Z\)</span> is a matrix of prediction from each estimator on each
-subset (thus of shape <code class="docutils literal"><span class="pre">[n_samples,</span> <span class="pre">(partitions</span> <span class="pre">*</span> <span class="pre">n_estimators)]</span></code>).
-<span class="math">\(Z\)</span> is constructed using K-Fold splits of each partition of <cite>X</cite> to
-ensure <span class="math">\(Z\)</span> reflects test errors within each partition. A final
+to map a training set <span class="math notranslate nohighlight">\((X, y)\)</span> into a prediction set <span class="math notranslate nohighlight">\((Z, y)\)</span>,
+where <span class="math notranslate nohighlight">\(Z\)</span> is a matrix of prediction from each estimator on each
+subset (thus of shape <code class="docutils literal notranslate"><span class="pre">[n_samples,</span> <span class="pre">(partitions</span> <span class="pre">*</span> <span class="pre">n_estimators)]</span></code>).
+<span class="math notranslate nohighlight">\(Z\)</span> is constructed using K-Fold splits of each partition of <cite>X</cite> to
+ensure <span class="math notranslate nohighlight">\(Z\)</span> reflects test errors within each partition. A final
 user-specified meta learner is fitted to the final ensemble layer’s
 prediction, to learn the best combination of subset-specific estimator
 predictions.</p>
-<p>The main parameters to consider is the number of <code class="docutils literal"><span class="pre">partitions</span></code>, which will
+<p>The main parameters to consider is the number of <code class="docutils literal notranslate"><span class="pre">partitions</span></code>, which will
 increase the number of estimators in the layer by a factor of the number of
-base learners specified, and the number of <code class="docutils literal"><span class="pre">folds</span></code> to be used during
+base learners specified, and the number of <code class="docutils literal notranslate"><span class="pre">folds</span></code> to be used during
 cross validation in each partition.</p>
 <p>The algorithm in sudo code follows:</p>
 <blockquote>
@@ -383,16 +374,16 @@ cross validation in each partition.</p>
 <li><p class="first">For each layer in the ensemble, do:</p>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">Specify a library of <span class="math">\(L\)</span> base learners</p>
+<li><p class="first">Specify a library of <span class="math notranslate nohighlight">\(L\)</span> base learners</p>
 </li>
-<li><p class="first">Specify a partition strategy and partition <span class="math">\(X\)</span> into
-<span class="math">\(J\)</span> subsets.</p>
+<li><p class="first">Specify a partition strategy and partition <span class="math notranslate nohighlight">\(X\)</span> into
+<span class="math notranslate nohighlight">\(J\)</span> subsets.</p>
 </li>
 <li><p class="first">For each partition do:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>Fit all base learners and store them</li>
-<li>Create <span class="math">\(K\)</span> folds</li>
+<li>Create <span class="math notranslate nohighlight">\(K\)</span> folds</li>
 <li>For each fold, do:<ol class="arabic">
 <li>Fit all base learners on the training folds</li>
 <li>Collect <em>all</em> test folds, across partitions, and predict.</li>
@@ -402,19 +393,19 @@ cross validation in each partition.</p>
 </div></blockquote>
 </li>
 <li><p class="first">Assemble a cross-validated prediction matrix
-<span class="math">\(Z \in \mathbb{R}^{(n \times (L \times J))}\)</span>  by
+<span class="math notranslate nohighlight">\(Z \in \mathbb{R}^{(n \times (L \times J))}\)</span>  by
 stacking predictions made in the cross-validation step.</p>
 </li>
 </ol>
 </div></blockquote>
 </li>
-<li><p class="first">Fit the meta learner on <span class="math">\(Z\)</span> and store the learner.</p>
+<li><p class="first">Fit the meta learner on <span class="math notranslate nohighlight">\(Z\)</span> and store the learner.</p>
 </li>
 </ol>
 </div></blockquote>
-<p>The ensemble can be used for prediction by mapping a new test set <span class="math">\(T\)</span>
-into a prediction set <span class="math">\(Z'\)</span> using the learners fitted in
-(1.3.1), and then using <span class="math">\(Z'\)</span> to generate final predictions through
+<p>The ensemble can be used for prediction by mapping a new test set <span class="math notranslate nohighlight">\(T\)</span>
+into a prediction set <span class="math notranslate nohighlight">\(Z'\)</span> using the learners fitted in
+(1.3.1), and then using <span class="math notranslate nohighlight">\(Z'\)</span> to generate final predictions through
 the fitted meta learner from (2).</p>
 <p>The Subsemble does asymptotically as well as (up to a constant) the
 Oracle selector. For the theory behind the Subsemble, see
@@ -440,42 +431,42 @@ fits. Journal of Applied Statistics, 41(6), 1247-1259.
 <div class="section" id="id10">
 <h3>Notes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>This implementation splits X into partitions sequentially, i.e. without
-randomizing indices. To achieve randomized partitioning, set <code class="docutils literal"><span class="pre">shuffle</span></code>
-to <code class="docutils literal"><span class="pre">True</span></code>. Supervised partitioning is under development.</p>
+randomizing indices. To achieve randomized partitioning, set <code class="docutils literal notranslate"><span class="pre">shuffle</span></code>
+to <code class="docutils literal notranslate"><span class="pre">True</span></code>. Supervised partitioning is under development.</p>
 </div>
 </div>
 <div class="section" id="blend-ensemble">
 <span id="id11"></span><h2>Blend Ensemble<a class="headerlink" href="#blend-ensemble" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> is a supervised ensemble closely related to
-the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a>. It differs in that to estimate the prediction
+<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> is a supervised ensemble closely related to
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a>. It differs in that to estimate the prediction
 matrix Z used by the meta learner, it uses a subset of the data to predict
 its complement, and the meta learner is fitted on those predictions.</p>
 <p>The user must specify how much of the data should be used to train the layer,
-<code class="docutils literal"><span class="pre">test_size</span></code>, and how much should be held out for prediction. Prediction for
+<code class="docutils literal notranslate"><span class="pre">test_size</span></code>, and how much should be held out for prediction. Prediction for
 the held-out set are passed to the next layer or meta estimator, so information
 is with each layer.</p>
 <p>By only fitting every base learner once on a subset of the full training data,
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> is a fast ensemble that can handle very large datasets
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> is a fast ensemble that can handle very large datasets
 simply by only using portion of it at each stage. The cost of this approach is
 that information is thrown out at each stage, as one layer will not see the
 training data used by the previous layer.</p>
 <p>With large data that can be expected to satisfy an i.i.d. assumption, the
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> can achieve similar performance to more
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> can achieve similar performance to more
 sophisticated ensembles at a fraction of the training time. However, with
 data data is not uniformly distributed or exhibits high variance the
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> can be a poor choice as information is lost at
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> can be a poor choice as information is lost at
 each stage of fitting.</p>
 </div>
 <div class="section" id="sequential-ensemble">
 <span id="id12"></span><h2>Sequential Ensemble<a class="headerlink" href="#sequential-ensemble" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SequentialEnsemble</span></code></a> allows users to build ensembles with
+<p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> allows users to build ensembles with
 different classes of layers. Instead of setting parameters upfront during
 instantiation, the user specified parameters for each layer when calling
-<code class="docutils literal"><span class="pre">add</span></code>. The user must thus specify what type of layer is being added
+<code class="docutils literal notranslate"><span class="pre">add</span></code>. The user must thus specify what type of layer is being added
 (blend, super learner, subsemble), estimators, preprocessing if applicable, and
 any layer-specific parameters. The Sequential ensemble is best illustrated
 through an example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="k">import</span> <span class="n">SequentialEnsemble</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="k">import</span> <span class="n">SequentialEnsemble</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics.metrics</span> <span class="k">import</span> <span class="n">rmse</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="k">import</span> <span class="n">load_boston</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span>
@@ -530,9 +521,7 @@ through an example:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -545,7 +534,7 @@ through an example:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -563,7 +552,8 @@ through an example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -577,19 +567,13 @@ through an example:</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

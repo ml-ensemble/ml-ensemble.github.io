@@ -1,4 +1,8 @@
+.. note::
+    :class: sphx-glr-download-link-note
 
+    Click :ref:`here <sphx_glr_download_tutorials_advanced.py>` to download the full example code
+.. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_tutorials_advanced.py:
 
@@ -123,14 +127,16 @@ of the penultimate layers:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Input to meta learner :
-     array([[ 2.,  2.],
-           [ 2.,  2.],
-           [ 2.,  2.],
-           [ 1.,  1.],
-           [ 1.,  1.]], dtype=float32)
+     array([[2., 2.],
+           [2., 2.],
+           [2., 2.],
+           [1., 1.],
+           [1., 1.]], dtype=float32)
 
 
 When we propagate features, some (or all) of the input seen by one layer is
@@ -153,14 +159,16 @@ of the meta learner:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Input to meta learner :
-     array([[ 3.20000005,  2.29999995,  2.        ,  2.        ],
-           [ 3.20000005,  2.29999995,  2.        ,  2.        ],
-           [ 3.        ,  2.0999999 ,  2.        ,  2.        ],
-           [ 3.20000005,  1.5       ,  1.        ,  1.        ],
-           [ 2.79999995,  1.39999998,  1.        ,  1.        ]], dtype=float32)
+     array([[3.2, 2.3, 2. , 2. ],
+           [3.2, 2.3, 2. , 2. ],
+           [3. , 2.1, 2. , 2. ],
+           [3.2, 1.5, 1. , 1. ],
+           [2.8, 1.4, 1. , 1. ]], dtype=float32)
 
 
 In this scenario, the meta learner will see noth the predictions made by the
@@ -199,7 +207,9 @@ set:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Test set score no feature propagation  : 0.667
     Test set score with feature propagation: 0.987
@@ -262,7 +272,9 @@ learners in the first layer.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Num features seen by estimators in intermediate layer: 2
     Num features in the output array of the intermediate layer: 4
@@ -332,10 +344,12 @@ and test on the remainder.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Accuracy:
-    0.66666666666666663
+    0.6666666666666666
 
 
 Now, to enable probabilistic learning, we set ``proba=True`` in the ``add``
@@ -357,10 +371,12 @@ method for all layers except the final meta learner layer.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Accuracy:
-    0.95999999999999996
+    0.96
 
 
 In this case, using probabilities has a drastic effect on predictive
@@ -426,7 +442,9 @@ the :class:`Subsemble`.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     No. prediction features: 6
 
@@ -490,7 +508,9 @@ clustering estimator to partition the data, like so:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Fitting 2 layers
     Processing layer-1             done | 00:00:00
@@ -532,7 +552,9 @@ the subsemble on all features.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Fitting 2 layers
     Processing layer-1             done | 00:00:00
@@ -617,7 +639,9 @@ the data in half based on the sum of the features.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Fitting 1 layers
     Fit complete                        | 00:00:00
@@ -771,9 +795,11 @@ an ``npy`` or ``mmap`` file and will treat these differently.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
 
-    [ 2.  2.  2.  1.  1.  2.  2.  2.  2.  2.]
+ .. code-block:: none
+
+    [2. 2. 2. 1. 1. 2. 2. 2. 2. 2.]
 
 
 If you are following the examples on your machine,
@@ -898,21 +924,29 @@ meta learner.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Results:
-                  test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s                                                 params
-    class  rf            0.947         0.013          0.946          0.000       1.050       0.193        0.091        0.069                                       {'max_depth': 5}
-    class  svc           0.947         0.013          0.946          0.000       0.680       0.194        0.028        0.020                             {'C': 0.20960225406117416}
-    proba  rf            0.933         0.027          1.000          0.000       0.930       0.086        0.028        0.018  {'max_depth': 5, 'max_features': 0.51048011270305871}
-    proba  svc           0.960         0.000          0.973          0.000       0.606       0.089        0.043        0.042                              {'C': 7.6707016468248774}
+                  test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s                                                params
+    class  rf            0.947         0.013          0.946          0.000       0.690       0.038        0.066        0.025                                      {'max_depth': 5}
+    class  svc           0.947         0.013          0.946          0.000       0.613       0.023        0.084        0.083                            {'C': 0.20960225406117416}
+    proba  rf            0.940         0.020          1.000          0.000       0.707       0.002        0.064        0.019  {'max_depth': 5, 'max_features': 0.5104801127030587}
+    proba  svc           0.960         0.000          0.973          0.000       0.535       0.024        0.066        0.024                              {'C': 7.670701646824877}
 
 
-**Total running time of the script:** ( 0 minutes  18.291 seconds)
+**Total running time of the script:** ( 0 minutes  13.539 seconds)
 
 
+.. _sphx_glr_download_tutorials_advanced.py:
 
-.. container:: sphx-glr-footer
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
 
 
   .. container:: sphx-glr-download
@@ -925,6 +959,9 @@ meta learner.
 
      :download:`Download Jupyter notebook: advanced.ipynb <advanced.ipynb>`
 
-.. rst-class:: sphx-glr-signature
 
-    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_

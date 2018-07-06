@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.ensemble.base &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.ensemble.base &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,34 +24,21 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -68,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo.png" class="logo" />
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -76,7 +63,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -270,7 +257,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">mlens</a>
@@ -278,9 +265,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -310,8 +298,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -326,7 +312,7 @@
 <span></span><span class="sd">&quot;&quot;&quot;ML-ENSEMBLE</span>
 
 <span class="sd">:author: Sebastian Flennerhag</span>
-<span class="sd">:copyright: 2017</span>
+<span class="sd">:copyright: 2017-2018</span>
 <span class="sd">:licence: MIT</span>
 
 <span class="sd">Base classes for ensemble layer management.</span>
@@ -345,7 +331,7 @@
 <span class="kn">from</span> <span class="nn">..parallel</span> <span class="k">import</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">ParallelProcessing</span><span class="p">,</span> <span class="n">make_group</span>
 <span class="kn">from</span> <span class="nn">..parallel.base</span> <span class="k">import</span> <span class="n">BaseStacker</span>
 <span class="kn">from</span> <span class="nn">..externals.sklearn.validation</span> <span class="k">import</span> <span class="n">check_random_state</span>
-<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">check_ensemble_build</span><span class="p">,</span> <span class="n">check_inputs</span><span class="p">,</span> <span class="n">print_time</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">check_ensemble_build</span><span class="p">,</span> <span class="n">print_time</span><span class="p">,</span>
                      <span class="n">safe_print</span><span class="p">,</span> <span class="n">IdTrain</span><span class="p">,</span> <span class="n">format_name</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">..utils.exceptions</span> <span class="k">import</span> <span class="p">(</span>
     <span class="n">LayerSpecificationWarning</span><span class="p">,</span> <span class="n">NotFittedError</span><span class="p">,</span> <span class="n">NotInitializedError</span><span class="p">)</span>
@@ -645,10 +631,6 @@
 <span class="sd">    verbose: bool, optional</span>
 <span class="sd">        verbosity</span>
 
-<span class="sd">    array_check: int (default=2)</span>
-<span class="sd">        severity of array checks. ``2`` mimicks Scikit-learn, ``1`` warns,</span>
-<span class="sd">        ``0`` disables.</span>
-
 <span class="sd">    samples_size: int (default=20)</span>
 <span class="sd">        size of training set sample</span>
 <span class="sd">        (``[min(sample_size, X.size[0]), min(X.size[1], sample_size)]``</span>
@@ -659,12 +641,11 @@
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">model_selection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+            <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_selection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shuffle</span> <span class="o">=</span> <span class="n">shuffle</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="o">=</span> <span class="n">scorer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">array_check</span> <span class="o">=</span> <span class="n">array_check</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_model_selection</span> <span class="o">=</span> <span class="n">model_selection</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_verbose</span> <span class="o">=</span> <span class="n">verbose</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">layers</span> <span class="k">if</span> <span class="n">layers</span> <span class="k">else</span> <span class="nb">list</span><span class="p">()</span>
@@ -677,6 +658,11 @@
         <span class="k">if</span> <span class="n">layers</span><span class="p">:</span>
             <span class="n">layers_</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="o">*</span><span class="n">layers_</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">array_check</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;array checking is deprecated. The array_check argument will be removed in 0.2.4.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BaseEnsemble.add"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Method for adding a layer.</span>
@@ -833,8 +819,6 @@
             <span class="c1"># No layers instantiated, but raise_on_exception is False</span>
             <span class="k">return</span> <span class="bp">self</span>
 
-        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">array_check</span><span class="p">)</span>
-
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_selection</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_id_train</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
@@ -870,8 +854,6 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
             <span class="c1"># No layers instantiated, but raise_on_exception is False</span>
             <span class="k">return</span>
-
-        <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">check_level</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_check</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_selection</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -936,7 +918,6 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">check_ensemble_build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="p">):</span>
             <span class="c1"># No layers instantiated, but raise_on_exception is False</span>
             <span class="k">return</span>
-        <span class="n">X</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">check_inputs</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">check_level</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">array_check</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BaseEnsemble.predict_proba"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.BaseEnsemble.predict_proba">[docs]</a>    <span class="k">def</span> <span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1024,9 +1005,7 @@
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1039,7 +1018,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1057,7 +1036,8 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1071,19 +1051,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

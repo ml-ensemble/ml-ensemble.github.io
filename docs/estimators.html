@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.estimators &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.estimators &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
-        <link rel="next" title="mlens.model_selection" href="model_selection.html"/>
-        <link rel="prev" title="mlens.ensemble" href="ensemble.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mlens.model_selection" href="model_selection.html" />
+    <link rel="prev" title="mlens.ensemble" href="ensemble.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -271,7 +259,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -279,9 +267,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -330,7 +319,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
 </tr>
-<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017-2018</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
 </tr>
@@ -343,7 +332,7 @@
 <dl class="class">
 <dt id="mlens.estimators.BaseEstimator">
 <em class="property">class </em><code class="descclassname">mlens.estimators.</code><code class="descname">BaseEstimator</code><a class="reference internal" href="_modules/mlens/estimators/estimators.html#BaseEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.estimators.BaseEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="parallel.html#mlens.parallel.wrapper.EstimatorMixin" title="mlens.parallel.wrapper.EstimatorMixin"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.wrapper.EstimatorMixin</span></code></a>, <a class="reference internal" href="parallel.html#mlens.parallel.base.ParamMixin" title="mlens.parallel.base.ParamMixin"><code class="xref py py-class docutils literal"><span class="pre">mlens.parallel.base.ParamMixin</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="parallel.html#mlens.parallel.wrapper.EstimatorMixin" title="mlens.parallel.wrapper.EstimatorMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.parallel.wrapper.EstimatorMixin</span></code></a>, <a class="reference internal" href="parallel.html#mlens.parallel.base.ParamMixin" title="mlens.parallel.base.ParamMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.parallel.base.ParamMixin</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code></p>
 <p>Base class for estimators</p>
 <p>Ensure proper initialization of Mixins.</p>
 </dd></dl>
@@ -354,7 +343,7 @@
 <dl class="class">
 <dt id="mlens.estimators.LearnerEstimator">
 <em class="property">class </em><code class="descclassname">mlens.estimators.</code><code class="descname">LearnerEstimator</code><span class="sig-paren">(</span><em>estimator</em>, <em>indexer</em>, <em>verbose=False</em>, <em>scorer=None</em>, <em>backend=None</em>, <em>n_jobs=-1</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/estimators/estimators.html#LearnerEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.estimators.LearnerEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.estimators.estimators.BaseEstimator</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.estimators.estimators.BaseEstimator</span></code></p>
 <p>Learner estimator</p>
 <p>Wraps an estimator in a cross-validation strategy.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -363,17 +352,17 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>estimator</strong> (<em>obj</em>) – estimator to construct learner from.</li>
-<li><strong>indexer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>obj</em>) – a cross-validation strategy. Either a :mod`mlens.index` indexer
+<li><strong>indexer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>obj</em>) – a cross-validation strategy. Either a :mod`mlens.index` indexer
 instance or a string.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>optional</em>) – name of learner. If <code class="docutils literal"><span class="pre">preprocessing</span></code> is not <code class="docutils literal"><span class="pre">None</span></code>,
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>optional</em>) – name of learner. If <code class="docutils literal notranslate"><span class="pre">preprocessing</span></code> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>,
 the name of the transformer will be prepended. If not specified, the
 name of the learner will be the name of the estimator in lower case.</li>
 <li><strong>scorer</strong> (<em>func</em><em>, </em><em>optional</em>) – function to use for scoring predictions during cross-validated
 fitting.</li>
-<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
-<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default='threading'</em><em>)</em>) – parallel backend. One of <code class="docutils literal"><span class="pre">'treading'</span></code>, <code class="docutils literal"><span class="pre">'multiprocessing'</span></code> and
-<code class="docutils literal"><span class="pre">'sequential'</span></code>.</li>
-<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=-1</em><em>)</em>) – degree of concurrency. Set to <code class="docutils literal"><span class="pre">-1</span></code> for maximum and <code class="docutils literal"><span class="pre">1</span></code> for
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> (</em><em>default='threading'</em><em>)</em>) – parallel backend. One of <code class="docutils literal notranslate"><span class="pre">'treading'</span></code>, <code class="docutils literal notranslate"><span class="pre">'multiprocessing'</span></code> and
+<code class="docutils literal notranslate"><span class="pre">'sequential'</span></code>.</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=-1</em><em>)</em>) – degree of concurrency. Set to <code class="docutils literal notranslate"><span class="pre">-1</span></code> for maximum and <code class="docutils literal notranslate"><span class="pre">1</span></code> for
 sequential processing.</li>
 </ul>
 </td>
@@ -388,7 +377,7 @@ sequential processing.</li>
 <dl class="class">
 <dt id="mlens.estimators.TransformerEstimator">
 <em class="property">class </em><code class="descclassname">mlens.estimators.</code><code class="descname">TransformerEstimator</code><span class="sig-paren">(</span><em>preprocessing</em>, <em>indexer</em>, <em>verbose=False</em>, <em>backend=None</em>, <em>n_jobs=-1</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/estimators/estimators.html#TransformerEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.estimators.TransformerEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">mlens.estimators.estimators.BaseEstimator</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.estimators.estimators.BaseEstimator</span></code></p>
 <p>Transformer estimator</p>
 <p>Wraps an preprocessing pipeline in a cross-validation strategy.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -397,13 +386,13 @@ sequential processing.</li>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>preprocessing</strong> (<em>obj</em>) – preprocessing pipeline to construct transformer from.</li>
-<li><strong>indexer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em>, </em><em>obj</em>) – a cross-validation strategy. Either a :mod`mlens.index` indexer
+<li><strong>indexer</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em>, </em><em>obj</em>) – a cross-validation strategy. Either a :mod`mlens.index` indexer
 instance or a string.</li>
-<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – name of transformer.</li>
-<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
-<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a><em> (</em><em>default='threading'</em><em>)</em>) – parallel backend. One of <code class="docutils literal"><span class="pre">'treading'</span></code>, <code class="docutils literal"><span class="pre">'multiprocessing'</span></code> and
-<code class="docutils literal"><span class="pre">'sequential'</span></code>.</li>
-<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> (</em><em>default=-1</em><em>)</em>) – degree of concurrency. Set to <code class="docutils literal"><span class="pre">-1</span></code> for maximum and <code class="docutils literal"><span class="pre">1</span></code> for
+<li><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – name of transformer.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to report completed fits.</li>
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> (</em><em>default='threading'</em><em>)</em>) – parallel backend. One of <code class="docutils literal notranslate"><span class="pre">'treading'</span></code>, <code class="docutils literal notranslate"><span class="pre">'multiprocessing'</span></code> and
+<code class="docutils literal notranslate"><span class="pre">'sequential'</span></code>.</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=-1</em><em>)</em>) – degree of concurrency. Set to <code class="docutils literal notranslate"><span class="pre">-1</span></code> for maximum and <code class="docutils literal notranslate"><span class="pre">1</span></code> for
 sequential processing.</li>
 </ul>
 </td>
@@ -418,7 +407,7 @@ sequential processing.</li>
 <dl class="class">
 <dt id="mlens.estimators.LayerEnsemble">
 <em class="property">class </em><code class="descclassname">mlens.estimators.</code><code class="descname">LayerEnsemble</code><span class="sig-paren">(</span><em>groups</em>, <em>propagate_features=None</em>, <em>shuffle=False</em>, <em>n_jobs=-1</em>, <em>backend=None</em>, <em>verbose=False</em>, <em>random_state=None</em>, <em>dtype=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/estimators/estimators.html#LayerEnsemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.estimators.LayerEnsemble" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.estimators.estimators.BaseEstimator</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.estimators.estimators.BaseEstimator</span></code></p>
 <p>One-layer ensemble</p>
 <p>An ensemble of estimators and preprocessing pipelines in one layer. Takes
 an input X and generates an output P. Assumes all preprocessing pipelines
@@ -428,31 +417,50 @@ and all estimators are independent.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>,</em>) – list of <code class="xref py py-class docutils literal"><span class="pre">Group</span></code> instances to build layer with.</li>
-<li><strong>proba</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to call <cite>predict_proba</cite> on the estimators in the layer when
+<li><strong>groups</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>,</em>) – list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code> instances to build layer with.</li>
+<li><strong>proba</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to call <cite>predict_proba</cite> on the estimators in the layer when
 predicting.</li>
-<li><strong>propagate_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.6)"><em>range</em></a><em>, </em><em>optional</em>) – Features to propagate from the input array to the output array.
+<li><strong>propagate_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#range" title="(in Python v3.7)"><em>range</em></a><em>, </em><em>optional</em>) – Features to propagate from the input array to the output array.
 Carries input features to the output of the layer, useful for
 propagating original data through several stacked layers. Propagated
 features are stored in the left-most columns.</li>
-<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – <p>level of verbosity.</p>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – <p>level of verbosity.</p>
 <blockquote>
 <div><ul>
-<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">0</span></code> silent (same as <code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">False</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">1</span></code> messages at start and finish               (same as <code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">True</span></code>)</li>
-<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">2</span></code> messages for preprocessing and estimators</li>
-<li><code class="docutils literal"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">3</span></code> messages for completed job</li>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">0</span></code> silent (same as <code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">False</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">1</span></code> messages at start and finish               (same as <code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">True</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">2</span></code> messages for preprocessing and estimators</li>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">3</span></code> messages for completed job</li>
 </ul>
 </div></blockquote>
-<p>If <code class="docutils literal"><span class="pre">verbose</span> <span class="pre">&gt;=</span> <span class="pre">10</span></code> prints to <code class="docutils literal"><span class="pre">sys.stderr</span></code>, else <code class="docutils literal"><span class="pre">sys.stdout</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">&gt;=</span> <span class="pre">10</span></code> prints to <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>, else <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>.</p>
 </li>
-<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – Whether to shuffle data before fitting layer.</li>
-<li><strong>random_state</strong> (<em>obj</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em>, </em><em>optional</em>) – Random seed number to use for shuffling inputs</li>
+<li><strong>shuffle</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – Whether to shuffle data before fitting layer.</li>
+<li><strong>random_state</strong> (<em>obj</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em>, </em><em>optional</em>) – Random seed number to use for shuffling inputs</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="mlens.estimators.LayerEnsemble.get_params">
+<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/estimators/estimators.html#LayerEnsemble.get_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.estimators.LayerEnsemble.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for this estimator.
+:param deep: If True, will return the parameters for this estimator and</p>
+<blockquote>
+<div>contained subobjects that are estimators.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>params</strong> – Parameter names mapped to their values.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">mapping of string to any</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="mlens.estimators.LayerEnsemble.pop">
 <code class="descname">pop</code><span class="sig-paren">(</span><em>idx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/estimators/estimators.html#LayerEnsemble.pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.estimators.LayerEnsemble.pop" title="Permalink to this definition">¶</a></dt>
@@ -461,7 +469,7 @@ features are stored in the left-most columns.</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – index of group to be popped in stack (0-based indexing).
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – index of group to be popped in stack (0-based indexing).
 Equivalent to [group_0, group_1, …, group_n].pop(idx)</td>
 </tr>
 </tbody>
@@ -476,7 +484,7 @@ Equivalent to [group_0, group_1, …, group_n].pop(idx)</td>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>*groups</strong> (<em>objects</em>) – <code class="xref py py-class docutils literal"><span class="pre">Group</span></code> instance(s) to push onto stack. Order is preserved
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>*groups</strong> (<em>objects</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code> instance(s) to push onto stack. Order is preserved
 (see pop).</td>
 </tr>
 </tbody>
@@ -490,9 +498,7 @@ Equivalent to [group_0, group_1, …, group_n].pop(idx)</td>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -505,7 +511,7 @@ Equivalent to [group_0, group_1, …, group_n].pop(idx)</td>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -523,7 +529,8 @@ Equivalent to [group_0, group_1, …, group_n].pop(idx)</td>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -537,19 +544,13 @@ Equivalent to [group_0, group_1, …, group_n].pop(idx)</td>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

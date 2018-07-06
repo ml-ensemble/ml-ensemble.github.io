@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.preprocessing &mdash; mlens 0.2.1 documentation</title>
+  <title>mlens.preprocessing &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="index.html"/>
-        <link rel="next" title="mlens.metrics" href="metrics.html"/>
-        <link rel="prev" title="mlens.parallel" href="parallel.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="mlens.metrics" href="metrics.html" />
+    <link rel="prev" title="mlens.parallel" href="parallel.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" />
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -271,7 +259,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -279,9 +267,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -330,7 +319,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">author:</th><td class="field-body">Sebastian Flennerhag</td>
 </tr>
-<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017</td>
+<tr class="field-even field"><th class="field-name">copyright:</th><td class="field-body">2017-2018</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">licence:</th><td class="field-body">MIT</td>
 </tr>
@@ -344,17 +333,17 @@
 <dl class="class">
 <dt id="mlens.preprocessing.Subset">
 <em class="property">class </em><code class="descclassname">mlens.preprocessing.</code><code class="descname">Subset</code><span class="sig-paren">(</span><em>subset=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/preprocessing/preprocess.html#Subset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.preprocessing.Subset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code></p>
 <p>Select a subset of features.</p>
-<p>The <code class="docutils literal"><span class="pre">Subset</span></code> class acts as a transformer that reduces the feature set
+<p>The <code class="docutils literal notranslate"><span class="pre">Subset</span></code> class acts as a transformer that reduces the feature set
 to a subset specified by the user.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) – list of columns indexes to select subset with. Indexes can
-either be of type <code class="docutils literal"><span class="pre">str</span></code> if data accepts slicing on a list of
-strings, otherwise the list should be of type <code class="docutils literal"><span class="pre">int</span></code>.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>subset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a>) – list of columns indexes to select subset with. Indexes can
+either be of type <code class="docutils literal notranslate"><span class="pre">str</span></code> if data accepts slicing on a list of
+strings, otherwise the list should be of type <code class="docutils literal notranslate"><span class="pre">int</span></code>.</td>
 </tr>
 </tbody>
 </table>
@@ -387,7 +376,7 @@ strings, otherwise the list should be of type <code class="docutils literal"><sp
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – The whose type will be inferred.</li>
 <li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – pass-through for Scikit-learn pipeline compatibility.</li>
-<li><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a><em> (</em><em>default = None</em><em>)</em>) – whether to copy X before transforming.</li>
+<li><strong>copy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = None</em><em>)</em>) – whether to copy X before transforming.</li>
 </ul>
 </td>
 </tr>
@@ -403,22 +392,22 @@ strings, otherwise the list should be of type <code class="docutils literal"><sp
 <dl class="class">
 <dt id="mlens.preprocessing.Shift">
 <em class="property">class </em><code class="descclassname">mlens.preprocessing.</code><code class="descname">Shift</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/preprocessing/preprocess.html#Shift"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.preprocessing.Shift" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.sklearn.base.TransformerMixin</span></code></p>
 <p>Lag operator.</p>
-<p>Shift an input array <span class="math">\(X\)</span> with <span class="math">\(s\)</span> steps, i.e. for some time
-series <span class="math">\(\mathbf{X} = (X_t, X_{t-1}, ..., X_{0})\)</span>,</p>
-<div class="math">
+<p>Shift an input array <span class="math notranslate nohighlight">\(X\)</span> with <span class="math notranslate nohighlight">\(s\)</span> steps, i.e. for some time
+series <span class="math notranslate nohighlight">\(\mathbf{X} = (X_t, X_{t-1}, ..., X_{0})\)</span>,</p>
+<div class="math notranslate nohighlight">
 \[L^{s} \mathbf{X} = (X_{t-s}, X_{t-1-s}, ..., X_{s - s})\]</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) – number of lags to generate</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>s</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – number of lags to generate</td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="k">import</span> <span class="n">Shift</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">L</span> <span class="o">=</span> <span class="n">Shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -448,9 +437,7 @@ series <span class="math">\(\mathbf{X} = (X_t, X_{t-1}, ..., X_{0})\)</span>,</p
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -463,7 +450,7 @@ series <span class="math">\(\mathbf{X} = (X_t, X_{t-1}, ..., X_{0})\)</span>,</p
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -481,7 +468,8 @@ series <span class="math">\(\mathbf{X} = (X_t, X_{t-1}, ..., X_{0})\)</span>,</p
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -495,19 +483,13 @@ series <span class="math">\(\mathbf{X} = (X_t, X_{t-1}, ..., X_{0})\)</span>,</p
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

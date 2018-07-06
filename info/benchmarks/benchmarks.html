@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Performance benchmarks &mdash; mlens 0.2.1 documentation</title>
+  <title>Performance benchmarks &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Scale benchmarks" href="scaling.html"/>
-        <link rel="prev" title="Memory consumption" href="memory.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scale benchmarks" href="scaling.html" />
+    <link rel="prev" title="Memory consumption" href="memory.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -280,11 +271,11 @@
 <span id="benchmarks"></span><h1>Performance benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="mnist">
 <span id="id1"></span><h2>MNIST<a class="headerlink" href="#mnist" title="Permalink to this headline">¶</a></h2>
-<p>MNIST is a standardized image dataset of handwritten digits <a class="footnote-reference" href="#id6" id="id2">[1]</a>, commonly used to benchmark classifiers. Here, we adapt <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/master/benchmarks/bench_mnist.py">Scikit-learn’s MNIST benchmark</a> to include a supervised <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a>. We use the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.cluster.MiniBatchKMeans</span></code></a> clustering algorithm to create five partitions that we train using 2-fold cross validation.</p>
+<p>MNIST is a standardized image dataset of handwritten digits <a class="footnote-reference" href="#id6" id="id2">[1]</a>, commonly used to benchmark classifiers. Here, we adapt <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/master/benchmarks/bench_mnist.py">Scikit-learn’s MNIST benchmark</a> to include a supervised <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a>. We use the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.cluster.MiniBatchKMeans</span></code></a> clustering algorithm to create five partitions that we train using 2-fold cross validation.</p>
 <div class="section" id="benchmark">
 <h3>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline">¶</a></h3>
-<p>We use four base learners, the MLP fitted with Adam, the two random forests and the logistic regression fitted with SAG. Each base learner is predicts with <code class="docutils literal"><span class="pre">predict_proba</span></code> to create a <span class="math">\(N \times (10 \times L)\)</span> prediction matrix, where <span class="math">\(N\)</span> is the number of observations and <span class="math">\(L\)</span> is the number base learners. A <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> is used as meta learner. Here’s the code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">clt</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<p>We use four base learners, the MLP fitted with Adam, the two random forests and the logistic regression fitted with SAG. Each base learner is predicts with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> to create a <span class="math notranslate nohighlight">\(N \times (10 \times L)\)</span> prediction matrix, where <span class="math notranslate nohighlight">\(N\)</span> is the number of observations and <span class="math notranslate nohighlight">\(L\)</span> is the number base learners. A <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.ensemble.RandomForestClassifier</span></code></a> is used as meta learner. Here’s the code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clt</span> <span class="o">=</span> <span class="n">MiniBatchKMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">ens</span> <span class="o">=</span> <span class="n">Subsemble</span><span class="p">(</span><span class="n">partition_estimator</span><span class="o">=</span><span class="n">clt</span><span class="p">,</span>
                 <span class="n">partitions</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -296,8 +287,8 @@
 <span class="n">ens</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">meta</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The Supervised <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">Subsemble</span></code></a> outperforms the benchmarks, improving the error rate by about <span class="math">\(6\%\)</span>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">mnist</span><span class="o">.</span><span class="n">py</span>
+<p>The Supervised <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a> outperforms the benchmarks, improving the error rate by about <span class="math notranslate nohighlight">\(6\%\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">mnist</span><span class="o">.</span><span class="n">py</span>
 <span class="go">[..]</span>
 
 <span class="go">Classification performance:</span>
@@ -321,10 +312,10 @@
 <div class="section" id="the-friedman-regression-problem-1">
 <h2>The Friedman Regression Problem 1<a class="headerlink" href="#the-friedman-regression-problem-1" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_friedman1.html#sklearn.datasets.make_friedman1">The Friedman Regression Problem 1</a>, as described in <a class="footnote-reference" href="#id7" id="id3">[2]</a> and <a class="footnote-reference" href="#id8" id="id4">[3]</a>,
-is constructed as follows. Set some sample size <span class="math">\(m\)</span> ,
-feature dimensionality <span class="math">\(n\)</span>, and noise level <span class="math">\(e\)</span>. Then the input
-data <span class="math">\(\mathbf{X}\)</span> and output data <span class="math">\(y(\mathbf{X})\)</span> is given by:</p>
-<div class="math">
+is constructed as follows. Set some sample size <span class="math notranslate nohighlight">\(m\)</span> ,
+feature dimensionality <span class="math notranslate nohighlight">\(n\)</span>, and noise level <span class="math notranslate nohighlight">\(e\)</span>. Then the input
+data <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and output data <span class="math notranslate nohighlight">\(y(\mathbf{X})\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{X} &amp;= [X_i]_{i \in \{1, 2, ..., n\}} \in
 \mathbb{R}^{m \ \times \ n}, \\
 X &amp;\sim u[0, 1], \\
@@ -336,13 +327,13 @@ y(\mathbf{X}) &amp;= 10 \sin(\pi X_1 X_2) + 20(X_3 - 0.5)^2 + 10X_4 + 5X_5 +
 <div class="section" id="id5">
 <h3>Benchmark<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>The following benchmark uses 10 features and scores a relatively wide selection
-of Scikit-learn estimators against a specified <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a>. All
+of Scikit-learn estimators against a specified <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a>. All
 estimators are used with default parameter settings. As such, the benchmark
 does not reflect the best possible score of each estimator, but shows rather
 how stacking even relatively low-performing estimators can yield superior
 predictive power. In this case, the Super Learner improves on the best
 stand-alone estimator by 25%.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">friedman_scores</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">friedman_scores</span><span class="o">.</span><span class="n">py</span>
 <span class="go">Benchmark of ML-ENSEMBLE against Scikit-learn estimators on the friedman1 dataset.</span>
 
 <span class="go">Scoring metric: Root Mean Squared Error.</span>
@@ -419,9 +410,7 @@ Machine Learning 24, pages 123-140, 1996.</td></tr>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -434,7 +423,7 @@ Machine Learning 24, pages 123-140, 1996.</td></tr>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -452,7 +441,8 @@ Machine Learning 24, pages 123-140, 1996.</td></tr>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -466,19 +456,13 @@ Machine Learning 24, pages 123-140, 1996.</td></tr>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

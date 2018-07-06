@@ -1,4 +1,8 @@
+.. note::
+    :class: sphx-glr-download-link-note
 
+    Click :ref:`here <sphx_glr_download_tutorials_start.py>` to download the full example code
+.. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_tutorials_start.py:
 
@@ -99,7 +103,9 @@ and finally the meta estimator.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Fitting 2 layers
     Processing layer-1             done | 00:00:00
@@ -128,12 +134,14 @@ but prints in a tabular format as is.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Fit data:
                                        score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    layer-1  randomforestclassifier       0.84     0.06  0.05  0.00  0.00  0.00
-    layer-1  svc                          0.89     0.05  0.01  0.01  0.00  0.00
+    layer-1  randomforestclassifier       0.84     0.06  0.04  0.00  0.00  0.00
+    layer-1  svc                          0.89     0.05  0.00  0.00  0.00  0.00
 
 
 To round off, let's see how the ensemble as a whole fared.
@@ -151,7 +159,9 @@ To round off, let's see how the ensemble as a whole fared.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Prediction score: 0.960
 
@@ -201,13 +211,15 @@ We now fit this ensemble in the same manner as before:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Fit data:
                                        score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    layer-1  logisticregression           0.74     0.16  0.04  0.00  0.01  0.01
-    layer-1  randomforestclassifier       0.84     0.06  0.05  0.00  0.01  0.00
-    layer-2  logisticregression           0.67     0.12  0.01  0.01  0.00  0.00
+    layer-1  logisticregression           0.74     0.16  0.01  0.00  0.00  0.00
+    layer-1  randomforestclassifier       0.84     0.06  0.02  0.01  0.00  0.00
+    layer-2  logisticregression           0.67     0.12  0.00  0.00  0.00  0.00
     layer-2  svc                          0.89     0.00  0.00  0.00  0.00  0.00
 
 
@@ -312,7 +324,9 @@ by calling the ``fit`` method.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Launching job
     Job           done | 00:00:00
@@ -338,13 +352,15 @@ training time.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Score comparison with best params founds:
 
            test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-    gnb           0.960         0.033          0.957          0.006       0.007       0.004        0.006        0.003                     
-    knn           0.967         0.033          0.980          0.005       0.003       0.003        0.007        0.001  {'n_neighbors': 15}
+    gnb           0.960         0.033          0.957          0.006       0.004       0.002        0.003        0.001                     
+    knn           0.967         0.033          0.980          0.005       0.002       0.000        0.004        0.001  {'n_neighbors': 15}
 
 
 Preprocessing
@@ -408,7 +424,9 @@ an example. To fit only the preprocessing pipelines, we omit any estimators in t
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Launching job
     Job           done | 00:00:00
@@ -435,20 +453,22 @@ pipeline, just carry on as in the simple case:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Launching job
-    Job           done | 00:00:01
+    Job           done | 00:00:00
 
     Comparison across preprocessing pipelines:
 
                  test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-    none  gnb           0.960         0.033          0.957          0.006       0.003       0.001        0.003        0.001                     
-    none  knn           0.967         0.033          0.980          0.005       0.001       0.000        0.006        0.002  {'n_neighbors': 15}
-    sc    gnb           0.960         0.033          0.957          0.006       0.005       0.002        0.004        0.003                     
-    sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.005        0.001   {'n_neighbors': 8}
-    sub   gnb           0.780         0.133          0.791          0.020       0.004       0.002        0.003        0.001                     
-    sub   knn           0.800         0.126          0.837          0.015       0.002       0.001        0.007        0.004   {'n_neighbors': 9}
+    none  gnb           0.960         0.033          0.957          0.006       0.005       0.001        0.003        0.001                     
+    none  knn           0.967         0.033          0.980          0.005       0.001       0.000        0.003        0.001  {'n_neighbors': 15}
+    sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.000                     
+    sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.004        0.001   {'n_neighbors': 8}
+    sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.001                     
+    sub   knn           0.800         0.126          0.837          0.015       0.001       0.001        0.003        0.001   {'n_neighbors': 9}
 
 
 You can also map different estimators to different preprocessing folds, and
@@ -481,19 +501,21 @@ parameter distributions
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Launching job
-    Job           done | 00:00:01
+    Job           done | 00:00:00
 
     Comparison with different parameter dists:
 
                  test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-    none  knn           0.967         0.045          0.961          0.007       0.004       0.002        0.007        0.004   {'n_neighbors': 3}
-    sc    gnb           0.960         0.033          0.957          0.006       0.006       0.003        0.003        0.002                     
-    sc    knn           0.940         0.055          0.963          0.006       0.001       0.001        0.007        0.001  {'n_neighbors': 20}
-    sub   gnb           0.780         0.133          0.791          0.020       0.004       0.001        0.002        0.001                     
-    sub   knn           0.800         0.126          0.837          0.015       0.002       0.000        0.005        0.002   {'n_neighbors': 9}
+    none  knn           0.967         0.045          0.961          0.007       0.001       0.000        0.002        0.001   {'n_neighbors': 3}
+    sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.001                     
+    sc    knn           0.940         0.055          0.963          0.006       0.001       0.000        0.004        0.001  {'n_neighbors': 20}
+    sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.000                     
+    sub   knn           0.800         0.126          0.837          0.015       0.002       0.001        0.003        0.000   {'n_neighbors': 9}
 
 
 .. _visualization-guide:
@@ -525,7 +547,7 @@ Principal Components Analysis.
 
 
 .. image:: /tutorials/images/sphx_glr_start_001.png
-    :align: center
+    :class: sphx-glr-single-img
 
 
 
@@ -550,7 +572,7 @@ are.
 
 
 .. image:: /tutorials/images/sphx_glr_start_002.png
-    :align: center
+    :class: sphx-glr-single-img
 
 
 
@@ -574,7 +596,7 @@ plots a matrix of PCA analyses, one for each combination of
 
 
 .. image:: /tutorials/images/sphx_glr_start_003.png
-    :align: center
+    :class: sphx-glr-single-img
 
 
 
@@ -604,7 +626,7 @@ a correlation matrix and is adapted the `Seaborn`_ correlation matrix.
 
 
 .. image:: /tutorials/images/sphx_glr_start_004.png
-    :align: center
+    :class: sphx-glr-single-img
 
 
 
@@ -649,7 +671,7 @@ as duplicate pairs, and thus fully pick up on this duplication.
 
 
 .. image:: /tutorials/images/sphx_glr_start_005.png
-    :align: center
+    :class: sphx-glr-single-img
 
 
 
@@ -675,7 +697,7 @@ x-axis. Note that ``X`` must be a :class:`pandas.DataFrame`.
 
 
 .. image:: /tutorials/images/sphx_glr_start_006.png
-    :align: center
+    :class: sphx-glr-single-img
 
 
 
@@ -689,11 +711,17 @@ x-axis. Note that ``X`` must be a :class:`pandas.DataFrame`.
 .. _Seaborn: http://seaborn.pydata.org/examples/many_pairwise_correlations.html
 
 
-**Total running time of the script:** ( 0 minutes  7.345 seconds)
+**Total running time of the script:** ( 0 minutes  5.224 seconds)
 
 
+.. _sphx_glr_download_tutorials_start.py:
 
-.. container:: sphx-glr-footer
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
 
 
   .. container:: sphx-glr-download
@@ -706,6 +734,9 @@ x-axis. Note that ``X`` must be a :class:`pandas.DataFrame`.
 
      :download:`Download Jupyter notebook: start.ipynb <start.ipynb>`
 
-.. rst-class:: sphx-glr-signature
 
-    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_

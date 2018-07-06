@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Memory consumption &mdash; mlens 0.2.1 documentation</title>
+  <title>Memory consumption &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Performance benchmarks" href="benchmarks.html"/>
-        <link rel="prev" title="Sequential Mechanics" href="../tutorials/sequential.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance benchmarks" href="benchmarks.html" />
+    <link rel="prev" title="Sequential Mechanics" href="../tutorials/sequential.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -297,9 +288,9 @@ avoiding copying, which may not be possible, see <a class="reference internal" h
 information.</p>
 <p>We can easily illustrate this issue by running a dummy function in parallel
 that merely holds whatever data it receives from a few seconds before closing.
-Here, we make use of the <code class="xref py py-class docutils literal"><span class="pre">CMLog</span></code> monitor that
+Here, we make use of the <code class="xref py py-class docutils literal notranslate"><span class="pre">CMLog</span></code> monitor that
 logs the memory (and cpu) usage of the process that instantiated it.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">perf_counter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.utils.utils</span> <span class="k">import</span> <span class="n">CMLog</span>
@@ -344,7 +335,7 @@ logs the memory (and cpu) usage of the process that instantiated it.</p>
 </pre></div>
 </div>
 <p>Notice that the parallel job seems to be doing an awful lot of data
-serialization. The memory log of the <code class="docutils literal"><span class="pre">cm</span></code> reveals that peak memory usage is
+serialization. The memory log of the <code class="docutils literal notranslate"><span class="pre">cm</span></code> reveals that peak memory usage is
 over some three times larger than the original array when 4 cpu’s are in use.
 With such a memory profile, an ensemble would not be very scalable.</p>
 <img alt="../_images/mem_profile_copy.png" class="align-center" src="../_images/mem_profile_copy.png" />
@@ -355,7 +346,7 @@ Second, insofar no copying of the input data takes place, memmapping avoids
 scaling the data size requirement by the number of processes running.
 To see this first hand, we can modify the above example to convert the toy array to
 a memmap and again monitor memory usage.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">joblib</span> <span class="k">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">dump</span>
 
@@ -397,7 +388,7 @@ a memmap and again monitor memory usage.</p>
 </pre></div>
 </div>
 <p>Notice first that no pickling is reported in the parallel job; second, the time
-to completion is no more than the 3 seconds we asked the <code class="docutils literal"><span class="pre">hold</span></code> function to
+to completion is no more than the 3 seconds we asked the <code class="docutils literal notranslate"><span class="pre">hold</span></code> function to
 sleep. In other words, memmaping causes <em>no</em> process time overhead. This stands
 in stark contrast to the previous example, which needed over 40 seconds to
 complete - an order of magnitude slower. Moreover, inspecting the memory
@@ -416,7 +407,7 @@ memory neutral parallel processing. In the following example, an ensemble of
 three linear regression estimators with different preprocessing pipelines are
 fitted on data comprising 6 million observations and ten features. The
 following profiling can be run from the package root with the below command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">benchmarks</span><span class="o">/</span><span class="n">memory_cpu_profile</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">benchmarks</span><span class="o">/</span><span class="n">memory_cpu_profile</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Note that the ensemble leveraged the full capacity of the CPU to fit the
@@ -433,15 +424,15 @@ data in memory. See the <a class="reference internal" href="../tutorials/advance
 </div>
 <div class="section" id="memory-performance-benchmark">
 <h2>Memory performance benchmark<a class="headerlink" href="#memory-performance-benchmark" title="Permalink to this headline">¶</a></h2>
-<p>Finally, we consider how a <code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code> compares in terms of memory
+<p>Finally, we consider how a <code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code> compares in terms of memory
 consumption against a set of Scikit-learn estimators. This benchmark
-relies on the <a class="reference external" href="https://pypi.python.org/pypi/memory_profiler">mprof</a> package, which can be installed with <code class="docutils literal"><span class="pre">pip</span></code>. The
-benchmark compares the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.linear_model.Lasso</span></code></a>,
-<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> and the
-<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal"><span class="pre">sklearn.neighbors.KNeighborsRegressor</span></code></a> against an ensemble that
+relies on the <a class="reference external" href="https://pypi.python.org/pypi/memory_profiler">mprof</a> package, which can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code>. The
+benchmark compares the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model.Lasso</span></code></a>,
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> and the
+<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.neighbors.KNeighborsRegressor</span></code></a> against an ensemble that
 uses the former two as the first layer and the latter as a final meta
 estimator.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mprof</span> <span class="n">run</span> <span class="n">friedman_memory</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mprof</span> <span class="n">run</span> <span class="n">friedman_memory</span><span class="o">.</span><span class="n">py</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mprof</span> <span class="n">plot</span> <span class="n">friedman_memory</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="s2">&quot;Memory Consumption Benchmark&quot;</span>
 <span class="go">mprof: Sampling memory every 0.1s</span>
 <span class="go">running as a Python program...</span>
@@ -491,7 +482,7 @@ numpy, this issue is beyond the control of ML-Ensemble.</p>
 <p>Also note that if the data is preprocessed within ML-Ensemble, transformers
 automatically return copies of the input data (i.e. breaks the link with the
 memory buffer) and will therefore <strong>always</strong> trigger a copying. In fact, if
-it does not, transforming the memmapped original data will raise an <code class="docutils literal"><span class="pre">OSError</span></code>
+it does not, transforming the memmapped original data will raise an <code class="docutils literal notranslate"><span class="pre">OSError</span></code>
 since the memory map of the original data is read-only to avoid corrupting the
 input.</p>
 <p><strong>(2)</strong>
@@ -507,9 +498,7 @@ satisfy its particular requirements.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -522,7 +511,7 @@ satisfy its particular requirements.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -540,7 +529,8 @@ satisfy its particular requirements.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -554,19 +544,13 @@ satisfy its particular requirements.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

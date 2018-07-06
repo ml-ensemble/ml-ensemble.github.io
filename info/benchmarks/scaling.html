@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Scale benchmarks &mdash; mlens 0.2.1 documentation</title>
+  <title>Scale benchmarks &mdash; mlens 0.2.2 documentation</title>
   
 
   
@@ -24,35 +24,23 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="mlens 0.2.1 documentation" href="../index.html"/>
-        <link rel="next" title="Troubleshooting" href="../deep/troubleshooting.html"/>
-        <link rel="prev" title="Performance benchmarks" href="benchmarks.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Troubleshooting" href="../deep/troubleshooting.html" />
+    <link rel="prev" title="Performance benchmarks" href="benchmarks.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -69,7 +57,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" />
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -77,7 +65,7 @@
             
             
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
             
           
@@ -170,6 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/layer.html">Layer Mechanics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/layer.html#the-layer-api">The Layer API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#basics">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#multitasking">Multitasking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/layer.html#layer-features">Layer features</a></li>
 </ul>
 </li>
 </ul>
@@ -224,7 +214,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -232,9 +222,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -284,16 +275,16 @@ against running them on multiple processes.</p>
 predictive power as data scales.</p>
 <div class="section" id="single-process-vs-multi-process">
 <span id="cpu"></span><h2>Single process vs multi-process<a class="headerlink" href="#single-process-vs-multi-process" title="Permalink to this headline">¶</a></h2>
-<p>We compare the time to fit the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">SuperLearner</span></code></a> and the
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.0)"><code class="xref py py-class docutils literal"><span class="pre">BlendEnsemble</span></code></a> when run on a single process and when run on four
+<p>We compare the time to fit the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a> and the
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> when run on a single process and when run on four
 processes. The ensembles have four SVR base estimators and an SVR as final
 meta learner. Hence, while the single-processed ensembles need to fit 5
 SVR models consecutively, the multiprocessed ensembles need only the time
 equivalent to fit 2 consecutively. As the figure below shows, there are clear
 benefits to multi-processing.</p>
 <img alt="../_images/scale_cpu.png" class="align-center" src="../_images/scale_cpu.png" />
-<p>To replicate the benchmark, in the <code class="docutils literal"><span class="pre">mlens</span></code> benchmark folder, execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">scale_cpu</span><span class="o">.</span><span class="n">py</span>
+<p>To replicate the benchmark, in the <code class="docutils literal notranslate"><span class="pre">mlens</span></code> benchmark folder, execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">scale_cpu</span><span class="o">.</span><span class="n">py</span>
 
 <span class="go">ML-ENSEMBLE</span>
 
@@ -362,8 +353,8 @@ of partitions is increased. This can significantly impact optimal meta
 learner parameter settings and overall performance.</p>
 <img alt="../_images/scale_ens_score.png" class="align-center" src="../_images/scale_ens_score.png" />
 <img alt="../_images/scale_ens_time.png" class="align-center" src="../_images/scale_ens_time.png" />
-<p>To replicate the benchmark, in the <code class="docutils literal"><span class="pre">mlens</span></code> benchmark folder, execute:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">scale_ens</span><span class="o">.</span><span class="n">py</span>
+<p>To replicate the benchmark, in the <code class="docutils literal notranslate"><span class="pre">mlens</span></code> benchmark folder, execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">scale_ens</span><span class="o">.</span><span class="n">py</span>
 
 <span class="go">ML-ENSEMBLE</span>
 
@@ -398,9 +389,7 @@ learner parameter settings and overall performance.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -413,7 +402,7 @@ learner parameter settings and overall performance.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -431,7 +420,8 @@ learner parameter settings and overall performance.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.1',
+            VERSION:'0.2.2',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -445,19 +435,13 @@ learner parameter settings and overall performance.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

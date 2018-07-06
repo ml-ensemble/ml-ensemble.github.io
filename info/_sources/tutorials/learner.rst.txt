@@ -1,4 +1,8 @@
+.. note::
+    :class: sphx-glr-download-link-note
 
+    Click :ref:`here <sphx_glr_download_tutorials_learner.py>` to download the full example code
+.. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_tutorials_learner.py:
 
@@ -103,10 +107,12 @@ indexing the training set for cross-validation, assigning output columns et.c.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Cached items:
-    [('ols.0.0', <mlens.parallel.learner.IndexedEstimator object at 0x11c767f10>), ('ols.0.1', <mlens.parallel.learner.IndexedEstimator object at 0x11c767fc0>), ('ols.0.2', <mlens.parallel.learner.IndexedEstimator object at 0x11c767d00>)]
+    [('ols.0.0', <mlens.parallel.learner.IndexedEstimator object at 0x111e14c50>), ('ols.0.1', <mlens.parallel.learner.IndexedEstimator object at 0x111e14518>), ('ols.0.2', <mlens.parallel.learner.IndexedEstimator object at 0x111dd3ca8>)]
 
 
 Fitting the learner puts three copies of the OLS estimator in the ``path``:
@@ -167,31 +173,33 @@ predictions.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Output:
-    [[ 0.          0.72196469]
-     [ 0.          0.71453283]
-     [ 0.          0.70710097]
-     [ 0.          0.69966911]
-     [ 0.          0.69223725]
-     [ 0.          0.        ]
-     [ 0.          0.        ]
-     [ 0.          0.        ]
-     [ 0.          0.        ]
-     [ 0.          0.        ]]
+    [[0.         1.60510605]
+     [0.         1.46322674]
+     [0.         1.32134742]
+     [0.         1.17946811]
+     [0.         1.03758879]
+     [0.         0.        ]
+     [0.         0.        ]
+     [0.         0.        ]
+     [0.         0.        ]
+     [0.         0.        ]]
 
     Output:
-    [[ 0.          0.72196469]
-     [ 0.          0.71453283]
-     [ 0.          0.70710097]
-     [ 0.          0.69966911]
-     [ 0.          0.69223725]
-     [ 0.          0.40914537]
-     [ 0.          0.42290606]
-     [ 0.          0.43666674]
-     [ 0.          0.45042743]
-     [ 0.          0.46418811]]
+    [[ 0.          1.60510605]
+     [ 0.          1.46322674]
+     [ 0.          1.32134742]
+     [ 0.          1.17946811]
+     [ 0.          1.03758879]
+     [ 0.          0.1298892 ]
+     [ 0.          0.04099401]
+     [ 0.         -0.04790118]
+     [ 0.         -0.13679637]
+     [ 0.         -0.22569156]]
 
 
 In the above loop, a sub-segment of ``P`` is updated by each sublearner
@@ -233,19 +241,21 @@ as a callable, enabling task-agnostic code:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Output:
-    [[ 0.30948789]
-     [ 0.35602447]
-     [ 0.40256105]
-     [ 0.44909763]
-     [ 0.49563421]
-     [ 0.54217079]
-     [ 0.58870737]
-     [ 0.63524395]
-     [ 0.68178052]
-     [ 0.7283171 ]]
+    [[0.48329249]
+     [0.48795256]
+     [0.49261263]
+     [0.4972727 ]
+     [0.50193277]
+     [0.50659285]
+     [0.51125292]
+     [0.51591299]
+     [0.52057306]
+     [0.52523313]]
 
 
 ML-Ensemble follows the Scikit-learn API, so if you wish to update any
@@ -271,7 +281,9 @@ API:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Params before:
     {'attr': 'predict', 'estimator__offset': 0, 'estimator': OLS(offset=0), 'indexer__X': None, 'indexer__folds': 2, 'indexer__raise_on_exception': True, 'indexer': FoldIndex(X=None, folds=2, raise_on_exception=True), 'name': 'ols', 'preprocess': None, 'proba': False, 'scorer': None, 'backend': 'threading', 'n_jobs': -1, 'dtype': <class 'numpy.float32'>, 'raise_on_exception': True}
@@ -328,85 +340,87 @@ as an argument during ``'fit'``, we perform a fit and transform operation.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     subsemble-ols.0.0              done | 00:00:00
     Output:
-    [[ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]]
+    [[0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]]
 
     subsemble-ols.1.0              done | 00:00:00
     Output:
-    [[ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]]
+    [[0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]
+     [0. 0.]]
 
     subsemble-ols.0.1              done | 00:00:00
     Output:
-    [[-0.45590354  0.        ]
-     [-0.24903892  0.        ]
-     [-0.04217431  0.        ]
+    [[ 1.50099289  0.        ]
+     [ 1.17185463  0.        ]
+     [ 0.84271638  0.        ]
      [ 0.          0.        ]
      [ 0.          0.        ]
-     [ 0.57841954  0.        ]
-     [ 0.78528416  0.        ]
-     [ 0.99214877  0.        ]
+     [-0.14469839  0.        ]
+     [-0.47383665  0.        ]
+     [-0.8029749   0.        ]
      [ 0.          0.        ]
      [ 0.          0.        ]]
 
     subsemble-ols.0.2              done | 00:00:00
     Output:
-    [[-0.45590354  0.        ]
-     [-0.24903892  0.        ]
-     [-0.04217431  0.        ]
-     [ 0.96723518  0.        ]
-     [ 1.23367421  0.        ]
-     [ 0.57841954  0.        ]
-     [ 0.78528416  0.        ]
-     [ 0.99214877  0.        ]
-     [ 2.29943033  0.        ]
-     [ 2.56586936  0.        ]]
+    [[ 1.50099289  0.        ]
+     [ 1.17185463  0.        ]
+     [ 0.84271638  0.        ]
+     [-0.0582686   0.        ]
+     [-0.30154554  0.        ]
+     [-0.14469839  0.        ]
+     [-0.47383665  0.        ]
+     [-0.8029749   0.        ]
+     [-1.27465332  0.        ]
+     [-1.51793026  0.        ]]
 
     subsemble-ols.1.1              done | 00:00:00
     Output:
-    [[-0.45590354  5.42998621]
-     [-0.24903892  4.86718678]
-     [-0.04217431  4.30438736]
-     [ 0.96723518  0.        ]
-     [ 1.23367421  0.        ]
-     [ 0.57841954  2.61598908]
-     [ 0.78528416  2.05318966]
-     [ 0.99214877  1.49039023]
-     [ 2.29943033  0.        ]
-     [ 2.56586936  0.        ]]
+    [[ 1.50099289  6.98188955]
+     [ 1.17185463  6.21497354]
+     [ 0.84271638  5.44805754]
+     [-0.0582686   0.        ]
+     [-0.30154554  0.        ]
+     [-0.14469839  3.14730951]
+     [-0.47383665  2.3803935 ]
+     [-0.8029749   1.61347749]
+     [-1.27465332  0.        ]
+     [-1.51793026  0.        ]]
 
     subsemble-ols.1.2              done | 00:00:00
     Output:
-    [[-0.45590354  5.42998621]
-     [-0.24903892  4.86718678]
-     [-0.04217431  4.30438736]
-     [ 0.96723518  0.19702432]
-     [ 1.23367421  0.35994134]
-     [ 0.57841954  2.61598908]
-     [ 0.78528416  2.05318966]
-     [ 0.99214877  1.49039023]
-     [ 2.29943033  1.01160946]
-     [ 2.56586936  1.17452649]]
+    [[ 1.50099289  6.98188955]
+     [ 1.17185463  6.21497354]
+     [ 0.84271638  5.44805754]
+     [-0.0582686   1.14782989]
+     [-0.30154554  1.00228074]
+     [-0.14469839  3.14730951]
+     [-0.47383665  2.3803935 ]
+     [-0.8029749   1.61347749]
+     [-1.27465332  0.42008412]
+     [-1.51793026  0.27453496]]
 
 
 Each sub-learner records fit and predict times during fitting, and if
@@ -432,12 +446,14 @@ denotes standard deviation.
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Data:
                         score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    subsemble-ols  0       1.15     0.88  0.00  0.00  0.00  0.00
-    subsemble-ols  1       5.68     5.51  0.00  0.00  0.00  0.00
+    subsemble-ols  0       1.45     0.45  0.00  0.00  0.00  0.00
+    subsemble-ols  1       9.34     9.02  0.00  0.00  0.00  0.00
 
 
 Preprocessing
@@ -540,7 +556,9 @@ boiler-plate code. Note that the transformer is called as an
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     sc.0.0                         done | 00:00:00
     sc.1.0                         done | 00:00:00
@@ -573,21 +591,23 @@ Note that the cache now contains the transformers as well:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Cache:
-    sc.0.0              <mlens.parallel.learner.IndexedEstimator object at 0x11c782258>
-    sc.1.0              <mlens.parallel.learner.IndexedEstimator object at 0x11c7820a0>
-    sc.0.1              <mlens.parallel.learner.IndexedEstimator object at 0x11c7822b0>
-    sc.0.2              <mlens.parallel.learner.IndexedEstimator object at 0x11c782308>
-    sc.1.1              <mlens.parallel.learner.IndexedEstimator object at 0x11c782150>
-    sc.1.2              <mlens.parallel.learner.IndexedEstimator object at 0x11c7821a8>
-    sc.learner-0.0.0    <mlens.parallel.learner.IndexedEstimator object at 0x11c7820f8>
-    sc.learner-0.1.0    <mlens.parallel.learner.IndexedEstimator object at 0x11c782200>
-    sc.learner-0.0.1    <mlens.parallel.learner.IndexedEstimator object at 0x11c7823b8>
-    sc.learner-0.0.2    <mlens.parallel.learner.IndexedEstimator object at 0x11c782410>
-    sc.learner-0.1.1    <mlens.parallel.learner.IndexedEstimator object at 0x11c782468>
-    sc.learner-0.1.2    <mlens.parallel.learner.IndexedEstimator object at 0x11c7824c0>
+    sc.0.0              <mlens.parallel.learner.IndexedEstimator object at 0x111e14c50>
+    sc.1.0              <mlens.parallel.learner.IndexedEstimator object at 0x111e1ff10>
+    sc.0.1              <mlens.parallel.learner.IndexedEstimator object at 0x111e1ff68>
+    sc.0.2              <mlens.parallel.learner.IndexedEstimator object at 0x111e1fe60>
+    sc.1.1              <mlens.parallel.learner.IndexedEstimator object at 0x111e1ffc0>
+    sc.1.2              <mlens.parallel.learner.IndexedEstimator object at 0x111e1feb8>
+    sc.learner-0.0.0    <mlens.parallel.learner.IndexedEstimator object at 0x111e1fdb0>
+    sc.learner-0.1.0    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c048>
+    sc.learner-0.0.1    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c0f8>
+    sc.learner-0.0.2    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c150>
+    sc.learner-0.1.1    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c1a8>
+    sc.learner-0.1.2    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c200>
 
 
 And estimation data is collected on a partition basis:
@@ -605,12 +625,14 @@ And estimation data is collected on a partition basis:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     Data:
                         score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    sc  learner-0  0       0.79     0.29  0.00  0.00  0.00  0.00
-    sc  learner-0  1       4.09     3.77  0.00  0.00  0.00  0.00
+    sc  learner-0  0       2.19     0.92  0.00  0.00  0.00  0.00
+    sc  learner-0  1       7.76     7.37  0.00  0.00  0.00  0.00
 
 
 Parallel estimation
@@ -643,14 +665,16 @@ estimation with a single learner using multiple threads:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     sc.learner-0.0.0               done | 00:00:00
     sc.learner-0.1.0               done | 00:00:00
     sc.learner-0.0.1               done | 00:00:00
-    sc.learner-0.1.2               done | 00:00:00
     sc.learner-0.1.1               done | 00:00:00
     sc.learner-0.0.2               done | 00:00:00
+    sc.learner-0.1.2               done | 00:00:00
 
 
 For a slightly more high-level API for parallel computation on a single
@@ -678,7 +702,9 @@ use :func:`run` to call ``predict``:
 
 .. rst-class:: sphx-glr-script-out
 
- Out::
+ Out:
+
+ .. code-block:: none
 
     sc.0.0                         done | 00:00:00
     sc.1.0                         done | 00:00:00
@@ -698,11 +724,17 @@ Next we handle several learners by grouping them in a layer in the
 :ref:`layer mechanics tutorial <layer_tutorial>`.
 
 
-**Total running time of the script:** ( 0 minutes  0.353 seconds)
+**Total running time of the script:** ( 0 minutes  0.193 seconds)
 
 
+.. _sphx_glr_download_tutorials_learner.py:
 
-.. container:: sphx-glr-footer
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
 
 
   .. container:: sphx-glr-download
@@ -715,6 +747,9 @@ Next we handle several learners by grouping them in a layer in the
 
      :download:`Download Jupyter notebook: learner.ipynb <learner.ipynb>`
 
-.. rst-class:: sphx-glr-signature
 
-    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_
