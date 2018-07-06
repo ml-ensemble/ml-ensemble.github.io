@@ -428,7 +428,7 @@ printouts of the layer does not take group membership into account.
             ols-2      40.27    19.05  0.00  0.00  0.00  0.00
 
 
-**Total running time of the script:** ( 0 minutes  1.507 seconds)
+**Total running time of the script:** ( 0 minutes  1.515 seconds)
 
 
 .. _sphx_glr_download_tutorials_layer.py:

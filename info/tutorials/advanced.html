@@ -164,7 +164,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sequential.html">Sequential Mechanics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Details</span></p>
@@ -444,7 +451,7 @@ set:</p>
 Test set score with feature propagation: 0.987
 </pre></div>
 </div>
-<p>By combining feature propagation with the <a class="reference external" href="http://ml-ensemble.com/docs/preprocessing.html#mlens.preprocessing.Subset" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subset</span></code></a> transformer, you can
+<p>By combining feature propagation with the <a class="reference external" href="http://ml-ensemble.com/docs/preprocessing.html#mlens.preprocessing.Subset" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subset</span></code></a> transformer, you can
 propagate the feature through several layers without any of the base estimators
 in those layers seeing the propagated features. This can be desirable if you
 want to propagate the input features to the meta learner without intermediate
@@ -561,13 +568,13 @@ ill equipped to solve this problem. Subsembles can overcome this issue allowing
 base estimators to fit one mode of the distribution at a time, which yields a
 better representation of the distribution and greatly facilitates the learning
 problem of the meta learner.</p>
-<p>By default, the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a> class partitioning the dataset randomly.
+<p>By default, the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a> class partitioning the dataset randomly.
 Note however that partitions are created on the data “as is”, so if the ordering
 of observations is not random, neither will the partitioning be. For this
 reason, it is recommended to shuffle the data (e.g. via the <code class="docutils literal notranslate"><span class="pre">shuffle</span></code>
 option at initialization). To build a subsemble with random partitions, the
 only parameter needed is the number of <code class="docutils literal notranslate"><span class="pre">partitions</span></code> when instantiating
-the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a>.</p>
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Subsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subsemble</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="kn">import</span> <span class="n">Subsemble</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -593,7 +600,7 @@ so the output of each layer gets multiplied by the number of partitions. In this
 case, we have 2 base learners for 3 partitions, giving 6 prediction features.</p>
 <p>By creating partitions, subsembles <a class="reference internal" href="../benchmarks/scaling.html#bench"><span class="std std-ref">scale significantly better</span></a>
 than the
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a>, but in contrast to <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a>,
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a>, but in contrast to <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a>,
 the full training data is leveraged during training. But randomly partitioning
 the data does however not exploit the full advantage of locality, since it is
 only by luck that we happen to create such partitions. A better way is to
@@ -605,7 +612,7 @@ can differ between layers.</p>
 <p>Very few limitation are imposed on the estimator: you can specify whether
 you want to fit it before generating partitions, whether to use
 labels in the partitioning, and what method to call to generate the
-partitions. See <a class="reference external" href="http://ml-ensemble.com/docs/mod_index.html#mlens.index.ClusteredSubsetIndex" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteredSubsetIndex</span></code></a> for the full documentation.
+partitions. See <a class="reference external" href="http://ml-ensemble.com/docs/mod_index.html#mlens.index.ClusteredSubsetIndex" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClusteredSubsetIndex</span></code></a> for the full documentation.
 This level of generality does impose some
 responsibility on the user. In particular, it is up to the user to ensure that
 sensible partitions are created. Problems to watch out for is too small
@@ -647,7 +654,7 @@ partitioning estimator to make the subset selection itself. For instance,
 we can use Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.pipeline.Pipeline</span></code></a>
 class to put a dimensionality reduction transformer before the partitioning
 estimator, such as a <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.decomposition.PCA</span></code></a>, or the
-<a class="reference external" href="http://ml-ensemble.com/docs/preprocessing.html#mlens.preprocessing.Subset" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.preprocessing.Subset</span></code></a> transformer to drop some features before
+<a class="reference external" href="http://ml-ensemble.com/docs/preprocessing.html#mlens.preprocessing.Subset" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.preprocessing.Subset</span></code></a> transformer to drop some features before
 estimation. We then use this pipeline as a our partition estimator and fit
 the subsemble on all features.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.preprocessing</span> <span class="kn">import</span> <span class="n">Subset</span>
@@ -738,7 +745,7 @@ used to beat the Scikit-learn <a class="reference internal" href="../benchmarks/
 <div class="section" id="general-multi-layer-ensemble-learning">
 <span id="sequential-tutorial"></span><h2>General multi-layer ensemble learning<a class="headerlink" href="#general-multi-layer-ensemble-learning" title="Permalink to this headline">¶</a></h2>
 <p>To alternate between the <em>type</em> of layer with each <code class="docutils literal notranslate"><span class="pre">add</span></code> call,
-the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> class can be used to specify what type of
+the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> class can be used to specify what type of
 layer (i.e. stacked, blended, subsamle-style) to add. This is particularly
 powerful if facing a large dataset, as the first layer can use a fast approach
 such as blending, while subsequent layers fitted on the remaining data can
@@ -761,7 +768,7 @@ use more computationally intensive approaches.</p>
 <span class="n">ensemble</span><span class="o">.</span><span class="n">add_meta</span><span class="p">(</span><span class="n">SVC</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>The below table maps the types of layers available in the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> with the corresponding ensemble.</p>
+<p>The below table maps the types of layers available in the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> with the corresponding ensemble.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="40%" />
@@ -789,9 +796,9 @@ use more computationally intensive approaches.</p>
 <span class="n">accuracy_score</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">75</span><span class="p">:])</span>
 </pre></div>
 </div>
-<p>In this case, the multi-layer <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> with an initial
+<p>In this case, the multi-layer <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> with an initial
 blended layer and second stacked layer achieves similar performance as the
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> with probabilistic learning. Note that we could have
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> with probabilistic learning. Note that we could have
 made any of the layers probabilistic by setting <code class="docutils literal notranslate"><span class="pre">Proba=True</span></code>.</p>
 </div>
 <div class="section" id="passing-file-paths-as-data-input">
@@ -933,13 +940,13 @@ meta learner.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Results:
               test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s                                                params
-class  rf            0.947         0.013          0.946          0.000       0.690       0.038        0.066        0.025                                      {&#39;max_depth&#39;: 5}
-class  svc           0.947         0.013          0.946          0.000       0.613       0.023        0.084        0.083                            {&#39;C&#39;: 0.20960225406117416}
-proba  rf            0.940         0.020          1.000          0.000       0.707       0.002        0.064        0.019  {&#39;max_depth&#39;: 5, &#39;max_features&#39;: 0.5104801127030587}
-proba  svc           0.960         0.000          0.973          0.000       0.535       0.024        0.066        0.024                              {&#39;C&#39;: 7.670701646824877}
+class  rf            0.947         0.013          0.946          0.000       0.901       0.058        0.076        0.022                                      {&#39;max_depth&#39;: 5}
+class  svc           0.947         0.013          0.946          0.000       0.595       0.115        0.001        0.000                            {&#39;C&#39;: 0.20960225406117416}
+proba  rf            0.933         0.027          1.000          0.000       0.644       0.121        0.029        0.027  {&#39;max_depth&#39;: 5, &#39;max_features&#39;: 0.5104801127030587}
+proba  svc           0.967         0.007          0.973          0.000       0.580       0.084        0.001        0.000                              {&#39;C&#39;: 7.670701646824877}
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  13.539 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  15.002 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-advanced-py">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/advanced.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">advanced.py</span></code></a></div>

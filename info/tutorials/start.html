@@ -164,7 +164,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sequential.html">Sequential Mechanics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Details</span></p>
@@ -373,7 +380,7 @@ but prints in a tabular format as is.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fit data:
                                    score-m  score-s  ft-m  ft-s  pt-m  pt-s
-layer-1  randomforestclassifier       0.84     0.06  0.04  0.00  0.00  0.00
+layer-1  randomforestclassifier       0.84     0.06  0.03  0.00  0.00  0.00
 layer-1  svc                          0.89     0.05  0.00  0.00  0.00  0.00
 </pre></div>
 </div>
@@ -413,7 +420,7 @@ instance, in the above example, we could add a second layer as follows.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Fit data:
                                    score-m  score-s  ft-m  ft-s  pt-m  pt-s
 layer-1  logisticregression           0.74     0.16  0.01  0.00  0.00  0.00
-layer-1  randomforestclassifier       0.84     0.06  0.02  0.01  0.00  0.00
+layer-1  randomforestclassifier       0.84     0.06  0.02  0.00  0.00  0.00
 layer-2  logisticregression           0.67     0.12  0.00  0.00  0.00  0.00
 layer-2  svc                          0.89     0.00  0.00  0.00  0.00  0.00
 </pre></div>
@@ -422,7 +429,7 @@ layer-2  svc                          0.89     0.00  0.00  0.00  0.00  0.00
 </div>
 <div class="section" id="model-selection-guide">
 <span id="id3"></span><h2>Model selection guide<a class="headerlink" href="#model-selection-guide" title="Permalink to this headline">¶</a></h2>
-<p>The work horse class is the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a>, which allows you to
+<p>The work horse class is the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a>, which allows you to
 grid search several models in one go across several preprocessing pipelines.
 The evaluator class pre-fits transformers, thus avoiding fitting the same
 preprocessing pipelines on the same data repeatedly. Also, by fitting all
@@ -436,7 +443,7 @@ features.</p>
 <div class="section" id="the-scoring-function">
 <h3>The scoring function<a class="headerlink" href="#the-scoring-function" title="Permalink to this headline">¶</a></h3>
 <p>An important note is that the scoring function must be wrapped by
-<a class="reference external" href="http://ml-ensemble.com/docs/metrics.html#mlens.metrics.make_scorer" title="(in mlens v0.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_scorer()</span></code></a>, to ensure all scoring functions behave similarly regardless
+<a class="reference external" href="http://ml-ensemble.com/docs/metrics.html#mlens.metrics.make_scorer" title="(in mlens v0.2.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">make_scorer()</span></code></a>, to ensure all scoring functions behave similarly regardless
 of whether they measure accuracy or errors. To wrap a function, simple do:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 <span class="n">accuracy_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -445,7 +452,7 @@ of whether they measure accuracy or errors. To wrap a function, simple do:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">make_scorer</span></code> wrapper
 is a copy of the Scikit-learn’s <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html#sklearn.metrics.make_scorer" title="(in scikit-learn v0.19.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.metrics.make_scorer()</span></code></a>, and you
 can import the Scikit-learn version as well.
-Note however that to pickle the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a>, you <strong>must</strong> import
+Note however that to pickle the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a>, you <strong>must</strong> import
 <code class="docutils literal notranslate"><span class="pre">make_scorer</span></code> from <code class="docutils literal notranslate"><span class="pre">mlens</span></code>.</p>
 </div>
 <div class="section" id="a-simple-evaluation">
@@ -454,7 +461,7 @@ Note however that to pickle the <a class="reference external" href="http://ml-en
 estimator. First, we need a list of estimator and a dictionary of parameter
 distributions that maps to each estimator. The estimators should be put in a
 list, either as is or as a named tuple (<code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">est)</span></code>). If you don’t name
-the estimator, the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a> will automatically name the model as the
+the estimator, the <a class="reference external" href="http://ml-ensemble.com/docs/model_selection.html#mlens.model_selection.Evaluator" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code></a> will automatically name the model as the
 class name in lower case. This name must be the key in the parameter
 dictionary.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.model_selection</span> <span class="kn">import</span> <span class="n">Evaluator</span>
@@ -495,8 +502,8 @@ training time.</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Score comparison with best params founds:
 
        test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-gnb           0.960         0.033          0.957          0.006       0.004       0.002        0.003        0.001
-knn           0.967         0.033          0.980          0.005       0.002       0.000        0.004        0.001  {&#39;n_neighbors&#39;: 15}
+gnb           0.960         0.033          0.957          0.006       0.006       0.001        0.003        0.002
+knn           0.967         0.033          0.980          0.005       0.002       0.000        0.003        0.000  {&#39;n_neighbors&#39;: 15}
 </pre></div>
 </div>
 </div>
@@ -557,12 +564,12 @@ Job           done | 00:00:00
 Comparison across preprocessing pipelines:
 
              test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-none  gnb           0.960         0.033          0.957          0.006       0.005       0.001        0.003        0.001
-none  knn           0.967         0.033          0.980          0.005       0.001       0.000        0.003        0.001  {&#39;n_neighbors&#39;: 15}
-sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.000
-sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.004        0.001   {&#39;n_neighbors&#39;: 8}
-sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.001
-sub   knn           0.800         0.126          0.837          0.015       0.001       0.001        0.003        0.001   {&#39;n_neighbors&#39;: 9}
+none  gnb           0.960         0.033          0.957          0.006       0.003       0.001        0.002        0.000
+none  knn           0.967         0.033          0.980          0.005       0.002       0.001        0.004        0.001  {&#39;n_neighbors&#39;: 15}
+sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.001
+sc    knn           0.960         0.044          0.965          0.003       0.002       0.001        0.003        0.001   {&#39;n_neighbors&#39;: 8}
+sub   gnb           0.780         0.133          0.791          0.020       0.003       0.000        0.002        0.001
+sub   knn           0.800         0.126          0.837          0.015       0.001       0.000        0.003        0.001   {&#39;n_neighbors&#39;: 9}
 </pre></div>
 </div>
 <p>You can also map different estimators to different preprocessing folds, and
@@ -592,11 +599,11 @@ Job           done | 00:00:00
 Comparison with different parameter dists:
 
              test_score-m  test_score-s  train_score-m  train_score-s  fit_time-m  fit_time-s  pred_time-m  pred_time-s               params
-none  knn           0.967         0.045          0.961          0.007       0.001       0.000        0.002        0.001   {&#39;n_neighbors&#39;: 3}
+none  knn           0.967         0.045          0.961          0.007       0.002       0.000        0.003        0.001   {&#39;n_neighbors&#39;: 3}
 sc    gnb           0.960         0.033          0.957          0.006       0.004       0.001        0.002        0.001
 sc    knn           0.940         0.055          0.963          0.006       0.001       0.000        0.004        0.001  {&#39;n_neighbors&#39;: 20}
-sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.000
-sub   knn           0.800         0.126          0.837          0.015       0.002       0.001        0.003        0.000   {&#39;n_neighbors&#39;: 9}
+sub   gnb           0.780         0.133          0.791          0.020       0.003       0.001        0.002        0.001
+sub   knn           0.800         0.126          0.837          0.015       0.001       0.000        0.003        0.001   {&#39;n_neighbors&#39;: 9}
 </pre></div>
 </div>
 </div>
@@ -686,7 +693,7 @@ x-axis. Note that <code class="docutils literal notranslate"><span class="pre">X
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_start_006.png" class="sphx-glr-single-img" src="../_images/sphx_glr_start_006.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  5.224 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  4.492 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-start-py">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/start.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">start.py</span></code></a></div>

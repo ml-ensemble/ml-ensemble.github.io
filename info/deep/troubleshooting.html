@@ -164,7 +164,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Details</span></p>
@@ -288,7 +295,7 @@ If experiencing problems, try:</p>
 <div><ol class="arabic simple">
 <li>ensure all estimators has <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> or <code class="docutils literal notranslate"><span class="pre">nthread</span></code> equal to <code class="docutils literal notranslate"><span class="pre">1</span></code>,</li>
 <li>try changing the <code class="docutils literal notranslate"><span class="pre">backend</span></code> to either <code class="docutils literal notranslate"><span class="pre">threading</span></code> or <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code>,</li>
-<li>if using <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code>, try varying the start method via <a class="reference external" href="http://ml-ensemble.com/docs/config.html#mlens.config.set_start_method" title="(in mlens v0.2.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_start_method()</span></code></a>.</li>
+<li>if using <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code>, try varying the start method via <a class="reference external" href="http://ml-ensemble.com/docs/config.html#mlens.config.set_start_method" title="(in mlens v0.2.2)"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_start_method()</span></code></a>.</li>
 </ol>
 </div></blockquote>
 <p>Changing the <code class="docutils literal notranslate"><span class="pre">start_method</span></code> from the default (<code class="docutils literal notranslate"><span class="pre">fork</span></code>) barrs the use of interactively defined

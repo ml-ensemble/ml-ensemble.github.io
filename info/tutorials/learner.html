@@ -164,7 +164,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sequential.html">Sequential Mechanics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Details</span></p>
@@ -338,7 +345,7 @@ indexing the training set for cross-validation, assigning output columns et.c.</
 </div>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Cached items:
-[(&#39;ols.0.0&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e14c50&gt;), (&#39;ols.0.1&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e14518&gt;), (&#39;ols.0.2&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x111dd3ca8&gt;)]
+[(&#39;ols.0.0&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b24bf8&gt;), (&#39;ols.0.1&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a518&gt;), (&#39;ols.0.2&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a570&gt;)]
 </pre></div>
 </div>
 <p>Fitting the learner puts three copies of the OLS estimator in the <code class="docutils literal notranslate"><span class="pre">path</span></code>:
@@ -666,12 +673,12 @@ sc.0.1                         done | 00:00:00
 sc.0.2                         done | 00:00:00
 sc.1.1                         done | 00:00:00
 sc.1.2                         done | 00:00:00
-sc.learner-0.0.0               done | 00:00:00
-sc.learner-0.1.0               done | 00:00:00
-sc.learner-0.0.1               done | 00:00:00
-sc.learner-0.0.2               done | 00:00:00
-sc.learner-0.1.1               done | 00:00:00
-sc.learner-0.1.2               done | 00:00:00
+sc.learner-1.0.0               done | 00:00:00
+sc.learner-1.1.0               done | 00:00:00
+sc.learner-1.0.1               done | 00:00:00
+sc.learner-1.0.2               done | 00:00:00
+sc.learner-1.1.1               done | 00:00:00
+sc.learner-1.1.2               done | 00:00:00
 </pre></div>
 </div>
 <p>Note that the cache now contains the transformers as well:</p>
@@ -682,18 +689,18 @@ sc.learner-0.1.2               done | 00:00:00
 </div>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Cache:
-sc.0.0              &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e14c50&gt;
-sc.1.0              &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e1ff10&gt;
-sc.0.1              &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e1ff68&gt;
-sc.0.2              &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e1fe60&gt;
-sc.1.1              &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e1ffc0&gt;
-sc.1.2              &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e1feb8&gt;
-sc.learner-0.0.0    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e1fdb0&gt;
-sc.learner-0.1.0    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e2c048&gt;
-sc.learner-0.0.1    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e2c0f8&gt;
-sc.learner-0.0.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e2c150&gt;
-sc.learner-0.1.1    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e2c1a8&gt;
-sc.learner-0.1.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e2c200&gt;
+sc.0.0              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a7d8&gt;
+sc.1.0              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a570&gt;
+sc.0.1              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a468&gt;
+sc.0.2              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a830&gt;
+sc.1.1              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a6d0&gt;
+sc.1.2              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a728&gt;
+sc.learner-1.0.0    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a410&gt;
+sc.learner-1.1.0    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a780&gt;
+sc.learner-1.0.1    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a8e0&gt;
+sc.learner-1.0.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a938&gt;
+sc.learner-1.1.1    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a990&gt;
+sc.learner-1.1.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a9e8&gt;
 </pre></div>
 </div>
 <p>And estimation data is collected on a partition basis:</p>
@@ -703,8 +710,8 @@ sc.learner-0.1.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x111e
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Data:
                     score-m  score-s  ft-m  ft-s  pt-m  pt-s
-sc  learner-0  0       2.19     0.92  0.00  0.00  0.00  0.00
-sc  learner-0  1       7.76     7.37  0.00  0.00  0.00  0.00
+sc  learner-1  0       2.19     0.92  0.00  0.00  0.00  0.00
+sc  learner-1  1       7.76     7.37  0.00  0.00  0.00  0.00
 </pre></div>
 </div>
 </div>
@@ -727,12 +734,12 @@ estimation with a single learner using multiple threads:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>sc.learner-0.0.0               done | 00:00:00
-sc.learner-0.1.0               done | 00:00:00
-sc.learner-0.0.1               done | 00:00:00
-sc.learner-0.1.1               done | 00:00:00
-sc.learner-0.0.2               done | 00:00:00
-sc.learner-0.1.2               done | 00:00:00
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>sc.learner-1.0.0               done | 00:00:00
+sc.learner-1.1.0               done | 00:00:00
+sc.learner-1.0.1               done | 00:00:00
+sc.learner-1.1.1               done | 00:00:00
+sc.learner-1.0.2               done | 00:00:00
+sc.learner-1.1.2               done | 00:00:00
 </pre></div>
 </div>
 <p>For a slightly more high-level API for parallel computation on a single
@@ -765,7 +772,7 @@ sc.1.0                         done | 00:00:00
 </div>
 <p>Next we handle several learners by grouping them in a layer in the
 <a class="reference internal" href="layer.html#layer-tutorial"><span class="std std-ref">layer mechanics tutorial</span></a>.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.193 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.192 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-learner-py">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/learner.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">learner.py</span></code></a></div>

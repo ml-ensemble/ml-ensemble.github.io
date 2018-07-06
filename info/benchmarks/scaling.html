@@ -164,7 +164,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/parallel.html">Parallel Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tutorials/parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/sequential.html">Sequential Mechanics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Details</span></p>
@@ -275,8 +282,8 @@ against running them on multiple processes.</p>
 predictive power as data scales.</p>
 <div class="section" id="single-process-vs-multi-process">
 <span id="cpu"></span><h2>Single process vs multi-process<a class="headerlink" href="#single-process-vs-multi-process" title="Permalink to this headline">¶</a></h2>
-<p>We compare the time to fit the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a> and the
-<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> when run on a single process and when run on four
+<p>We compare the time to fit the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a> and the
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> when run on a single process and when run on four
 processes. The ensembles have four SVR base estimators and an SVR as final
 meta learner. Hence, while the single-processed ensembles need to fit 5
 SVR models consecutively, the multiprocessed ensembles need only the time

@@ -164,7 +164,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel Mechanics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel Mechanics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#parallelprocessing-api">ParallelProcessing API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-initialization-and-processing">Manual initialization and processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="sequential.html">Sequential Mechanics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Details</span></p>
@@ -280,11 +287,218 @@ computations is constructed in as modular a fashion as possible.</p>
 <p>The low-level API introduces a computational graph-like environment that you can
 directly exploit to gain further control over your ensemble. In fact, building
 your ensemble through the low-level API is almost as straight forward as using the
-high-level API. In this tutorial, we will walk through the key core <code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code> class.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">ParallelProcessing</span>
+high-level API. In this tutorial, we will walk through the core
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelProcessing</span></code> class.</p>
+<p>The purpose of the <code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelProcessing</span></code> class is to provide a streamlined
+interface for scheduling and allocating jobs in a nested sequence of tasks. The
+typical case is a sequence of <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> instances where the output of one layer
+becomes the input to the next. While the layers must therefore be fitted sequentially,
+each layer should be fitted in parallel. We might be interested in propagating some of the
+features from one layer to the next, in which case we need to take care of the array allocation.</p>
+<div class="section" id="parallelprocessing-api">
+<h2>ParallelProcessing API<a class="headerlink" href="#parallelprocessing-api" title="Permalink to this headline">¶</a></h2>
+<p>Basic map
+¨¨¨¨¨¨¨¨¨</p>
+<p>In the simplest case, we have a <code class="docutils literal notranslate"><span class="pre">caller`</span> <span class="pre">that</span> <span class="pre">has</span> <span class="pre">a</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">``task``s</span> <span class="pre">that</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span>
+<span class="pre">evaluated</span> <span class="pre">in</span> <span class="pre">parallel.</span> <span class="pre">For</span> <span class="pre">instance,</span> <span class="pre">the</span> <span class="pre">``caller</span></code> might be a <code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code>, with
+each task being a fit job for a given cross-validation fold. In this simple case,
+we want to perform an embarrassingly parallel for-loop of each fold, which we can
+achieve with the <code class="docutils literal notranslate"><span class="pre">map</span></code> method of the <code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelProcessing</span></code> class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">ParallelProcessing</span><span class="p">,</span> <span class="n">Job</span><span class="p">,</span> <span class="n">Learner</span>
+<span class="kn">from</span> <span class="nn">mlens.index</span> <span class="kn">import</span> <span class="n">FoldIndex</span>
+<span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="kn">import</span> <span class="n">OLS</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">indexer</span> <span class="o">=</span> <span class="n">FoldIndex</span><span class="p">(</span><span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">OLS</span><span class="p">(),</span>
+                  <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">)</span>
+
+<span class="n">manager</span> <span class="o">=</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">learner</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.000 seconds)</p>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.3665536 ]
+ [0.36335272]
+ [0.3601518 ]
+ [0.3569509 ]
+ [0.35375   ]
+ [0.48689735]
+ [0.52471155]
+ [0.56252575]
+ [0.60033995]
+ [0.63815415]]
+</pre></div>
+</div>
+<div class="section" id="stacking-a-set-of-parallel-jobs">
+<h3>Stacking a set of parallel jobs<a class="headerlink" href="#stacking-a-set-of-parallel-jobs" title="Permalink to this headline">¶</a></h3>
+<p>Suppose instead that we have a sequence of learners, where we want to fit
+each on the errors of the previous learner. We can achieve this by using
+<code class="docutils literal notranslate"><span class="pre">stack</span></code> method and a preprocessing pipeline for computing the errors.
+First, we need to construct a preprocessing class to transform the input,
+which will be the preceding learner’s predictions, into errors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mlens.parallel</span> <span class="kn">import</span> <span class="n">Transformer</span><span class="p">,</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">mlens.utils.dummy</span> <span class="kn">import</span> <span class="n">Scale</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span>
+
+
+<span class="k">def</span> <span class="nf">error_scorer</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Transformer that computes the errors of a base learners&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scorer</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span> <span class="o">=</span> <span class="n">scorer</span>
+
+    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">scorer</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Now, we construct a sequence of tasks to compute, where the output of one
+task will be the input to the next. Hence, we want a sequence of the form
+<code class="docutils literal notranslate"><span class="pre">[learner,</span> <span class="pre">transformer,</span> <span class="pre">learner,</span> <span class="pre">...,</span> <span class="pre">transformer,</span> <span class="pre">learner]</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;err&#39;</span><span class="p">,</span> <span class="n">Error</span><span class="p">(</span><span class="n">error_scorer</span><span class="p">))],</span> <span class="n">return_y</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">transformer</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span>
+            <span class="n">estimator</span><span class="o">=</span><span class="n">pipeline</span><span class="p">,</span>
+            <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sc-</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">transformer</span><span class="p">)</span>
+
+    <span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span>
+        <span class="n">estimator</span><span class="o">=</span><span class="n">OLS</span><span class="p">(),</span>
+        <span class="n">preprocess</span><span class="o">=</span><span class="s1">&#39;sc-</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;ols-</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">learner</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To fit the stack, we call the <code class="docutils literal notranslate"><span class="pre">stack</span></code> method on the <code class="docutils literal notranslate"><span class="pre">manager</span></code>, and since
+each learner must have access to their transformer, we set <code class="docutils literal notranslate"><span class="pre">split=False</span></code>
+(otherwise each task will have a separate sub-cache, sealing them off
+from each other).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+    <span class="n">tasks</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.22054635]
+ [0.22811265]
+ [0.235679  ]
+ [0.24324532]
+ [0.25081167]
+ [0.27373537]
+ [0.23783192]
+ [0.20192847]
+ [0.16602501]
+ [0.09709236]]
+</pre></div>
+</div>
+<p>If we instead want to append these errors as features, we can simply
+alter our transformer to concatenate the errors to the original data.
+Alternatively, we can automate the process by instead using the
+<a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.Sequential" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.ensemble.Sequential</span></code></a>  API.</p>
+</div>
+<div class="section" id="manual-initialization-and-processing">
+<h3>Manual initialization and processing<a class="headerlink" href="#manual-initialization-and-processing" title="Permalink to this headline">¶</a></h3>
+<p>Under the hood, both <code class="docutils literal notranslate"><span class="pre">map</span></code> and <code class="docutils literal notranslate"><span class="pre">stack</span></code> first call <code class="docutils literal notranslate"><span class="pre">initialize</span></code> on the
+<code class="docutils literal notranslate"><span class="pre">manager</span></code>, followed by a call to <code class="docutils literal notranslate"><span class="pre">process</span></code> with some default arguments.
+For maximum control, we can manually do the initialization and processing step.
+When we initialize, an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code> is created that collect arguments
+relevant for of the job as well as handles for data to be used. For instance,
+we can specify that we want the predictions of all layers, as opposed to just the
+final layer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+    <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ols-1&#39;</span><span class="p">,</span> <span class="s1">&#39;ols-2&#39;</span><span class="p">],</span> <span class="n">stack</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">initialize</span></code> method primarily allocates memory of input data and
+puts it on the <code class="docutils literal notranslate"><span class="pre">job</span></code> instance. Not that if the input is a string pointing
+to data on disk, <code class="docutils literal notranslate"><span class="pre">initialize</span></code> will attempt to load the data into memory.
+If the backend of the manger is <code class="docutils literal notranslate"><span class="pre">threading</span></code>, keeping the data on the parent
+process is sufficient for workers to reach it. With <code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> as
+the backend, data will be memory-mapped to avoid serialization.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">initialize</span></code> method returns an <code class="docutils literal notranslate"><span class="pre">out</span></code> dictionary that specified
+what type of output we want when running the manager on the assigned job.
+To run the manager, we call <code class="docutils literal notranslate"><span class="pre">process</span></code> with out <code class="docutils literal notranslate"><span class="pre">out</span></code> pointer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">tasks</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[array([[0.3665536 ],
+       [0.36335272],
+       [0.3601518 ],
+       [0.3569509 ],
+       [0.35375   ],
+       [0.48689735],
+       [0.52471155],
+       [0.56252575],
+       [0.60033995],
+       [0.63815415]], dtype=float32), array([[2.4673765],
+       [2.3550305],
+       [2.2426836],
+       [2.1303375],
+       [2.0179906],
+       [1.1829019],
+       [1.2895712],
+       [1.3962405],
+       [1.5029098],
+       [1.707709 ]], dtype=float32)]
+</pre></div>
+</div>
+<p>The output now is a list of arrays, the last of which is the same predicitons
+as we got when using <code class="docutils literal notranslate"><span class="pre">stack</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Memory management</span>
+<span class="c1"># -----------------</span>
+<span class="c1">#</span>
+<span class="c1"># When running the manager, it will read and write to memory buffers. This is</span>
+<span class="c1"># less of a concern when the ``threading`` backend is used, as data is kept</span>
+<span class="c1"># in the parent process. But when data is loaded from file path, or when</span>
+<span class="c1"># ``multiprocessing`` is used, we want to clean up after us. Thus, when we</span>
+<span class="c1"># are through with the ``manager``, it is important to call the ``clear``</span>
+<span class="c1"># method. This will however destroy any ephemeral data stored on the instance.</span>
+
+<span class="n">manager</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>..warning:: The <code class="docutils literal notranslate"><span class="pre">clear</span></code> method will remove any files in the specified path.
+If the path specified in the <code class="docutils literal notranslate"><span class="pre">initialize</span></code> call includes files other than
+those generated in the <code class="docutils literal notranslate"><span class="pre">process</span></code> call, these will ALSO be removed.
+ALWAYS use a clean temporary cache for processing jobs.</p>
+<p>To minimize the risk of forgetting this last step, the <code class="xref py py-class docutils literal notranslate"><span class="pre">ParallelProcessing</span></code>
+class can be used as context manager, automatically cleaning up the cache
+when exiting the context:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">learner</span> <span class="o">=</span> <span class="n">Learner</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">OLS</span><span class="p">(),</span> <span class="n">indexer</span><span class="o">=</span><span class="n">indexer</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">ParallelProcessing</span><span class="p">()</span> <span class="k">as</span> <span class="n">mananger</span><span class="p">:</span>
+    <span class="n">manager</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">learner</span><span class="p">,</span> <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">learner</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.728 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-parallel-py">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/parallel.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">parallel.py</span></code></a></div>
@@ -292,6 +506,8 @@ high-level API. In this tutorial, we will walk through the key core <code class=
 <a class="reference download internal" href="../_downloads/parallel.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">parallel.ipynb</span></code></a></div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
 </div>
 
 

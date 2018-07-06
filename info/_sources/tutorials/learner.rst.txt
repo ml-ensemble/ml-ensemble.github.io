@@ -112,7 +112,7 @@ indexing the training set for cross-validation, assigning output columns et.c.
  .. code-block:: none
 
     Cached items:
-    [('ols.0.0', <mlens.parallel.learner.IndexedEstimator object at 0x111e14c50>), ('ols.0.1', <mlens.parallel.learner.IndexedEstimator object at 0x111e14518>), ('ols.0.2', <mlens.parallel.learner.IndexedEstimator object at 0x111dd3ca8>)]
+    [('ols.0.0', <mlens.parallel.learner.IndexedEstimator object at 0x115b24bf8>), ('ols.0.1', <mlens.parallel.learner.IndexedEstimator object at 0x115b4a518>), ('ols.0.2', <mlens.parallel.learner.IndexedEstimator object at 0x115b4a570>)]
 
 
 Fitting the learner puts three copies of the OLS estimator in the ``path``:
@@ -566,12 +566,12 @@ boiler-plate code. Note that the transformer is called as an
     sc.0.2                         done | 00:00:00
     sc.1.1                         done | 00:00:00
     sc.1.2                         done | 00:00:00
-    sc.learner-0.0.0               done | 00:00:00
-    sc.learner-0.1.0               done | 00:00:00
-    sc.learner-0.0.1               done | 00:00:00
-    sc.learner-0.0.2               done | 00:00:00
-    sc.learner-0.1.1               done | 00:00:00
-    sc.learner-0.1.2               done | 00:00:00
+    sc.learner-1.0.0               done | 00:00:00
+    sc.learner-1.1.0               done | 00:00:00
+    sc.learner-1.0.1               done | 00:00:00
+    sc.learner-1.0.2               done | 00:00:00
+    sc.learner-1.1.1               done | 00:00:00
+    sc.learner-1.1.2               done | 00:00:00
 
 
 Note that the cache now contains the transformers as well:
@@ -596,18 +596,18 @@ Note that the cache now contains the transformers as well:
  .. code-block:: none
 
     Cache:
-    sc.0.0              <mlens.parallel.learner.IndexedEstimator object at 0x111e14c50>
-    sc.1.0              <mlens.parallel.learner.IndexedEstimator object at 0x111e1ff10>
-    sc.0.1              <mlens.parallel.learner.IndexedEstimator object at 0x111e1ff68>
-    sc.0.2              <mlens.parallel.learner.IndexedEstimator object at 0x111e1fe60>
-    sc.1.1              <mlens.parallel.learner.IndexedEstimator object at 0x111e1ffc0>
-    sc.1.2              <mlens.parallel.learner.IndexedEstimator object at 0x111e1feb8>
-    sc.learner-0.0.0    <mlens.parallel.learner.IndexedEstimator object at 0x111e1fdb0>
-    sc.learner-0.1.0    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c048>
-    sc.learner-0.0.1    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c0f8>
-    sc.learner-0.0.2    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c150>
-    sc.learner-0.1.1    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c1a8>
-    sc.learner-0.1.2    <mlens.parallel.learner.IndexedEstimator object at 0x111e2c200>
+    sc.0.0              <mlens.parallel.learner.IndexedEstimator object at 0x115b4a7d8>
+    sc.1.0              <mlens.parallel.learner.IndexedEstimator object at 0x115b4a570>
+    sc.0.1              <mlens.parallel.learner.IndexedEstimator object at 0x115b4a468>
+    sc.0.2              <mlens.parallel.learner.IndexedEstimator object at 0x115b4a830>
+    sc.1.1              <mlens.parallel.learner.IndexedEstimator object at 0x115b4a6d0>
+    sc.1.2              <mlens.parallel.learner.IndexedEstimator object at 0x115b4a728>
+    sc.learner-1.0.0    <mlens.parallel.learner.IndexedEstimator object at 0x115b4a410>
+    sc.learner-1.1.0    <mlens.parallel.learner.IndexedEstimator object at 0x115b4a780>
+    sc.learner-1.0.1    <mlens.parallel.learner.IndexedEstimator object at 0x115b4a8e0>
+    sc.learner-1.0.2    <mlens.parallel.learner.IndexedEstimator object at 0x115b4a938>
+    sc.learner-1.1.1    <mlens.parallel.learner.IndexedEstimator object at 0x115b4a990>
+    sc.learner-1.1.2    <mlens.parallel.learner.IndexedEstimator object at 0x115b4a9e8>
 
 
 And estimation data is collected on a partition basis:
@@ -631,8 +631,8 @@ And estimation data is collected on a partition basis:
 
     Data:
                         score-m  score-s  ft-m  ft-s  pt-m  pt-s
-    sc  learner-0  0       2.19     0.92  0.00  0.00  0.00  0.00
-    sc  learner-0  1       7.76     7.37  0.00  0.00  0.00  0.00
+    sc  learner-1  0       2.19     0.92  0.00  0.00  0.00  0.00
+    sc  learner-1  1       7.76     7.37  0.00  0.00  0.00  0.00
 
 
 Parallel estimation
@@ -669,12 +669,12 @@ estimation with a single learner using multiple threads:
 
  .. code-block:: none
 
-    sc.learner-0.0.0               done | 00:00:00
-    sc.learner-0.1.0               done | 00:00:00
-    sc.learner-0.0.1               done | 00:00:00
-    sc.learner-0.1.1               done | 00:00:00
-    sc.learner-0.0.2               done | 00:00:00
-    sc.learner-0.1.2               done | 00:00:00
+    sc.learner-1.0.0               done | 00:00:00
+    sc.learner-1.1.0               done | 00:00:00
+    sc.learner-1.0.1               done | 00:00:00
+    sc.learner-1.1.1               done | 00:00:00
+    sc.learner-1.0.2               done | 00:00:00
+    sc.learner-1.1.2               done | 00:00:00
 
 
 For a slightly more high-level API for parallel computation on a single
@@ -724,7 +724,7 @@ Next we handle several learners by grouping them in a layer in the
 :ref:`layer mechanics tutorial <layer_tutorial>`.
 
 
-**Total running time of the script:** ( 0 minutes  0.193 seconds)
+**Total running time of the script:** ( 0 minutes  0.192 seconds)
 
 
 .. _sphx_glr_download_tutorials_learner.py:
