@@ -33,7 +33,7 @@ ParallelProcessing API
 Basic map
 ¨¨¨¨¨¨¨¨¨
 
-In the simplest case, we have a ``caller` that has a set of ``task``s that needs to be
+In the simplest case, we have a ``caller`` that has a set of ``task``s that needs to be
 evaluated in parallel. For instance, the ``caller`` might be a :class:`Learner`, with
 each task being a fit job for a given cross-validation fold. In this simple case,
 we want to perform an embarrassingly parallel for-loop of each fold, which we can
@@ -98,7 +98,7 @@ class Error(BaseEstimator, TransformerMixin):
 ############################################################################
 # Now, we construct a sequence of tasks to compute, where the output of one
 # task will be the input to the next. Hence, we want a sequence of the form
-# ``[learner, transformer, learner, ..., transformer, learner]``:
+# ``[learner, transformer, ..., learner]``:
 
 tasks = []
 for i in range(3):
@@ -151,7 +151,7 @@ print(out)
 # final layer:
 
 out = manager.initialize(
-    'fit', X, y, None, return_preds=['ols-1', 'ols-2'], stack=True, split=False)
+    'fit', X, y, None, return_preds=['ols-1', 'ols-3'], stack=True, split=False)
 
 ############################################################################
 # The ``initialize`` method primarily allocates memory of input data and
@@ -170,12 +170,13 @@ out = manager.process(tasks, out)
 print(out)
 
 ############################################################################
-# The output now is a list of arrays, the last of which is the same predicitons
-# as we got when using ``stack``.
+# The output now is a list of arrays, the first contains the same predictions
+# as we got in the ``map`` call, the last is the equivalent to the predicitons
+# we got in the ``stack`` call. Note that this functionality is available
+# also in the ``stack`` and ``map`` calls.
 
 ############################################################################
 #
-
 # Memory management
 # -----------------
 #

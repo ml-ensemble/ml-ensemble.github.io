@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.index.fold &mdash; mlens 0.2.2 documentation</title>
+  <title>mlens.index.fold &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,21 +24,34 @@
 
   
 
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -55,7 +68,7 @@
 
           
             
-            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+            <img src="../../../_static/logo.png" class="logo" />
           
           </a>
 
@@ -63,7 +76,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -135,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#temporalensemble"><span class="hidden-section">TemporalEnsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
@@ -257,7 +271,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">mlens</a>
@@ -265,10 +279,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -297,6 +310,8 @@
     
     
       <li class="wy-breadcrumbs-aside">
+        
+            
         
       </li>
     
@@ -354,6 +369,23 @@
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
 <span class="sd">    :class:`BlendIndex`, :class:`SubsetIndex`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    folds : int (default = 2)</span>
+<span class="sd">        Number of splits to create in each partition. ``folds`` can</span>
+<span class="sd">        not be 1 if ``n_partition &gt; 1``. Note that if ``folds = 1``,</span>
+<span class="sd">        both the train and test set will index the full data.</span>
+
+<span class="sd">    X : array-like of shape [n_samples,] , optional</span>
+<span class="sd">        the training set to partition. The training label array is also,</span>
+<span class="sd">        accepted, as only the first dimension is used. If ``X`` is not</span>
+<span class="sd">        passed at instantiation, the ``fit`` method must be called before</span>
+<span class="sd">        ``generate``, or ``X`` must be passed as an argument of</span>
+<span class="sd">        ``generate``.</span>
+
+<span class="sd">    raise_on_exception : bool (default = True)</span>
+<span class="sd">        whether to warn on suspicious slices or raise an error.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -450,7 +482,9 @@
 </pre></div>
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -463,7 +497,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -481,8 +515,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -496,13 +529,19 @@
 
   
 
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

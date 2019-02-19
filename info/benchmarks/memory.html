@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Memory consumption &mdash; mlens 0.2.2 documentation</title>
+  <title>Memory consumption &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Performance benchmarks" href="benchmarks.html" />
-    <link rel="prev" title="Sequential Mechanics" href="../tutorials/sequential.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="../index.html"/>
+        <link rel="next" title="Performance benchmarks" href="benchmarks.html"/>
+        <link rel="prev" title="Sequential Mechanics" href="../tutorials/sequential.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <img src="../_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -138,6 +150,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#temporal-ensemble">Temporal Ensemble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
 </ul>
 </li>
@@ -168,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#memory-management">Memory management</a></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +235,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -229,10 +243,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -434,9 +447,9 @@ data in memory. See the <a class="reference internal" href="../tutorials/advance
 <p>Finally, we consider how a <code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code> compares in terms of memory
 consumption against a set of Scikit-learn estimators. This benchmark
 relies on the <a class="reference external" href="https://pypi.python.org/pypi/memory_profiler">mprof</a> package, which can be installed with <code class="docutils literal notranslate"><span class="pre">pip</span></code>. The
-benchmark compares the <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model.Lasso</span></code></a>,
-<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> and the
-<a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="(in scikit-learn v0.19.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.neighbors.KNeighborsRegressor</span></code></a> against an ensemble that
+benchmark compares the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Lasso.html#sklearn.linear_model.Lasso" title="(in scikit-learn v0.20.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model.Lasso</span></code></a>,
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.ElasticNet.html#sklearn.linear_model.ElasticNet" title="(in scikit-learn v0.20.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.linear_model.ElasticNet</span></code></a> and the
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" title="(in scikit-learn v0.20.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">sklearn.neighbors.KNeighborsRegressor</span></code></a> against an ensemble that
 uses the former two as the first layer and the latter as a final meta
 estimator.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mprof</span> <span class="n">run</span> <span class="n">friedman_memory</span><span class="o">.</span><span class="n">py</span>
@@ -505,7 +518,9 @@ satisfy its particular requirements.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -518,7 +533,7 @@ satisfy its particular requirements.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -536,8 +551,7 @@ satisfy its particular requirements.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -551,13 +565,19 @@ satisfy its particular requirements.</p>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

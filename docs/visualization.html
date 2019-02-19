@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.visualization &mdash; mlens 0.2.2 documentation</title>
+  <title>mlens.visualization &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,22 +24,34 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="mlens.metrics" href="metrics.html" /> 
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="index.html"/>
+        <link rel="prev" title="mlens.metrics" href="metrics.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -56,7 +68,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" />
           
           </a>
 
@@ -64,7 +76,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -136,6 +148,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#temporalensemble"><span class="hidden-section">TemporalEnsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
@@ -258,7 +271,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -266,10 +279,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -346,7 +358,7 @@ otherwise.</li>
 <li><strong>linewidths</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a>) – with of line separating each coordinate square.</li>
 <li><strong>cbar_kws</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> (</em><em>default = 'default'</em><em>)</em>) – Optional arguments to color bar. The default options, ‘default’,
 passes the <code class="docutils literal notranslate"><span class="pre">shrink</span></code> parameter to fit colorbar standard figure frame.</li>
-<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
 <li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – figure title if shown.</li>
 <li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – title font size.</li>
 <li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
@@ -393,7 +405,7 @@ otherwise.</li>
 <li><strong>cbar_kws</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)"><em>dict</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> (</em><em>default = 'default'</em><em>)</em>) – Optional arguments to color bar.</li>
 <li><strong>title_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – Figure title.</li>
 <li><strong>title_fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – size of title.</li>
-<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
 <li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
 <li><strong>**kwargs</strong> (<em>optional</em>) – Other optional arguments to sns heatmap.</li>
 </ul>
@@ -428,7 +440,7 @@ otherwise.</li>
 <li><strong>fontsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – font size of subplot titles.</li>
 <li><strong>no_ticks</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – whether to remove ticklabels from full correlation plot.</li>
 <li><strong>label_rotation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.7)"><em>float</em></a><em> (</em><em>default = 0</em><em>)</em>) – rotation of labels</li>
-<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
 </ul>
 </td>
 </tr>
@@ -457,13 +469,13 @@ otherwise.</li>
 <li><strong>X</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>n_features</em><em>]</em>) – matrix to perform PCA analysis on.</li>
 <li><strong>estimator</strong> (<em>instance</em>) – PCA estimator. Assumes a Scikit-learn API.</li>
 <li><strong>y</strong> (<em>array-like of shape =</em><em> [</em><em>n_samples</em><em>, </em><em>] or </em><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.7)"><em>None</em></a><em> (</em><em>default = None</em><em>)</em>) – training labels to be used for color highlighting.</li>
-<li><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em>, </em><em>optional</em>) – cmap object to pass to <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.scatter</span></code></a>.</li>
+<li><strong>cmap</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em>, </em><em>optional</em>) – cmap object to pass to <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.scatter</span></code></a>.</li>
 <li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
 <li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – figure title if shown.</li>
 <li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – title font size.</li>
-<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
 <li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
-<li><strong>**kwargs</strong> (<em>optional</em>) – arguments to pass to <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.scatter</span></code></a>.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – arguments to pass to <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.scatter</span></code></a>.</li>
 </ul>
 </td>
 </tr>
@@ -496,7 +508,7 @@ linear and rbf kernels.</p>
 <li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.7)"><em>tuple</em></a><em> (</em><em>default =</em><em> (</em><em>10</em><em>, </em><em>8</em><em>)</em><em>)</em>) – Size of figure.</li>
 <li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – figure title if shown.</li>
 <li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – title font size.</li>
-<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
 <li><strong>**kwargs</strong> (<em>optional</em>) – optional arguments to pass to <a class="reference internal" href="#mlens.visualization.pca_plot" title="mlens.visualization.pca_plot"><code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.visualization.pca_plot</span></code></a>.</li>
 </ul>
 </td>
@@ -536,9 +548,9 @@ where <code class="docutils literal notranslate"><span class="pre">num_component
 <li><strong>set_labels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – whether to set axis labels.</li>
 <li><strong>title</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – figure title if shown.</li>
 <li><strong>title_font_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – title font size.</li>
-<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
+<li><strong>show</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to print figure using <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a>.</li>
 <li><strong>ax</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em>, </em><em>optional</em>) – axis to attach plot to.</li>
-<li><strong>**kwargs</strong> (<em>optional</em>) – optional arguments passed to the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.step.html#matplotlib.pyplot.step" title="(in Matplotlib v2.2.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.step</span></code></a>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional arguments passed to the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.step.html#matplotlib.pyplot.step" title="(in Matplotlib v3.0.2)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matplotlib.pyplot.step</span></code></a>
 function.</li>
 </ul>
 </td>
@@ -558,7 +570,9 @@ function.</li>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -571,7 +585,7 @@ function.</li>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -589,8 +603,7 @@ function.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -604,13 +617,19 @@ function.</li>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

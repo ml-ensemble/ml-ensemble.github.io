@@ -30,7 +30,7 @@ The Layer API
 ^^^^^^^^^^^^^
 
 To parallelize the implementation, we can use the :class:`Layer` class. A layer is
-a handle that will run any number of :class:`Group`s attached to it in parallel. Each
+a handle that will run any number of :class:`Group` instances attached to it in parallel. Each
 group in turn is a wrapper around a ``indexer-transformers-estimators`` triplet.
 
 Basics

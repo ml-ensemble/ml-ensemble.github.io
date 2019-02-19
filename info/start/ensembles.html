@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ready-made ensemble classes &mdash; mlens 0.2.2 documentation</title>
+  <title>Ready-made ensemble classes &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview" href="../overview.html" />
-    <link rel="prev" title="Advanced features tutorial" href="../tutorials/advanced.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="../index.html"/>
+        <link rel="next" title="Overview" href="../overview.html"/>
+        <link rel="prev" title="Advanced features tutorial" href="../tutorials/advanced.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <img src="../_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -138,6 +150,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#temporal-ensemble">Temporal Ensemble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#sequential-ensemble">Sequential Ensemble</a></li>
 </ul>
 </li>
@@ -168,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../tutorials/parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorials/parallel.html#memory-management">Memory management</a></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +235,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -229,10 +243,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -282,6 +295,7 @@
 <li><a class="reference internal" href="#super-learner"><span class="std std-ref">Super Learner</span></a> (stacking)</li>
 <li><a class="reference internal" href="#subsemble"><span class="std std-ref">Subsemble</span></a></li>
 <li><a class="reference internal" href="#blend-ensemble"><span class="std std-ref">Blend Ensemble</span></a></li>
+<li><a class="reference internal" href="#temporal-ensemble"><span class="std std-ref">Temporal Ensemble</span></a></li>
 <li><a class="reference internal" href="#sequential-ensemble"><span class="std std-ref">Sequential Ensemble</span></a></li>
 </ul>
 </div></blockquote>
@@ -290,7 +304,7 @@ output class probabilities if desired. The <a class="reference external" href="h
 is a generic ensemble class that allows the user to mix types between layers,
 for instance by setting the first layer to a Subsemble and the second layer
 to a Super Learner. Here, we will briefly introduce ensemble specific
-parameters and usage. For full documentation, see the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/api.html#api" title="(in pandas v0.23.2)"><span>API Reference</span></a> section.
+parameters and usage. For full documentation, see the <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/reference/index.html#api" title="(in pandas v0.24.1)"><span>API Reference</span></a> section.
 However, by accessing the low-level API it is possible
 to build virtually any type of ensemble. Further ready-made classes will be
 introduced on demand. Feel free to raise a feature issue at <a class="reference external" href="https://github.com/flennerhag/mlens/issues">Github</a>.</p>
@@ -464,14 +478,51 @@ data data is not uniformly distributed or exhibits high variance the
 <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.BlendEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a> can be a poor choice as information is lost at
 each stage of fitting.</p>
 </div>
+<div class="section" id="temporal-ensemble">
+<span id="id12"></span><h2>Temporal Ensemble<a class="headerlink" href="#temporal-ensemble" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">TemporalEnsemble</span></code> class is similar to the <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SuperLearner" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a>, but
+differs in that it uses a time series cross-validation
+strategy to create training and test folds that preserve temporal
+ordering in the data. The cross validation strategy is unrolled
+through time. For instance:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="55%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">fold</th>
+<th class="head">train obs</th>
+<th class="head">test obs</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>0, 1, 2, 3</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>0, 1, 2, 3, 4</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>0, 1, 2, 3, 4, 5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Different estimators in the ensemble can operate on different time scales,
+allow efficient combinations of different temporal patterns in one model.</p>
+</div>
 <div class="section" id="sequential-ensemble">
-<span id="id12"></span><h2>Sequential Ensemble<a class="headerlink" href="#sequential-ensemble" title="Permalink to this headline">¶</a></h2>
+<span id="id13"></span><h2>Sequential Ensemble<a class="headerlink" href="#sequential-ensemble" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="http://ml-ensemble.com/docs/ensemble.html#mlens.ensemble.SequentialEnsemble" title="(in mlens v0.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a> allows users to build ensembles with
 different classes of layers. Instead of setting parameters upfront during
 instantiation, the user specified parameters for each layer when calling
 <code class="docutils literal notranslate"><span class="pre">add</span></code>. The user must thus specify what type of layer is being added
-(blend, super learner, subsemble), estimators, preprocessing if applicable, and
-any layer-specific parameters. The Sequential ensemble is best illustrated
+(blend, super learner, subsemble, temporal), estimators, preprocessing if applicable,
+and any layer-specific parameters. The Sequential ensemble is best illustrated
 through an example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="k">import</span> <span class="n">SequentialEnsemble</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.metrics.metrics</span> <span class="k">import</span> <span class="n">rmse</span>
@@ -528,7 +579,9 @@ through an example:</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -541,7 +594,7 @@ through an example:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -559,8 +612,7 @@ through an example:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -574,13 +626,19 @@ through an example:</p>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.ensemble &mdash; mlens 0.2.2 documentation</title>
+  <title>mlens.ensemble &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="mlens.estimators" href="estimators.html" />
-    <link rel="prev" title="mlens.config" href="config.html" /> 
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="index.html"/>
+        <link rel="next" title="mlens.estimators" href="estimators.html"/>
+        <link rel="prev" title="mlens.config" href="config.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -137,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#subsemble"><span class="hidden-section">Subsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temporalensemble"><span class="hidden-section">TemporalEnsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
@@ -259,7 +272,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -267,10 +280,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -1647,6 +1659,251 @@ predictions.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="temporalensemble">
+<h3><span class="hidden-section">TemporalEnsemble</span><a class="headerlink" href="#temporalensemble" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="mlens.ensemble.TemporalEnsemble">
+<em class="property">class </em><code class="descclassname">mlens.ensemble.</code><code class="descname">TemporalEnsemble</code><span class="sig-paren">(</span><em>step_size=1</em>, <em>burn_in=None</em>, <em>window=None</em>, <em>lag=0</em>, <em>scorer=None</em>, <em>raise_on_exception=True</em>, <em>array_check=None</em>, <em>verbose=False</em>, <em>n_jobs=-1</em>, <em>backend='threading'</em>, <em>model_selection=False</em>, <em>sample_size=20</em>, <em>layers=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/ensemble/temporal.html#TemporalEnsemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.TemporalEnsemble" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.ensemble.base.BaseEnsemble</span></code></p>
+<p>Temporal ensemble class.</p>
+<p>The temporal ensemble class uses a time series cross-validation
+strategy to create training and test folds that preserve temporal
+ordering in the data. The cross validation strategy is unrolled
+through time. For instance:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="55%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">fold</th>
+<th class="head">train obs</th>
+<th class="head">test obs</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>0, 1, 2, 3</td>
+<td>4</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>0, 1, 2, 3, 4</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>0, 1, 2, 3, 4, 5</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>Different estimators in the ensemble can operate on different time scales,
+allow efficient combinations of different temporal patterns in one model.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#mlens.ensemble.SuperLearner" title="mlens.ensemble.SuperLearner"><code class="xref py py-class docutils literal notranslate"><span class="pre">SuperLearner</span></code></a>, <a class="reference internal" href="#mlens.ensemble.BlendEnsemble" title="mlens.ensemble.BlendEnsemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendEnsemble</span></code></a>, <a class="reference internal" href="#mlens.ensemble.SequentialEnsemble" title="mlens.ensemble.SequentialEnsemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequentialEnsemble</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All parameters can be overriden in the <a class="reference internal" href="#mlens.ensemble.TemporalEnsemble.add" title="mlens.ensemble.TemporalEnsemble.add"><code class="xref py py-attr docutils literal notranslate"><span class="pre">add</span></code></a> method unless
+otherwise specified. Notably, the <code class="docutils literal notranslate"><span class="pre">backend</span></code> and <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> cannot
+be altered in the <a class="reference internal" href="#mlens.ensemble.TemporalEnsemble.add" title="mlens.ensemble.TemporalEnsemble.add"><code class="xref py py-attr docutils literal notranslate"><span class="pre">add</span></code></a> method.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>step_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=1</em><em>)</em>) – number of samples to use in each test fold. The final window
+size may be smaller if too few observations remain.</li>
+<li><strong>burn_in</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=None</em><em>)</em>) – number of samples to use for first training fold. These observations
+will be dropped from the output. Defaults to <code class="docutils literal notranslate"><span class="pre">step_size</span></code>.</li>
+<li><strong>window</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=None</em><em>)</em>) – number of previous samples to use in each training fold, except first
+which is determined by <code class="docutils literal notranslate"><span class="pre">burn_in</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, will use all previous
+observations.</li>
+<li><strong>lag</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=0</em><em>)</em>) – distance between the most recent training point in the training fold and
+the first test point. For <code class="docutils literal notranslate"><span class="pre">lag&gt;0</span></code>, the training fold and the test fold
+will not be contiguous.</li>
+<li><strong>scorer</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em> (</em><em>default = None</em><em>)</em>) – scoring function. If a function is provided, base estimators will be
+scored on the training set assembled for fitting the meta estimator.
+Since those predictions are out-of-sample, the scores represent valid
+test scores. The scorer should be a function that accepts an array of
+true values and an array of predictions: <code class="docutils literal notranslate"><span class="pre">score</span> <span class="pre">=</span> <span class="pre">f(y_true,</span> <span class="pre">y_pred)</span></code>.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to issue warnings on soft exceptions or raise error.
+Examples include lack of layers, bad inputs, and failed fit of an
+estimator in a layer. If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, warnings are issued instead
+but estimation continues unless exception is fatal. Note that this
+can result in unexpected behavior unless the exception is anticipated.</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – <p>level of verbosity.</p>
+<blockquote>
+<div><ul>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">0</span></code> silent (same as <code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">False</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">1</span></code> messages at start and finish (same as
+<code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">True</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">=</span> <span class="pre">2</span></code> messages for each layer</li>
+</ul>
+</div></blockquote>
+<p>If <code class="docutils literal notranslate"><span class="pre">verbose</span> <span class="pre">&gt;=</span> <span class="pre">50</span></code> prints to <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>, else <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>.
+For verbosity in the layers themselves, use <code class="docutils literal notranslate"><span class="pre">fit_params</span></code>.</p>
+</li>
+<li><strong>n_jobs</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default = -1</em><em>)</em>) – Degree of parallel processing. Set to -1 for maximum parallelism and
+1 for sequential processing. Cannot be overriden in the <a class="reference internal" href="#mlens.ensemble.TemporalEnsemble.add" title="mlens.ensemble.TemporalEnsemble.add"><code class="xref py py-attr docutils literal notranslate"><span class="pre">add</span></code></a> method.</li>
+<li><strong>backend</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><em>object</em></a><em> (</em><em>default = 'threading'</em><em>)</em>) – backend infrastructure to use during call to
+<code class="xref py py-class docutils literal notranslate"><span class="pre">mlens.externals.joblib.Parallel</span></code>. See Joblib for further
+documentation. To set global backend, set <code class="docutils literal notranslate"><span class="pre">mlens.config._BACKEND</span></code>.
+Cannot be overriden in the <a class="reference internal" href="#mlens.ensemble.TemporalEnsemble.add" title="mlens.ensemble.TemporalEnsemble.add"><code class="xref py py-attr docutils literal notranslate"><span class="pre">add</span></code></a> method.</li>
+<li><strong>model_selection</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default=False</em><em>)</em>) – Whether to use the ensemble in model selection mode. If <code class="docutils literal notranslate"><span class="pre">True</span></code>,
+this will alter the <code class="docutils literal notranslate"><span class="pre">transform</span></code> method. When calling <code class="docutils literal notranslate"><span class="pre">transform</span></code>
+on new data, the ensemble will call <code class="docutils literal notranslate"><span class="pre">predict</span></code>, while calling
+<code class="docutils literal notranslate"><span class="pre">transform</span></code> with the training data reproduces predictions from the
+<code class="docutils literal notranslate"><span class="pre">fit</span></code> call. Hence the ensemble can be used as a pure transformer
+in a preprocessing pipeline passed to the <code class="xref py py-class docutils literal notranslate"><span class="pre">Evaluator</span></code>, as
+training folds are faithfully reproduced as during a <code class="docutils literal notranslate"><span class="pre">fit``call</span> <span class="pre">and</span>
+<span class="pre">test</span> <span class="pre">folds</span> <span class="pre">are</span> <span class="pre">transformed</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">``predict</span></code> method.</li>
+<li><strong>sample_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default=20</em><em>)</em>) – size of training set sample
+(<code class="docutils literal notranslate"><span class="pre">[min(sample_size,</span> <span class="pre">X.size[0]),</span> <span class="pre">min(X.size[1],</span> <span class="pre">sample_size)]</span></code>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mlens.ensemble</span> <span class="k">import</span> <span class="n">TemporalEnsemble</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ens</span> <span class="o">=</span> <span class="n">TemporalEnsemble</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ens</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LinearRegression</span><span class="p">())</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ens</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">ens</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:5}</span><span class="s2"> | </span><span class="si">{:5}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;pred&#39;</span><span class="p">,</span> <span class="s1">&#39;truth&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:.3f}</span><span class="s2"> | </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">pred  | truth</span>
+<span class="go">0.061 | 0.061</span>
+<span class="go">0.071 | 0.071</span>
+<span class="go">0.081 | 0.081</span>
+<span class="go">0.091 | 0.091</span>
+<span class="go">0.101 | 0.101</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="mlens.ensemble.TemporalEnsemble.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>estimators</em>, <em>preprocessing=None</em>, <em>proba=False</em>, <em>meta=False</em>, <em>propagate_features=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/ensemble/temporal.html#TemporalEnsemble.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.TemporalEnsemble.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add layer to ensemble.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>estimators</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em> or </em><em>instance</em>) – <p>estimators constituting the layer. If preprocessing is none and the
+layer is meant to be the meta estimator, it is permissible to pass
+a single instantiated estimator. If <code class="docutils literal notranslate"><span class="pre">preprocessing</span></code> is
+<code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">estimators</span></code> should be a <code class="docutils literal notranslate"><span class="pre">list</span></code>.
+The list can either contain estimator instances,
+named tuples of estimator instances, or a combination of both.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;est-1&quot;</span><span class="p">,</span> <span class="n">estimator_1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">estimator_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;est-2&quot;</span><span class="p">,</span> <span class="n">estimator_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps estimators to preprocessing pipelines must be passed.
+The names of the estimator dictionary must correspond to the
+names of the estimator dictionary.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">],</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">],</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal notranslate"><span class="pre">option_1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">option_2</span></code> and <code class="docutils literal notranslate"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>preprocessing</strong> (<em>dict of lists</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em><em> (</em><em>default = None</em><em>)</em>) – <p>preprocessing pipelines for given layer. If
+the same preprocessing applies to all estimators, <code class="docutils literal notranslate"><span class="pre">preprocessing</span></code>
+should be a list of transformer instances. The list can contain the
+instances directly, named tuples of transformers,
+or a combination of both.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">]</span>
+<span class="n">option_2</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;trans-1&quot;</span><span class="p">,</span> <span class="n">transformer_1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+<span class="n">option_3</span> <span class="o">=</span> <span class="p">[</span><span class="n">transformer_1</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;trans-2&quot;</span><span class="p">,</span> <span class="n">transformer_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>If different preprocessing pipelines are desired, a dictionary
+that maps preprocessing pipelines must be passed. The names of the
+preprocessing dictionary must correspond to the names of the
+estimator dictionary.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">preprocessing_cases</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">trans_1</span><span class="p">,</span> <span class="n">trans_2</span><span class="p">],</span>
+                       <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">alt_trans_1</span><span class="p">,</span> <span class="n">alt_trans_2</span><span class="p">]}</span>
+
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;case-1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_a</span><span class="p">,</span> <span class="n">est_b</span><span class="p">],</span>
+              <span class="s2">&quot;case-2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">est_c</span><span class="p">,</span> <span class="n">est_d</span><span class="p">]}</span>
+</pre></div>
+</div>
+<p>The lists for each dictionary entry can be any of <code class="docutils literal notranslate"><span class="pre">option_1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">option_2</span></code> and <code class="docutils literal notranslate"><span class="pre">option_3</span></code>.</p>
+</li>
+<li><strong>proba</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – whether layer should predict class probabilities. Note: setting
+<code class="docutils literal notranslate"><span class="pre">proba=True</span></code> will attempt to call an the estimators
+<code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method.</li>
+<li><strong>propagate_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)"><em>list</em></a><em>, </em><em>optional</em>) – List of column indexes to propagate from the input of
+the layer to the output of the layer. Propagated features are
+concatenated and stored in the leftmost columns of the output
+matrix. The <code class="docutils literal notranslate"><span class="pre">propagate_features</span></code> list should define a slice of
+the numpy array containing the input data, e.g. <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> to
+propagate the first two columns of the input matrix to the output
+matrix.</li>
+<li><strong>meta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = False</em><em>)</em>) – indicator if the layer added is the final meta estimator. This will
+prevent folded or blended fits of the estimators and only fit them
+once on the full input data.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> – ensemble instance with layer instantiated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mlens.ensemble.TemporalEnsemble.add_meta">
+<code class="descname">add_meta</code><span class="sig-paren">(</span><em>estimator</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mlens/ensemble/temporal.html#TemporalEnsemble.add_meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#mlens.ensemble.TemporalEnsemble.add_meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Meta Learner.</p>
+<p>Meta learner to be used for final predictions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>estimator</strong> (<em>instance</em>) – estimator instance.</li>
+<li><strong>**kwargs</strong> (<em>optional</em>) – optional keyword arguments.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="id7">
 <h3><span class="hidden-section">Sequential</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
@@ -1850,7 +2107,9 @@ respective ensemble for further details.</li>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1863,7 +2122,7 @@ respective ensemble for further details.</li>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1881,8 +2140,7 @@ respective ensemble for further details.</li>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1896,13 +2154,19 @@ respective ensemble for further details.</li>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.index &mdash; mlens 0.2.2 documentation</title>
+  <title>mlens.index &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="mlens.parallel" href="parallel.html" />
-    <link rel="prev" title="mlens.model_selection" href="model_selection.html" /> 
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="index.html"/>
+        <link rel="next" title="mlens.parallel" href="parallel.html"/>
+        <link rel="prev" title="mlens.model_selection" href="model_selection.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -137,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#temporalensemble"><span class="hidden-section">TemporalEnsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
@@ -259,7 +272,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -267,10 +280,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -465,6 +477,25 @@ test set. To build get a training index, use</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#mlens.index.BlendIndex" title="mlens.index.BlendIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendIndex</span></code></a>, <a class="reference internal" href="#mlens.index.SubsetIndex" title="mlens.index.SubsetIndex"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetIndex</span></code></a></p>
 </div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>folds</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a><em> (</em><em>default = 2</em><em>)</em>) – Number of splits to create in each partition. <code class="docutils literal notranslate"><span class="pre">folds</span></code> can
+not be 1 if <code class="docutils literal notranslate"><span class="pre">n_partition</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>. Note that if <code class="docutils literal notranslate"><span class="pre">folds</span> <span class="pre">=</span> <span class="pre">1</span></code>,
+both the train and test set will index the full data.</li>
+<li><strong>X</strong> (<em>array-like of shape</em><em> [</em><em>n_samples</em><em>,</em><em>] </em><em>, </em><em>optional</em>) – the training set to partition. The training label array is also,
+accepted, as only the first dimension is used. If <code class="docutils literal notranslate"><span class="pre">X</span></code> is not
+passed at instantiation, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method must be called before
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>, or <code class="docutils literal notranslate"><span class="pre">X</span></code> must be passed as an argument of
+<code class="docutils literal notranslate"><span class="pre">generate</span></code>.</li>
+<li><strong>raise_on_exception</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a><em> (</em><em>default = True</em><em>)</em>) – whether to warn on suspicious slices or raise an error.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Examples</p>
 <p>Creating arrays of folds and checking overlap</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1126,7 +1157,9 @@ split, the r first folds will be incremented by 1.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -1139,7 +1172,7 @@ split, the r first folds will be incremented by 1.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1157,8 +1190,7 @@ split, the r first folds will be incremented by 1.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1172,13 +1204,19 @@ split, the r first folds will be incremented by 1.</p>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

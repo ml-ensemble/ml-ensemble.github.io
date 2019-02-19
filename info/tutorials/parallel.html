@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Parallel Mechanics &mdash; mlens 0.2.2 documentation</title>
+  <title>Parallel Mechanics &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sequential Mechanics" href="sequential.html" />
-    <link rel="prev" title="Layer Mechanics" href="layer.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="../index.html"/>
+        <link rel="next" title="Sequential Mechanics" href="sequential.html"/>
+        <link rel="prev" title="Layer Mechanics" href="layer.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <img src="../_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -138,6 +150,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#temporal-ensemble">Temporal Ensemble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
 </ul>
 </li>
@@ -168,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#parallelprocessing-api">ParallelProcessing API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#manual-initialization-and-processing">Manual initialization and processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-management">Memory management</a></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +235,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -229,10 +243,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -274,11 +287,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-tutorials-parallel-py"><span class="std std-ref">here</span></a> to download the full example code</p>
-</div>
-<span class="target" id="parallel-tutorial"><span id="sphx-glr-tutorials-parallel-py"></span></span><div class="sphx-glr-example-title section" id="parallel-mechanics">
+  <span class="target" id="parallel-tutorial"><span id="sphx-glr-tutorials-parallel-py"></span></span><div class="section" id="parallel-mechanics">
 <h1>Parallel Mechanics<a class="headerlink" href="#parallel-mechanics" title="Permalink to this headline">¶</a></h1>
 <p>ML-Ensemble is designed to provide an easy user interface. But it is also designed
 to be extremely flexible, all the wile providing maximum concurrency at minimal
@@ -299,7 +308,7 @@ features from one layer to the next, in which case we need to take care of the a
 <h2>ParallelProcessing API<a class="headerlink" href="#parallelprocessing-api" title="Permalink to this headline">¶</a></h2>
 <p>Basic map
 ¨¨¨¨¨¨¨¨¨</p>
-<p>In the simplest case, we have a <code class="docutils literal notranslate"><span class="pre">caller`</span> <span class="pre">that</span> <span class="pre">has</span> <span class="pre">a</span> <span class="pre">set</span> <span class="pre">of</span> <span class="pre">``task``s</span> <span class="pre">that</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span>
+<p>In the simplest case, we have a <code class="docutils literal notranslate"><span class="pre">caller</span></code> that has a set of <code class="docutils literal notranslate"><span class="pre">task``s</span> <span class="pre">that</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span>
 <span class="pre">evaluated</span> <span class="pre">in</span> <span class="pre">parallel.</span> <span class="pre">For</span> <span class="pre">instance,</span> <span class="pre">the</span> <span class="pre">``caller</span></code> might be a <code class="xref py py-class docutils literal notranslate"><span class="pre">Learner</span></code>, with
 each task being a fit job for a given cross-validation fold. In this simple case,
 we want to perform an embarrassingly parallel for-loop of each fold, which we can
@@ -328,16 +337,16 @@ achieve with the <code class="docutils literal notranslate"><span class="pre">ma
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.3665536 ]
- [0.36335272]
- [0.3601518 ]
- [0.3569509 ]
- [0.35375   ]
- [0.48689735]
- [0.52471155]
- [0.56252575]
- [0.60033995]
- [0.63815415]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">0.3665536</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.36335272</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.3601518</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.3569509</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.35375</span>   <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.48689735</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.52471155</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.56252575</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.60033995</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.63815415</span><span class="p">]]</span>
 </pre></div>
 </div>
 <div class="section" id="stacking-a-set-of-parallel-jobs">
@@ -372,7 +381,7 @@ which will be the preceding learner’s predictions, into errors.</p>
 </div>
 <p>Now, we construct a sequence of tasks to compute, where the output of one
 task will be the input to the next. Hence, we want a sequence of the form
-<code class="docutils literal notranslate"><span class="pre">[learner,</span> <span class="pre">transformer,</span> <span class="pre">learner,</span> <span class="pre">...,</span> <span class="pre">transformer,</span> <span class="pre">learner]</span></code>:</p>
+<code class="docutils literal notranslate"><span class="pre">[learner,</span> <span class="pre">transformer,</span> <span class="pre">...,</span> <span class="pre">learner]</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -404,16 +413,16 @@ from each other).</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[0.22054635]
- [0.22811265]
- [0.235679  ]
- [0.24324532]
- [0.25081167]
- [0.27373537]
- [0.23783192]
- [0.20192847]
- [0.16602501]
- [0.09709236]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">0.22054635</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.22811265</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.235679</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.24324532</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.25081167</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.27373537</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.23783192</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.20192847</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.16602501</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.09709236</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>If we instead want to append these errors as features, we can simply
@@ -431,7 +440,7 @@ relevant for of the job as well as handles for data to be used. For instance,
 we can specify that we want the predictions of all layers, as opposed to just the
 final layer:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
-    <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ols-1&#39;</span><span class="p">,</span> <span class="s1">&#39;ols-2&#39;</span><span class="p">],</span> <span class="n">stack</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="s1">&#39;fit&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="n">return_preds</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ols-1&#39;</span><span class="p">,</span> <span class="s1">&#39;ols-3&#39;</span><span class="p">],</span> <span class="n">stack</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">initialize</span></code> method primarily allocates memory of input data and
@@ -448,40 +457,41 @@ To run the manager, we call <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[array([[0.3665536 ],
-       [0.36335272],
-       [0.3601518 ],
-       [0.3569509 ],
-       [0.35375   ],
-       [0.48689735],
-       [0.52471155],
-       [0.56252575],
-       [0.60033995],
-       [0.63815415]], dtype=float32), array([[2.4673765],
-       [2.3550305],
-       [2.2426836],
-       [2.1303375],
-       [2.0179906],
-       [1.1829019],
-       [1.2895712],
-       [1.3962405],
-       [1.5029098],
-       [1.707709 ]], dtype=float32)]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.3665536</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.36335272</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.3601518</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.3569509</span> <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.35375</span>   <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.48689735</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.52471155</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.56252575</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.60033995</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.63815415</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">),</span> <span class="n">array</span><span class="p">([[</span><span class="mf">0.22054635</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.22811265</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.235679</span>  <span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.24324532</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.25081167</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.27373537</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.23783192</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.20192847</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.16602501</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.09709236</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)]</span>
 </pre></div>
 </div>
-<p>The output now is a list of arrays, the last of which is the same predicitons
-as we got when using <code class="docutils literal notranslate"><span class="pre">stack</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Memory management</span>
-<span class="c1"># -----------------</span>
-<span class="c1">#</span>
-<span class="c1"># When running the manager, it will read and write to memory buffers. This is</span>
-<span class="c1"># less of a concern when the ``threading`` backend is used, as data is kept</span>
-<span class="c1"># in the parent process. But when data is loaded from file path, or when</span>
-<span class="c1"># ``multiprocessing`` is used, we want to clean up after us. Thus, when we</span>
-<span class="c1"># are through with the ``manager``, it is important to call the ``clear``</span>
-<span class="c1"># method. This will however destroy any ephemeral data stored on the instance.</span>
-
-<span class="n">manager</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<p>The output now is a list of arrays, the first contains the same predictions
+as we got in the <code class="docutils literal notranslate"><span class="pre">map</span></code> call, the last is the equivalent to the predicitons
+we got in the <code class="docutils literal notranslate"><span class="pre">stack</span></code> call. Note that this functionality is available
+also in the <code class="docutils literal notranslate"><span class="pre">stack</span></code> and <code class="docutils literal notranslate"><span class="pre">map</span></code> calls.</p>
+</div>
+<div class="section" id="memory-management">
+<h3>Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
+<p>When running the manager, it will read and write to memory buffers. This is
+less of a concern when the <code class="docutils literal notranslate"><span class="pre">threading</span></code> backend is used, as data is kept
+in the parent process. But when data is loaded from file path, or when
+<code class="docutils literal notranslate"><span class="pre">multiprocessing</span></code> is used, we want to clean up after us. Thus, when we
+are through with the <code class="docutils literal notranslate"><span class="pre">manager</span></code>, it is important to call the <code class="docutils literal notranslate"><span class="pre">clear</span></code>
+method. This will however destroy any ephemeral data stored on the instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">manager</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>..warning:: The <code class="docutils literal notranslate"><span class="pre">clear</span></code> method will remove any files in the specified path.
@@ -498,21 +508,23 @@ when exiting the context:</p>
     <span class="n">out</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">learner</span><span class="p">,</span> <span class="s1">&#39;predict&#39;</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.728 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-parallel-py">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.817 seconds)</p>
+<div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/parallel.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">parallel.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/parallel.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">parallel.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 </div>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -525,7 +537,7 @@ when exiting the context:</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -543,8 +555,7 @@ when exiting the context:</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -558,13 +569,19 @@ when exiting the context:</p>
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

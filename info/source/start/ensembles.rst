@@ -13,7 +13,10 @@ Currently, ML-Ensemble implements provides four ready-made ensembles classes:
 
     * :ref:`blend-ensemble`
 
+    * :ref:`temporal-ensemble`
+
     * :ref:`sequential-ensemble`
+
 
 Each ensemble class can be built with several layers, and each layer can
 output class probabilities if desired. The :class:`SequentialEnsemble` class
@@ -188,6 +191,28 @@ data data is not uniformly distributed or exhibits high variance the
 :class:`BlendEnsemble` can be a poor choice as information is lost at
 each stage of fitting.
 
+.. _temporal-ensemble:
+
+Temporal Ensemble
+^^^^^^^^^^^^^^^^^^
+
+The :class:`TemporalEnsemble` class is similar to the :class:`SuperLearner`, but
+differs in that it uses a time series cross-validation 
+strategy to create training and test folds that preserve temporal
+ordering in the data. The cross validation strategy is unrolled 
+through time. For instance:
+
+====  =================  ==========
+fold  train obs          test obs
+====  =================  ==========
+0     0, 1, 2, 3         4
+1     0, 1, 2, 3, 4      5
+2     0, 1, 2, 3, 4, 5   6
+====  =================  ==========
+
+Different estimators in the ensemble can operate on different time scales, 
+allow efficient combinations of different temporal patterns in one model.
+
 .. _sequential-ensemble:
 
 Sequential Ensemble
@@ -197,8 +222,8 @@ The :class:`SequentialEnsemble` allows users to build ensembles with
 different classes of layers. Instead of setting parameters upfront during
 instantiation, the user specified parameters for each layer when calling
 ``add``. The user must thus specify what type of layer is being added
-(blend, super learner, subsemble), estimators, preprocessing if applicable, and
-any layer-specific parameters. The Sequential ensemble is best illustrated
+(blend, super learner, subsemble, temporal), estimators, preprocessing if applicable, 
+and any layer-specific parameters. The Sequential ensemble is best illustrated
 through an example::
 
     >>> from mlens.ensemble import SequentialEnsemble

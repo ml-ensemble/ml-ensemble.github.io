@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Learner Mechanics &mdash; mlens 0.2.2 documentation</title>
+  <title>Learner Mechanics &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Layer Mechanics" href="layer.html" />
-    <link rel="prev" title="Overview" href="../overview.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="../index.html"/>
+        <link rel="next" title="Layer Mechanics" href="layer.html"/>
+        <link rel="prev" title="Overview" href="../overview.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <img src="../_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -138,6 +150,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#temporal-ensemble">Temporal Ensemble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
 </ul>
 </li>
@@ -168,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#memory-management">Memory management</a></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +235,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -229,10 +243,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -274,11 +287,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-tutorials-learner-py"><span class="std std-ref">here</span></a> to download the full example code</p>
-</div>
-<div class="sphx-glr-example-title section" id="learner-mechanics">
+  <div class="section" id="learner-mechanics">
 <span id="learner-tutorial"></span><span id="sphx-glr-tutorials-learner-py"></span><h1>Learner Mechanics<a class="headerlink" href="#learner-mechanics" title="Permalink to this headline">¶</a></h1>
 <p>ML-Ensemble is designed to provide an easy user interface. But it is also designed
 to be extremely flexible, all the wile providing maximum concurrency at minimal
@@ -344,8 +353,8 @@ indexing the training set for cross-validation, assigning output columns et.c.</
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Cached items:
-[(&#39;ols.0.0&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b24bf8&gt;), (&#39;ols.0.1&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a518&gt;), (&#39;ols.0.2&#39;, &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a570&gt;)]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cached</span> <span class="n">items</span><span class="p">:</span>
+<span class="p">[(</span><span class="s1">&#39;ols.0.0&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a970360</span><span class="o">&gt;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ols.0.1&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a970410</span><span class="o">&gt;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;ols.0.2&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a9701a8</span><span class="o">&gt;</span><span class="p">)]</span>
 </pre></div>
 </div>
 <p>Fitting the learner puts three copies of the OLS estimator in the <code class="docutils literal notranslate"><span class="pre">path</span></code>:
@@ -381,29 +390,29 @@ predictions.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Output:
-[[0.         1.60510605]
- [0.         1.46322674]
- [0.         1.32134742]
- [0.         1.17946811]
- [0.         1.03758879]
- [0.         0.        ]
- [0.         0.        ]
- [0.         0.        ]
- [0.         0.        ]
- [0.         0.        ]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span><span class="mf">0.</span>         <span class="mf">1.60510605</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">1.46322674</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">1.32134742</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">1.17946811</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">1.03758879</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]]</span>
 
-Output:
-[[ 0.          1.60510605]
- [ 0.          1.46322674]
- [ 0.          1.32134742]
- [ 0.          1.17946811]
- [ 0.          1.03758879]
- [ 0.          0.1298892 ]
- [ 0.          0.04099401]
- [ 0.         -0.04790118]
- [ 0.         -0.13679637]
- [ 0.         -0.22569156]]
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">0.</span>          <span class="mf">1.60510605</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">1.46322674</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">1.32134742</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">1.17946811</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">1.03758879</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.1298892</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.04099401</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.04790118</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.13679637</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.22569156</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>In the above loop, a sub-segment of <code class="docutils literal notranslate"><span class="pre">P</span></code> is updated by each sublearner
@@ -433,17 +442,17 @@ as a callable, enabling task-agnostic code:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Output:
-[[0.48329249]
- [0.48795256]
- [0.49261263]
- [0.4972727 ]
- [0.50193277]
- [0.50659285]
- [0.51125292]
- [0.51591299]
- [0.52057306]
- [0.52523313]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span><span class="mf">0.48329249</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.48795256</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.49261263</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.4972727</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.50193277</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.50659285</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.51125292</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.51591299</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.52057306</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.52523313</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>ML-Ensemble follows the Scikit-learn API, so if you wish to update any
@@ -459,7 +468,7 @@ API:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Params before:
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span>Params before:
 {&#39;attr&#39;: &#39;predict&#39;, &#39;estimator__offset&#39;: 0, &#39;estimator&#39;: OLS(offset=0), &#39;indexer__X&#39;: None, &#39;indexer__folds&#39;: 2, &#39;indexer__raise_on_exception&#39;: True, &#39;indexer&#39;: FoldIndex(X=None, folds=2, raise_on_exception=True), &#39;name&#39;: &#39;ols&#39;, &#39;preprocess&#39;: None, &#39;proba&#39;: False, &#39;scorer&#39;: None, &#39;backend&#39;: &#39;threading&#39;, &#39;n_jobs&#39;: -1, &#39;dtype&#39;: &lt;class &#39;numpy.float32&#39;&gt;, &#39;raise_on_exception&#39;: True}
 Params after:
 {&#39;attr&#39;: &#39;predict&#39;, &#39;estimator__offset&#39;: 1, &#39;estimator&#39;: OLS(offset=1), &#39;indexer__X&#39;: None, &#39;indexer__folds&#39;: 3, &#39;indexer__raise_on_exception&#39;: True, &#39;indexer&#39;: FoldIndex(X=None, folds=3, raise_on_exception=True), &#39;name&#39;: &#39;ols&#39;, &#39;preprocess&#39;: None, &#39;proba&#39;: False, &#39;scorer&#39;: None, &#39;backend&#39;: &#39;threading&#39;, &#39;n_jobs&#39;: -1, &#39;dtype&#39;: &lt;class &#39;numpy.float32&#39;&gt;, &#39;raise_on_exception&#39;: True}
@@ -505,83 +514,83 @@ as an argument during <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>subsemble-ols.0.0              done | 00:00:00
-Output:
-[[0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span><span class="o">.</span><span class="mf">0.0</span>              <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]]</span>
 
-subsemble-ols.1.0              done | 00:00:00
-Output:
-[[0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]
- [0. 0.]]
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span><span class="o">.</span><span class="mf">1.0</span>              <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span><span class="p">]]</span>
 
-subsemble-ols.0.1              done | 00:00:00
-Output:
-[[ 1.50099289  0.        ]
- [ 1.17185463  0.        ]
- [ 0.84271638  0.        ]
- [ 0.          0.        ]
- [ 0.          0.        ]
- [-0.14469839  0.        ]
- [-0.47383665  0.        ]
- [-0.8029749   0.        ]
- [ 0.          0.        ]
- [ 0.          0.        ]]
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span><span class="o">.</span><span class="mf">0.1</span>              <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">1.50099289</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.17185463</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.84271638</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14469839</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.47383665</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8029749</span>   <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]]</span>
 
-subsemble-ols.0.2              done | 00:00:00
-Output:
-[[ 1.50099289  0.        ]
- [ 1.17185463  0.        ]
- [ 0.84271638  0.        ]
- [-0.0582686   0.        ]
- [-0.30154554  0.        ]
- [-0.14469839  0.        ]
- [-0.47383665  0.        ]
- [-0.8029749   0.        ]
- [-1.27465332  0.        ]
- [-1.51793026  0.        ]]
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span><span class="o">.</span><span class="mf">0.2</span>              <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">1.50099289</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.17185463</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.84271638</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.0582686</span>   <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.30154554</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14469839</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.47383665</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8029749</span>   <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.27465332</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.51793026</span>  <span class="mf">0.</span>        <span class="p">]]</span>
 
-subsemble-ols.1.1              done | 00:00:00
-Output:
-[[ 1.50099289  6.98188955]
- [ 1.17185463  6.21497354]
- [ 0.84271638  5.44805754]
- [-0.0582686   0.        ]
- [-0.30154554  0.        ]
- [-0.14469839  3.14730951]
- [-0.47383665  2.3803935 ]
- [-0.8029749   1.61347749]
- [-1.27465332  0.        ]
- [-1.51793026  0.        ]]
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span><span class="o">.</span><span class="mf">1.1</span>              <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">1.50099289</span>  <span class="mf">6.98188955</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.17185463</span>  <span class="mf">6.21497354</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.84271638</span>  <span class="mf">5.44805754</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.0582686</span>   <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.30154554</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14469839</span>  <span class="mf">3.14730951</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.47383665</span>  <span class="mf">2.3803935</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8029749</span>   <span class="mf">1.61347749</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.27465332</span>  <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.51793026</span>  <span class="mf">0.</span>        <span class="p">]]</span>
 
-subsemble-ols.1.2              done | 00:00:00
-Output:
-[[ 1.50099289  6.98188955]
- [ 1.17185463  6.21497354]
- [ 0.84271638  5.44805754]
- [-0.0582686   1.14782989]
- [-0.30154554  1.00228074]
- [-0.14469839  3.14730951]
- [-0.47383665  2.3803935 ]
- [-0.8029749   1.61347749]
- [-1.27465332  0.42008412]
- [-1.51793026  0.27453496]]
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span><span class="o">.</span><span class="mf">1.2</span>              <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">Output</span><span class="p">:</span>
+<span class="p">[[</span> <span class="mf">1.50099289</span>  <span class="mf">6.98188955</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">1.17185463</span>  <span class="mf">6.21497354</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.84271638</span>  <span class="mf">5.44805754</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.0582686</span>   <span class="mf">1.14782989</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.30154554</span>  <span class="mf">1.00228074</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14469839</span>  <span class="mf">3.14730951</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.47383665</span>  <span class="mf">2.3803935</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.8029749</span>   <span class="mf">1.61347749</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.27465332</span>  <span class="mf">0.42008412</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.51793026</span>  <span class="mf">0.27453496</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>Each sub-learner records fit and predict times during fitting, and if
@@ -597,10 +606,10 @@ denotes standard deviation.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Data:
-                    score-m  score-s  ft-m  ft-s  pt-m  pt-s
-subsemble-ols  0       1.45     0.45  0.00  0.00  0.00  0.00
-subsemble-ols  1       9.34     9.02  0.00  0.00  0.00  0.00
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Data</span><span class="p">:</span>
+                    <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span>  <span class="mi">0</span>       <span class="mf">1.45</span>     <span class="mf">0.45</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">subsemble</span><span class="o">-</span><span class="n">ols</span>  <span class="mi">1</span>       <span class="mf">9.34</span>     <span class="mf">9.02</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
 </pre></div>
 </div>
 </div>
@@ -667,18 +676,18 @@ boiler-plate code. Note that the transformer is called as an
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>sc.0.0                         done | 00:00:00
-sc.1.0                         done | 00:00:00
-sc.0.1                         done | 00:00:00
-sc.0.2                         done | 00:00:00
-sc.1.1                         done | 00:00:00
-sc.1.2                         done | 00:00:00
-sc.learner-1.0.0               done | 00:00:00
-sc.learner-1.1.0               done | 00:00:00
-sc.learner-1.0.1               done | 00:00:00
-sc.learner-1.0.2               done | 00:00:00
-sc.learner-1.1.1               done | 00:00:00
-sc.learner-1.1.2               done | 00:00:00
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="mf">0.0</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.0</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">0.1</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">0.2</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.1</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.2</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">0</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">1</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">1</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">2</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 </pre></div>
 </div>
 <p>Note that the cache now contains the transformers as well:</p>
@@ -688,19 +697,19 @@ sc.learner-1.1.2               done | 00:00:00
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Cache:
-sc.0.0              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a7d8&gt;
-sc.1.0              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a570&gt;
-sc.0.1              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a468&gt;
-sc.0.2              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a830&gt;
-sc.1.1              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a6d0&gt;
-sc.1.2              &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a728&gt;
-sc.learner-1.0.0    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a410&gt;
-sc.learner-1.1.0    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a780&gt;
-sc.learner-1.0.1    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a8e0&gt;
-sc.learner-1.0.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a938&gt;
-sc.learner-1.1.1    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a990&gt;
-sc.learner-1.1.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b4a9e8&gt;
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cache</span><span class="p">:</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">0.0</span>              <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a45c8</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.0</span>              <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a4360</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">0.1</span>              <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a4570</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">0.2</span>              <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a4410</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.1</span>              <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a44c0</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.2</span>              <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a4678</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">0</span>    <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a4518</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span>    <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a4938</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">1</span>    <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a43b8</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span>    <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x119df8410</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">1</span>    <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a5a46d0</span><span class="o">&gt;</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">2</span>    <span class="o">&lt;</span><span class="n">mlens</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">learner</span><span class="o">.</span><span class="n">IndexedEstimator</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x11a9ecca8</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>And estimation data is collected on a partition basis:</p>
@@ -708,10 +717,10 @@ sc.learner-1.1.2    &lt;mlens.parallel.learner.IndexedEstimator object at 0x115b
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Data:
-                    score-m  score-s  ft-m  ft-s  pt-m  pt-s
-sc  learner-1  0       2.19     0.92  0.00  0.00  0.00  0.00
-sc  learner-1  1       7.76     7.37  0.00  0.00  0.00  0.00
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Data</span><span class="p">:</span>
+                    <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
+<span class="n">sc</span>  <span class="n">learner</span><span class="o">-</span><span class="mi">0</span>  <span class="mi">0</span>       <span class="mf">2.19</span>     <span class="mf">0.92</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+<span class="n">sc</span>  <span class="n">learner</span><span class="o">-</span><span class="mi">0</span>  <span class="mi">1</span>       <span class="mf">7.76</span>     <span class="mf">7.37</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
 </pre></div>
 </div>
 </div>
@@ -734,12 +743,12 @@ estimation with a single learner using multiple threads:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>sc.learner-1.0.0               done | 00:00:00
-sc.learner-1.1.0               done | 00:00:00
-sc.learner-1.0.1               done | 00:00:00
-sc.learner-1.1.1               done | 00:00:00
-sc.learner-1.0.2               done | 00:00:00
-sc.learner-1.1.2               done | 00:00:00
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">0</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">0</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">2</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">1</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.0</span><span class="o">.</span><span class="mi">1</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">learner</span><span class="o">-</span><span class="mf">0.1</span><span class="o">.</span><span class="mi">2</span>               <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
 </pre></div>
 </div>
 <p>For a slightly more high-level API for parallel computation on a single
@@ -756,37 +765,39 @@ use <code class="xref py py-func docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>sc.0.0                         done | 00:00:00
-sc.1.0                         done | 00:00:00
-[[ -4.  -4. -14. -14.]
- [ -2.  -2. -12. -12.]
- [  0.   0. -10. -10.]
- [  2.   2.  -8.  -8.]
- [  4.   4.  -6.  -6.]
- [  6.   6.  -4.  -4.]
- [  8.   8.  -2.  -2.]
- [ 10.  10.   0.   0.]
- [ 12.  12.   2.   2.]
- [ 14.  14.   4.   4.]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="mf">0.0</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="n">sc</span><span class="o">.</span><span class="mf">1.0</span>                         <span class="n">done</span> <span class="o">|</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<span class="p">[[</span> <span class="o">-</span><span class="mf">4.</span>  <span class="o">-</span><span class="mf">4.</span> <span class="o">-</span><span class="mf">14.</span> <span class="o">-</span><span class="mf">14.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span> <span class="o">-</span><span class="mf">12.</span> <span class="o">-</span><span class="mf">12.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">0.</span>   <span class="mf">0.</span> <span class="o">-</span><span class="mf">10.</span> <span class="o">-</span><span class="mf">10.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">2.</span>   <span class="mf">2.</span>  <span class="o">-</span><span class="mf">8.</span>  <span class="o">-</span><span class="mf">8.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">4.</span>   <span class="mf">4.</span>  <span class="o">-</span><span class="mf">6.</span>  <span class="o">-</span><span class="mf">6.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">6.</span>   <span class="mf">6.</span>  <span class="o">-</span><span class="mf">4.</span>  <span class="o">-</span><span class="mf">4.</span><span class="p">]</span>
+ <span class="p">[</span>  <span class="mf">8.</span>   <span class="mf">8.</span>  <span class="o">-</span><span class="mf">2.</span>  <span class="o">-</span><span class="mf">2.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">10.</span>  <span class="mf">10.</span>   <span class="mf">0.</span>   <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">12.</span>  <span class="mf">12.</span>   <span class="mf">2.</span>   <span class="mf">2.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">14.</span>  <span class="mf">14.</span>   <span class="mf">4.</span>   <span class="mf">4.</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>Next we handle several learners by grouping them in a layer in the
 <a class="reference internal" href="layer.html#layer-tutorial"><span class="std std-ref">layer mechanics tutorial</span></a>.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.192 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-learner-py">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.249 seconds)</p>
+<div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/learner.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">learner.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/learner.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">learner.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 </div>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -799,7 +810,7 @@ sc.1.0                         done | 00:00:00
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -817,8 +828,7 @@ sc.1.0                         done | 00:00:00
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -832,13 +842,19 @@ sc.1.0                         done | 00:00:00
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

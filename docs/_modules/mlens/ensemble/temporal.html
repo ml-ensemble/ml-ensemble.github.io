@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.ensemble.super_learner &mdash; mlens 0.2.3 documentation</title>
+  <title>mlens.ensemble.temporal &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -306,7 +306,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>mlens.ensemble.super_learner</li>
+      <li>mlens.ensemble.temporal</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -323,86 +323,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for mlens.ensemble.super_learner</h1><div class="highlight"><pre>
+  <h1>Source code for mlens.ensemble.temporal</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;ML-ENSEMBLE</span>
 
 <span class="sd">:author: Sebastian Flennerhag</span>
 <span class="sd">:copyright: 2017-2018</span>
 <span class="sd">:licence: MIT</span>
 
-<span class="sd">Super Learner class. Fully integrable with Scikit-learn.</span>
+<span class="sd">Temporal ensemble class. Fully integrable with Scikit-learn.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
 
 <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">BaseEnsemble</span>
-<span class="kn">from</span> <span class="nn">..index</span> <span class="k">import</span> <span class="n">FoldIndex</span><span class="p">,</span> <span class="n">FullIndex</span>
+<span class="kn">from</span> <span class="nn">..index</span> <span class="k">import</span> <span class="n">TemporalIndex</span><span class="p">,</span> <span class="n">FullIndex</span>
 
 
-<div class="viewcode-block" id="SuperLearner"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.SuperLearner">[docs]</a><span class="k">class</span> <span class="nc">SuperLearner</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">):</span>
+<div class="viewcode-block" id="TemporalEnsemble"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.TemporalEnsemble">[docs]</a><span class="k">class</span> <span class="nc">TemporalEnsemble</span><span class="p">(</span><span class="n">BaseEnsemble</span><span class="p">):</span>
 
-    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Super Learner class.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Temporal ensemble class.</span>
 
-<span class="sd">    The Super Learner (also known as the Stacking Ensemble)is an</span>
-<span class="sd">    supervised ensemble algorithm that uses K-fold estimation to map a</span>
-<span class="sd">    training set :math:`(X, y)` into a prediction set :math:`(Z, y)`,</span>
-<span class="sd">    where the predictions</span>
-<span class="sd">    in :math:`Z` are constructed using K-Fold splits of :math:`X` to ensure</span>
-<span class="sd">    :math:`Z` reflects test errors, and that applies a user-specified meta</span>
-<span class="sd">    learner to predict :math:`y` from :math:`Z`. The algorithm in sudo code</span>
-<span class="sd">    follows:</span>
+<span class="sd">    The temporal ensemble class uses a time series cross-validation</span>
+<span class="sd">    strategy to create training and test folds that preserve temporal</span>
+<span class="sd">    ordering in the data. The cross validation strategy is unrolled</span>
+<span class="sd">    through time. For instance:</span>
 
-<span class="sd">        #. Specify a library :math:`L` of base learners</span>
+<span class="sd">    ====  =================  ==========</span>
+<span class="sd">    fold  train obs          test obs</span>
+<span class="sd">    ====  =================  ==========</span>
+<span class="sd">    0     0, 1, 2, 3         4</span>
+<span class="sd">    1     0, 1, 2, 3, 4      5</span>
+<span class="sd">    2     0, 1, 2, 3, 4, 5   6</span>
+<span class="sd">    ====  =================  ==========</span>
 
-<span class="sd">        #. Fit all base learners on :math:`X` and store the fitted estimators.</span>
-
-<span class="sd">        #. Split :math:`X` into :math:`K` folds, fit every learner in</span>
-<span class="sd">           :math:`L` on the training set and predict test set. Repeat until</span>
-<span class="sd">           all folds have been predicted.</span>
-
-<span class="sd">        #. Construct a matrix :math:`Z` by stacking the predictions per fold.</span>
-
-<span class="sd">        #. Fit the meta learner on :math:`Z` and store the learner</span>
-
-<span class="sd">    The ensemble can be used for prediction by mapping a new test set :math:`T`</span>
-<span class="sd">    into a prediction set :math:`Z&#39;` using the learners fitted in (2),</span>
-<span class="sd">    and then mapping :math:`Z&#39;` to :math:`y&#39;` using the fitted meta learner</span>
-<span class="sd">    from (5).</span>
-
-<span class="sd">    The Super Learner does asymptotically as well as (up to a constant) an</span>
-<span class="sd">    Oracle selector. For the theory behind the Super Learner, see</span>
-<span class="sd">    [#]_ and [#]_ as well as references therein.</span>
-
-<span class="sd">    Stacking K-fold predictions to cover an entire training set is a time</span>
-<span class="sd">    consuming method and can be prohibitively costly for large datasets.</span>
-<span class="sd">    With large data, other ensembles that fits an ensemble on subsets</span>
-<span class="sd">    can achieve similar performance at a fraction of the training time.</span>
-<span class="sd">    However, when data is noisy or of high variance,</span>
-<span class="sd">    the :class:`SuperLearner` ensure all information is</span>
-<span class="sd">    used during fitting.</span>
-
-<span class="sd">    References</span>
-<span class="sd">    ----------</span>
-<span class="sd">    .. [#] van der Laan, Mark J.; Polley, Eric C.; and Hubbard, Alan E.,</span>
-<span class="sd">       &quot;Super Learner&quot; (July 2007). U.C. Berkeley Division of Biostatistics</span>
-<span class="sd">       Working Paper Series. Working Paper 222.</span>
-<span class="sd">       http://biostats.bepress.com/ucbbiostat/paper222</span>
-
-<span class="sd">    .. [#] Polley, Eric C. and van der Laan, Mark J.,</span>
-<span class="sd">       &quot;Super Learner In Prediction&quot; (May 2010). U.C. Berkeley Division of</span>
-<span class="sd">       Biostatistics Working Paper Series. Working Paper 266.</span>
-<span class="sd">       http://biostats.bepress.com/ucbbiostat/paper266</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    This implementation uses the agnostic meta learner approach, where the</span>
-<span class="sd">    user supplies the meta learner to be used. For the original Super Learner</span>
-<span class="sd">    algorithm (i.e. learn the best linear combination of the base learners),</span>
-<span class="sd">    the user can specify a linear regression as the meta learner.</span>
+<span class="sd">    Different estimators in the ensemble can operate on different time scales,</span>
+<span class="sd">    allow efficient combinations of different temporal patterns in one model.</span>
 
 <span class="sd">    See Also</span>
 <span class="sd">    --------</span>
-<span class="sd">    :class:`BlendEnsemble`, :class:`Subsemble`</span>
+<span class="sd">    :class:`SuperLearner`, :class:`BlendEnsemble`, :class:`SequentialEnsemble`</span>
 
 
 <span class="sd">    .. note :: All parameters can be overriden in the :attr:`add` method unless</span>
@@ -411,19 +370,23 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    folds : int (default = 2)</span>
-<span class="sd">        number of folds to use during fitting. Note: this parameter can be</span>
-<span class="sd">        specified on a layer-specific basis in the :attr:`add` method.</span>
+<span class="sd">    step_size : int (default=1)</span>
+<span class="sd">        number of samples to use in each test fold. The final window</span>
+<span class="sd">        size may be smaller if too few observations remain.</span>
 
-<span class="sd">    shuffle : bool (default = False)</span>
-<span class="sd">        whether to shuffle data before before processing each layer. This</span>
-<span class="sd">        parameter can be overridden in the :attr:`add` method if different test</span>
-<span class="sd">        sizes is desired for each layer.</span>
+<span class="sd">    burn_in : int (default=None)</span>
+<span class="sd">        number of samples to use for first training fold. These observations</span>
+<span class="sd">        will be dropped from the output. Defaults to ``step_size``.</span>
 
-<span class="sd">    random_state : int (default = None)</span>
-<span class="sd">        random seed for shuffling inputs. Note that the seed here is used to</span>
-<span class="sd">        generate a unique seed for each layer. Can be overridden in the</span>
-<span class="sd">        :attr:`add` method.</span>
+<span class="sd">    window: int (default=None)</span>
+<span class="sd">        number of previous samples to use in each training fold, except first</span>
+<span class="sd">        which is determined by ``burn_in``. If ``None``, will use all previous</span>
+<span class="sd">        observations.</span>
+
+<span class="sd">    lag: int (default=0)</span>
+<span class="sd">        distance between the most recent training point in the training fold and</span>
+<span class="sd">        the first test point. For ``lag&gt;0``, the training fold and the test fold</span>
+<span class="sd">        will not be contiguous.</span>
 
 <span class="sd">    scorer : object (default = None)</span>
 <span class="sd">        scoring function. If a function is provided, base estimators will be</span>
@@ -478,68 +441,53 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-
-<span class="sd">    Instantiate ensembles with no preprocessing: use list of estimators</span>
-
-<span class="sd">    &gt;&gt;&gt; from mlens.ensemble import SuperLearner</span>
-<span class="sd">    &gt;&gt;&gt; from mlens.metrics.metrics import rmse</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn.datasets import load_boston</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn.linear_model import Lasso</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn.svm import SVR</span>
+<span class="sd">    &gt;&gt;&gt; from sklearn.linear_model import LinearRegression</span>
+<span class="sd">    &gt;&gt;&gt; from mlens.ensemble import TemporalEnsemble</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
 <span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; X, y = load_boston(True)</span>
+<span class="sd">    &gt;&gt;&gt; x = np.linspace(0, 1, 100)</span>
+<span class="sd">    &gt;&gt;&gt; y = x[1:]</span>
+<span class="sd">    &gt;&gt;&gt; x = x[:-1]</span>
+<span class="sd">    &gt;&gt;&gt; x = x.reshape(-1, 1)</span>
 <span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; ensemble = SuperLearner()</span>
-<span class="sd">    &gt;&gt;&gt; ensemble.add([SVR(), (&#39;can name some or all est&#39;, Lasso())])</span>
-<span class="sd">    &gt;&gt;&gt; ensemble.add_meta(SVR())</span>
+<span class="sd">    &gt;&gt;&gt; ens = TemporalEnsemble(window=1)</span>
+<span class="sd">    &gt;&gt;&gt; ens.add(LinearRegression())</span>
 <span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; ensemble.fit(X, y)</span>
-<span class="sd">    &gt;&gt;&gt; preds = ensemble.predict(X)</span>
-<span class="sd">    &gt;&gt;&gt; rmse(y, preds)</span>
-<span class="sd">    6.955358...</span>
-
-<span class="sd">    Instantiate ensembles with different preprocessing pipelines through dicts.</span>
-
-<span class="sd">    &gt;&gt;&gt; from mlens.ensemble import SuperLearner</span>
-<span class="sd">    &gt;&gt;&gt; from mlens.metrics.metrics import rmse</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn.datasets import load_boston</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn. preprocessing import MinMaxScaler, StandardScaler</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn.linear_model import Lasso</span>
-<span class="sd">    &gt;&gt;&gt; from sklearn.svm import SVR</span>
+<span class="sd">    &gt;&gt;&gt; ens.fit(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; p = ens.predict(x)</span>
 <span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; X, y = load_boston(True)</span>
 <span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; preprocessing_cases = {&#39;mm&#39;: [MinMaxScaler()],</span>
-<span class="sd">    ...                        &#39;sc&#39;: [StandardScaler()]}</span>
+<span class="sd">    &gt;&gt;&gt; print(&quot;{:5} | {:5}&quot;.format(&#39;pred&#39;, &#39;truth&#39;))</span>
+<span class="sd">    &gt;&gt;&gt; for i in range(5, 10):</span>
+<span class="sd">    ...     print(&quot;{:.3f} | {:.3f}&quot;.format(p[i], y[i]))</span>
 <span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; estimators_per_case = {&#39;mm&#39;: [SVR()],</span>
-<span class="sd">    ...                        &#39;sc&#39;: [(&#39;can name some or all ests&#39;, Lasso())]}</span>
-<span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; ensemble = SuperLearner()</span>
-<span class="sd">    &gt;&gt;&gt; ensemble.add(estimators_per_case, preprocessing_cases).add(SVR(), meta=True)</span>
-<span class="sd">    &gt;&gt;&gt;</span>
-<span class="sd">    &gt;&gt;&gt; ensemble.fit(X, y)</span>
-<span class="sd">    &gt;&gt;&gt; preds = ensemble.predict(X)</span>
-<span class="sd">    &gt;&gt;&gt; rmse(y, preds)</span>
-<span class="sd">    7.841329...</span>
+<span class="sd">    pred  | truth</span>
+<span class="sd">    0.061 | 0.061</span>
+<span class="sd">    0.071 | 0.071</span>
+<span class="sd">    0.081 | 0.081</span>
+<span class="sd">    0.091 | 0.091</span>
+<span class="sd">    0.101 | 0.101</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">burn_in</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lag</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">raise_on_exception</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">array_check</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;threading&#39;</span><span class="p">,</span> <span class="n">model_selection</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sample_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SuperLearner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">shuffle</span><span class="o">=</span><span class="n">shuffle</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="n">scorer</span><span class="p">,</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TemporalEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scorer</span><span class="o">=</span><span class="n">scorer</span><span class="p">,</span>
             <span class="n">raise_on_exception</span><span class="o">=</span><span class="n">raise_on_exception</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span>
             <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
             <span class="n">array_check</span><span class="o">=</span><span class="n">array_check</span><span class="p">,</span> <span class="n">model_selection</span><span class="o">=</span><span class="n">model_selection</span><span class="p">,</span>
             <span class="n">sample_size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__initialized__</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Unlock parameter setting</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">folds</span> <span class="o">=</span> <span class="n">folds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="n">step_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">burn_in</span> <span class="o">=</span> <span class="n">burn_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lag</span> <span class="o">=</span> <span class="n">lag</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__initialized__</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Protect against param resets</span>
 
-<div class="viewcode-block" id="SuperLearner.add_meta"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.SuperLearner.add_meta">[docs]</a>    <span class="k">def</span> <span class="nf">add_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="TemporalEnsemble.add_meta"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.TemporalEnsemble.add_meta">[docs]</a>    <span class="k">def</span> <span class="nf">add_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Meta Learner.</span>
 
 <span class="sd">        Meta learner to be used for final predictions.</span>
@@ -554,7 +502,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">estimators</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SuperLearner.add"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.SuperLearner.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="TemporalEnsemble.add"><a class="viewcode-back" href="../../../ensemble.html#mlens.ensemble.TemporalEnsemble.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">estimators</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">proba</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Add layer to ensemble.</span>
 
@@ -639,14 +587,17 @@
 <span class="sd">        self : instance</span>
 <span class="sd">            ensemble instance with layer instantiated.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;folds&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">folds</span><span class="p">)</span>
-
+        <span class="n">s</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;step_size&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;burn_in&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">burn_in</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;lag&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lag</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">meta</span><span class="p">:</span>
             <span class="n">idx</span> <span class="o">=</span> <span class="n">FullIndex</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">idx</span> <span class="o">=</span> <span class="n">FoldIndex</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">raise_on_exception</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">TemporalIndex</span><span class="p">(</span>
+                <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">raise_on_exception</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">raise_on_exception</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">SuperLearner</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">TemporalEnsemble</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
             <span class="n">estimators</span><span class="o">=</span><span class="n">estimators</span><span class="p">,</span> <span class="n">indexer</span><span class="o">=</span><span class="n">idx</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="n">preprocessing</span><span class="p">,</span>
             <span class="n">proba</span><span class="o">=</span><span class="n">proba</span><span class="p">,</span> <span class="n">propagate_features</span><span class="o">=</span><span class="n">propagate_features</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div></div>
 </pre></div>

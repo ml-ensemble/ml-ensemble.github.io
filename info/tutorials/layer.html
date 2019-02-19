@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Layer Mechanics &mdash; mlens 0.2.2 documentation</title>
+  <title>Layer Mechanics &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Parallel Mechanics" href="parallel.html" />
-    <link rel="prev" title="Learner Mechanics" href="learner.html" /> 
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="../index.html"/>
+        <link rel="next" title="Parallel Mechanics" href="parallel.html"/>
+        <link rel="prev" title="Learner Mechanics" href="learner.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+            <img src="../_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -138,6 +150,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#blend-ensemble">Blend Ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#temporal-ensemble">Temporal Ensemble</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../start/ensembles.html#sequential-ensemble">Sequential Ensemble</a></li>
 </ul>
 </li>
@@ -168,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="parallel.html#parallelprocessing-api">ParallelProcessing API</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="parallel.html#stacking-a-set-of-parallel-jobs">Stacking a set of parallel jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="parallel.html#manual-initialization-and-processing">Manual initialization and processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallel.html#memory-management">Memory management</a></li>
 </ul>
 </li>
 </ul>
@@ -221,7 +235,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">mlens</a>
@@ -229,10 +243,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -274,11 +287,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-tutorials-layer-py"><span class="std std-ref">here</span></a> to download the full example code</p>
-</div>
-<div class="sphx-glr-example-title section" id="layer-mechanics">
+  <div class="section" id="layer-mechanics">
 <span id="layer-tutorial"></span><span id="sphx-glr-tutorials-layer-py"></span><h1>Layer Mechanics<a class="headerlink" href="#layer-mechanics" title="Permalink to this headline">¶</a></h1>
 <p>ML-Ensemble is designed to provide an easy user interface. But it is also designed
 to be extremely flexible, all the wile providing maximum concurrency at minimal
@@ -298,8 +307,8 @@ have to be done manually.</p>
 <div class="section" id="the-layer-api">
 <h2>The Layer API<a class="headerlink" href="#the-layer-api" title="Permalink to this headline">¶</a></h2>
 <p>To parallelize the implementation, we can use the <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> class. A layer is
-a handle that will run any number of <code class="xref py py-class docutils literal notranslate"><span class="pre">Group`s</span> <span class="pre">attached</span> <span class="pre">to</span> <span class="pre">it</span> <span class="pre">in</span> <span class="pre">parallel.</span> <span class="pre">Each</span>
-<span class="pre">group</span> <span class="pre">in</span> <span class="pre">turn</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">wrapper</span> <span class="pre">around</span> <span class="pre">a</span> <span class="pre">``indexer-transformers-estimators`</span></code> triplet.</p>
+a handle that will run any number of <code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code> instances attached to it in parallel. Each
+group in turn is a wrapper around a <code class="docutils literal notranslate"><span class="pre">indexer-transformers-estimators</span></code> triplet.</p>
 <div class="section" id="basics">
 <h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
 <p>So, to fit our two learners in parallel, we first need a <code class="xref py py-class docutils literal notranslate"><span class="pre">Group</span></code> object to
@@ -333,16 +342,16 @@ learners using the prescribed indexing method.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[ 1.3665537  2.3665535]
- [ 5.363353  10.363353 ]
- [ 9.360152  18.360151 ]
- [13.356951  26.35695  ]
- [17.35375   34.35375  ]
- [21.486897  42.486897 ]
- [25.524712  50.52471  ]
- [29.562525  58.562527 ]
- [33.60034   66.60034  ]
- [37.638153  74.63815  ]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">1.3665537</span>  <span class="mf">2.3665535</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">5.363353</span>  <span class="mf">10.363353</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">9.360152</span>  <span class="mf">18.360151</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">13.356951</span>  <span class="mf">26.35695</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="mf">17.35375</span>   <span class="mf">34.35375</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="mf">21.486897</span>  <span class="mf">42.486897</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">25.524712</span>  <span class="mf">50.52471</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="mf">29.562525</span>  <span class="mf">58.562527</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">33.60034</span>   <span class="mf">66.60034</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="mf">37.638153</span>  <span class="mf">74.63815</span>  <span class="p">]]</span>
 </pre></div>
 </div>
 <p>To use some preprocessing before fitting the estimators, we can use the
@@ -357,16 +366,16 @@ learners using the prescribed indexing method.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594 -55.977592]
- [-23.980795 -47.980793]
- [-19.983995 -39.983997]
- [-15.987196 -31.987196]
- [-11.990397 -23.990396]
- [ 12.113442  24.113443]
- [ 16.151257  32.151257]
- [ 20.189072  40.18907 ]
- [ 24.226885  48.226887]
- [ 28.2647    56.264698]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">27.977594</span> <span class="o">-</span><span class="mf">55.977592</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">23.980795</span> <span class="o">-</span><span class="mf">47.980793</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">19.983995</span> <span class="o">-</span><span class="mf">39.983997</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">15.987196</span> <span class="o">-</span><span class="mf">31.987196</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">11.990397</span> <span class="o">-</span><span class="mf">23.990396</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">12.113442</span>  <span class="mf">24.113443</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">16.151257</span>  <span class="mf">32.151257</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">20.189072</span>  <span class="mf">40.18907</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">24.226885</span>  <span class="mf">48.226887</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">28.2647</span>    <span class="mf">56.264698</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -389,16 +398,16 @@ or by making two separate groups. In the first case:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594    2.3665535]
- [-23.980795   10.363353 ]
- [-19.983995   18.360151 ]
- [-15.987196   26.35695  ]
- [-11.990397   34.35375  ]
- [ 12.113442   42.486897 ]
- [ 16.151257   50.52471  ]
- [ 20.189072   58.562527 ]
- [ 24.226885   66.60034  ]
- [ 28.2647     74.63815  ]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">27.977594</span>    <span class="mf">2.3665535</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">23.980795</span>   <span class="mf">10.363353</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">19.983995</span>   <span class="mf">18.360151</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">15.987196</span>   <span class="mf">26.35695</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">11.990397</span>   <span class="mf">34.35375</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">12.113442</span>   <span class="mf">42.486897</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">16.151257</span>   <span class="mf">50.52471</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">20.189072</span>   <span class="mf">58.562527</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">24.226885</span>   <span class="mf">66.60034</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">28.2647</span>     <span class="mf">74.63815</span>  <span class="p">]]</span>
 </pre></div>
 </div>
 <p>In the latter case:</p>
@@ -414,16 +423,16 @@ or by making two separate groups. In the first case:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594    2.3665535]
- [-23.980795   10.363353 ]
- [-19.983995   18.360151 ]
- [-15.987196   26.35695  ]
- [-11.990397   34.35375  ]
- [ 12.113442   42.486897 ]
- [ 16.151257   50.52471  ]
- [ 20.189072   58.562527 ]
- [ 24.226885   66.60034  ]
- [ 28.2647     74.63815  ]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">27.977594</span>    <span class="mf">2.3665535</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">23.980795</span>   <span class="mf">10.363353</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">19.983995</span>   <span class="mf">18.360151</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">15.987196</span>   <span class="mf">26.35695</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">11.990397</span>   <span class="mf">34.35375</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">12.113442</span>   <span class="mf">42.486897</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">16.151257</span>   <span class="mf">50.52471</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">20.189072</span>   <span class="mf">58.562527</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">24.226885</span>   <span class="mf">66.60034</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">28.2647</span>     <span class="mf">74.63815</span>  <span class="p">]]</span>
 </pre></div>
 </div>
 <p>Which method to prefer depends on the application, but generally, it is
@@ -447,16 +456,16 @@ by creating groups for each indexing strategy we want:</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[-27.977594    2.4661984]
- [-23.980795   10.449842 ]
- [-19.983995   18.433487 ]
- [-15.987196   26.33962  ]
- [-11.990397   34.341675 ]
- [ 12.113442   42.343727 ]
- [ 16.151257   50.33181  ]
- [ 20.189072   58.324955 ]
- [ 24.226885   66.458244 ]
- [ 28.2647     74.47614  ]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">27.977594</span>    <span class="mf">2.4661984</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">23.980795</span>   <span class="mf">10.449842</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">19.983995</span>   <span class="mf">18.433487</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">15.987196</span>   <span class="mf">26.33962</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">11.990397</span>   <span class="mf">34.341675</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">12.113442</span>   <span class="mf">42.343727</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">16.151257</span>   <span class="mf">50.33181</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">20.189072</span>   <span class="mf">58.324955</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">24.226885</span>   <span class="mf">66.458244</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">28.2647</span>     <span class="mf">74.47614</span>  <span class="p">]]</span>
 </pre></div>
 </div>
 <p>Some care needs to be taken here: if indexing strategies do not return the
@@ -475,16 +484,16 @@ same number of rows, the output array will be zero-padded.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[[ 1.3665537  0.       ]
- [ 5.363353   0.       ]
- [ 9.360152   0.       ]
- [13.356951   0.       ]
- [17.35375    0.       ]
- [21.486897  21.486897 ]
- [25.524712  25.524712 ]
- [29.562525  29.562525 ]
- [33.60034   33.60034  ]
- [37.638153  37.638153 ]]
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">1.3665537</span>  <span class="mf">0.</span>       <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">5.363353</span>   <span class="mf">0.</span>       <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">9.360152</span>   <span class="mf">0.</span>       <span class="p">]</span>
+ <span class="p">[</span><span class="mf">13.356951</span>   <span class="mf">0.</span>       <span class="p">]</span>
+ <span class="p">[</span><span class="mf">17.35375</span>    <span class="mf">0.</span>       <span class="p">]</span>
+ <span class="p">[</span><span class="mf">21.486897</span>  <span class="mf">21.486897</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">25.524712</span>  <span class="mf">25.524712</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">29.562525</span>  <span class="mf">29.562525</span> <span class="p">]</span>
+ <span class="p">[</span><span class="mf">33.60034</span>   <span class="mf">33.60034</span>  <span class="p">]</span>
+ <span class="p">[</span><span class="mf">37.638153</span>  <span class="mf">37.638153</span> <span class="p">]]</span>
 </pre></div>
 </div>
 <p>Note that even if <code class="docutils literal notranslate"><span class="pre">mlens</span></code> indexer output different shapes, they preserve
@@ -515,7 +524,7 @@ use the layer for prediction.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Error: Layer instance (layer-6) not fitted.
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span><span class="p">:</span> <span class="n">Layer</span> <span class="n">instance</span> <span class="p">(</span><span class="n">layer</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span> <span class="ow">not</span> <span class="n">fitted</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">Layer</span></code> class can print the progress of a job, as well as inspect
@@ -540,27 +549,29 @@ printouts of the layer does not take group membership into account.</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Collected data:
-                 score-m  score-s  ft-m  ft-s  pt-m  pt-s
-case-1  ols-1      20.88     0.23  0.00  0.00  0.00  0.00
-        ols-2      40.27    19.05  0.00  0.00  0.00  0.00
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Collected</span> <span class="n">data</span><span class="p">:</span>
+                 <span class="n">score</span><span class="o">-</span><span class="n">m</span>  <span class="n">score</span><span class="o">-</span><span class="n">s</span>  <span class="n">ft</span><span class="o">-</span><span class="n">m</span>  <span class="n">ft</span><span class="o">-</span><span class="n">s</span>  <span class="n">pt</span><span class="o">-</span><span class="n">m</span>  <span class="n">pt</span><span class="o">-</span><span class="n">s</span>
+<span class="n">case</span><span class="o">-</span><span class="mi">1</span>  <span class="n">ols</span><span class="o">-</span><span class="mi">1</span>      <span class="mf">20.88</span>     <span class="mf">0.23</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
+        <span class="n">ols</span><span class="o">-</span><span class="mi">2</span>      <span class="mf">40.27</span>    <span class="mf">19.05</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>  <span class="mf">0.00</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.515 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-tutorials-layer-py">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  2.157 seconds)</p>
+<div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/layer.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">layer.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/layer.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">layer.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 </div>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -573,7 +584,7 @@ case-1  ols-1      20.88     0.23  0.00  0.00  0.00  0.00
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -591,8 +602,7 @@ case-1  ols-1      20.88     0.23  0.00  0.00  0.00  0.00
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -606,13 +616,19 @@ case-1  ols-1      20.88     0.23  0.00  0.00  0.00  0.00
 
   
 
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>

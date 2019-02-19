@@ -48,6 +48,13 @@ Ready-made ensemble classes
     :members:
     :show-inheritance:
 
+:hidden:`TemporalEnsemble`
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autoclass:: TemporalEnsemble 
+    :members:
+    :show-inheritance:
+
 :hidden:`Sequential`
 ^^^^^^^^^^^^^^^^^^^^
 

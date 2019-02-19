@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>mlens.metrics &mdash; mlens 0.2.2 documentation</title>
+  <title>mlens.metrics &mdash; mlens 0.2.3 documentation</title>
   
 
   
@@ -24,23 +24,35 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
-  <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="mlens.visualization" href="visualization.html" />
-    <link rel="prev" title="mlens.preprocessing" href="preprocessing.html" /> 
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/mlens-theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/css/sphinx-glr.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="mlens 0.2.3 documentation" href="index.html"/>
+        <link rel="next" title="mlens.visualization" href="visualization.html"/>
+        <link rel="prev" title="mlens.preprocessing" href="preprocessing.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -57,7 +69,7 @@
 
           
             
-            <img src="_static/logo.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" />
           
           </a>
 
@@ -65,7 +77,7 @@
             
             
               <div class="version">
-                0.2.2
+                0.2.3
               </div>
             
           
@@ -137,6 +149,7 @@
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#superlearner"><span class="hidden-section">SuperLearner</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#subsemble"><span class="hidden-section">Subsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#blendensemble"><span class="hidden-section">BlendEnsemble</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensemble.html#temporalensemble"><span class="hidden-section">TemporalEnsemble</span></a></li>
 <li class="toctree-l3"><a class="reference internal" href="ensemble.html#id7"><span class="hidden-section">Sequential</span></a></li>
 </ul>
 </li>
@@ -259,7 +272,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">mlens</a>
@@ -267,10 +280,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -427,7 +439,7 @@ entries are optional.</p>
 and cross_val_score. It takes a score function, such as <code class="docutils literal notranslate"><span class="pre">accuracy_score</span></code>,
 <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code>, <code class="docutils literal notranslate"><span class="pre">adjusted_rand_index</span></code> or <code class="docutils literal notranslate"><span class="pre">average_precision</span></code>
 and returns a callable that scores an estimator’s output.</p>
-<p>Read more in the <a class="reference external" href="http://scikit-learn.org/stable/modules/model_evaluation.html#scoring" title="(in scikit-learn v0.19.1)"><span class="xref std std-ref">User Guide</span></a>.</p>
+<p>Read more in the <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#scoring" title="(in scikit-learn v0.20.2)"><span class="xref std std-ref">User Guide</span></a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -568,7 +580,9 @@ can not be computed using discrete predictions alone.</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -581,7 +595,7 @@ can not be computed using discrete predictions alone.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -599,8 +613,7 @@ can not be computed using discrete predictions alone.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.2',
-            LANGUAGE:'None',
+            VERSION:'0.2.3',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -614,13 +627,19 @@ can not be computed using discrete predictions alone.</p>
 
   
 
-  <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+   
 
 </body>
 </html>
